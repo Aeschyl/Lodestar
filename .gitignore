@@ -10,7 +10,7 @@
 *.userosscache
 *.sln.docstates
 
-FBLACodingAndProgramming2021-2022/Python/venv
+./FBLACodingAndProgramming2021-2022/Python/venv
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
