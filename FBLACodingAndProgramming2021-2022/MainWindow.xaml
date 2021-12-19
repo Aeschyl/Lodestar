@@ -4,12 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022"
+       xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
+        xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
         mc:Ignorable="d"
         Height="600" Width="920"
          WindowStyle = "None"
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
 
     <Border Background="Black"
             CornerRadius="20">
@@ -22,7 +28,62 @@
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            
+            <TextBlock Text="Attract"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="White"
+                   FontSize="30"
+                       Margin="20,0,0,0"/>
+
+            <StackPanel Grid.Row="1">
+
+                <RadioButton Content="Category"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Sub-Category"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Amenities"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+                <RadioButton Content="Results"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"/>
+
+            </StackPanel>
+            
+            
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+
+            <ProgressBar Grid.Column="1"
+                         Foreground="Beige"
+                         Background="Transparent"
+                         BorderBrush="Black"
+                         VerticalAlignment="Center"
+                         Width="600"
+                         Height="35"
+                         
+                         Style="{StaticResource ProgressBarTheme}"
+                         />
+           
+
         </Grid>
+
+        
+
+
     </Border>
     
 </Window>

@@ -69,8 +69,29 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVMM\View\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\MenuButtonTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\ProgressBarTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\TextBoxTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVMM\ViewModel\HomeViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVMM\View\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -100,12 +121,9 @@
     <Folder Include="Fonts\" />
     <Folder Include="Images\" />
     <Folder Include="MVMM\Model\" />
-    <Folder Include="MVMM\ViewModel\" />
-    <Folder Include="MVMM\View\" />
     <Folder Include="Python\Input\" />
     <Folder Include="Python\Output\" />
     <Folder Include="Python\src\" />
-    <Folder Include="Theme\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
