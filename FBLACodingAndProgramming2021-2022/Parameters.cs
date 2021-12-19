@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Text.Json;
 
 namespace FBLACodingAndProgramming2021_2022
 {
@@ -16,7 +17,7 @@ namespace FBLACodingAndProgramming2021_2022
         public string subcategory { get; set; }
         public List<string> amenities { get; set; }
 
-        string currentDirectory = System.IO.Directory.GetCurrentDirectory().Substring(0, System.IO.Directory.GetCurrentDirectory().IndexOf("bin") - 1);
+        
 
         public Parameters()
         {
@@ -27,20 +28,15 @@ namespace FBLACodingAndProgramming2021_2022
 
         public void Serialize()
         {
-            
-            
-            Stream stream = new FileStream(currentDirectory + @"/Python/src/Input/input.json", FileMode.Create, FileAccess.Write);
-            var formatter = new BinaryFormatter();
-            formatter.Serialize(stream, this);
-            stream.Close();
+            string currentDirectory = System.IO.Directory.GetCurrentDirectory().Substring(0, System.IO.Directory.GetCurrentDirectory().IndexOf("bin") - 1);
+
+
+            File.WriteAllText(currentDirectory + @"/Python/src/Input/input.json", JsonSerializer.Serialize(this));
         }
         public Parameters DeSerialize() 
         {
-            using (var stream = new FileStream(currentDirectory + @"/Python/src/Output/output.json", FileMode.Open, FileAccess.Read)) 
-            {
-                var formatter = new BinaryFormatter();
-                return (Parameters)formatter.Deserialize(stream);
-            }
+            string currentDirectory = System.IO.Directory.GetCurrentDirectory().Substring(0, System.IO.Directory.GetCurrentDirectory().IndexOf("bin") - 1);
+            return JsonSerializer.Deserialize<Parameters>(File.ReadAllText(currentDirectory + @"/Python/src/Input/input.json"));
         
         }
 
