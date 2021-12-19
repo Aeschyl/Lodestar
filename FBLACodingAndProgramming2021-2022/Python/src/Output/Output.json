@@ -1,0 +1,966 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Mariandl",
+                "housenumber": "51",
+                "street": "Goethestra\u00dfe",
+                "quarter": "Klinikviertel",
+                "neighbourhood": "Ludwigsvorstadt-Kliniken",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80336",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5587842,
+                "lat": 48.1332061,
+                "formatted": "Mariandl, Goethestra\u00dfe 51, 80336 Munich, Germany",
+                "address_line1": "Mariandl",
+                "address_line2": "Goethestra\u00dfe 51, 80336 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "catering",
+                    "catering.restaurant",
+                    "wheelchair",
+                    "wheelchair.limited"
+                ],
+                "details": [
+                    "details",
+                    "details.contact",
+                    "details.facilities",
+                    "details.wiki_and_media"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51040b71f6181e274059885cc1e50c114840f00103f9019da83512000000009203084d617269616e646c"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.558784199999998,
+                    48.13320609990575
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Mandarin Oriental",
+                "housenumber": "1",
+                "street": "Neuturmstra\u00dfe",
+                "quarter": "Graggenauerviertel",
+                "neighbourhood": "Graggenau",
+                "suburb": "Altstadt-Lehel",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80331",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.58073331126377,
+                "lat": 48.137298900000005,
+                "formatted": "Mandarin Oriental, Neuturmstra\u00dfe 1, 80331 Munich, Germany",
+                "address_line1": "Mandarin Oriental",
+                "address_line2": "Neuturmstra\u00dfe 1, 80331 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "building",
+                    "building.accommodation",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities",
+                    "details.wiki_and_media"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51f4cf4eec57292740595630232c93114840f00102f901e8e9c104000000009203114d616e646172696e204f7269656e74616c"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.580748924847263,
+                    48.13730384557918
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Deutsche Eiche",
+                "housenumber": "13",
+                "street": "Reichenbachstra\u00dfe",
+                "neighbourhood": "G\u00e4rtnerplatz",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80469",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.576359869215747,
+                "lat": 48.132741550000006,
+                "formatted": "Deutsche Eiche, Reichenbachstra\u00dfe 13, 80469 Munich, Germany",
+                "address_line1": "Deutsche Eiche",
+                "address_line2": "Reichenbachstra\u00dfe 13, 80469 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "building",
+                    "building.accommodation",
+                    "wheelchair",
+                    "wheelchair.limited"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.building",
+                    "details.contact",
+                    "details.facilities",
+                    "details.wiki_and_media"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51efd7d3a4182727405994dd03acfd104840f00102f901fbfff3050000000092030e4465757473636865204569636865"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.57635989271145,
+                    48.13274145306346
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hotel Vier Jahreszeiten Kempinski M\u00fcnchen",
+                "housenumber": "17",
+                "street": "Maximilianstra\u00dfe",
+                "quarter": "Graggenauerviertel",
+                "neighbourhood": "Graggenau",
+                "suburb": "Altstadt-Lehel",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80539",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5819647,
+                "lat": 48.1391684,
+                "formatted": "Hotel Vier Jahreszeiten Kempinski M\u00fcnchen, Maximilianstra\u00dfe 17, 80539 Munich, Germany",
+                "address_line1": "Hotel Vier Jahreszeiten Kempinski M\u00fcnchen",
+                "address_line2": "Maximilianstra\u00dfe 17, 80539 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "internet_access",
+                    "wheelchair",
+                    "wheelchair.limited"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities",
+                    "details.wiki_and_media"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "5158daf346f729274059e01c2745d0114840f00103f901093b37120000000092032a486f74656c2056696572204a61687265737a656974656e204b656d70696e736b69204dc3bc6e6368656e"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.5819647,
+                    48.13916839990429
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hotel Lux",
+                "housenumber": "13",
+                "street": "Ledererstra\u00dfe",
+                "quarter": "Graggenauerviertel",
+                "neighbourhood": "Graggenau",
+                "suburb": "Altstadt-Lehel",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80331",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5789964,
+                "lat": 48.1372427,
+                "formatted": "Hotel Lux, Ledererstra\u00dfe 13, 80331 Munich, Germany",
+                "address_line1": "Hotel Lux",
+                "address_line2": "Ledererstra\u00dfe 13, 80331 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "wheelchair",
+                    "wheelchair.limited"
+                ],
+                "details": [
+                    "details",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51e3005537722827405953da352b91114840f00103f90163ceb82300000000920309486f74656c204c7578"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.5789964,
+                    48.13724269990475
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hotel Opera",
+                "housenumber": "10",
+                "street": "Sankt-Anna-Stra\u00dfe",
+                "suburb": "Lehel",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80538",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.587045323145144,
+                "lat": 48.138817,
+                "formatted": "Hotel Opera, Sankt-Anna-Stra\u00dfe 10, 80538 Munich, Germany",
+                "address_line1": "Hotel Opera",
+                "address_line2": "Sankt-Anna-Stra\u00dfe 10, 80538 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "building",
+                    "building.accommodation",
+                    "wheelchair",
+                    "wheelchair.limited"
+                ],
+                "details": [
+                    "details",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51f24761f0902c27405905e8d212c5114840f00102f9016a32aa010000000092030b486f74656c204f70657261"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.587043296694876,
+                    48.13882670686875
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "The 4You",
+                "housenumber": "18",
+                "street": "Hirtenstra\u00dfe",
+                "neighbourhood": "Augustenstra\u00dfe",
+                "suburb": "Maxvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80335",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.557936870815993,
+                "lat": 48.1423816,
+                "formatted": "The 4You, Hirtenstra\u00dfe 18, 80335 Munich, Germany",
+                "address_line1": "The 4You",
+                "address_line2": "Hirtenstra\u00dfe 18, 80335 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hostel",
+                    "building",
+                    "building.accommodation",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.building",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51d6413c08aa1d274059eab6c98639124840f00102f901fee5be04000000009203085468652034596f75"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.55793786750375,
+                    48.14238056992856
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "H+Hotel",
+                "housenumber": "28",
+                "street": "Schillerstra\u00dfe",
+                "quarter": "Klinikviertel",
+                "neighbourhood": "Ludwigsvorstadt-Kliniken",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80336",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.560591737078806,
+                "lat": 48.13667695,
+                "formatted": "H+Hotel, Schillerstra\u00dfe 28, 80336 Munich, Germany",
+                "address_line1": "H+Hotel",
+                "address_line2": "Schillerstra\u00dfe 28, 80336 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "building",
+                    "building.accommodation",
+                    "internet_access",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "5115f32c0d071f2740591da2d6827e114840f00102f901f2d1f30600000000920307482b486f74656c"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.560600673424725,
+                    48.13667331199779
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Aparthotel Adagio M\u00fcnchen City",
+                "street": "Schwanthalerstra\u00dfe",
+                "quarter": "Klinikviertel",
+                "neighbourhood": "Ludwigsvorstadt-Kliniken",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80336",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.556557671877034,
+                "lat": 48.137298799999996,
+                "formatted": "Aparthotel Adagio M\u00fcnchen City, Schwanthalerstra\u00dfe, 80336 Munich, Germany",
+                "address_line1": "Aparthotel Adagio M\u00fcnchen City",
+                "address_line2": "Schwanthalerstra\u00dfe, 80336 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "building",
+                    "building.accommodation",
+                    "internet_access",
+                    "internet_access.free",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51dc75c01df51c274059a8daaa0193114840f00102f901b318720d0000000092031f4170617274686f74656c2041646167696f204dc3bc6e6368656e2043697479"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.556557588332844,
+                    48.13729878275382
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hotel Meier City M\u00fcnchen",
+                "housenumber": "12",
+                "street": "Sch\u00fctzenstra\u00dfe",
+                "quarter": "Klinikviertel",
+                "neighbourhood": "Ludwigsvorstadt-Kliniken",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80335",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.562462862861338,
+                "lat": 48.140017799999995,
+                "formatted": "Hotel Meier City M\u00fcnchen, Sch\u00fctzenstra\u00dfe 12, 80335 Munich, Germany",
+                "address_line1": "Hotel Meier City M\u00fcnchen",
+                "address_line2": "Sch\u00fctzenstra\u00dfe 12, 80335 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "building",
+                    "building.accommodation",
+                    "internet_access",
+                    "internet_access.free",
+                    "wheelchair",
+                    "wheelchair.limited"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.building",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51e37ecaa8fb1f2740591069de1bec114840f00102f901a601c50f00000000920319486f74656c204d656965722043697479204dc3bc6e6368656e"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.562466883391101,
+                    48.14001797065623
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hotel Exquisit",
+                "housenumber": "3",
+                "street": "Pettenkoferstra\u00dfe",
+                "quarter": "Klinikviertel",
+                "neighbourhood": "Ludwigsvorstadt-Kliniken",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80336",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5645694,
+                "lat": 48.1339558,
+                "formatted": "Hotel Exquisit, Pettenkoferstra\u00dfe 3, 80336 Munich, Germany",
+                "address_line1": "Hotel Exquisit",
+                "address_line2": "Pettenkoferstra\u00dfe 3, 80336 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "5109a58a3d0f212740591bdab17625114840f00103f9011cca34120000000092030e486f74656c204578717569736974"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.564569399999998,
+                    48.13395579990557
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hotel Isartor",
+                "housenumber": "2",
+                "street": "Baaderstra\u00dfe",
+                "neighbourhood": "G\u00e4rtnerplatz",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80469",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5812578,
+                "lat": 48.1334536,
+                "formatted": "Hotel Isartor, Baaderstra\u00dfe 2, 80469 Munich, Germany",
+                "address_line1": "Hotel Isartor",
+                "address_line2": "Baaderstra\u00dfe 2, 80469 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51fe16539f9a292740596e90ef0115114840f00103f9012f0336120000000092030d486f74656c2049736172746f72"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.5812578,
+                    48.13345359990568
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Torbr\u00e4u",
+                "housenumber": "41",
+                "street": "Tal",
+                "quarter": "Graggenauerviertel",
+                "neighbourhood": "Graggenau",
+                "suburb": "Altstadt-Lehel",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80331",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5815897,
+                "lat": 48.135501,
+                "formatted": "Torbr\u00e4u, Tal 41, 80331 Munich, Germany",
+                "address_line1": "Torbr\u00e4u",
+                "address_line2": "Tal 41, 80331 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "internet_access",
+                    "internet_access.free",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "5182610a20c6292740598295c51858114840f00103f9017f57451400000000920308546f726272c3a475"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.581589699999999,
+                    48.135500999905176
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Jedermann",
+                "housenumber": "95",
+                "street": "Bayerstra\u00dfe",
+                "neighbourhood": "St. Paul",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80335",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.551001297583394,
+                "lat": 48.13886505,
+                "formatted": "Jedermann, Bayerstra\u00dfe 95, 80335 Munich, Germany",
+                "address_line1": "Jedermann",
+                "address_line2": "Bayerstra\u00dfe 95, 80335 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "building",
+                    "building.accommodation",
+                    "internet_access",
+                    "internet_access.free",
+                    "wheelchair",
+                    "wheelchair.limited"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "5169e532cf1c1a274059203f3549c6114840f00102f901e5a37e15000000009203094a656465726d616e6e"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.551001048052699,
+                    48.13886370754176
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Alpen Hotel",
+                "housenumber": "14",
+                "street": "Adolf-Kolping-Stra\u00dfe",
+                "quarter": "Klinikviertel",
+                "neighbourhood": "Ludwigsvorstadt-Kliniken",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80336",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5621902,
+                "lat": 48.1382301,
+                "formatted": "Alpen Hotel, Adolf-Kolping-Stra\u00dfe 14, 80336 Munich, Germany",
+                "address_line1": "Alpen Hotel",
+                "address_line2": "Adolf-Kolping-Stra\u00dfe 14, 80336 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "wheelchair",
+                    "wheelchair.limited"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "516d43d664d71f274059d4341f86b1114840f00103f901bf91cd220000000092030b416c70656e20486f74656c"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.562190199999998,
+                    48.13823009990452
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Hotel Admiral M\u00fcnchen",
+                "housenumber": "9",
+                "street": "Kohlstra\u00dfe",
+                "neighbourhood": "Deutsches Museum",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80469",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.58134,
+                "lat": 48.1317301,
+                "formatted": "Hotel Admiral M\u00fcnchen, Kohlstra\u00dfe 9, 80469 Munich, Germany",
+                "address_line1": "Hotel Admiral M\u00fcnchen",
+                "address_line2": "Kohlstra\u00dfe 9, 80469 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "5199b67f65a5292740596e7f2b88dc104840f00103f901bd1dd52600000000920316486f74656c2041646d6972616c204dc3bc6e6368656e"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.581339999999999,
+                    48.13173009990611
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Louis",
+                "housenumber": "6",
+                "street": "Viktualienmarkt",
+                "quarter": "Angerviertel",
+                "suburb": "Altstadt-Lehel",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80331",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5757971,
+                "lat": 48.1359668,
+                "formatted": "Louis, Viktualienmarkt 6, 80331 Munich, Germany",
+                "address_line1": "Louis",
+                "address_line2": "Viktualienmarkt 6, 80331 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "internet_access",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "516743a3e0ce2627405990772f5c67114840f00103f901e69f1d27000000009203054c6f756973"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.5757971,
+                    48.13596679990508
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Vi vadi",
+                "housenumber": "6",
+                "street": "Marsstra\u00dfe",
+                "neighbourhood": "Augustenstra\u00dfe",
+                "suburb": "Maxvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80335",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.558954,
+                "lat": 48.1431942,
+                "formatted": "Vi vadi, Marsstra\u00dfe 6, 80335 Munich, Germany",
+                "address_line1": "Vi vadi",
+                "address_line2": "Marsstra\u00dfe 6, 80335 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "internet_access",
+                    "internet_access.free",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51cfeffb372f1e274059e5c7023054124840f00103f901a525ac350000000092030756692076616469"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.558953999999998,
+                    48.14319419990333
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Le M\u00e9ridien",
+                "housenumber": "41",
+                "street": "Bayerstra\u00dfe",
+                "quarter": "Klinikviertel",
+                "neighbourhood": "Ludwigsvorstadt-Kliniken",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80335",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5580028,
+                "lat": 48.1390138,
+                "formatted": "Le M\u00e9ridien, Bayerstra\u00dfe 41, 80335 Munich, Germany",
+                "address_line1": "Le M\u00e9ridien",
+                "address_line2": "Bayerstra\u00dfe 41, 80335 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "512127028bb21d27405914244634cb114840f00103f901bbdaa4620000000092030c4c65204dc3a972696469656e"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.558002799999999,
+                    48.13901379990435
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "Eurostars Book Hotel",
+                "housenumber": "44",
+                "street": "Schwanthalerstra\u00dfe",
+                "quarter": "Klinikviertel",
+                "neighbourhood": "Ludwigsvorstadt-Kliniken",
+                "suburb": "Ludwigsvorstadt-Isarvorstadt",
+                "city": "Munich",
+                "state": "Bavaria",
+                "postcode": "80336",
+                "country": "Germany",
+                "country_code": "de",
+                "lon": 11.5575048,
+                "lat": 48.1375847,
+                "formatted": "Eurostars Book Hotel, Schwanthalerstra\u00dfe 44, 80336 Munich, Germany",
+                "address_line1": "Eurostars Book Hotel",
+                "address_line2": "Schwanthalerstra\u00dfe 44, 80336 Munich, Germany",
+                "categories": [
+                    "accommodation",
+                    "accommodation.hotel",
+                    "internet_access",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.accommodation",
+                    "details.contact",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "\u00a9 OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright"
+                },
+                "place_id": "51deb9e644711d2740599f421d609c114840f00103f901d8faa493000000009203144575726f737461727320426f6f6b20486f74656c"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    11.5575048,
+                    48.13758469990466
+                ]
+            }
+        }
+    ]
+}
