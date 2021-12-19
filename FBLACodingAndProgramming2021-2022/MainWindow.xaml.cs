@@ -21,11 +21,15 @@ namespace FBLACodingAndProgramming2021_2022
     /// </summary>
     public partial class MainWindow : Window
     {
+        Parameters parameter = new Parameters();
         public MainWindow()
         {
             InitializeComponent();
             
 
         }
+
+
+        
     }
 }

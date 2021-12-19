@@ -20,7 +20,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.ViewModel
             set 
             { 
                 _currentView = value;
-               
+               //I Commented this code out and then It started to work and I have no clue why
+               //OnPropertyChanged()
             
             }
         }
