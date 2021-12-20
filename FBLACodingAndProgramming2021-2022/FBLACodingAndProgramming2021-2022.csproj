@@ -103,6 +103,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVMM\View\HaveFunSubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\CategoryMenuButtonTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Theme\MenuButtonTheme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,8 +127,12 @@
   <ItemGroup>
     <Compile Include="MVMM\ViewModel\HomeViewModel.cs" />
     <Compile Include="MVMM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\SubViewModel.cs" />
     <Compile Include="MVMM\View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\HaveFunSubView.xaml.cs">
+      <DependentUpon>HaveFunSubView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

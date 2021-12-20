@@ -36,5 +36,11 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             MessageBox.Show(obj.ToString());
 
         }
+        //Have Fun Button
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            
+            
+        }
     }
 }
