@@ -18,10 +18,14 @@
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView/>
             </DataTemplate>
-
-            <DataTemplate DataType="{x:Type viewModel:SubViewModel}">
-                <view:SubView/>
+            
+            <DataTemplate DataType="{x:Type viewModel:HaveFunSubViewModel}">
+                <view:HaveFunSubView />
             </DataTemplate>
+
+          
+
+          
             
         </ResourceDictionary>
 

@@ -30,6 +30,15 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
+            <Button Height="0"
+                    Width="0"
+                    Command="{Binding HaveFunSubViewCommand}"
+                    x:Name="HaveFunActivator"
+                    x:FieldModifier="public" />
+
+
+
+
             <TextBlock Text="Attract"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
@@ -51,7 +60,8 @@
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding HaveFunSubViewCommand}" />
                 <RadioButton Content="Amenities"
                              Height="50"
                              Foreground="White"
