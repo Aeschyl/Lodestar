@@ -29,6 +29,17 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             InitializeComponent();
         }
 
+        public static void ClickButton(Button b)
+        {
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(b);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+        }
+
+        public static void IncrementProgressBar(ProgressBar p, int val) 
+        {
+            p.Value = val;
+        }
         private void EatingButton_Click(object sender, RoutedEventArgs e)
         {
             var param = new Parameters();
@@ -44,13 +55,23 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
 
             //Automation Techinique to activate a button on the main window to chaneg the views since I was getting errors when trying to swtich views insde the Home View
-            ButtonAutomationPeer peer = new ButtonAutomationPeer(Form.HaveFunActivator);
-            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
-            invokeProv.Invoke();
+            ClickButton(Form.HaveFunActivator);
 
             Form.sub_category_button.IsChecked = true;
             Form.category_button.IsChecked = false;
 
+            IncrementProgressBar(Form.MainProgressBar, 25);
+
+        }
+        //Eat Button
+        private void eat_Checked(object sender, RoutedEventArgs e)
+        {
+            ClickButton(Form.EatActivator);
+
+            Form.sub_category_button.IsChecked = true;
+            Form.category_button.IsChecked = false;
+
+            IncrementProgressBar(Form.MainProgressBar, 25);
         }
     }
 }

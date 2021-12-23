@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace FBLACodingAndProgramming2021_2022.MVMM.View
 {
     /// <summary>
-    /// Interaction logic for SubView.xaml
+    /// Interaction logic for EatSubView.xaml
     /// </summary>
-    public partial class SubView : UserControl
+    public partial class EatSubView : UserControl
     {
-        public SubView()
+        public EatSubView()
         {
             InitializeComponent();
         }

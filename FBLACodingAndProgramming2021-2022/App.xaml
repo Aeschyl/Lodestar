@@ -24,6 +24,10 @@
                 <view:HaveFunSubView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:EatSubViewModel}">
+                <view:EatSubView />
+            </DataTemplate>
+
           
 
           

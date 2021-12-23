@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022"
         xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
         xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        
+        xmlns:b="clr-namespace:FBLACodingAndProgramming2021_2022.Behaviors"
         mc:Ignorable="d"
         Height="600"
         Width="920"
@@ -36,6 +39,12 @@
                     x:Name="HaveFunActivator"
                     x:FieldModifier="public" />
 
+            <Button Height="0"
+                    Width="0"
+                    Command="{Binding EatSubViewCommand}"
+                    x:Name="EatActivator"
+                    x:FieldModifier="public" />
+
 
 
 
@@ -56,7 +65,7 @@
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
                              Command="{Binding HomeViewCommand}"
-                             x:Name="category_button"/>
+                             x:Name="category_button" />
                 <RadioButton Content="Sub-Category"
                              Height="50"
                              Foreground="White"
@@ -67,14 +76,14 @@
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" 
-                             x:Name="amenities_button"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             x:Name="amenities_button" />
                 <RadioButton Content="Results"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" 
-                             x:Name="results_button"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             x:Name="results_button" />
 
             </StackPanel>
 
@@ -85,13 +94,18 @@
                             Content="{Binding CurrentView}" />
 
             <ProgressBar Grid.Column="1"
-                         Foreground="Beige"
+                         Foreground="Aquamarine"
                          Background="Transparent"
                          BorderBrush="Black"
                          VerticalAlignment="Center"
                          Width="600"
                          Height="35"
-                         Style="{StaticResource ProgressBarTheme}" />
+                         Style="{StaticResource ProgressBarTheme}"
+                         x:Name="MainProgressBar">
+                <i:Interaction.Behaviors>
+                <b:ProgresBarAnimateBehavior />
+                </i:Interaction.Behaviors>
+            </ProgressBar>
 
 
         </Grid>

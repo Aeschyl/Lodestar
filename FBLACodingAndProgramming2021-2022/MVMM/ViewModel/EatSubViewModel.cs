@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FBLACodingAndProgramming2021_2022.MVMM.ViewModel
 {
-    class SubViewModel
+    class EatSubViewModel
     {
     }
 }
