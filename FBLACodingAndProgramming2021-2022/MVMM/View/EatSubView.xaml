@@ -8,57 +8,61 @@
              d:DesignHeight="450"
              d:DesignWidth="800"
              Background="Black">
-    <Grid Margin="0,100,0,100">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition>
-            </ColumnDefinition>
-            <ColumnDefinition>
-            </ColumnDefinition>
-            <ColumnDefinition>
-            </ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <Border BorderBrush="Aquamarine"
+            BorderThickness="5">
+        <Grid Margin="0,100,0,100">
 
-        <Button Content="restaurant"
-                Grid.Column="0"
-                Style="{StaticResource BetterButton}"
-                Foreground="White"
-                FontFamily="Bebas"
-                FontSize="40"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition>
+                </ColumnDefinition>
+                <ColumnDefinition>
+                </ColumnDefinition>
+                <ColumnDefinition>
+                </ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <Button Content="Fast Food"
-                Grid.Column="1"
-                Style="{StaticResource BetterButton}"
-                Foreground="White"
-                FontFamily="Bebas"
-                FontSize="40"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" />
+            <Button Content="restaurant"
+                    Grid.Column="0"
+                    Style="{StaticResource BetterButton}"
+                    Foreground="White"
+                    FontFamily="Bebas"
+                    FontSize="40"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
 
-        <Button Content="Cafe"
-                Grid.Column="2"
-                Style="{StaticResource BetterButton}"
-                Foreground="White"
-                FontFamily="Bebas"
-                FontSize="40"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center" />
+            <Button Content="Fast Food"
+                    Grid.Column="1"
+                    Style="{StaticResource BetterButton}"
+                    Foreground="White"
+                    FontFamily="Bebas"
+                    FontSize="40"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+
+            <Button Content="Cafe"
+                    Grid.Column="2"
+                    Style="{StaticResource BetterButton}"
+                    Foreground="White"
+                    FontFamily="Bebas"
+                    FontSize="40"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
 
 
-        <TextBlock 
-                   Text="Sub-Category"
-                   Margin="248,-86,250,0"
-                   TextWrapping="Wrap"
-                   FontFamily="Bebas"
-                   Foreground="White"
-                   FontSize="45"
-                   TextAlignment="Center"
-                   VerticalAlignment="Top"
-                   Height="50"
-                   Width="302"
-                   Grid.ColumnSpan="3" />
+            <TextBlock Text="Sub-Category"
+                       Margin="248,-86,250,0"
+                       TextWrapping="Wrap"
+                       FontFamily="Bebas"
+                       Foreground="White"
+                       FontSize="45"
+                       TextAlignment="Center"
+                       VerticalAlignment="Top"
+                       Height="50"
+                       Width="302"
+                       Grid.ColumnSpan="3" />
 
-    </Grid>
+        </Grid>
+
+    </Border>
 </UserControl>
