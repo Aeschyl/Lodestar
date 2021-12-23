@@ -55,23 +55,26 @@
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="True"
-                             Command="{Binding HomeViewCommand}" />
+                             Command="{Binding HomeViewCommand}"
+                             x:Name="category_button"/>
                 <RadioButton Content="Sub-Category"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding HaveFunSubViewCommand}" />
+                             x:Name="sub_category_button" />
                 <RadioButton Content="Amenities"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}" 
+                             x:Name="amenities_button"/>
                 <RadioButton Content="Results"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}" />
+                             Style="{StaticResource MenuButtonTheme}" 
+                             x:Name="results_button"/>
 
             </StackPanel>
 

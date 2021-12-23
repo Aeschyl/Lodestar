@@ -48,6 +48,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
             invokeProv.Invoke();
 
+            Form.sub_category_button.IsChecked = true;
+            Form.category_button.IsChecked = false;
+
         }
     }
 }

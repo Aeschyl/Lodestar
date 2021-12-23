@@ -24,5 +24,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             InitializeComponent();
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
