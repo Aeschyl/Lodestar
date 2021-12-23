@@ -4,37 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022"
-       xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
+        xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
         xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
         mc:Ignorable="d"
-        Height="600" Width="920"
-         WindowStyle = "None"
+        Height="600"
+        Width="920"
+        WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
         AllowsTransparency="True">
 
     <Window.DataContext>
-        <viewModel:MainViewModel/>
+        <viewModel:MainViewModel />
     </Window.DataContext>
 
     <Border Background="Black"
             CornerRadius="20">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="75"/>
-                <RowDefinition/>
+                <RowDefinition Height="75" />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            
+
+            <Button Height="0"
+                    Width="0"
+                    Command="{Binding HaveFunSubViewCommand}"
+                    x:Name="HaveFunActivator"
+                    x:FieldModifier="public" />
+
+
+
+
             <TextBlock Text="Attract"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                   Foreground="White"
-                   FontSize="30"
-                       Margin="20,0,0,0"/>
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="30"
+                       Margin="20,0,0,0"
+                       FontFamily="Bebas" />
 
             <StackPanel Grid.Row="1">
 
@@ -42,30 +53,36 @@
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding HomeViewCommand}"
+                             x:Name="category_button"/>
                 <RadioButton Content="Sub-Category"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             x:Name="sub_category_button" />
                 <RadioButton Content="Amenities"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}" 
+                             x:Name="amenities_button"/>
                 <RadioButton Content="Results"
                              Height="50"
                              Foreground="White"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}" 
+                             x:Name="results_button"/>
 
             </StackPanel>
-            
-            
+
+
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10"
-                            Content="{Binding CurrentView}"/>
+                            Content="{Binding CurrentView}" />
 
             <ProgressBar Grid.Column="1"
                          Foreground="Beige"
@@ -74,16 +91,14 @@
                          VerticalAlignment="Center"
                          Width="600"
                          Height="35"
-                         
-                         Style="{StaticResource ProgressBarTheme}"
-                         />
-           
+                         Style="{StaticResource ProgressBarTheme}" />
+
 
         </Grid>
 
-        
+
 
 
     </Border>
-    
+
 </Window>

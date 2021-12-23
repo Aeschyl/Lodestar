@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.Theme">
     <Style BasedOn="{StaticResource {x:Type ToggleButton}}"
            TargetType="{x:Type RadioButton}"
-           x:Key="MenuButtonTheme">
+           x:Key="CategoryMenuButtonTheme">
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
@@ -16,21 +16,25 @@
                                        VerticalAlignment="Center"
                                        Margin="25,0,0,0"
                                        FontFamily="Bebas"
-                                       />
+                                       HorizontalAlignment="Center" />
 
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
         </Style.Setters>
 
         <Style.Triggers>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#141414"/>
+            <Trigger Property="IsChecked"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="Black" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
 </ResourceDictionary>

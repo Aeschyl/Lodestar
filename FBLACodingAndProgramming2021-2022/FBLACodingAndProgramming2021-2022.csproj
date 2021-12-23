@@ -76,6 +76,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -99,9 +100,25 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVMM\View\HaveFunSubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVMM\View\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVMM\View\SubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\BetterButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\CategoryMenuButtonTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Theme\MenuButtonTheme.xaml">
       <SubType>Designer</SubType>
@@ -117,10 +134,18 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVMM\ViewModel\HaveFunSubViewModel.cs" />
     <Compile Include="MVMM\ViewModel\HomeViewModel.cs" />
     <Compile Include="MVMM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\SubViewModel.cs" />
+    <Compile Include="MVMM\View\HaveFunSubView.xaml.cs">
+      <DependentUpon>HaveFunSubView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVMM\View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\SubView.xaml.cs">
+      <DependentUpon>SubView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
