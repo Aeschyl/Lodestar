@@ -117,6 +117,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVMM\View\ShopSubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Theme\BetterButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +147,7 @@
     <Compile Include="MVMM\ViewModel\HaveFunSubViewModel.cs" />
     <Compile Include="MVMM\ViewModel\HomeViewModel.cs" />
     <Compile Include="MVMM\ViewModel\MainViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\ShopSubViewModel.cs" />
     <Compile Include="MVMM\View\EatSubView.xaml.cs">
       <DependentUpon>EatSubView.xaml</DependentUpon>
     </Compile>
@@ -151,6 +156,9 @@
     </Compile>
     <Compile Include="MVMM\View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\ShopSubView.xaml.cs">
+      <DependentUpon>ShopSubView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

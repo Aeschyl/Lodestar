@@ -28,6 +28,10 @@
                 <view:EatSubView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:ShopSubViewModel}">
+                <view:ShopSubView />
+            </DataTemplate>
+
           
 
           

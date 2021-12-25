@@ -53,7 +53,8 @@
                          Background="#0d0d0d"
                          FontSize="20"
                          Style="{StaticResource CategoryMenuButtonTheme}"
-                         x:Name="shop" />
+                         x:Name="shop"
+                             Checked="shop_Checked" />
             <RadioButton Content="Explore and sightsee"
                          Margin="0,20,0,0"
                          Height="50"

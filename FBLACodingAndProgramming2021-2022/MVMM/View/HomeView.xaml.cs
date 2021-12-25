@@ -73,5 +73,15 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             IncrementProgressBar(Form.MainProgressBar, 25);
         }
+        //Shop Button
+        private void shop_Checked(object sender, RoutedEventArgs e)
+        {
+            ClickButton(Form.ShopActivator);
+
+            Form.sub_category_button.IsChecked = true;
+            Form.category_button.IsChecked = false;
+
+            IncrementProgressBar(Form.MainProgressBar, 25);
+        }
     }
 }

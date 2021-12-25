@@ -11,7 +11,16 @@
 
     <Border BorderBrush="Aquamarine"
             BorderThickness="5">
-        <Grid Margin="0,100,0,100">
+
+        <StackPanel>
+
+            <TextBlock Text="Sub-Category"
+                       FontFamily="Bebas"
+                       FontSize="45"
+                       Foreground="White" 
+                       HorizontalAlignment="Center"
+                       Margin="0,40,0,0"/>
+            <Grid Margin="0,100,0,100">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition>
@@ -50,19 +59,9 @@
                     VerticalAlignment="Center" />
 
 
-            <TextBlock Text="Sub-Category"
-                       Margin="248,-86,250,0"
-                       TextWrapping="Wrap"
-                       FontFamily="Bebas"
-                       Foreground="White"
-                       FontSize="45"
-                       TextAlignment="Center"
-                       VerticalAlignment="Top"
-                       Height="50"
-                       Width="302"
-                       Grid.ColumnSpan="3" />
+            
 
         </Grid>
-
+        </StackPanel>
     </Border>
 </UserControl>

@@ -14,10 +14,12 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.ViewModel
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand HaveFunSubViewCommand { get; set; }
         public RelayCommand EatSubViewCommand { get; set; }
+        public RelayCommand ShopSubViewCommand { get; set; }
 
         public HomeViewModel HomeVM { get; set; }
         public HaveFunSubViewModel HaveFunSubVM { get; set; }
         public EatSubViewModel EatSubVM { get; set; }
+        public ShopSubViewModel ShopSubVM { get; set; }
 
         private object _currentView;
 
@@ -38,7 +40,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.ViewModel
             HomeVM = new HomeViewModel();
             HaveFunSubVM = new HaveFunSubViewModel();
             EatSubVM = new EatSubViewModel();
-
+            ShopSubVM = new ShopSubViewModel();
             
 
 
@@ -57,9 +59,14 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.ViewModel
                 CurrentView = EatSubVM;
             });
 
-            
+            ShopSubViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = ShopSubVM;
+            });
 
-           
+
+
+
         }
 
 
