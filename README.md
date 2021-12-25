@@ -14,7 +14,7 @@ The user is welcomed by a splash screen and led through easy to understand and i
 
 ## Tools used
 
-This application implements C# (c-sharp) language for the frontend component and uses python for the backend.
+This application implements C# (WPF Framework) language for the frontend component and uses python for the backend.
 
 It makes calls to Places API provided by Geoapify to return the required results of various different attractions. [Places API](https://www.geoapify.com/places-api)
 
