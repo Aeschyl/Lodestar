@@ -11,71 +11,74 @@
              d:DesignWidth="800">
 
 
+    <Border BorderBrush="Aquamarine"
+            BorderThickness="5">
+
+        <Grid>
+
+            <StackPanel>
+
+                <TextBlock HorizontalAlignment="Center"
+                           Text="What do you want to do?"
+                           VerticalAlignment="Top"
+                           Foreground="FloralWhite"
+                           FontSize="30"
+                           Margin="176,20,176,0"
+                           FontFamily="Bebas" />
+
+                <RadioButton Content="Have Fun"
+                             Margin="0,20,0,0"
+                             Height="50"
+                             Foreground="White"
+                             Background="#0d0d0d"
+                             FontSize="20"
+                             Style="{StaticResource CategoryMenuButtonTheme}"
+                             Checked="RadioButton_Checked"
+                             x:Name="have_fun" />
+                <RadioButton Content="Eat"
+                             Margin="0,20,0,0"
+                             Height="50"
+                             Foreground="White"
+                             Background="#0d0d0d"
+                             FontSize="20"
+                             Style="{StaticResource CategoryMenuButtonTheme}"
+                             x:Name="eat"
+                             Checked="eat_Checked" />
+                <RadioButton Content="Shop"
+                             Margin="0,20,0,0"
+                             Height="50"
+                             Foreground="White"
+                             Background="#0d0d0d"
+                             FontSize="20"
+                             Style="{StaticResource CategoryMenuButtonTheme}"
+                             x:Name="shop"
+                             Checked="shop_Checked" />
+                <RadioButton Content="Explore and sightsee"
+                             Margin="0,20,0,0"
+                             Height="50"
+                             Foreground="White"
+                             Background="#0d0d0d"
+                             FontSize="20"
+                             Style="{StaticResource CategoryMenuButtonTheme}"
+                             x:Name="explore_and_sightsee"
+                             Checked="explore_and_sightsee_Checked" />
+                <RadioButton Content="Stay"
+                             Margin="0,20,0,0"
+                             Height="50"
+                             Foreground="White"
+                             Background="#0d0d0d"
+                             FontSize="20"
+                             Style="{StaticResource CategoryMenuButtonTheme}"
+                             x:Name="stay"
+                             Checked="stay_Checked" />
 
 
-    <Grid>
+            </StackPanel>
 
-    <StackPanel>
-
-        <TextBlock HorizontalAlignment="Center"
-                   Text="What do you want to do?"
-                   VerticalAlignment="Top"
-                   Foreground="FloralWhite"
-                   FontSize="30"
-                   Margin="176,20,176,0"
-                   FontFamily="Bebas" />
-
-        <RadioButton Content="Have Fun"
-                     Margin="0,20,0,0"
-                     Height="50"
-                     Foreground="White"
-                     Background="#0d0d0d"
-                     FontSize="20"
-                     Style="{StaticResource CategoryMenuButtonTheme}"
-                     Checked="RadioButton_Checked"
-                     x:Name="have_fun"
-                     Command="{Binding HaveFunSubViewCommand}"
-                     />
-        <RadioButton Content="Eat"
-                     Margin="0,20,0,0"
-                     Height="50"
-                     Foreground="White"
-                     Background="#0d0d0d"
-                     FontSize="20"
-                     Style="{StaticResource CategoryMenuButtonTheme}"
-                     x:Name="eat" />
-        <RadioButton Content="Shop"
-                     Margin="0,20,0,0"
-                     Height="50"
-                     Foreground="White"
-                     Background="#0d0d0d"
-                     FontSize="20"
-                     Style="{StaticResource CategoryMenuButtonTheme}"
-                     x:Name="shop" />
-        <RadioButton Content="Explore and sightsee"
-                     Margin="0,20,0,0"
-                     Height="50"
-                     Foreground="White"
-                     Background="#0d0d0d"
-                     FontSize="20"
-                     Style="{StaticResource CategoryMenuButtonTheme}"
-                     x:Name="explore_and_sightsee" />
-        <RadioButton Content="Stay"
-                     Margin="0,20,0,0"
-                     Height="50"
-                     Foreground="White"
-                     Background="#0d0d0d"
-                     FontSize="20"
-                     Style="{StaticResource CategoryMenuButtonTheme}"
-                     x:Name="stay" />
+        </Grid>
 
 
-    </StackPanel>
-
-    </Grid>
-
-
-
+    </Border>
 
 
 

@@ -8,40 +8,38 @@
              d:DesignHeight="450"
              d:DesignWidth="800"
              Background="Black">
+    <Border BorderBrush="Aquamarine"
+            BorderThickness="5">
+        <Grid Margin="0,100,0,100"
+              Background="Black">
 
-    <Grid Margin="0,100,0,100">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition>
+                </ColumnDefinition>
+                <ColumnDefinition>
+                </ColumnDefinition>
+                <ColumnDefinition>
+                </ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition>
-            </ColumnDefinition>
-            <ColumnDefinition>
-            </ColumnDefinition>
-            <ColumnDefinition>
-            </ColumnDefinition>
-        </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition>
 
-        <Grid.RowDefinitions>
-            <RowDefinition>
+                </RowDefinition>
+                <RowDefinition>
 
-            </RowDefinition>
-            <RowDefinition>
+                </RowDefinition>
+            </Grid.RowDefinitions>
 
-            </RowDefinition>
-        </Grid.RowDefinitions>
-
-        <Button Content="Museum"
-                FontFamily="Bebas"
-                Grid.Row="0"
-                Grid.Column="0"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Background="Black"
-                Foreground="White"
-                FontSize="25"
-                BorderThickness="0"
-                Width="auto"
-                Style="{StaticResource BetterButton}" />
-
+            <Button Content="Museum"
+                    FontFamily="Bebas"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="25"
+                    BorderThickness="0"
+                    Style="{StaticResource BetterButton}" />
 
 
 
@@ -50,83 +48,72 @@
 
 
 
-        <Button Content="Theme Park"
-                FontFamily="Bebas"
-                Grid.Row="0"
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Background="Transparent"
-                Foreground="White"
-                FontSize="25"
-                BorderThickness="0"
-                Style="{StaticResource BetterButton}" />
+            <Button Content="Theme Park"
+                    FontFamily="Bebas"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="25"
+                    BorderThickness="0"
+                    Style="{StaticResource BetterButton}" />
 
-        <Button Content="Cinema"
-                FontFamily="Bebas"
-                Grid.Row="0"
-                Grid.Column="2"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Background="Transparent"
-                Foreground="White"
-                FontSize="25"
-                BorderThickness="0"
-                Style="{StaticResource BetterButton}" />
+            <Button Content="Cinema"
+                    FontFamily="Bebas"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="25"
+                    BorderThickness="0"
+                    Style="{StaticResource BetterButton}" />
 
-        <Button Content="Aquarium"
-                FontFamily="Bebas"
-                Grid.Row="1"
-                Grid.Column="0"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Background="Transparent"
-                Foreground="White"
-                FontSize="25"
-                BorderThickness="0"
-                Style="{StaticResource BetterButton}" />
+            <Button Content="Aquarium"
+                    FontFamily="Bebas"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="25"
+                    BorderThickness="0"
+                    Style="{StaticResource BetterButton}" />
 
-        <Button Content="Zoo"
-                FontFamily="Bebas"
-                Grid.Row="1"
-                Grid.Column="1"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Background="Transparent"
-                Foreground="White"
-                FontSize="25"
-                MinWidth="0"
-                Width="36"
-                BorderThickness="0"
-                Style="{StaticResource BetterButton}" />
+            <Button Content="Zoo"
+                    FontFamily="Bebas"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="25"
+                    MinWidth="0"
+                    BorderThickness="0"
+                    Style="{StaticResource BetterButton}" />
 
-        <Button Content="Theater"
-                FontFamily="Bebas"
-                Grid.Row="1"
-                Grid.Column="2"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Background="Transparent"
-                Foreground="White"
-                FontSize="25"
-                BorderThickness="0"
-                Style="{StaticResource BetterButton}" />
-        <TextBlock HorizontalAlignment="Center"
-                   Text="Sub-Category"
-                   Margin="250,-80,248.667,0"
-                   TextWrapping="Wrap"
-                   FontFamily="Bebas"
-                   Foreground="White"
-                   FontSize="35"
-                   TextAlignment="Center"
-                   VerticalAlignment="Top"
-                   Height="37"
-                   Width="302"
-                   Grid.ColumnSpan="3" />
+            <Button Content="Theater"
+                    FontFamily="Bebas"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="25"
+                    BorderThickness="0"
+                    Style="{StaticResource BetterButton}" />
+            <TextBlock HorizontalAlignment="Center"
+                       Text="Sub-Category"
+                       Margin="250,-80,248.667,0"
+                       TextWrapping="Wrap"
+                       FontFamily="Bebas"
+                       Foreground="White"
+                       FontSize="35"
+                       TextAlignment="Center"
+                       VerticalAlignment="Top"
+                       Height="37"
+                       Width="302"
+                       Grid.ColumnSpan="3" />
 
 
 
-        <!--<RadioButton Content="Museum"
+            <!--<RadioButton Content="Museum"
                      FontFamily="Bebas"
                      FontSize="20"
                      Grid.Column="0"
@@ -198,5 +185,7 @@
                      HorizontalAlignment="Center"
                      
                       />-->
-    </Grid>
+        </Grid>
+
+    </Border>
 </UserControl>

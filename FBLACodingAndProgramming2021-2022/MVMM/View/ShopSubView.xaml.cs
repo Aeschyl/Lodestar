@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation.Peers;
-using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -16,26 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FBLACodingAndProgramming2021_2022
+namespace FBLACodingAndProgramming2021_2022.MVMM.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ShopSubView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ShopSubView : UserControl
     {
-
-        
-        Parameters parameter = new Parameters();
-        public MainWindow()
+        public ShopSubView()
         {
             InitializeComponent();
-
-            
-            
-
         }
-
-
-        
     }
 }

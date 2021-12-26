@@ -1,0 +1,17 @@
+{
+  "name": "fbla-2021-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cross-fetch": "^3.1.4",
+    "express": "^4.17.2"
+  }
+}

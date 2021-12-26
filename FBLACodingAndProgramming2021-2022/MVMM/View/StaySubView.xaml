@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.StaySubView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             Background="Black">
+    <Border BorderBrush="Aquamarine"
+            BorderThickness="5">
+
+        <StackPanel>
+
+            <TextBlock Text="Sub-Category"
+                       FontFamily="Bebas"
+                       FontSize="45"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       Margin="0,40,0,0" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,40,0,0">
+                <Button Content="Hotel"
+                        Margin="20"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        FontFamily="Bebas"
+                        FontSize="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+
+                <Button Content="Motel"
+                        Margin="20"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        FontFamily="Bebas"
+                        FontSize="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+
+
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                <Button Content="Guest House"
+                        Margin="20"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        FontFamily="Bebas"
+                        FontSize="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+                <Button Content="Apartment"
+                        Margin="20"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        FontFamily="Bebas"
+                        FontSize="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

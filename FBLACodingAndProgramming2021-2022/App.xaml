@@ -24,6 +24,22 @@
                 <view:HaveFunSubView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:EatSubViewModel}">
+                <view:EatSubView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ShopSubViewModel}">
+                <view:ShopSubView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ExploreSubViewModel}">
+                <view:ExploreSubView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:StaySubViewModel}">
+                <view:StaySubView />
+            </DataTemplate>
+
           
 
           

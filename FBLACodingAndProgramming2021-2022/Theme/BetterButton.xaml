@@ -15,7 +15,7 @@
                     <Border Name="Border"
                             CornerRadius="10"
                             BorderThickness="0"
-                            Background="Black"
+                            Background="{TemplateBinding Background}"
                             BorderBrush="#404040">
                         <ContentPresenter Margin="2"
                                           HorizontalAlignment="Center"
