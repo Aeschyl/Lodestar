@@ -40,7 +40,7 @@ else:
         apiKey = '233315ef9be94184b7addc54c006bbde'
     )
 
-# The data received from the API
+# Calling the Places API and storing received data in a variable
 response = requests.get(url=url, params=params, headers=headers).json()
 
 # Serializing json 
