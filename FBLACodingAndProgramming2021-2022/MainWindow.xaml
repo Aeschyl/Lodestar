@@ -23,7 +23,7 @@
 
     <Border Background="Black"
             CornerRadius="20">
-        <Grid>
+        <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition />
@@ -51,6 +51,18 @@
                     x:Name="ShopActivator"
                     x:FieldModifier="public" />
 
+            <Button Height="0"
+                    Width="0"
+                    Command="{Binding ExploreSubViewCommand}"
+                    x:Name="ExploreActivator"
+                    x:FieldModifier="public" />
+
+            <Button Height="0"
+                    Width="0"
+                    Command="{Binding StaySubViewCommand}"
+                    x:Name="StayActivator"
+                    x:FieldModifier="public" />
+
 
 
 
@@ -69,7 +81,7 @@
                              Foreground="White"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
-                             IsChecked="True"
+                             IsChecked="False"
                              Command="{Binding HomeViewCommand}"
                              x:Name="category_button" />
                 <RadioButton Content="Sub-Category"

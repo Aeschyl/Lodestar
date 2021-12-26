@@ -8,7 +8,7 @@
              d:DesignHeight="450"
              d:DesignWidth="800"
              Background="Black">
-    <Border BorderBrush="Aqua"
+    <Border BorderBrush="Aquamarine"
             BorderThickness="5">
         <Grid Margin="0,100,0,100"
               Background="Black">
@@ -35,12 +35,11 @@
                     FontFamily="Bebas"
                     Grid.Row="0"
                     Grid.Column="0"
+                    Background="Transparent"
                     Foreground="White"
                     FontSize="25"
                     BorderThickness="0"
-                    Width="auto"
                     Style="{StaticResource BetterButton}" />
-
 
 
 

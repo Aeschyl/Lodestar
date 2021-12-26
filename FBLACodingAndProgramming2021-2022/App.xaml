@@ -32,6 +32,14 @@
                 <view:ShopSubView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:ExploreSubViewModel}">
+                <view:ExploreSubView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:StaySubViewModel}">
+                <view:StaySubView />
+            </DataTemplate>
+
           
 
           

@@ -109,6 +109,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVMM\View\ExploreSubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVMM\View\HaveFunSubView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -118,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVMM\View\ShopSubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVMM\View\StaySubView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,12 +152,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MVMM\ViewModel\EatSubViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\ExploreSubViewModel.cs" />
     <Compile Include="MVMM\ViewModel\HaveFunSubViewModel.cs" />
     <Compile Include="MVMM\ViewModel\HomeViewModel.cs" />
     <Compile Include="MVMM\ViewModel\MainViewModel.cs" />
     <Compile Include="MVMM\ViewModel\ShopSubViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\StaySubViewModel.cs" />
     <Compile Include="MVMM\View\EatSubView.xaml.cs">
       <DependentUpon>EatSubView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\ExploreSubView.xaml.cs">
+      <DependentUpon>ExploreSubView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVMM\View\HaveFunSubView.xaml.cs">
       <DependentUpon>HaveFunSubView.xaml</DependentUpon>
@@ -159,6 +172,9 @@
     </Compile>
     <Compile Include="MVMM\View\ShopSubView.xaml.cs">
       <DependentUpon>ShopSubView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\StaySubView.xaml.cs">
+      <DependentUpon>StaySubView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
