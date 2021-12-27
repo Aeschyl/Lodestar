@@ -11,11 +11,10 @@
 *.sln.docstates
 
 /FBLACodingAndProgramming2021-2022/Python/src/venv
-#/FBLACodingAndProgramming2021-2022/Python/src/build
-#/FBLACodingAndProgramming2021-2022/Python/src/dist
-#/FBLACodingAndProgramming2021-2022/Python/src/api.spec
-#/FBLACodingAndProgramming2021-2022/Python/src/__pycache__
-
+/FBLACodingAndProgramming2021-2022/Python/src/build
+/FBLACodingAndProgramming2021-2022/Python/src/dist
+/FBLACodingAndProgramming2021-2022/Python/src/api.spec
+/FBLACodingAndProgramming2021-2022/Python/src/__pycache__
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)
