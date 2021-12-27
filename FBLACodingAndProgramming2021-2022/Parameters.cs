@@ -31,12 +31,12 @@ namespace FBLACodingAndProgramming2021_2022
             string currentDirectory = System.IO.Directory.GetCurrentDirectory().Substring(0, System.IO.Directory.GetCurrentDirectory().IndexOf("bin") - 1);
 
 
-            File.WriteAllText(currentDirectory + @"/Python/src/Input/input.json", JsonSerializer.Serialize(this));
+            File.WriteAllText(currentDirectory + @"/Python/src/Input/Input.json", JsonSerializer.Serialize(this));
         }
         public Parameters DeSerialize() 
         {
             string currentDirectory = System.IO.Directory.GetCurrentDirectory().Substring(0, System.IO.Directory.GetCurrentDirectory().IndexOf("bin") - 1);
-            return JsonSerializer.Deserialize<Parameters>(File.ReadAllText(currentDirectory + @"/Python/src/Input/input.json"));
+            return JsonSerializer.Deserialize<Parameters>(File.ReadAllText(currentDirectory + @"/Python/src/Input/Input.json"));
         
         }
 
