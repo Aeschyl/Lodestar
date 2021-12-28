@@ -28,7 +28,8 @@
                         FontFamily="Bebas"
                         FontSize="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Click="Button_Click" />
 
                 <Button Content="Popular Attractions"
                         Margin="20"
@@ -37,7 +38,8 @@
                         FontFamily="Bebas"
                         FontSize="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Click="Button_Click_1" />
 
                 <Button Content="Camping"
                         Margin="20"
@@ -46,7 +48,8 @@
                         FontFamily="Bebas"
                         FontSize="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Click="Button_Click_2" />
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Center"
@@ -58,7 +61,8 @@
                         FontFamily="Bebas"
                         FontSize="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Click="Button_Click_3" />
                 <Button Content="Beach"
                         Margin="20"
                         Style="{StaticResource BetterButton}"
@@ -66,7 +70,8 @@
                         FontFamily="Bebas"
                         FontSize="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Click="Button_Click_4" />
             </StackPanel>
         </StackPanel>
     </Border>

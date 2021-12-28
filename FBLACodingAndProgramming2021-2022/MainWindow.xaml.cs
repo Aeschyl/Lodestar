@@ -69,6 +69,8 @@ namespace FBLACodingAndProgramming2021_2022
 
         private void sub_category_button_Checked(object sender, RoutedEventArgs e)
         {
+            //resets progress bar to 25
+            IncrementProgressBar(MainProgressBar, 25);
             //"remembers" what the user selected for subcategory just in case the user wants to go back to this page
             switch (MainWindow.CurrentSubView) 
             {
