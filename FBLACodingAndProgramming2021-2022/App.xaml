@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/CategoryMenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/BetterButton.xaml" />
+                <ResourceDictionary Source="Theme/RoundCheckBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
             
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
@@ -38,6 +39,10 @@
 
             <DataTemplate DataType="{x:Type viewModel:StaySubViewModel}">
                 <view:StaySubView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AmenitiesViewModel}">
+                <view:AmenitiesView />
             </DataTemplate>
 
           

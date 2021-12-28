@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FBLACodingAndProgramming2021_2022.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace FBLACodingAndProgramming2021_2022
     public partial class MainWindow : Window
     {
 
-        
+        public static string CurrentSubView { get; set; }
         Parameters parameter = new Parameters();
         public MainWindow()
         {
@@ -34,8 +35,64 @@ namespace FBLACodingAndProgramming2021_2022
             
 
         }
+        public static void ClickButton(Button b)
+        {
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(b);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+        }
+
+        public static void IncrementProgressBar(ProgressBar p, int val)
+        {
+            p.Value = val;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PythonExecuter.executePythonEXE();
+        }
+
+        private void amenities_button_Checked(object sender, RoutedEventArgs e)
+        {
+            IncrementProgressBar(MainProgressBar, 50);
+        }
+
+        private void results_button_Checked(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Clicked");
+        }
+
+        private void category_button_Checked(object sender, RoutedEventArgs e)
+        {
+            IncrementProgressBar(MainProgressBar,0);
+        }
+
+        private void sub_category_button_Checked(object sender, RoutedEventArgs e)
+        {
+            //"remembers" what the user selected for subcategory just in case the user wants to go back to this page
+            switch (MainWindow.CurrentSubView) 
+            {
+                case "have_fun":
+                    ClickButton(HaveFunActivator);
+                    break;
+                case "explore":
+                    ClickButton(ExploreActivator);
+                    break;
+                case "stay":
+                    ClickButton(StayActivator);
+                    break;
+                case "shop":
+                    ClickButton(ShopActivator);
+                    break;
+                case "eat":
+                    ClickButton(EatActivator);
+                    break;
+                default:
+                    MessageBox.Show("You must select a Category first!");
+                    break;
 
 
-        
+            }
+        }
     }
 }
