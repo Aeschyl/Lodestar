@@ -1,9 +1,15 @@
 import requests
 from requests.structures import CaseInsensitiveDict
 import json
+import os
+from pathlib import Path
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+path1 = Path(dir_path)
+parentPath = str(path1.parent)
 
 # Fetching data from Input.json
-with open("./Input/Input.json", "r") as infile:
+with open(parentPath + "\\src\\Input\\Input.json", "r") as infile:
     user_inputs = json.loads(infile.read())
 
 url = 'https://api.geoapify.com/v2/places'
@@ -47,5 +53,5 @@ response = requests.get(url=url, params=params, headers=headers).json()
 json_object = json.dumps(response, indent = 4)
   
 # The data received from the API is passed to C# through the output.json file
-with open("./Output/Output.json", "w") as outfile:
+with open(parentPath + "/src//Output/Output.json", "w") as outfile:
     outfile.write(json_object)
