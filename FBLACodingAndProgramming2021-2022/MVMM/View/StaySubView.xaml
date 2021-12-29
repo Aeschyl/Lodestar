@@ -29,7 +29,8 @@
                         FontFamily="Bebas"
                         FontSize="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Click="Button_Click" />
 
                 <Button Content="Motel"
                         Margin="20"
@@ -38,7 +39,8 @@
                         FontFamily="Bebas"
                         FontSize="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Click="Button_Click_1" />
 
 
             </StackPanel>
@@ -52,7 +54,8 @@
                         FontFamily="Bebas"
                         FontSize="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Click="Button_Click_2" />
                 <Button Content="Apartment"
                         Margin="20"
                         Style="{StaticResource BetterButton}"
@@ -60,8 +63,11 @@
                         FontFamily="Bebas"
                         FontSize="40"
                         HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
+                        VerticalAlignment="Center"
+                        Click="Button_Click_3" />
             </StackPanel>
+            
         </StackPanel>
+        
     </Border>
 </UserControl>
