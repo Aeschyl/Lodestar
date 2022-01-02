@@ -45,6 +45,10 @@
                 <view:AmenitiesView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:LocationViewModel}">
+                <view:LocationView />
+            </DataTemplate>
+
           
 
           

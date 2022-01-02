@@ -21,7 +21,7 @@ namespace FBLACodingAndProgramming2021_2022.Core
             var psi = new ProcessStartInfo(@"C:\Users\arche\source\repos\FBLACodingAndProgramming2021-2022\FBLACodingAndProgramming2021-2022\Python\src\api.py");
             //Providing python.exe location
             GetPythonPath();
-            psi.FileName = _pythonPath + @"/python.exe";
+            psi.FileName = _pythonPath + @"/Python39/python.exe";
 
             
 
@@ -29,6 +29,8 @@ namespace FBLACodingAndProgramming2021_2022.Core
             psi.CreateNoWindow = true;
             psi.UseShellExecute = false;
             psi.RedirectStandardError = true;
+
+            psi.Arguments = $"\"{script}\"";
 
             //Getting errors from script
             var errors = "";

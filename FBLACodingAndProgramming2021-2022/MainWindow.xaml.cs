@@ -49,7 +49,14 @@ namespace FBLACodingAndProgramming2021_2022
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PythonExecuter.executePythonEXE();
+            /*PythonExecuter.executePython();*/
+            var results = Parameters.getResults();
+            string output = "";
+            
+            output += results.Type;
+            MessageBox.Show(results.Features[0].Properties.ToString());
+
+
         }
 
         private void amenities_button_Checked(object sender, RoutedEventArgs e)
@@ -69,32 +76,50 @@ namespace FBLACodingAndProgramming2021_2022
 
         private void sub_category_button_Checked(object sender, RoutedEventArgs e)
         {
-            //resets progress bar to 25
-            IncrementProgressBar(MainProgressBar, 25);
+            
             //"remembers" what the user selected for subcategory just in case the user wants to go back to this page
             switch (MainWindow.CurrentSubView) 
             {
                 case "have_fun":
                     ClickButton(HaveFunActivator);
+                    //resets progress bar to 25
+                    IncrementProgressBar(MainProgressBar, 25);
                     break;
                 case "explore":
                     ClickButton(ExploreActivator);
+                    //resets progress bar to 25
+                    IncrementProgressBar(MainProgressBar, 25);
                     break;
                 case "stay":
                     ClickButton(StayActivator);
+                    //resets progress bar to 25
+                    IncrementProgressBar(MainProgressBar, 25);
                     break;
                 case "shop":
                     ClickButton(ShopActivator);
+                    //resets progress bar to 25
+                    IncrementProgressBar(MainProgressBar, 25);
                     break;
                 case "eat":
                     ClickButton(EatActivator);
+                    //resets progress bar to 25
+                    IncrementProgressBar(MainProgressBar, 25);
                     break;
                 default:
                     MessageBox.Show("You must select a Category first!");
+                    sub_category_button.IsChecked = false;
+                    category_button.IsChecked = true;
+                    ClickButton(CategoryActivator);
                     break;
 
 
             }
+        }
+
+        private void location_button_Checked(object sender, RoutedEventArgs e)
+        {
+            IncrementProgressBar(MainProgressBar, 75);
+            
         }
     }
 }

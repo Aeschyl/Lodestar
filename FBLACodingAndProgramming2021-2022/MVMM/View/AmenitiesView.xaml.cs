@@ -28,12 +28,20 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             InitializeComponent();
         }
-        
+        public static void ClickButton(Button b)
+        {
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(b);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+        }
+
         //Onward Button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Form.results_button.IsChecked = true;
-            
+            Form.location_button.IsChecked = true;
+            Form.amenities_button.IsChecked = false;
+
+            ClickButton(Form.LocationActivator);
         }
     }
 }

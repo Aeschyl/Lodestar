@@ -7,15 +7,16 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Text.Json;
+using Json;
 
 namespace FBLACodingAndProgramming2021_2022
 {
     [Serializable]
     class Parameters 
     {
-        public string category { get; set; }
-        public string subcategory { get; set; }
-        public List<string> amenities { get; set; }
+        public static string category { get; set; }
+        public static string subcategory { get; set; }
+        public static List<string> amenities { get; set; }
 
         
 
@@ -38,6 +39,13 @@ namespace FBLACodingAndProgramming2021_2022
             string currentDirectory = System.IO.Directory.GetCurrentDirectory().Substring(0, System.IO.Directory.GetCurrentDirectory().IndexOf("bin") - 1);
             return JsonSerializer.Deserialize<Parameters>(File.ReadAllText(currentDirectory + @"/Python/src/Input/Input.json"));
         
+        }
+
+        public static Results getResults()
+        {
+            string currentDirectory = System.IO.Directory.GetCurrentDirectory().Substring(0, System.IO.Directory.GetCurrentDirectory().IndexOf("bin") - 1);
+            string jsonString = File.ReadAllText(currentDirectory + @"/Python/src/Output/Output.json");
+            return Results.FromJson(jsonString);
         }
 
 

@@ -69,6 +69,18 @@
                     x:Name="AmenitiesActivator"
                     x:FieldModifier="public" />
 
+            <Button Height="0"
+                    Width="0"
+                    Command="{Binding LocationViewCommand}"
+                    x:Name="LocationActivator"
+                    x:FieldModifier="public" />
+
+            <Button Height="0"
+                    Width="0"
+                    Command="{Binding HomeViewCommand}"
+                    x:Name="CategoryActivator"
+                    x:FieldModifier="public" />
+
 
 
 
@@ -106,6 +118,14 @@
                              x:Name="amenities_button"
                              Command="{Binding AmenitiesViewCommand}"
                              Checked="amenities_button_Checked" />
+                <RadioButton Content="Location"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme}"
+                             x:Name="location_button"
+                             Command="{Binding LocationViewCommand}"
+                             Checked="location_button_Checked" />
                 <RadioButton Content="Results"
                              Height="50"
                              Foreground="White"
