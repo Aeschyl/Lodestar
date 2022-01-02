@@ -1,3 +1,4 @@
+from json.encoder import JSONEncoder
 import requests
 from requests.structures import CaseInsensitiveDict
 import json
@@ -15,6 +16,7 @@ with open(parentPath + "\\src\\Input\\Input.json", "r") as infile:
 url = 'https://api.geoapify.com/v2/places'
 headers = CaseInsensitiveDict()
 headers["Accept"] = "application/json"
+timeout = 5
 
 # Checking if there is a subcategory defined
 if user_inputs['subcategory'] == "":
@@ -46,12 +48,13 @@ else:
         apiKey = '233315ef9be94184b7addc54c006bbde'
     )
 
-# Calling the Places API and storing received data in a variable
-response = requests.get(url=url, params=params, headers=headers).json()
-
-# Serializing json 
-json_object = json.dumps(response, indent = 4)
+# Calling the Places API and serealizing recevied data while handling possible connection errors
+try:
+    response = requests.get(url=url, params=params, headers=headers, timeout=timeout).json()
+    result_json = json.dumps(response, indent = 4)
+except:
+    result_json = json.dumps({"Error":"Connection Error - Please check your internet connection"})
   
 # The data received from the API is passed to C# through the output.json file
 with open(parentPath + "/src//Output/Output.json", "w") as outfile:
-    outfile.write(json_object)
+    outfile.write(result_json)
