@@ -49,5 +49,17 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             coordinates = Geocoder.GetCoordinatesAsync(address_text.Text).Result;
             MessageBox.Show(coordinates);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            coordinates = Geocoder.GetCoordinatesFromLocationSensor();
+            MessageBox.Show(coordinates);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string country = Geocoder.GetCoordinatesFromLocationSensor();
+            MessageBox.Show(country);
+        }
     }
 }

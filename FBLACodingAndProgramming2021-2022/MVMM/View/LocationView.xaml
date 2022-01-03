@@ -42,42 +42,85 @@
     </UserControl.Resources>
     <Border BorderBrush="Aquamarine"
             BorderThickness="5">
-        <StackPanel>
-            <TextBlock Text="Option 1"
-                       FontFamily="bebas"
-                       Foreground="White"
-                       HorizontalAlignment="Center"
-                       FontSize="40" />
-            <TextBlock Text="Enter Adress: "
-                       HorizontalAlignment="Center"
-                       FontFamily="bebas"
-                       Foreground="White"
-                       FontSize="20"
-                       Margin="15" />
-            <TextBox Background="Black"
-                     Foreground="White"
-                     FontFamily="Bebas"
-                     FontSize="20"
-                     HorizontalContentAlignment="Center"
-                     HorizontalAlignment="Center"
-                     MinWidth="100"
-                     TextChanged="TextBox_TextChanged"
-                     KeyUp="TextBox_KeyUp"
-                     x:Name="address_text"
-                     BorderBrush="Aquamarine"
-                     Template="{StaticResource RoundedTextBox}"
-                     
-                />
-            <Button Content="Go"
-                    FontFamily="bebas"
-                    FontSize="20"
-                    Style="{StaticResource BetterButton}"
-                    Foreground="White"
-                    HorizontalAlignment="Center"
-                    Margin="20" 
-                    x:Name="get_coords_button"
-                    Click="get_coords_button_Click" />
+        <Grid ShowGridLines="True"
+              >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
 
-        </StackPanel>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Option 1"
+                           FontFamily="bebas"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           FontSize="40" />
+                <TextBlock Text="Enter Adress: "
+                           HorizontalAlignment="Center"
+                           FontFamily="bebas"
+                           Foreground="White"
+                           FontSize="20"
+                           Margin="0,50,0,0" />
+                <TextBox Background="Black"
+                         Foreground="White"
+                         FontFamily="Bebas"
+                         FontSize="20"
+                         Margin="0,20,0,0"
+                         HorizontalContentAlignment="Center"
+                         HorizontalAlignment="Center"
+                         MinWidth="100"
+                         TextChanged="TextBox_TextChanged"
+                         KeyUp="TextBox_KeyUp"
+                         x:Name="address_text"
+                         BorderBrush="Aquamarine"
+                         Template="{StaticResource RoundedTextBox}" />
+                <Button Content="Go"
+                        FontFamily="bebas"
+                        FontSize="20"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        HorizontalAlignment="Center"
+                        Margin="20"
+                        x:Name="get_coords_button"
+                        Click="get_coords_button_Click" />
+
+                
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Option 2"
+                           FontFamily="bebas"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           FontSize="40" />
+                <Button Content="Relative Location"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        FontFamily="bebas"
+                        HorizontalAlignment="Center"
+                        
+                        Margin="50"
+                        FontSize="20"
+                        Click="Button_Click" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="Option 3"
+                           FontFamily="bebas"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           FontSize="40" />
+                <Button Content="Use ip address"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        FontFamily="bebas"
+                        Margin="50"
+                        FontSize="20"
+                        Click="Button_Click_1" />
+            </StackPanel>
+        </Grid>
+       
     </Border>
 </UserControl>
