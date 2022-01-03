@@ -4,14 +4,16 @@ import os
 from pathlib import Path
 import urllib.request
 
+from requests.api import get
+
 # Gets the secret API Key for a particular service (temporary solution)
 def get_api_key(api_name):
-    secret_keys = {'PLACES_API': '233315ef9be94184b7addc54c006bbde', 'IP_TO_LOC_API': 'afafcbd31ed7de'}
+    secret_keys = {'PLACES_API': '233315ef9be94184b7addc54c006bbde', 'GEOCODING_API': '469d86563b14419884eca401f187a9bf', 'IP_TO_LOC_API': 'afafcbd31ed7de'}
     return secret_keys[api_name]
 
 
 # Checking for internet connections
-def check_connection(output_path):
+def check_connection():
     try:
         urllib.request.urlopen('http://google.com') # Trusted domain to check whether the user is connected to internet
         return True
@@ -56,15 +58,15 @@ def defining_parameters(user_inputs):
 # Gets the location of the user
 def managing_location(option, data):
     if int(option) == 1:  # Using in-built location sensor, already handled by c#
-        location = data
-    elif int(option) == 2: # Will build later if decide to port from c# to python handling the manual address geocoding
-        location = data
+        return data
+    elif int(option) == 2: # Geocoding using the manually entered address of the user
+        response = requests.get(url="https://api.geoapify.com/v1/geocode/search", headers={"Accept": "application/json"}, params={"text": data, "apiKey": get_api_key('GEOCODING_API')}, timeout=5).json()
+        location = str(response['features'][0]['geometry']['coordinates'][0]) + ',' + str(response['features'][0]['geometry']['coordinates'][1])
     elif int(option) == 3: # Using the IP Address of the user to determine location (slightly inaccurate)
         ip = requests.get(url='https://api.ipify.org', timeout=5).content.decode('utf8')
-        location = requests.get(url=f"https://ipinfo.io/{ip}/json", headers={"Accept": "application/json"}, params={"token": get_api_key('IP_TO_LOC_API')}, timeout=5).json()
-        location = str(location['loc'])
-
-    location = location.split(',')[1] + ',' +location.split(',')[0]
+        response = requests.get(url=f"https://ipinfo.io/{ip}/json", headers={"Accept": "application/json"}, params={"token": get_api_key('IP_TO_LOC_API')}, timeout=5).json()
+        location = str(response['loc'])
+        location = location.split(',')[1] + ',' +location.split(',')[0]
     return location
 
 
@@ -84,7 +86,7 @@ if __name__ == '__main__':
     input_path = parent_path + '\\src\\Input\\Input.json'
     output_path = parent_path + '\\src\\Output\\Output.json'
 
-    if not check_connection(output_path):
+    if not check_connection():
         with open(output_path, "w") as outfile:
             outfile.write(json.dumps({"Error":"Connection Error - Please check your internet connection"}))
         quit()
