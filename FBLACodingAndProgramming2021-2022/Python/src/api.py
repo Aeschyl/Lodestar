@@ -4,8 +4,6 @@ import os
 from pathlib import Path
 import urllib.request
 
-from requests.api import get
-
 # Gets the secret API Key for a particular service (temporary solution)
 def get_api_key(api_name):
     secret_keys = {'PLACES_API': '233315ef9be94184b7addc54c006bbde', 'GEOCODING_API': '469d86563b14419884eca401f187a9bf', 'IP_TO_LOC_API': 'afafcbd31ed7de'}
@@ -13,7 +11,7 @@ def get_api_key(api_name):
 
 
 # Checking for internet connections
-def check_connection():
+def connected():
     try:
         urllib.request.urlopen('http://google.com') # Trusted domain to check whether the user is connected to internet
         return True
@@ -86,7 +84,7 @@ if __name__ == '__main__':
     input_path = parent_path + '\\src\\Input\\Input.json'
     output_path = parent_path + '\\src\\Output\\Output.json'
 
-    if not check_connection():
+    if not connected():
         with open(output_path, "w") as outfile:
             outfile.write(json.dumps({"Error":"Connection Error - Please check your internet connection"}))
         quit()
