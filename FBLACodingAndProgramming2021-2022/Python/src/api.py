@@ -1,60 +1,104 @@
-from json.encoder import JSONEncoder
 import requests
-from requests.structures import CaseInsensitiveDict
 import json
 import os
 from pathlib import Path
+import urllib.request
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-path1 = Path(dir_path)
-parentPath = str(path1.parent)
+# Gets the secret API Key for a particular service (temporary solution)
+def get_api_key(api_name):
+    secret_keys = {'PLACES_API': '233315ef9be94184b7addc54c006bbde', 'GEOCODING_API': '469d86563b14419884eca401f187a9bf', 'IP_TO_LOC_API': 'afafcbd31ed7de'}
+    return secret_keys[api_name]
 
-# Fetching data from Input.json
-with open(parentPath + "\\src\\Input\\Input.json", "r") as infile:
-    user_inputs = json.loads(infile.read())
 
-url = 'https://api.geoapify.com/v2/places'
-headers = CaseInsensitiveDict()
-headers["Accept"] = "application/json"
-timeout = 5
+# Checking for internet connections
+def connected():
+    try:
+        urllib.request.urlopen('http://google.com') # Trusted domain to check whether the user is connected to internet
+        return True
+    except:
+        return False
 
-# Checking if there is a subcategory defined
-if user_inputs['subcategory'] == "":
-    categories = user_inputs['category']
-else:
-    categories = user_inputs['category'] + '.' + user_inputs['subcategory']
 
-# Translating the amenities list to a readable form for the API
-conditions = ""
-if len(user_inputs['amenities']) == 0:
-    # Parameters for the Places API
+def defining_parameters(user_inputs):
+    # Checking if there is a subcategory defined
+    if user_inputs['selections']['subcategory'] == "":
+        categories = user_inputs['selections']['category']
+    else:
+        categories = user_inputs['selections']['category'] + '.' + user_inputs['selections']['subcategory']
+
+    location = managing_location(user_inputs['location']['option'], user_inputs['location']['data'])
+
+    location_filter = managing_distance(location, user_inputs['distance']['option'], user_inputs['distance']['data'])
+
+    limit = '20'
+
     params = dict(
         categories = categories,
-        filter = 'rect:11.549881365729718,48.15114774722076,11.58831616443861,48.12837326392079', # Dummy Parameter
-        limit = '20',
-        apiKey = '233315ef9be94184b7addc54c006bbde'
-    )
-else:
-    for i in user_inputs['amenities']:
-        conditions += i + ','
-    conditions = conditions[:-1]
-
-    # Parameters for the Places API
-    params = dict(
-        categories = categories,
-        conditions = conditions,
-        filter = 'rect:11.549881365729718,48.15114774722076,11.58831616443861,48.12837326392079', # Dummy Parameter
-        limit = '20',
-        apiKey = '233315ef9be94184b7addc54c006bbde'
+        filter =  location_filter,
+        bias = 'proximity:' + location,
+        limit = limit,
+        apiKey = get_api_key('PLACES_API')
     )
 
-# Calling the Places API and serealizing recevied data while handling possible connection errors
-try:
-    response = requests.get(url=url, params=params, headers=headers, timeout=timeout).json()
+    # Translating the amenities list to a readable form for the API
+    if len(user_inputs['selections']['amenities']) != 0:
+        conditions = ""
+        for i in user_inputs['selections']['amenities']:
+            conditions += i + ','
+        conditions = conditions[:-1]
+
+        # Adding amenities to the parameters
+        params['conditions'] = conditions
+
+    return params
+
+
+# Gets the location of the user
+def managing_location(option, data):
+    if int(option) == 1:  # Using in-built location sensor, already handled by c#
+        return data
+    elif int(option) == 2: # Geocoding using the manually entered address of the user
+        response = requests.get(url="https://api.geoapify.com/v1/geocode/search", headers={"Accept": "application/json"}, params={"text": data, "apiKey": get_api_key('GEOCODING_API')}, timeout=5).json()
+        location = str(response['features'][0]['geometry']['coordinates'][0]) + ',' + str(response['features'][0]['geometry']['coordinates'][1])
+    elif int(option) == 3: # Using the IP Address of the user to determine location (slightly inaccurate)
+        ip = requests.get(url='https://api.ipify.org', timeout=5).content.decode('utf8')
+        response = requests.get(url=f"https://ipinfo.io/{ip}/json", headers={"Accept": "application/json"}, params={"token": get_api_key('IP_TO_LOC_API')}, timeout=5).json()
+        location = str(response['loc'])
+        location = location.split(',')[1] + ',' +location.split(',')[0]
+    return location
+
+
+# Defines the region of within to find the desired attractions
+def managing_distance(location, option, data):
+    if int(option) == 1:
+        radius = int(int(data) * 1609.34) # Converting from miles to meters
+        location_filter = 'circle:' + location + ',' + str(radius)
+    return location_filter
+
+
+if __name__ == '__main__':   
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    path1 = Path(dir_path)
+    parent_path = str(path1.parent)
+
+    input_path = parent_path + '\\src\\Input\\Input.json'
+    output_path = parent_path + '\\src\\Output\\Output.json'
+
+    if not connected():
+        with open(output_path, "w") as outfile:
+            outfile.write(json.dumps({"Error":"Connection Error - Please check your internet connection"}))
+        quit()
+
+    # Fetching data from Input.json
+    with open(input_path, "r") as infile:
+        user_inputs = json.loads(infile.read())
+    
+    params = defining_parameters(user_inputs)
+    
+    # Calling the Places API
+    response = requests.get(url='https://api.geoapify.com/v2/places', headers={"Accept": "application/json"}, params=params, timeout=5).json()
     result_json = json.dumps(response, indent = 4)
-except:
-    result_json = json.dumps({"Error":"Connection Error - Please check your internet connection"})
-  
-# The data received from the API is passed to C# through the output.json file
-with open(parentPath + "/src//Output/Output.json", "w") as outfile:
-    outfile.write(result_json)
+
+    # The data received from the API is passed to C# through the output.json file
+    with open(output_path, "w") as outfile:
+        outfile.write(result_json)
