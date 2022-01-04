@@ -49,6 +49,13 @@
                 <view:LocationView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:DistanceViewModel}">
+                <view:DistanceView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:ResultsViewModel}">
+                <view:ResultsView />
+            </DataTemplate>
           
 
           

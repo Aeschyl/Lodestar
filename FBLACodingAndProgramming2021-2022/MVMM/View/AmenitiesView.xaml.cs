@@ -43,5 +43,25 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             ClickButton(Form.LocationActivator);
         }
+        //Dog Friendly
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Parameters.AddAmenities("dogs");
+        }
+        //WheelChair
+        private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
+        {
+            Parameters.AddAmenities("wheelchair");
+        }
+        //Internet Access
+        private void CheckBox_Checked_2(object sender, RoutedEventArgs e)
+        {
+            Parameters.AddAmenities("internet_access");
+        }
+        //No Fee
+        private void CheckBox_Checked_3(object sender, RoutedEventArgs e)
+        {
+            Parameters.AddAmenities("no_fee");
+        }
     }
 }

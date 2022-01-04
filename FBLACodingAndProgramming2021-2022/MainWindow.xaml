@@ -22,7 +22,7 @@
     </Window.DataContext>
 
     <Border Background="Black"
-            CornerRadius="20">
+            CornerRadius="10">
         <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
@@ -81,6 +81,18 @@
                     x:Name="CategoryActivator"
                     x:FieldModifier="public" />
 
+            <Button Height="0"
+                    Width="0"
+                    Command="{Binding DistanceViewCommand}"
+                    x:Name="DistanceActivator"
+                    x:FieldModifier="public" />
+
+            <Button Height="0"
+                    Width="0"
+                    Command="{Binding ResultsViewCommand}"
+                    x:Name="ResultsActivator"
+                    x:FieldModifier="public" />
+
 
 
 
@@ -126,6 +138,13 @@
                              x:Name="location_button"
                              Command="{Binding LocationViewCommand}"
                              Checked="location_button_Checked" />
+                <RadioButton Content="Distance"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="14"
+                             Style="{StaticResource MenuButtonTheme }"
+                             x:Name="distance_button"
+                             Checked="distance_button_Checked" />
                 <RadioButton Content="Results"
                              Height="50"
                              Foreground="White"
@@ -133,14 +152,7 @@
                              Style="{StaticResource MenuButtonTheme}"
                              x:Name="results_button"
                              Checked="results_button_Checked" />
-                <Button Content="Execute Script"
-                        Style="{StaticResource BetterButton}"
-                        Margin="0,300,0,0"
-                        VerticalAlignment="Bottom"
-                        Foreground="White"
-                        FontSize="14"
-                        FontFamily="bebas"
-                        Click="Button_Click" />
+               
 
             </StackPanel>
 

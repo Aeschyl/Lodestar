@@ -1,7 +1,11 @@
 ﻿using FBLACodingAndProgramming2021_2022.Core;
+using FBLACodingAndProgramming2021_2022.MVMM.View;
+using Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -66,7 +70,20 @@ namespace FBLACodingAndProgramming2021_2022
 
         private void results_button_Checked(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Clicked");
+            IncrementProgressBar(MainProgressBar, 100);
+           
+
+            Results.GetJsonFromGeoApi();
+
+            File.WriteAllText(@"C:\Users\arche\source\repos\FBLACodingAndProgramming2021-2022\FBLACodingAndProgramming2021-2022\Python\src\Output\Output.json", Results.jsonString);
+            
+
+            var values = Results.FromJson(Results.jsonString);
+            MessageBox.Show(values.Features[0].Properties.City.ToString());
+
+            
+            
+
         }
 
         private void category_button_Checked(object sender, RoutedEventArgs e)
@@ -118,8 +135,15 @@ namespace FBLACodingAndProgramming2021_2022
 
         private void location_button_Checked(object sender, RoutedEventArgs e)
         {
-            IncrementProgressBar(MainProgressBar, 75);
+            IncrementProgressBar(MainProgressBar, 66);
+            ClickButton(LocationActivator);
             
+        }
+
+        private void distance_button_Checked(object sender, RoutedEventArgs e)
+        {
+            ClickButton(DistanceActivator);
+            IncrementProgressBar(MainProgressBar, 83);
         }
     }
 }

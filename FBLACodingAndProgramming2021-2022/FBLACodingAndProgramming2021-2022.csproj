@@ -102,6 +102,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -122,9 +123,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Geocoding\Geocoder.cs" />
+    <Compile Include="MVMM\ViewModel\DistanceViewModel.cs" />
     <Compile Include="MVMM\ViewModel\LocationViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\ResultsViewModel.cs" />
+    <Compile Include="MVMM\View\DistanceView.xaml.cs">
+      <DependentUpon>DistanceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVMM\View\LocationView.xaml.cs">
       <DependentUpon>LocationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\ResultsView.xaml.cs">
+      <DependentUpon>ResultsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Results.cs" />
     <Page Include="MainWindow.xaml">
@@ -147,6 +156,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MVMM\View\DistanceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVMM\View\EatSubView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVMM\View\LocationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVMM\View\ResultsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

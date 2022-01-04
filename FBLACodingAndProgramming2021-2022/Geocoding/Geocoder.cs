@@ -15,6 +15,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
     using Newtonsoft.Json;
     using System.Device.Location;
     using System.Globalization;
+    using System.IO;
     using System.Net.Sockets;
 
     class Geocoder
@@ -45,15 +46,19 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             [JsonProperty("postal")]
             public string Postal { get; set; }
         }
-        public static async Task<string> GetCoordinatesAsync(string adress) 
+        public static async Task<List<string>> GetCoordinatesAsync(string adress) 
         {
             IGeocoder geocoder = new BingMapsGeocoder("qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG");
             IEnumerable<Address> addresses = geocoder.Geocode(adress);
 
-            return addresses.First().Coordinates.Latitude + ", " + addresses.First().Coordinates.Longitude;
+            var coordinates = new List<string>();
+            coordinates.Add(addresses.First().Coordinates.Latitude.ToString());
+            coordinates.Add(addresses.First().Coordinates.Longitude.ToString());
+
+            return coordinates;
         }
 
-        public static string GetCoordinatesFromLocationSensor()
+        public static List<string> GetCoordinatesFromLocationSensor()
         {
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
 
@@ -64,41 +69,60 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
             if (coord.IsUnknown != true)
             {
-                return String.Format("{0}, {1}", coord.Latitude, coord.Longitude);
+                var list = new List<string>();
+                list.Add(coord.Latitude.ToString());
+                list.Add(coord.Longitude.ToString());
+                return list;
             }
             throw new Exception(string.Format("Error: {0}, {1}", coord.Latitude, coord.Longitude));
             
         }
-
-        public static string GetCoordinatesFromIpAddress()
+        static string GetIPAddress()
         {
-            string ipAddress;
+            String address = "";
+            WebRequest request = WebRequest.Create("http://checkip.dyndns.org/");
+            using (WebResponse response = request.GetResponse())
+            using (StreamReader stream = new StreamReader(response.GetResponseStream()))
+            {
+                address = stream.ReadToEnd();
+            }
+
+            int first = address.IndexOf("Address: ") + 9;
+            int last = address.LastIndexOf("</body>");
+            address = address.Substring(first, last - first);
+
+            return address;
+        }
+
+        public static List<string> GetCoordinatesFromIpAddress()
+        {
+            string ipAddress = GetIPAddress();
             //Get Ip Address
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    ipAddress = ip.ToString();
-                }
-            }
-            throw new Exception("No network adapters with an IPv4 address in the system!");
+            
 
+
+            string jsonString;
+            string html;
+            StringBuilder url = new StringBuilder(@"https://ipinfo.io/");
+            url.Append(ipAddress);
+            url.Append("/json?token=afafcbd31ed7de");
             //Get and return Location
-            IpInfo ipInfo = new IpInfo();
-            try
-            {
-                string info = new WebClient().DownloadString("http://ipinfo.io/" + ipAddress);
-                ipInfo = JsonConvert.DeserializeObject<IpInfo>(info);
-                RegionInfo myRI1 = new RegionInfo(ipInfo.City);
-                ipInfo.City = myRI1.EnglishName;
-            }
-            catch (Exception)
-            {
-                ipInfo.City = null;
-            }
+            var request = (HttpWebRequest)WebRequest.Create(url.ToString());
 
-            return ipInfo.City;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                html = reader.ReadToEnd();
+            }
+            jsonString = html;
+
+            var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
+            var list = new List<string>();
+            var tempList = values["loc"].Split(',');
+            list.Add(tempList[1]);
+            list.Add(tempList[0]);
+            return list;
         }
         
     }

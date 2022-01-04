@@ -32,7 +32,8 @@
                           Foreground="White" 
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    VerticalContentAlignment="Center"/>
+                    VerticalContentAlignment="Center"
+                              Checked="CheckBox_Checked_1" />
             </StackPanel>
 
             <StackPanel Grid.Column="1">
@@ -42,7 +43,8 @@
                           Foreground="White"
                           VerticalAlignment="Center"
                           HorizontalAlignment="Center"
-                          VerticalContentAlignment="Center" />
+                          VerticalContentAlignment="Center"
+                              Checked="CheckBox_Checked_2" />
                 <CheckBox Content="Dog Friendly"
                           FontFamily="Bebas"
                           FontSize="25"
@@ -50,7 +52,8 @@
                           VerticalAlignment="Center"
                           HorizontalAlignment="Center"
                           VerticalContentAlignment="Center"
-                          Margin="20"/>
+                          Margin="20"
+                              Checked="CheckBox_Checked" />
             </StackPanel>
 
             <StackPanel Grid.Column="2">
@@ -60,7 +63,8 @@
                           Foreground="White"
                           VerticalAlignment="Center"
                           HorizontalAlignment="Center"
-                          VerticalContentAlignment="Center" />
+                          VerticalContentAlignment="Center"
+                              Checked="CheckBox_Checked_3" />
             </StackPanel>
     </Grid>
 
