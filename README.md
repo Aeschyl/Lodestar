@@ -21,15 +21,15 @@ For the best user experience, the app provides 3 different options to procure th
 Moreover, in the distance section, the app provides two options of deciding how far the user is willing to go:
 
 1. The first one is a simple slider that lets the user decide how far they are willing to go (ranging from 1 mile to 20 miles)
-2. The second one gameifies the app and improves user experience by providing the option of drawing a box or circle around their location letting them decide how far they are willing to go
+2. The second one gameifies the app and improves user experience by providing the option of drawing a box or circle around their location letting them decide how far they are willing to go (not yet implemented)
 
 ## Tools used
 
-This application implements C# (WPF Framework) language for the frontend component and uses Python for the backend.
+This application implements WPF Framework in C# language for frontend and the C# for the backend code as well
 
 The app implements different APIs to enable different methods of obtaining the location of the user
 
-For the option of manually entering their address, the app makes a call to the [Geocoding API](https://www.geoapify.com/geocoding-api) to find the coordinates
+For the option of manually entering their address, the app makes a call to the Bing Geocoding API to find the coordinates
 
 For the IP Address option, the app procures the user's IP Address and then calls the [IPinfo API](https://ipinfo.io/products/ip-geolocation-api) to find the coordinates
 
