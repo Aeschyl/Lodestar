@@ -16,6 +16,35 @@
         <ListBox Foreground="White"
                  Background="DarkGray" 
                  x:Name="MainListBox"
-                 SelectionChanged="MainListBox_SelectionChanged" />
+                 
+                 MouseDoubleClick="MainListBox_MouseDoubleClick"/>
+
+        <TextBox x:Name="FeatureName"
+                 Background="Black"
+                 Foreground="White"
+                 FontFamily="bebas"
+                 FontSize="20"
+                 Grid.Column="1"
+                 TextWrapping="WrapWithOverflow"
+                 IsReadOnly="True"
+                 Height="20"
+                 VerticalAlignment="Top"
+                 Margin="0,20,0,0"/>
+
+        <TextBox x:Name="FeatureInformation"
+                 Background="Black"
+                 Foreground="White"
+                 FontFamily="bebas"
+                 FontSize="14"
+                 Grid.Column="1"
+                 TextWrapping="WrapWithOverflow"
+                 IsReadOnly="True"
+                 Height="250"
+                 VerticalAlignment="Top"
+                 Margin="0,60,0,0" />
+
+        <Border Grid.Column="1"
+                BorderBrush="Aquamarine"
+                BorderThickness="5" />
     </Grid>
 </UserControl>

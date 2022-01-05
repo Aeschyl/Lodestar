@@ -27,6 +27,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         public HomeView()
         {
             InitializeComponent();
+            Parameters.subcategory = string.Empty;
+            Parameters.category = string.Empty;
         }
 
         public static void ClickButton(Button b)

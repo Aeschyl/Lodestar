@@ -152,7 +152,12 @@
                              Style="{StaticResource MenuButtonTheme}"
                              x:Name="results_button"
                              Checked="results_button_Checked" />
-               
+                <Button Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        Background="Black"
+                        Margin="0,200,0,0"
+                        Content="FAQ"
+                        Click="Button_Click_1" />
 
             </StackPanel>
 

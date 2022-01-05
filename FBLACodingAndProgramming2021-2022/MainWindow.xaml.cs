@@ -128,5 +128,12 @@ namespace FBLACodingAndProgramming2021_2022
             ClickButton(DistanceActivator);
             IncrementProgressBar(MainProgressBar, 83);
         }
+        //FAQ Button
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var basePath = AppContext.BaseDirectory;
+            MessageBox.Show(basePath);
+            System.Diagnostics.Process.Start(basePath + @"/Assets/faq.html");
+        }
     }
 }

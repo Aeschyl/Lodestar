@@ -58,6 +58,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             Form.amenities_button.IsChecked = true;
 
             Parameters.category = "camping";
+
         }
         //Popular Sights Button
         private void Button_Click_3(object sender, RoutedEventArgs e)
