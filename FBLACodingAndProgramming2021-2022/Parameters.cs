@@ -45,12 +45,7 @@ namespace FBLACodingAndProgramming2021_2022
         
         }
 
-        public static Results getResults()
-        {
-            string currentDirectory = System.IO.Directory.GetCurrentDirectory().Substring(0, System.IO.Directory.GetCurrentDirectory().IndexOf("bin") - 1);
-            string jsonString = File.ReadAllText(currentDirectory + @"/Python/src/Output/Output.json");
-            return Results.FromJson(jsonString);
-        }
+     
 
 
 

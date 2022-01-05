@@ -94,8 +94,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             form.distance_button.IsChecked = true;
             form.location_button.IsChecked = false;
 
-            Parameters.Longitude = Geocoder.GetCoordinatesAsync(address_text.Text).Result[0];
-            Parameters.Latitude = Geocoder.GetCoordinatesAsync(address_text.Text).Result[1];
+            Parameters.Longitude = Geocoder.GetCoordinatesFromIpAddress()[0];
+            Parameters.Latitude = Geocoder.GetCoordinatesFromIpAddress()[1];
         }
     }
 }

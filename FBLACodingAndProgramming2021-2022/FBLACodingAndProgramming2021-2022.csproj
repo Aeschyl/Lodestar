@@ -284,7 +284,7 @@
   <ItemGroup>
     <Content Include="Python\src\api.exe" />
     <Content Include="Python\src\api.py" />
-    <Resource Include="Python\src\requirements.txt" />
+    <Resource Include="Python\src\requirments.TXT" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.1\build\System.Text.Json.targets')" />

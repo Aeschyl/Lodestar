@@ -15,6 +15,7 @@
 
         <ListBox Foreground="White"
                  Background="DarkGray" 
-                 x:Name="Listbox"/>
+                 x:Name="MainListBox"
+                 SelectionChanged="MainListBox_SelectionChanged" />
     </Grid>
 </UserControl>

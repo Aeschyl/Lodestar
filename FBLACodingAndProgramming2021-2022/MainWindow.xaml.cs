@@ -35,8 +35,8 @@ namespace FBLACodingAndProgramming2021_2022
         {
             InitializeComponent();
 
-            
-            
+
+
 
         }
         public static void ClickButton(Button b)
@@ -53,12 +53,8 @@ namespace FBLACodingAndProgramming2021_2022
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            /*PythonExecuter.executePython();*/
-            var results = Parameters.getResults();
-            string output = "";
             
-            output += results.Type;
-            MessageBox.Show(results.Features[0].Properties.ToString());
+
 
 
         }
@@ -71,31 +67,18 @@ namespace FBLACodingAndProgramming2021_2022
         private void results_button_Checked(object sender, RoutedEventArgs e)
         {
             IncrementProgressBar(MainProgressBar, 100);
-           
-
-            Results.GetJsonFromGeoApi();
-
-            File.WriteAllText(@"C:\Users\arche\source\repos\FBLACodingAndProgramming2021-2022\FBLACodingAndProgramming2021-2022\Python\src\Output\Output.json", Results.jsonString);
-            
-
-            var values = Results.FromJson(Results.jsonString);
-            MessageBox.Show(values.Features[0].Properties.City.ToString());
-
-            
-            
-
         }
 
         private void category_button_Checked(object sender, RoutedEventArgs e)
         {
-            IncrementProgressBar(MainProgressBar,0);
+            IncrementProgressBar(MainProgressBar, 0);
         }
 
         private void sub_category_button_Checked(object sender, RoutedEventArgs e)
         {
-            
+
             //"remembers" what the user selected for subcategory just in case the user wants to go back to this page
-            switch (MainWindow.CurrentSubView) 
+            switch (MainWindow.CurrentSubView)
             {
                 case "have_fun":
                     ClickButton(HaveFunActivator);
@@ -137,7 +120,7 @@ namespace FBLACodingAndProgramming2021_2022
         {
             IncrementProgressBar(MainProgressBar, 66);
             ClickButton(LocationActivator);
-            
+
         }
 
         private void distance_button_Checked(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,35 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         public ResultsView()
         {
             InitializeComponent();
+            InitializeListBox();
+
+        }
+
+
+        public void InitializeListBox()
+        {
+            Root.GetJsonFromGeoApi();
+
+            Root values = Root.FromJson(Root.jsonString);
+
+             var list = new List<string>();
+
+            
+            
+            
+            
+            foreach (Feature featureObject in values.features)
+            {
+                list.Add(featureObject.properties.name + ", " + Math.Round(featureObject.properties.distance / 1609.34, 2) + " mi");
+            }
+            MainListBox.ItemsSource = list;
+            
+
+        }
+
+        private void MainListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
