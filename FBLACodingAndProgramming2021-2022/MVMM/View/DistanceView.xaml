@@ -34,6 +34,7 @@
                 x:Name="Slider"
                 HorizontalAlignment="Center"
                 Width="600"
+                IsSnapToTickEnabled="True"
                 ValueChanged="Slider_ValueChanged" />
         <TextBlock Text=""
                    
@@ -43,6 +44,14 @@
                    VerticalAlignment="Bottom"
                    FontSize="30"
                    x:Name="SliderValue"
+                   Grid.Row="1" />
+        <TextBlock Text="mi"
+                   FontFamily="bebas"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="30"
+                   Margin="60,0,0,0"
                    Grid.Row="1" />
         <Button Content="Keep Going ▶"
                 Grid.Row="2"

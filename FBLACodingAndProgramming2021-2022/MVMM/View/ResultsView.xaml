@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <ListBox Foreground="White"
-                 Background="DarkGray" 
+                 Background="Black" 
                  x:Name="MainListBox"
                  
                  MouseDoubleClick="MainListBox_MouseDoubleClick"/>
@@ -27,9 +27,10 @@
                  Grid.Column="1"
                  TextWrapping="WrapWithOverflow"
                  IsReadOnly="True"
-                 Height="20"
+                 Height="40"
                  VerticalAlignment="Top"
-                 Margin="0,20,0,0"/>
+                 Margin="20,20,20,0"
+                 BorderThickness="0"/>
 
         <TextBox x:Name="FeatureInformation"
                  Background="Black"
@@ -41,7 +42,8 @@
                  IsReadOnly="True"
                  Height="250"
                  VerticalAlignment="Top"
-                 Margin="0,60,0,0" />
+                 Margin="20,80,20,0" 
+                 BorderThickness="0"/>
 
         <Border Grid.Column="1"
                 BorderBrush="Aquamarine"

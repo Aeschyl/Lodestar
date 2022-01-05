@@ -181,6 +181,20 @@
                 </i:Interaction.Behaviors>
             </ProgressBar>
 
+            <Button Content="Close"
+                    Style="{StaticResource BetterButton}"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Foreground="Black"
+                    Background="Aquamarine"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    FontFamily="Bebas"
+                    MinWidth="0"
+                    Width="40"
+                    Margin="0,5,2,0"
+                    Click="Button_Click_2" />
+
 
         </Grid>
 

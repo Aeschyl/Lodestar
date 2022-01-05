@@ -26,6 +26,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         public DistanceView()
         {
             InitializeComponent();
+            SliderValue.Text = "1";
         }
         public static void ClickButton(Button b)
         {
@@ -37,6 +38,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         private void Slider_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
             SliderValue.Text = (Slider.Value * 5).ToString("F0");
+            if(Slider.Value < 1)
+            {
+                SliderValue.Text = "1";
+            }
             
         }
 

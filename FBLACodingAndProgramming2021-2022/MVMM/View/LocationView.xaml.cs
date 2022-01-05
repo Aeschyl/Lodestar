@@ -56,12 +56,23 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         private void get_coords_button_Click(object sender, RoutedEventArgs e)
         {
             
-            ClickButton(form.DistanceActivator);
+            
             form.distance_button.IsChecked = true;
             form.location_button.IsChecked = false;
-
-            Parameters.Longitude = Geocoder.GetCoordinatesAsync(address_text.Text).Result.ToArray()[1];
-            Parameters.Latitude = Geocoder.GetCoordinatesAsync(address_text.Text).Result.ToArray()[0];
+            try
+            {
+                var arr = Geocoder.GetCoordinatesAsync(address_text.Text).Result.ToArray();
+                MessageBox.Show(arr[0] + ", " + arr[1]);
+                Parameters.Longitude = arr[1];
+                Parameters.Latitude = arr[0];
+                ClickButton(form.DistanceActivator);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Address Not Found");
+                ClickButton(form.LocationActivator);
+            }
+            
         }
         //Local Location
         private void Button_Click(object sender, RoutedEventArgs e)

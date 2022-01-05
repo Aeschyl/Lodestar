@@ -46,7 +46,9 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             [JsonProperty("postal")]
             public string Postal { get; set; }
         }
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         public static async Task<List<string>> GetCoordinatesAsync(string adress) 
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             IGeocoder geocoder = new BingMapsGeocoder("qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG");
             IEnumerable<Address> addresses = geocoder.Geocode(adress);

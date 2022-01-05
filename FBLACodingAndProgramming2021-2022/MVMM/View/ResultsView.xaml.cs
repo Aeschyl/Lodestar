@@ -48,18 +48,33 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         public void InitializeListBox()
         {
-            Root.GetJsonFromGeoApi();
+            try
+            {
+                Root.GetJsonFromGeoApi();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Address Was Not Found");
+            }
             jsonText = Root.jsonString;
             values = Root.FromJson(Root.jsonString);
 
              var list = new List<string>();
 
-            
-            
-            
+
+            int unknownCounter = 1;
+            for(int i =0;i < values.features.Count; i++)
+            {
+                if (values.features[i].properties.name == null)
+                    {
+                    values.features[i].properties.name = "Unamed " + values.features[i].properties.categories[0] + " Location " + unknownCounter;
+                    unknownCounter++;
+                    }
+            }
             
             foreach (Feature featureObject in values.features)
             {
+                
                 list.Add(featureObject.properties.name + "; " + Math.Round(featureObject.properties.distance / 1609.34, 2) + " mi");
             }
             MainListBox.ItemsSource = list;

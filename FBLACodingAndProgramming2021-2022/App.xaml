@@ -7,7 +7,8 @@
              StartupUri="MainWindow.xaml">
     
     <Application.Resources>
-        <ResourceDictionary>
+        
+            <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ProgressBarTheme.xaml"/>
@@ -56,10 +57,10 @@
             <DataTemplate DataType="{x:Type viewModel:ResultsViewModel}">
                 <view:ResultsView />
             </DataTemplate>
-          
 
-          
-            
+           
+
+
         </ResourceDictionary>
 
         

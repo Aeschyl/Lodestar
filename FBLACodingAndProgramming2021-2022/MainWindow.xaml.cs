@@ -132,8 +132,13 @@ namespace FBLACodingAndProgramming2021_2022
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var basePath = AppContext.BaseDirectory;
-            MessageBox.Show(basePath);
+            
             System.Diagnostics.Process.Start(basePath + @"/Assets/faq.html");
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
