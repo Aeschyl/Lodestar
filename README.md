@@ -2,8 +2,6 @@
 
 ![Hey](./FBLACodingAndProgramming2021-2022/Assets/logo.png)
 
-_Come up with a name eventually and also add logo with title_
-
 ## Download
 
 [Download source code and build app yourself](https://github.com/Aeschyl/FBLA-Attractions-App/archive/refs/heads/master.zip)
