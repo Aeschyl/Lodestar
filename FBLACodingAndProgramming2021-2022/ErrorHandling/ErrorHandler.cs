@@ -25,7 +25,7 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
 
         public async Task FadeTextBox()
         {
-            await Task.Delay(1000); // Wait 5 seconds
+            await Task.Delay(1000); // Wait 1 seconds
 
             for (int i = 99; i >= 0; i--)
             {
