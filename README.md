@@ -16,7 +16,7 @@ For the best user experience, the app provides 3 different options to procure th
 
 1. Using the built-in location sensor of the computer to obtain the coordinates (recommended)
 2. The option for the user to manually enter their address
-3. Using the Public IP Address of the user to determine their location (inaccurate but maintains better privacy)
+3. Using the Public IP Address of the user to determine their location (note completely accurate but maintains better privacy)
 
 Moreover, in the distance section, the app provides two options of deciding how far the user is willing to go:
 
