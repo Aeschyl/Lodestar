@@ -135,7 +135,7 @@ namespace FBLACodingAndProgramming2021_2022
             
             System.Diagnostics.Process.Start(basePath + @"/Assets/faq.html");
         }
-
+        //Close Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Close();

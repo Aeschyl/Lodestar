@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -22,6 +23,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     public partial class LocationView : UserControl
     {
         MainWindow form = Application.Current.Windows[0] as MainWindow;
+        ErrorHandling.ErrorHandler handler = new ErrorHandling.ErrorHandler();
+        string ipAddressLongitude;
+        string ipAddressLatitude;
+
 
         public string coordinates;
         public LocationView()
@@ -77,21 +82,25 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         //Local Location
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
             try
             {
                 var list=Geocoder.GetCoordinatesFromLocationSensor();
 
                 Parameters.Latitude = list[0].ToString();
                 Parameters.Longitude = list[1].ToString();
-                MessageBox.Show(coordinates);
                 ClickButton(form.DistanceActivator);
                 form.distance_button.IsChecked = true;
                 form.location_button.IsChecked = false;
+                
 
             }
             catch(Exception)
             {
-                MessageBox.Show("Error in getting local location, try one of the other options");
+                
+                handler.ShowError("Something went wrong, try one of the other options");
+                
+                
             }
 
             
@@ -99,14 +108,23 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         //IP Address
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var coordinates = Geocoder.GetCoordinatesFromIpAddress();
+            
             
             ClickButton(form.DistanceActivator);
             form.distance_button.IsChecked = true;
             form.location_button.IsChecked = false;
 
-            Parameters.Longitude = Geocoder.GetCoordinatesFromIpAddress()[0];
-            Parameters.Latitude = Geocoder.GetCoordinatesFromIpAddress()[1];
+            Parameters.Longitude = ipAddressLongitude;
+            Parameters.Latitude = ipAddressLatitude;
         }
+
+        private void IpAddressCoordinates()
+        {
+            var coordinates = Geocoder.GetCoordinatesFromIpAddress().Result;
+            ipAddressLatitude = coordinates[1];
+            ipAddressLongitude = coordinates[0];
+        }
+
+       
     }
 }

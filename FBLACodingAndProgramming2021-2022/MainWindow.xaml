@@ -7,7 +7,6 @@
         xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
         xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        
         xmlns:b="clr-namespace:FBLACodingAndProgramming2021_2022.Behaviors"
         mc:Ignorable="d"
         Height="600"
@@ -23,7 +22,7 @@
 
     <Border Background="Black"
             CornerRadius="10">
-        <Grid >
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200" />
                 <ColumnDefinition />
@@ -177,7 +176,7 @@
                          Style="{StaticResource ProgressBarTheme}"
                          x:Name="MainProgressBar">
                 <i:Interaction.Behaviors>
-                <b:ProgresBarAnimateBehavior />
+                    <b:ProgresBarAnimateBehavior />
                 </i:Interaction.Behaviors>
             </ProgressBar>
 
@@ -194,6 +193,27 @@
                     Width="40"
                     Margin="0,5,2,0"
                     Click="Button_Click_2" />
+
+            <TextBox Text=""
+                     Background="Red"
+                     Foreground="White"
+                     FontFamily="Bebas"
+                     Opacity="0"
+                     FontSize="20"
+                     Padding="20,10,20,10"
+                     VerticalAlignment="Center"
+                     Grid.Row="1"
+                     IsReadOnly="True"
+                     Grid.Column="1"
+                     x:Name="ErrorTextBox"
+                     HorizontalAlignment="Center">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius"
+                                Value="5" />
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
 
 
         </Grid>

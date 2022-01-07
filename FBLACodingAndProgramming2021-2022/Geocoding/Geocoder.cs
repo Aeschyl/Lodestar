@@ -96,7 +96,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             return address;
         }
 
-        public static List<string> GetCoordinatesFromIpAddress()
+        public async static Task<List<string>> GetCoordinatesFromIpAddress()
         {
             string ipAddress = GetIPAddress();
             //Get Ip Address
@@ -111,7 +111,10 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             //Get and return Location
             var request = (HttpWebRequest)WebRequest.Create(url.ToString());
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (HttpWebResponse response = (HttpWebResponse)await Task.Factory
+    .FromAsync<WebResponse>(request.BeginGetResponse,
+                            request.EndGetResponse,
+                            null))
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {

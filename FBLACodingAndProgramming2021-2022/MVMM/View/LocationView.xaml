@@ -112,7 +112,7 @@
                            Foreground="White"
                            HorizontalAlignment="Center"
                            FontSize="40" />
-                <Button Content="Use My ip address"
+                <Button Content="Use ip address"
                         Style="{StaticResource BetterButton}"
                         Foreground="White"
                         FontFamily="bebas"

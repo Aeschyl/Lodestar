@@ -154,6 +154,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ErrorHandling\ErrorHandler.cs" />
     <Compile Include="Geocoding\Geocoder.cs" />
     <Compile Include="MVMM\ViewModel\DistanceViewModel.cs" />
     <Compile Include="MVMM\ViewModel\LocationViewModel.cs" />
