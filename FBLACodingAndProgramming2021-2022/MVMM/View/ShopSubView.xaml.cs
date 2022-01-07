@@ -39,30 +39,40 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.subcategory = "supermarket";
         }
         //Clothing Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.subcategory = "clothing";
         }
         //Food and Drink Button
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.subcategory = "food_and_drink";
         }
         //Department Store Button
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.subcategory = "department_store";
         }
         //MarketPlace Button
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.subcategory = "marketplace";
         }
     }
 }

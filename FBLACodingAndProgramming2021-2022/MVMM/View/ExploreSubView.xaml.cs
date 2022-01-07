@@ -40,30 +40,41 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.category = "natural";
         }
         //Popular Attractions Button
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.subcategory = "attraction";
         }
         //Camping Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.category = "camping";
+
         }
         //Popular Sights Button
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.subcategory = "sights";
         }
         //Beach Button
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
+
+            Parameters.category = "beach";
         }
     }
 }

@@ -17,8 +17,12 @@ namespace FBLACodingAndProgramming2021_2022
         public static string category { get; set; }
         public static string subcategory { get; set; }
         public static List<string> amenities { get; set; }
+        public static string  Longitude { get; set; }
+        public static string Latitude { get; set; }
+        public static string radius { get; set; }
 
-        
+
+
 
         public Parameters()
         {
@@ -41,22 +45,16 @@ namespace FBLACodingAndProgramming2021_2022
         
         }
 
-        public static Results getResults()
-        {
-            string currentDirectory = System.IO.Directory.GetCurrentDirectory().Substring(0, System.IO.Directory.GetCurrentDirectory().IndexOf("bin") - 1);
-            string jsonString = File.ReadAllText(currentDirectory + @"/Python/src/Output/Output.json");
-            return Results.FromJson(jsonString);
-        }
+     
 
 
 
-        public void AddAmenities(string param) 
+        public static void AddAmenities(string param) 
         {
             amenities.Add(param);
         
         }
-        override
-        public string ToString()
+        override public string ToString()
         {
             return "Category: " + category + ", Subcategory: " + subcategory + ", Amenities: " + string.Join(", ", amenities);
         }

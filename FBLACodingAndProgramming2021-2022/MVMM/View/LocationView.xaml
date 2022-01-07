@@ -51,12 +51,12 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0">
-                <TextBlock Text="Option 1"
+                <TextBlock Text=" Address"
                            FontFamily="bebas"
                            Foreground="White"
                            HorizontalAlignment="Center"
                            FontSize="40" />
-                <TextBlock Text="Enter Adress: "
+                <TextBlock Text="Manually Enter Adress: "
                            HorizontalAlignment="Center"
                            FontFamily="bebas"
                            Foreground="White"
@@ -90,24 +90,24 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1">
-                <TextBlock Text="Option 2"
+                <TextBlock Text="Sensor"
                            FontFamily="bebas"
                            Foreground="White"
                            HorizontalAlignment="Center"
                            FontSize="40" />
-                <Button Content="Relative Location"
+                <Button Content="use location sensor"
                         Style="{StaticResource BetterButton}"
                         Foreground="White"
                         FontFamily="bebas"
                         HorizontalAlignment="Center"
                         
-                        Margin="50"
+                        Margin="0,50,0,0"
                         FontSize="20"
                         Click="Button_Click" />
             </StackPanel>
 
             <StackPanel Grid.Column="2">
-                <TextBlock Text="Option 3"
+                <TextBlock Text="Ip Address"
                            FontFamily="bebas"
                            Foreground="White"
                            HorizontalAlignment="Center"

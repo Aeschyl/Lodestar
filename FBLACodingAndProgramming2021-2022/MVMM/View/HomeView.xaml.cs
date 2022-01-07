@@ -27,6 +27,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         public HomeView()
         {
             InitializeComponent();
+            Parameters.subcategory = string.Empty;
+            Parameters.category = string.Empty;
         }
 
         public static void ClickButton(Button b)
@@ -42,12 +44,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         }
         private void EatingButton_Click(object sender, RoutedEventArgs e)
         {
-            var param = new Parameters();
-            param.AddAmenities("Restroom");
-            param.Serialize();
-            Thread.Sleep(4);
-            var obj = param.DeSerialize();
-            MessageBox.Show(obj.ToString());
+          
 
         }
         //Have Fun Button
@@ -62,6 +59,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             IncrementProgressBar(Form.MainProgressBar, 25);
 
+            Parameters.category = "entertainment";
+
         }
         //Eat Button
         private void eat_Checked(object sender, RoutedEventArgs e)
@@ -74,6 +73,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             Form.category_button.IsChecked = false;
 
             IncrementProgressBar(Form.MainProgressBar, 25);
+
+            Parameters.category = "catering";
         }
         //Shop Button
         private void shop_Checked(object sender, RoutedEventArgs e)
@@ -86,6 +87,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             Form.category_button.IsChecked = false;
 
             IncrementProgressBar(Form.MainProgressBar, 25);
+
+            Parameters.category = "commercial";
         }
         //Explore and Sightsee Button
         private void explore_and_sightsee_Checked(object sender, RoutedEventArgs e)
@@ -98,6 +101,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             Form.category_button.IsChecked = false;
 
             IncrementProgressBar(Form.MainProgressBar, 25);
+
+            Parameters.category = "tourism";
         }
         //Stay Button
         private void stay_Checked(object sender, RoutedEventArgs e)
@@ -110,6 +115,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             Form.category_button.IsChecked = false;
 
             IncrementProgressBar(Form.MainProgressBar, 25);
+
+            Parameters.category = "accomodation";
         }
     }
 }

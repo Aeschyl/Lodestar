@@ -18,16 +18,16 @@ using System.Windows.Shapes;
 namespace FBLACodingAndProgramming2021_2022.MVMM.View
 {
     /// <summary>
-    /// Interaction logic for EatSubView.xaml
+    /// Interaction logic for DistanceView.xaml
     /// </summary>
-    public partial class EatSubView : UserControl
+    public partial class DistanceView : UserControl
     {
-        MainWindow Form = Application.Current.Windows[0] as MainWindow;
-        public EatSubView()
+        MainWindow form = Application.Current.Windows[0] as MainWindow;
+        public DistanceView()
         {
             InitializeComponent();
+            SliderValue.Text = "1";
         }
-
         public static void ClickButton(Button b)
         {
             ButtonAutomationPeer peer = new ButtonAutomationPeer(b);
@@ -35,29 +35,27 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             invokeProv.Invoke();
         }
 
-        //Restaurant Button
+        private void Slider_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            SliderValue.Text = (Slider.Value * 5).ToString("F0");
+            if(Slider.Value < 1)
+            {
+                SliderValue.Text = "1";
+            }
+            
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ClickButton(Form.AmenitiesActivator);
-            Form.amenities_button.IsChecked = true;
-
-            Parameters.subcategory = "restaurant";
+            ClickButton(form.ResultsActivator);
+            Parameters.radius = SliderValue.Text;
+            form.results_button.IsChecked = true;
+            form.distance_button.IsChecked = false;
         }
-        //Fast Food Button
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            ClickButton(Form.AmenitiesActivator);
-            Form.amenities_button.IsChecked = true;
 
-            Parameters.subcategory = "fast_food";
-        }
-        //Cafe button
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            ClickButton(Form.AmenitiesActivator);
-            Form.amenities_button.IsChecked = true;
 
-            Parameters.subcategory = "cafe";
         }
     }
 }
