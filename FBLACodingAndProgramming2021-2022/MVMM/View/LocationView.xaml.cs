@@ -32,6 +32,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         public LocationView()
         {
             InitializeComponent();
+            IpAddressCoordinates();
 
         }
 

@@ -111,16 +111,23 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             //Get and return Location
             var request = (HttpWebRequest)WebRequest.Create(url.ToString());
 
-            using (HttpWebResponse response = (HttpWebResponse)await Task.Factory
-    .FromAsync<WebResponse>(request.BeginGetResponse,
-                            request.EndGetResponse,
-                            null))
+            /*using (HttpWebResponse response =  await  Task.Factory.FromAsync(
+        request.BeginGetResponse,
+        asyncResult => request.EndGetResponse(asyncResult),
+        (object)null) as HttpWebResponse)
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
-                html = reader.ReadToEnd();
-            }
-            jsonString = html;
+                html = await reader.ReadToEndAsync();
+            }*/
+
+            Task<WebResponse> task = Task.Factory.FromAsync(
+        request.BeginGetResponse,
+        asyncResult => request.EndGetResponse(asyncResult),
+        (object)null);
+            
+
+            jsonString = task.ContinueWith(t => ReadStreamFromResponse(t.Result)).Result;
 
             var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
             var list = new List<string>();
@@ -129,6 +136,16 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             list.Add(tempList[0]);
             return list;
         }
-        
+        private static string ReadStreamFromResponse(WebResponse response)
+        {
+            using (Stream responseStream = response.GetResponseStream())
+            using (StreamReader sr = new StreamReader(responseStream))
+            {
+                //Need to return this response 
+                string strContent = sr.ReadToEnd();
+                return strContent;
+            }
+        }
+
     }
 }
