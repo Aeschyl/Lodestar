@@ -7,8 +7,8 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Background="Black">
-    <Border BorderBrush="Aquamarine"
+             >
+    <Border BorderBrush="#0078d7"
             BorderThickness="5">
 
         <StackPanel>
@@ -66,6 +66,14 @@
                         VerticalAlignment="Center"
                         Click="Button_Click_3" />
             </StackPanel>
+            <Button Content="Skip >>"
+                    Foreground="White"
+                    Style="{StaticResource BetterButton}"
+                    FontFamily="Bebas"
+                    FontSize="40"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Click="Button_Click_4" />
             
         </StackPanel>
         

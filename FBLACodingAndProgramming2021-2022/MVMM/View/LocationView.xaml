@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Background="Black">
+             >
     <UserControl.Resources>
         <ControlTemplate x:Key="RoundedTextBox"
                          TargetType="{x:Type TextBoxBase}">
@@ -40,7 +40,7 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </UserControl.Resources>
-    <Border BorderBrush="Aquamarine"
+    <Border BorderBrush="#0078d7"
             BorderThickness="5">
         <Grid ShowGridLines="True"
               >

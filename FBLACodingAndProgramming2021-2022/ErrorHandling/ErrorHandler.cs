@@ -19,7 +19,7 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
             await FadeTextBox();
 
             form.ErrorTextBox.Text = string.Empty;
-            
+
 
         }
 
@@ -35,7 +35,7 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
             }
 
             form.ErrorTextBox.Visibility = System.Windows.Visibility.Hidden;
-            
+
 
             form.ErrorTextBox.Opacity = 0;
         }

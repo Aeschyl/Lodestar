@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Black">
-    <Border BorderBrush="Aquamarine"
+             >
+    <Border BorderBrush="#0078d7"
             BorderThickness="5">
 
         <StackPanel>
-
+            
             <TextBlock Text="Sub-Category"
                        FontFamily="Bebas"
                        FontSize="45"
@@ -73,6 +73,13 @@
                         VerticalAlignment="Center"
                         Click="Button_Click_4" />
             </StackPanel>
+            <Button Style="{StaticResource BetterButton}"
+                    Content="Skip >>"
+                    Foreground="White"
+                    FontSize="40"
+                    FontFamily="bebas"
+                    HorizontalAlignment="Center"
+                    Click="Button_Click_5" />
         </StackPanel>
     </Border>
 </UserControl>

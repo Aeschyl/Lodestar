@@ -66,5 +66,11 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             Parameters.subcategory = "apartment";
         }
+        //SKip Button
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            ClickButton(Form.AmenitiesActivator);
+            Form.amenities_button.IsChecked = true;
+        }
     }
 }

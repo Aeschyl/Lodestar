@@ -140,5 +140,10 @@ namespace FBLACodingAndProgramming2021_2022
         {
             Close();
         }
+        //Restart Button
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            category_button.IsChecked = true;
+        }
     }
 }

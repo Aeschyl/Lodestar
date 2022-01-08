@@ -7,11 +7,11 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Background="Black">
-    <Border BorderBrush="Aquamarine"
+             >
+    <Border BorderBrush="#0078d7"
             BorderThickness="5">
         <Grid Margin="0,100,0,100"
-              Background="Black">
+              >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition>
@@ -24,13 +24,22 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition>
-
                 </RowDefinition>
                 <RowDefinition>
-
                 </RowDefinition>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
+            <Button Content="Skip >>"
+                    FontFamily="Bebas"
+                    FontSize="25"
+                    Style="{StaticResource BetterButton}"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Grid.Row="3"
+                    Foreground="White"
+                    Grid.Column="1"
+                    Click="Button_Click_6" />
             <Button Content="Museum"
                     FontFamily="Bebas"
                     Grid.Row="0"

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Black">
+             >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -46,7 +46,7 @@
                  BorderThickness="0"/>
 
         <Border Grid.Column="1"
-                BorderBrush="Aquamarine"
+                BorderBrush="#0078d7"
                 BorderThickness="5" />
     </Grid>
 </UserControl>

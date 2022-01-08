@@ -7,9 +7,9 @@
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800"
-             Background="Black">
+             >
 
-    <Border BorderBrush="Aquamarine"
+    <Border BorderBrush="#0078d7"
             BorderThickness="5">
 
         <StackPanel>
@@ -17,54 +17,63 @@
             <TextBlock Text="Sub-Category"
                        FontFamily="Bebas"
                        FontSize="45"
-                       Foreground="White" 
+                       Foreground="White"
                        HorizontalAlignment="Center"
-                       Margin="0,40,0,0"/>
+                       Margin="0,40,0,0" />
             <Grid Margin="0,100,0,100">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition>
-                </ColumnDefinition>
-                <ColumnDefinition>
-                </ColumnDefinition>
-                <ColumnDefinition>
-                </ColumnDefinition>
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                    </ColumnDefinition>
+                    <ColumnDefinition>
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <Button Content="restaurant"
-                    Grid.Column="0"
-                    Style="{StaticResource BetterButton}"
-                    Foreground="White"
-                    FontFamily="Bebas"
-                    FontSize="40"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                <Button Content="restaurant"
+                        Grid.Column="0"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        FontFamily="Bebas"
+                        FontSize="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
                         Click="Button_Click" />
 
-            <Button Content="Fast Food"
-                    Grid.Column="1"
-                    Style="{StaticResource BetterButton}"
-                    Foreground="White"
-                    FontFamily="Bebas"
-                    FontSize="40"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                <Button Content="Fast Food"
+                        Grid.Column="1"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        FontFamily="Bebas"
+                        FontSize="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
                         Click="Button_Click_1" />
 
-            <Button Content="Cafe"
-                    Grid.Column="2"
-                    Style="{StaticResource BetterButton}"
-                    Foreground="White"
-                    FontFamily="Bebas"
-                    FontSize="40"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                <Button Content="Cafe"
+                        Grid.Column="2"
+                        Style="{StaticResource BetterButton}"
+                        Foreground="White"
+                        FontFamily="Bebas"
+                        FontSize="40"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
                         Click="Button_Click_2" />
+                <Button Content="Skip >>"
+                        FontFamily="bebas"
+                        Foreground="White"
+                        FontSize="40"
+                        Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource BetterButton}"
+                        Click="Button_Click_3" 
+                        Margin="0,150,0,0"/>
 
 
-            
 
-        </Grid>
+            </Grid>
         </StackPanel>
     </Border>
 </UserControl>
