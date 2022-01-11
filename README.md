@@ -25,14 +25,14 @@ Moreover, in the distance section, the app provides two options of deciding how 
 
 ## Tools used
 
-This application implements WPF Framework in C# language for frontend and the C# for the backend code as well
+This application implements WPF Framework in C# language for frontend. It uses NodeJS for the backend server, this is because sensitive api keys are attatched in the server and the relevant data is returned to the C#, hence securing the api keys from any possible compromises
 
-The app implements different APIs to enable different methods of obtaining the location of the user
+The server uses the express and request packages from npm
 
-For the option of manually entering their address, the app makes a call to the Bing Geocoding API to find the coordinates
+The app implements different APIs to enable different methods of obtaining the location of the user, these apis are managed by the server.
 
-For the IP Address option, the app procures the user's IP Address and then calls the [IPinfo API](https://ipinfo.io/products/ip-geolocation-api) to find the coordinates
+For the option of manually entering their address, the server makes a call to the Bing Geocoding API to find the coordinates and returns it to C#
 
-Finally the app makes calls to Places API provided by Geoapify to return the required results of various different attractions. [Places API](https://www.geoapify.com/places-api)
+For the IP Address option, the server procures the user's IP Address and then calls the [IPinfo API](https://ipinfo.io/products/ip-geolocation-api) to find the coordinates
 
-The app has a Node.JS server which adds the private api keys to C#'s requests, and then returns the relevant information to C#. The server uses the Express and Request libraries.
+Finally the server makes calls to Places API provided by Geoapify to return the required results of various different attractions. [Places API](https://www.geoapify.com/places-api)
