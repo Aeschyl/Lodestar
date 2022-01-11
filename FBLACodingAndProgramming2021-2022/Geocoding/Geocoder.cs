@@ -48,7 +48,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             public string Postal { get; set; }
         }
 
-        public static async Task<List<string>> GetCoordinatesAsync(string address) 
+        public static List<string> GetCoordinatesAsync(string address) 
 
         {
             string result;
@@ -69,7 +69,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
             var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString());
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (HttpWebResponse response =  (HttpWebResponse) request.GetResponse())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -105,11 +105,13 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             throw new Exception(string.Format("Error: {0}, {1}", coord.Latitude, coord.Longitude));
             
         }
-        static string GetIPAddress()
+
+        private static string GetIPAddressAsync()
         {
             String address = "";
             WebRequest request = WebRequest.Create("http://checkip.dyndns.org/");
-            using (WebResponse response = request.GetResponse())
+            request.Proxy = null;
+            using (WebResponse response =  request.GetResponse())
             using (StreamReader stream = new StreamReader(response.GetResponseStream()))
             {
                 address = stream.ReadToEnd();
@@ -122,9 +124,9 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             return address;
         }
 
-        public async static Task<List<string>> GetCoordinatesFromIpAddress()
+        public static List<string> GetCoordinatesFromIpAddress()
         {
-            string ipAddress = GetIPAddress();
+            string ipAddress = GetIPAddressAsync();
             //Get Ip Address
             
 

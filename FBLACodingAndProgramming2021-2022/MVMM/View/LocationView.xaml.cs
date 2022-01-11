@@ -67,7 +67,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             form.location_button.IsChecked = false;
             try
             {
-                var arr = Geocoder.GetCoordinatesAsync(address_text.Text).Result.ToArray();
+                var arr = Geocoder.GetCoordinatesAsync(address_text.Text).ToArray();
                 Parameters.Longitude = arr[1];
                 Parameters.Latitude = arr[0];
                 ClickButton(form.DistanceActivator);
@@ -120,7 +120,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         private void IpAddressCoordinates()
         {
-            var coordinates = Geocoder.GetCoordinatesFromIpAddress().Result;
+            var coordinates = Geocoder.GetCoordinatesFromIpAddress();
             ipAddressLatitude = coordinates[1];
             ipAddressLongitude = coordinates[0];
         }
