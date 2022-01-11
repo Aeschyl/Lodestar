@@ -7,6 +7,7 @@
     using System.IO;
     using System.Net;
     using System.Text;
+    using System.Web;
     using FBLACodingAndProgramming2021_2022;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -68,6 +69,8 @@
         {
             string html;
             string url = @"https://api.geoapify.com/v2/places/?";
+            //Connects to our own third party server so that api keys are safe
+            var requestsServerUrl = new StringBuilder(@"https://touristserver.sami200.repl.co/geoapify?");
 
 
             StringBuilder builder = new StringBuilder();
@@ -115,14 +118,15 @@
 
             builder.Append("&");
             builder.Append("limit=10");
-
-            builder.Append("&");
+            //Taken out due to api key being stored on requests server
+            /*builder.Append("&");
             builder.Append("apiKey=");
-            //Need to hide this somehow
-            builder.Append("233315ef9be94184b7addc54c006bbde");
+            builder.Append("");*/
+            requestsServerUrl.Append("url=");
+            requestsServerUrl.Append(HttpUtility.UrlEncode(builder.ToString()));
 
 
-            var request = (HttpWebRequest)WebRequest.Create(builder.ToString());
+            var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString());
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())

@@ -95,7 +95,7 @@
 
 
 
-            <TextBlock Text="Attract"
+            <TextBlock Text="LodeStar"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
                        Foreground="White"

@@ -17,6 +17,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
     using System.Globalization;
     using System.IO;
     using System.Net.Sockets;
+    using System.Web;
 
     class Geocoder
     {
@@ -46,18 +47,43 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             [JsonProperty("postal")]
             public string Postal { get; set; }
         }
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-        public static async Task<List<string>> GetCoordinatesAsync(string adress) 
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+
+        public static async Task<List<string>> GetCoordinatesAsync(string address) 
+
         {
-            IGeocoder geocoder = new BingMapsGeocoder("qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG");
-            IEnumerable<Address> addresses = geocoder.Geocode(adress);
+            string result;
 
-            var coordinates = new List<string>();
-            coordinates.Add(addresses.First().Coordinates.Latitude.ToString());
-            coordinates.Add(addresses.First().Coordinates.Longitude.ToString());
+            //Connects to our own third party server so that api keys are safe
+            var requestsServerUrl = new StringBuilder(@"https://touristserver.sami200.repl.co/bingmaps?");
 
-            return coordinates;
+            var requestUrl = new StringBuilder(@"https://dev.virtualearth.net/REST/v1/Locations?q=");
+
+            requestsServerUrl.Append(@"url=");
+
+            
+
+            requestUrl.Append(address);
+
+            
+            requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString()));
+
+            var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString());
+
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (Stream stream = response.GetResponseStream())
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                result = reader.ReadToEnd();
+            }
+
+
+            var addresses = JsonConvert.DeserializeObject<List<double>>(result);
+            var addressesString = new List<string>();
+            addressesString.Add(addresses.First().ToString());
+            addressesString.Add(addresses.Last().ToString());
+
+
+            return addressesString;
         }
 
         public static List<string> GetCoordinatesFromLocationSensor()

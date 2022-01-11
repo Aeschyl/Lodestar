@@ -144,6 +144,9 @@ namespace FBLACodingAndProgramming2021_2022
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             category_button.IsChecked = true;
+            Parameters.ResetParameters();
+
+            
         }
     }
 }

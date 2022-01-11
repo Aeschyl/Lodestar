@@ -68,14 +68,13 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             try
             {
                 var arr = Geocoder.GetCoordinatesAsync(address_text.Text).Result.ToArray();
-                MessageBox.Show(arr[0] + ", " + arr[1]);
                 Parameters.Longitude = arr[1];
                 Parameters.Latitude = arr[0];
                 ClickButton(form.DistanceActivator);
             }
             catch (Exception)
             {
-                MessageBox.Show("Address Not Found");
+                handler.ShowError("Something went wrong, try one of the other options");
                 ClickButton(form.LocationActivator);
             }
             

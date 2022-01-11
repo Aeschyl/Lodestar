@@ -24,9 +24,12 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     {
         //Allows access to components on Main Window
         MainWindow Form = Application.Current.Windows[0] as MainWindow;
+
+        public List<CheckBox> checkBoxes;
         public AmenitiesView()
         {
             InitializeComponent();
+            checkBoxes = new List<CheckBox>(0);
         }
         public static void ClickButton(Button b)
         {
@@ -35,6 +38,37 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             invokeProv.Invoke();
         }
 
+        private void GetCheckBoxes()
+        {
+            //Looping through first stack panel
+            foreach(CheckBox child in StackPanelOne.Children)
+            {
+                checkBoxes.Add(child);
+            }
+            //Looping through second stack panel
+            foreach (CheckBox child in StackPanelTwo.Children)
+            {
+                checkBoxes.Add(child);
+            }
+            //Looping through thirst stack panel
+            foreach (CheckBox child in StackPanelOne.Children)
+            {
+                checkBoxes.Add(child);
+            }
+
+        
+        } 
+
+        private void ResetCheckBoxes()
+        {
+            GetCheckBoxes();
+            foreach(CheckBox value in checkBoxes)
+            {
+                value.IsChecked = false;
+            }
+        }
+        
+
         //Onward Button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +76,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             Form.amenities_button.IsChecked = false;
 
             ClickButton(Form.LocationActivator);
+            //Makes all of the CheckBoxes Unselected
+            ResetCheckBoxes();
+
         }
         //Dog Friendly
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

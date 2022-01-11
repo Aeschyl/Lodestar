@@ -1,4 +1,5 @@
-﻿using Json;
+﻿using FBLACodingAndProgramming2021_2022.ErrorHandling;
+using Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,14 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         Root values;
         Feature selectedFeature;
         string jsonText;
+        ErrorHandler handler;
         public ResultsView()
         {
             InitializeComponent();
+            handler = new ErrorHandler();
             InitializeListBox();
             Clipboard.SetText(jsonText);
-
+            
 
         }
 
@@ -48,13 +51,15 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         public void InitializeListBox()
         {
+            
+
             try
             {
                 Root.GetJsonFromGeoApi();
             }
             catch (Exception)
             {
-                MessageBox.Show("Address Was Not Found");
+                handler.ShowError("Address Was Not Found");
             }
             jsonText = Root.jsonString;
             values = Root.FromJson(Root.jsonString);

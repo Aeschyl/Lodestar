@@ -58,5 +58,16 @@ namespace FBLACodingAndProgramming2021_2022
         {
             return "Category: " + category + ", Subcategory: " + subcategory + ", Amenities: " + string.Join(", ", amenities);
         }
+
+        public static void ResetParameters()
+        {
+            category = string.Empty;
+            subcategory = string.Empty;
+            amenities = null;
+            Longitude = string.Empty;
+            Latitude = string.Empty;
+            radius = string.Empty;
+
+        }
     }
 }
