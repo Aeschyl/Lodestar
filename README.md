@@ -34,3 +34,5 @@ For the option of manually entering their address, the app makes a call to the B
 For the IP Address option, the app procures the user's IP Address and then calls the [IPinfo API](https://ipinfo.io/products/ip-geolocation-api) to find the coordinates
 
 Finally the app makes calls to Places API provided by Geoapify to return the required results of various different attractions. [Places API](https://www.geoapify.com/places-api)
+
+The app has a Node.JS server which adds the private api keys to C#'s requests, and then returns the relevant information to C#. The server uses the Express and Request libraries.
