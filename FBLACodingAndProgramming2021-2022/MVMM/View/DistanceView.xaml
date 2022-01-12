@@ -18,29 +18,32 @@
 
             <TextBlock Text=" Distance"
                        FontFamily="bebas"
-                       Foreground="White"
+                       Foreground="Black"
                        HorizontalAlignment="Center"
                        FontSize="40"
                        Grid.Row="0" />
             <TextBlock Text=" Move the slider to a preferred distance (miles)"
                        FontFamily="bebas"
-                       Foreground="White"
+                       Foreground="Black"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        FontSize="30"
                        Grid.Row="1" />
             <Slider Grid.Row="1"
-                    Foreground="Aquamarine"
+                    Background="Transparent"
+                    Foreground="Black"
                     Thumb.DragDelta="Slider_DragDelta"
                     VerticalAlignment="Center"
                     x:Name="Slider"
                     HorizontalAlignment="Center"
                     Width="600"
+                    
                     IsSnapToTickEnabled="True"
                     ValueChanged="Slider_ValueChanged" />
+
             <TextBlock Text=""
                        FontFamily="bebas"
-                       Foreground="White"
+                       Foreground="Black"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Bottom"
                        FontSize="30"
@@ -48,7 +51,7 @@
                        Grid.Row="1" />
             <TextBlock Text="mi"
                        FontFamily="bebas"
-                       Foreground="White"
+                       Foreground="Black"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Bottom"
                        FontSize="30"
@@ -59,7 +62,7 @@
                     Style="{StaticResource BetterButton }"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    Foreground="White"
+                    Foreground="Black"
                     FontFamily="Bebas"
                     FontSize="20"
                     Click="Button_Click" />

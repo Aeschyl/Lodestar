@@ -41,16 +41,14 @@
                                  Value="true">
                             <Setter TargetName="Border"
                                     Property="Background"
-                                    Value="#141414" />
+                                    Value="#d1d1d1" />
                         </Trigger>
                         <Trigger Property="IsPressed"
                                  Value="true">
-                            <Setter TargetName="Border"
-                                    Property="Background"
-                                    Value="Black" />
+                            
                             <Setter TargetName="Border"
                                     Property="BorderBrush"
-                                    Value="White" />
+                                    Value="#0078D7" />
                         </Trigger>
                        
                     </ControlTemplate.Triggers>

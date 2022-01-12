@@ -31,7 +31,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             InitializeComponent();
             handler = new ErrorHandler();
             InitializeListBox();
-            Clipboard.SetText(jsonText);
+            //Clipboard.SetText(jsonText);
             
 
         }
@@ -62,7 +62,15 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 handler.ShowError("Address Was Not Found");
             }
             jsonText = Root.jsonString;
-            values = Root.FromJson(Root.jsonString);
+            try
+            {
+                values = Root.FromJson(Root.jsonString);
+            }
+            catch (Exception)
+            {
+                handler.ShowError("Something went wrong. Click the Restart button and try again");
+                return;
+            }
 
              var list = new List<string>();
 

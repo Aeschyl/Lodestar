@@ -13,14 +13,14 @@
         Width="920"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Background="Transparent"
+        Background="White"
         AllowsTransparency="True">
 
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
 
-    <Border Background="#696969"
+    <Border Background="White"
             CornerRadius="10">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -98,7 +98,7 @@
             <TextBlock Text="LodeStar"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
-                       Foreground="White"
+                       Foreground="Black"
                        FontSize="30"
                        Margin="20,0,0,0"
                        FontFamily="Bebas" />
@@ -107,56 +107,63 @@
 
                 <RadioButton Content="Category"
                              Height="50"
-                             Foreground="White"
+                             Foreground="Black"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              IsChecked="False"
                              Command="{Binding HomeViewCommand}"
                              x:Name="category_button"
-                             Checked="category_button_Checked" />
+                             Checked="category_button_Checked" 
+                             IsEnabled="False"/>
                 <RadioButton Content="Sub-Category"
                              Height="50"
-                             Foreground="White"
+                             Foreground="Black"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              x:Name="sub_category_button"
-                             Checked="sub_category_button_Checked" />
+                             Checked="sub_category_button_Checked"
+                             IsEnabled="False" />
                 <RadioButton Content="Amenities"
                              Height="50"
-                             Foreground="White"
+                             Foreground="Black"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              x:Name="amenities_button"
                              Command="{Binding AmenitiesViewCommand}"
-                             Checked="amenities_button_Checked" />
+                             Checked="amenities_button_Checked"
+                             IsEnabled="False" />
                 <RadioButton Content="Location"
                              Height="50"
-                             Foreground="White"
+                             Foreground="Black"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              x:Name="location_button"
                              Command="{Binding LocationViewCommand}"
-                             Checked="location_button_Checked" />
+                             Checked="location_button_Checked"
+                             IsEnabled="False" />
                 <RadioButton Content="Distance"
                              Height="50"
-                             Foreground="White"
+                             Foreground="Black"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme }"
                              x:Name="distance_button"
-                             Checked="distance_button_Checked" />
+                             Checked="distance_button_Checked"
+                             IsEnabled="False" />
                 <RadioButton Content="Results"
                              Height="50"
-                             Foreground="White"
+                             Foreground="Black"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
                              x:Name="results_button"
-                             Checked="results_button_Checked" />
+                             Checked="results_button_Checked"
+                             IsEnabled="False" />
                 <Button Content="Restart"
                         FontFamily="bebas"
                         FontSize="14"
                         Background="#0078d7"
                         Style="{StaticResource BetterButton}" 
                         HorizontalAlignment="Left"
+                        Foreground="White"
                         Margin="20,150,0,0"
                         Command="{Binding HomeViewCommand}"
                         Click="Button_Click_3" />
@@ -165,7 +172,7 @@
                         Foreground="White"
                         Background="Black"
                         HorizontalAlignment="Left"
-                        
+                        FontFamily="Bebas"
                         Margin="20,20,0,0"
                         Content="FAQ"
                         Click="Button_Click_1" />
@@ -179,13 +186,13 @@
                             Content="{Binding CurrentView}" />
 
             <ProgressBar Grid.Column="1"
-                         Foreground="Aquamarine"
+                         Foreground="#0078d7"
                          Background="Transparent"
                          BorderBrush="Black"
                          VerticalAlignment="Center"
                          Width="600"
                          BorderThickness="0"
-                         Height="35"
+                         Height="25"
                          Style="{StaticResource ProgressBarTheme}"
                          x:Name="MainProgressBar">
                 <i:Interaction.Behaviors>
@@ -198,13 +205,13 @@
                     Grid.Row="0"
                     Grid.Column="1"
                     Foreground="Black"
-                    Background="Aquamarine"
+                    Background="#0078d7"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     FontFamily="Bebas"
                     MinWidth="0"
                     Width="40"
-                    Margin="0,5,2,0"
+                    Margin="0,10,10,0"
                     Click="Button_Click_2" />
 
             <TextBox Text=""

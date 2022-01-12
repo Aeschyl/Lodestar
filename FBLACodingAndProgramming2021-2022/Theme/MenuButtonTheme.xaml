@@ -15,22 +15,34 @@
                             <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
                                        Margin="25,0,0,0"
-                                       FontFamily="Bebas"
-                                       />
+                                       FontFamily="Bebas" />
 
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
         </Style.Setters>
 
         <Style.Triggers>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#141414"/>
+            <Trigger Property="IsChecked"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="#d1d1d1" />
+                <Setter Property="FontSize"
+                        Value="16" />
+            </Trigger>
+            <Trigger Property="IsChecked"
+                     Value="False">
+                <Setter Property="Background"
+                        Value="White" />
+                <Setter Property="FontSize"
+                        Value="14" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
 </ResourceDictionary>

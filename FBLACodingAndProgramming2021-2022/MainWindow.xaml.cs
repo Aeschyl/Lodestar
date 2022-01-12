@@ -1,6 +1,6 @@
 ﻿using FBLACodingAndProgramming2021_2022.Core;
 using FBLACodingAndProgramming2021_2022.MVMM.View;
-
+using FBLACodingAndProgramming2021_2022.MVMM.ViewModel;
 using Json;
 using Newtonsoft.Json;
 using System;
@@ -35,11 +35,13 @@ namespace FBLACodingAndProgramming2021_2022
         public MainWindow()
         {
             InitializeComponent();
-
+            ClickButton(CategoryActivator);
 
 
 
         }
+
+      
         public static void ClickButton(Button b)
         {
             ButtonAutomationPeer peer = new ButtonAutomationPeer(b);

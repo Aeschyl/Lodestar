@@ -9,6 +9,7 @@
     using System.Text;
     using System.Web;
     using FBLACodingAndProgramming2021_2022;
+    using FBLACodingAndProgramming2021_2022.ErrorHandling;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
@@ -139,7 +140,19 @@
 
         public static Root FromJson(string json)
         {
-            return JsonConvert.DeserializeObject<Root>(json);
+            ErrorHandler handler = new ErrorHandler();
+            try
+            {
+                var obj = JsonConvert.DeserializeObject<Root>(json);
+                return obj;
+            }
+            catch (Exception)
+            {
+                
+                throw new Exception("Json Reading Error (Server Side)");
+
+            }
+            
         }
     }
 
