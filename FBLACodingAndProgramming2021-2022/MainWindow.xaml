@@ -11,10 +11,10 @@
         mc:Ignorable="d"
         Height="600"
         Width="920"
-        WindowStyle="None"
+        WindowStyle="ThreeDBorderWindow"
         ResizeMode="NoResize"
         Background="White"
-        AllowsTransparency="True">
+        >
 
     <Window.DataContext>
         <viewModel:MainViewModel />
@@ -164,7 +164,7 @@
                         Style="{StaticResource BetterButton}" 
                         HorizontalAlignment="Left"
                         Foreground="White"
-                        Margin="20,150,0,0"
+                        Margin="20,110,0,0"
                         Command="{Binding HomeViewCommand}"
                         Click="Button_Click_3" />
                 <StackPanel Orientation="Horizontal">
@@ -200,19 +200,7 @@
                 </i:Interaction.Behaviors>
             </ProgressBar>
 
-            <Button Content="Close"
-                    Style="{StaticResource BetterButton}"
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Foreground="Black"
-                    Background="#0078d7"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    FontFamily="Bebas"
-                    MinWidth="0"
-                    Width="40"
-                    Margin="0,10,10,0"
-                    Click="Button_Click_2" />
+           
 
             <TextBox Text=""
                      Background="Red"
