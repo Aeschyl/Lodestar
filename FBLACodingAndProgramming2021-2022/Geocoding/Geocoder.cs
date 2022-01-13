@@ -91,7 +91,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
 
             // Do not suppress prompt, and wait 1000 milliseconds to start.
-            watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
+            watcher.TryStart(true, TimeSpan.FromMilliseconds(5000));
 
             GeoCoordinate coord = watcher.Position.Location;
 
@@ -132,10 +132,10 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
 
             string jsonString;
-            string html;
+            
             StringBuilder url = new StringBuilder(@"https://ipinfo.io/");
             url.Append(ipAddress);
-            url.Append("/json?token=afafcbd31ed7de");
+            url.Append("/json");
             //Get and return Location
             var request = (HttpWebRequest)WebRequest.Create(url.ToString());
 

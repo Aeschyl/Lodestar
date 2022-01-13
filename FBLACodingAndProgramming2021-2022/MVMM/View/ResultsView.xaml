@@ -42,7 +42,9 @@
                      Padding="10"
                      VerticalAlignment="Top"
                      Margin="20,20,20,0"
-                     BorderThickness="0">
+                     BorderThickness="0"
+                     
+                     >
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius"

@@ -10,20 +10,21 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
 {
     class ErrorHandler
     {
-        MainWindow form = Application.Current.Windows[0] as MainWindow;
+        
         public async void ShowError(string err)
         {
+            MainWindow form = Application.Current.Windows[0] as MainWindow;
             form.ErrorTextBox.Text = err;
             form.ErrorTextBox.Opacity = 100;
             form.ErrorTextBox.Visibility = System.Windows.Visibility.Visible;
-            await FadeTextBox();
+            await FadeTextBox(form);
 
             form.ErrorTextBox.Text = string.Empty;
-
+            
 
         }
 
-        public async Task FadeTextBox()
+        public async Task FadeTextBox(MainWindow form)
         {
             await Task.Delay(1000); // Wait 1 seconds
 
@@ -35,7 +36,7 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
             }
 
             form.ErrorTextBox.Visibility = System.Windows.Visibility.Hidden;
-
+            
 
             form.ErrorTextBox.Opacity = 0;
         }

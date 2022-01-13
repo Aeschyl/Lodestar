@@ -81,7 +81,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             ClickButton(Form.AmenitiesActivator);
             Form.amenities_button.IsChecked = true;
 
-            Parameters.subcategory = "theater";
+            Parameters.subcategory = "culture.theatre";
         }
         //Skip Button
         private void Button_Click_6(object sender, RoutedEventArgs e)

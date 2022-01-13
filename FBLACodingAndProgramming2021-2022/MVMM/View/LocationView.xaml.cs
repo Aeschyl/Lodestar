@@ -26,6 +26,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         ErrorHandling.ErrorHandler handler = new ErrorHandling.ErrorHandler();
         string ipAddressLongitude;
         string ipAddressLatitude;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 
 
         public string coordinates;
@@ -67,13 +69,15 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             form.location_button.IsChecked = false;
             try
             {
+                log.Debug("Inputted address: " + address_text.Text);
                 var arr = Geocoder.GetCoordinatesAsync(address_text.Text).ToArray();
                 Parameters.Longitude = arr[1];
                 Parameters.Latitude = arr[0];
                 ClickButton(form.DistanceActivator);
             }
-            catch (Exception)
+            catch (Exception error)
             {
+                log.Error("Could not get coordinates from address; " + error.Message);
                 handler.ShowError("Something went wrong, try one of the other options");
                 ClickButton(form.LocationActivator);
             }
@@ -95,9 +99,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 
 
             }
-            catch(Exception)
+            catch(Exception error)
             {
                 
+                log.Error("Could not get local location;" + error.Message);
                 handler.ShowError("Something went wrong, try one of the other options");
                 
                 

@@ -116,7 +116,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             IncrementProgressBar(Form.MainProgressBar, 25);
 
-            Parameters.category = "accomodation";
+            Parameters.category = "accommodation";
         }
     }
 }

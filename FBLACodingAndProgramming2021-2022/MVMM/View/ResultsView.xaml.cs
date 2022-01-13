@@ -22,6 +22,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     /// </summary>
     public partial class ResultsView : UserControl
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         Root values;
         Feature selectedFeature;
         string jsonText;
@@ -59,7 +60,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             catch (Exception)
             {
-                handler.ShowError("Address Was Not Found");
+                log.Error("Error with getting json from api");
+                handler.ShowError("Something went wrong. Click the Restart button and try again");
             }
             jsonText = Root.jsonString;
             try
@@ -68,6 +70,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             catch (Exception)
             {
+                log.Error("Error is parsing json string to object...server probably returned error");
                 handler.ShowError("Something went wrong. Click the Restart button and try again");
                 return;
             }
@@ -90,6 +93,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 
                 list.Add(featureObject.properties.name + "; " + Math.Round(featureObject.properties.distance / 1609.34, 2) + " mi");
             }
+            MainListBox.ItemsSource = null;
             MainListBox.ItemsSource = list;
             
 
@@ -99,9 +103,15 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         private void MainListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if (MainListBox.Items.Count < 1)
+            {
+                log.Debug("Got No Results From Api");
+                return;
+            }
+                //31
             selectedFeature = GetFeatureByName(MainListBox.SelectedItem.ToString().Split(';')[0]);
-            FeatureName.Text = selectedFeature.properties.name;
-            FeatureInformation.Text = string.Format("{0}\nDistance: {1} mi", selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance/1609.34,2));
+            FeatureName.Text = selectedFeature.properties.name.Length > 31? selectedFeature.properties.name.Substring(0,29) + "...": selectedFeature.properties.name;
+            FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance/1609.34,2));
 
         }
     }

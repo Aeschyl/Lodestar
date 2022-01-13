@@ -148,7 +148,7 @@ namespace FBLACodingAndProgramming2021_2022
         {
             category_button.IsChecked = true;
             Parameters.ResetParameters();
-
+            
             
 
             

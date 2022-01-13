@@ -66,7 +66,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             Parameters.subcategory = "apartment";
         }
-        //SKip Button
+        //Skip Button
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             ClickButton(Form.AmenitiesActivator);

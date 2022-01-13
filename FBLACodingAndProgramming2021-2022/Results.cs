@@ -65,6 +65,7 @@
             public string type { get; set; }
             public List<Feature> features { get; set; }
             public static string jsonString { get; set; }
+            private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static void GetJsonFromGeoApi()
         {
@@ -126,6 +127,8 @@
             requestsServerUrl.Append("url=");
             requestsServerUrl.Append(HttpUtility.UrlEncode(builder.ToString()));
 
+            log.Debug("Http Request made to the link: " + requestsServerUrl.ToString());
+
 
             var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString());
 
@@ -148,7 +151,7 @@
             }
             catch (Exception)
             {
-                
+                log.Error("Json Reading Error");
                 throw new Exception("Json Reading Error (Server Side)");
 
             }
