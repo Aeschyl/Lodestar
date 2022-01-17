@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    The logic for the shopping/commerical subcategory screen
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

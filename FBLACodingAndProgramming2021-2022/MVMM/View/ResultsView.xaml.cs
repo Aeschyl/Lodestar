@@ -1,4 +1,8 @@
-﻿using FBLACodingAndProgramming2021_2022.ErrorHandling;
+﻿/*
+    The logic for the results screen where the user is able to discover new places that match their requirements
+*/
+
+using FBLACodingAndProgramming2021_2022.ErrorHandling;
 using Json;
 using Newtonsoft.Json;
 using System;

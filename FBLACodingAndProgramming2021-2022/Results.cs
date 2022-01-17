@@ -1,4 +1,8 @@
-﻿namespace Json
+﻿/*
+    The logic for the API called to return various attractions that fit the user's requirements screen
+*/
+
+namespace Json
 {
     using System;
     using System.Collections.Generic;
@@ -14,9 +18,6 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-   
-        
-        
         internal class Datasource
         {
             public string sourcename { get; set; }
@@ -73,6 +74,9 @@
             ManagementClass mc = new ManagementClass("win32_processor");
             ManagementObjectCollection moc = mc.GetInstances();
 
+<<<<<<< HEAD
+        // The method to issue an HTTP request to our own server which returns results from the API
+=======
             foreach (ManagementObject mo in moc)
             {
                 cpuInfo = mo.Properties["processorID"].Value.ToString();
@@ -80,6 +84,7 @@
             }
             return cpuInfo;
         }
+>>>>>>> b21452925ef52a48cbcc3038c56b890da1a6db20
         public static void GetJsonFromGeoApi()
         {
             string html;

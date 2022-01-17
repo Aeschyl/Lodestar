@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    A class to manage the parameters the user chooses for their search
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,17 +30,7 @@ namespace FBLACodingAndProgramming2021_2022
         public static string Latitude { get; set; }
         public static string radius { get; set; }
 
-
-
-
-
-        
-
-
-     
-
-
-
+        // Adds the chosen amenities to the list
         public static void AddAmenities(string param) 
         {
             amenities.Add(param);
@@ -49,6 +43,7 @@ namespace FBLACodingAndProgramming2021_2022
             return "Category: " + category + ", Subcategory: " + subcategory + ", Amenities: " + string.Join(", ", amenities);
         }
 
+        // Resets all parameters when the user chooses to restart
         public static void ResetParameters()
         {
             category = string.Empty;

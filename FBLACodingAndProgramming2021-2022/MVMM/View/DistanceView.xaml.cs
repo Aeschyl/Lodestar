@@ -35,6 +35,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             invokeProv.Invoke();
         }
 
+        // A method to manage the slider in the distance screen
         private void Slider_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
             SliderValue.Text = (Slider.Value * 5).ToString("F0");

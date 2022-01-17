@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+    A class to smoothly handle any errors that might occur for the user
+    Imposes a error message on top of the screen to notify the error that has occured
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
@@ -11,7 +16,7 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
 {
     class ErrorHandler
     {
-        
+        // A method to display the error box with the error that has occured
         public async void ShowError(string err)
         {
             MainWindow form = Application.Current.Windows[0] as MainWindow;
@@ -43,6 +48,7 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
 
         
 
+        // A method to gradually fade away the error box 
         public async Task FadeTextBox(MainWindow form)
         {
             await Task.Delay(1000); // Wait 1 seconds
