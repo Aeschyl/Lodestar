@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,8 @@ namespace FBLACodingAndProgramming2021_2022
             
             ClickButton(CategoryActivator);
 
+            
+
 
 
         }
@@ -68,6 +71,19 @@ namespace FBLACodingAndProgramming2021_2022
             LoadingAnimation.Visibility = Visibility.Visible;
 
 
+        }
+        private string GetCPUSerialNumber()
+        {
+            string cpuInfo = string.Empty;
+            ManagementClass mc = new ManagementClass("win32_processor");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            foreach (ManagementObject mo in moc)
+            {
+                cpuInfo = mo.Properties["processorID"].Value.ToString();
+                break;
+            }
+            return cpuInfo;
         }
 
         private  bool CheckInternetConnectivityAsync()
@@ -183,9 +199,12 @@ namespace FBLACodingAndProgramming2021_2022
         //FAQ Button
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var basePath = AppContext.BaseDirectory;
+            /*var basePath = AppContext.BaseDirectory;
             
-            System.Diagnostics.Process.Start(basePath + @"/Assets/faq.html");
+            System.Diagnostics.Process.Start(basePath + @"/Assets/faq.html");*/
+
+            faq_button.IsChecked = true;
+            
         }
         //Close Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -201,6 +220,11 @@ namespace FBLACodingAndProgramming2021_2022
             
 
             
+        }
+
+        private void faq_button_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

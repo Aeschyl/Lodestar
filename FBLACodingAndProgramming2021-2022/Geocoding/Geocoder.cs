@@ -48,7 +48,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             public string Postal { get; set; }
         }
 
-        public static List<string> GetCoordinatesAsync(string address) 
+        public static List<string> GetCoordinatesAsync(string address)
 
         {
             string result;
@@ -60,16 +60,16 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
             requestsServerUrl.Append(@"url=");
 
-            
+
 
             requestUrl.Append(address);
 
-            
+
             requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString()));
 
             var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString());
 
-            using (HttpWebResponse response =  (HttpWebResponse) request.GetResponse())
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -103,15 +103,17 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
                 return list;
             }
             throw new Exception(string.Format("Error: {0}, {1}", coord.Latitude, coord.Longitude));
-            
+
         }
+
 
         private static string GetIPAddressAsync()
         {
             String address = "";
             WebRequest request = WebRequest.Create("http://checkip.dyndns.org/");
             request.Proxy = null;
-            using (WebResponse response =  request.GetResponse())
+
+            using (WebResponse response = request.GetResponse())
             using (StreamReader stream = new StreamReader(response.GetResponseStream()))
             {
                 address = stream.ReadToEnd();
@@ -126,13 +128,20 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
         public static List<string> GetCoordinatesFromIpAddress()
         {
-            string ipAddress = GetIPAddressAsync();
-            //Get Ip Address
-            
+            string ipAddress;
+            try
+            {
+                ipAddress = GetIPAddressAsync();
+                //Get Ip Address
+            }
+            catch (Exception)
+            {
+                return null;
+            }
 
 
             string jsonString;
-            
+
             StringBuilder url = new StringBuilder(@"https://ipinfo.io/");
             url.Append(ipAddress);
             url.Append("/json");
@@ -149,13 +158,25 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
                 html = await reader.ReadToEndAsync();
             }*/
 
-            Task<WebResponse> task = Task.Factory.FromAsync(
-        request.BeginGetResponse,
-        asyncResult => request.EndGetResponse(asyncResult),
-        (object)null);
             
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                using (StreamReader stream = new StreamReader(response.GetResponseStream()))
+                {
+                    jsonString = stream.ReadToEnd();
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
 
-            jsonString = task.ContinueWith(t => ReadStreamFromResponse(t.Result)).Result;
+
+
+
+
+            
 
             var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
             var list = new List<string>();

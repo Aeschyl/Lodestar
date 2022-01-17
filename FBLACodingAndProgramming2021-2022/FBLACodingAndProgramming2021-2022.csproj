@@ -165,10 +165,14 @@
     <Compile Include="ErrorHandling\ErrorHandler.cs" />
     <Compile Include="Geocoding\Geocoder.cs" />
     <Compile Include="MVMM\ViewModel\DistanceViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\FAQViewModel.cs" />
     <Compile Include="MVMM\ViewModel\LocationViewModel.cs" />
     <Compile Include="MVMM\ViewModel\ResultsViewModel.cs" />
     <Compile Include="MVMM\View\DistanceView.xaml.cs">
       <DependentUpon>DistanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\FAQView.xaml.cs">
+      <DependentUpon>FAQView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVMM\View\LocationView.xaml.cs">
       <DependentUpon>LocationView.xaml</DependentUpon>
@@ -205,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVMM\View\ExploreSubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVMM\View\FAQView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

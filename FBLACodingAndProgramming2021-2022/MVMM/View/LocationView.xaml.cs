@@ -1,4 +1,5 @@
-﻿using FBLACodingAndProgramming2021_2022.Geocoding;
+﻿using FBLACodingAndProgramming2021_2022.ErrorHandling;
+using FBLACodingAndProgramming2021_2022.Geocoding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -115,19 +116,44 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             
             
+            
+
+            if (coordinates != null)
+            {
+                Parameters.Longitude = ipAddressLongitude;
+                Parameters.Latitude = ipAddressLatitude;
+            }
+            else
+            {
+               
+                    var coordinates = Geocoder.GetCoordinatesFromIpAddress();
+                if (coordinates != null)
+                {
+                    ipAddressLatitude = coordinates[1];
+                    ipAddressLongitude = coordinates[0];
+                }
+                else
+                {
+                    new ErrorHandling.ErrorHandler().ShowError("An Error Occurred with getting Ip Address\nTry Another option or try again");
+                    e.Handled = true;
+                    return;
+                }
+
+                
+            }
             ClickButton(form.DistanceActivator);
             form.distance_button.IsChecked = true;
             form.location_button.IsChecked = false;
-
-            Parameters.Longitude = ipAddressLongitude;
-            Parameters.Latitude = ipAddressLatitude;
         }
 
         private void IpAddressCoordinates()
         {
             var coordinates = Geocoder.GetCoordinatesFromIpAddress();
-            ipAddressLatitude = coordinates[1];
-            ipAddressLongitude = coordinates[0];
+            if (coordinates != null)
+            {
+                ipAddressLatitude = coordinates[1];
+                ipAddressLongitude = coordinates[0];
+            }
         }
 
        
