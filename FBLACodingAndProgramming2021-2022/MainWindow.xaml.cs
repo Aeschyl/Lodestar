@@ -1,4 +1,5 @@
 ﻿using FBLACodingAndProgramming2021_2022.Core;
+using FBLACodingAndProgramming2021_2022.ErrorHandling;
 using FBLACodingAndProgramming2021_2022.MVMM.View;
 using FBLACodingAndProgramming2021_2022.MVMM.ViewModel;
 using Json;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,10 +37,57 @@ namespace FBLACodingAndProgramming2021_2022
         public MainWindow()
         {
             InitializeComponent();
+
+            var result = CheckInternetConnectivityAsync();
+            
+            if (!result)
+            {
+                StayInErrorScreen();
+            }
+            
             ClickButton(CategoryActivator);
 
 
 
+        }
+
+        private void StayInErrorScreen()
+        {
+            /*ErrorRectangle.Visibility = Visibility.Visible;
+            ErrorRectangle.Opacity = 20;*/
+            //ErrorText.Visibility = Visibility.Visible;
+
+            ErrorHandler handler = new ErrorHandler();
+
+            handler.ShowError("No Internet Connection", true);
+            
+
+            Application.Current.MainWindow.IsEnabled = false;
+            
+
+            LoadingAnimation.Visibility = Visibility.Visible;
+
+
+        }
+
+        private  bool CheckInternetConnectivityAsync()
+        {
+            try
+            {
+
+                var hostUrl = "www.google.com";
+
+                Ping ping = new Ping();
+
+                ping.SendAsyncCancel();
+                PingReply result =  ping.Send(hostUrl, 10);
+                
+                return result.Status == IPStatus.Success;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
       
