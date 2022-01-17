@@ -1,4 +1,8 @@
-﻿namespace Json
+﻿/*
+    The logic for the API called to return various attractions that fit the user's requirements screen
+*/
+
+namespace Json
 {
     using System;
     using System.Collections.Generic;
@@ -13,9 +17,6 @@
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-   
-        
-        
         internal class Datasource
         {
             public string sourcename { get; set; }
@@ -67,6 +68,7 @@
             public static string jsonString { get; set; }
             private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        // The method to issue an HTTP request to our own server which returns results from the API
         public static void GetJsonFromGeoApi()
         {
             string html;

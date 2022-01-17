@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    The logic for the amenities screen where the user is able to select the amenities they require
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

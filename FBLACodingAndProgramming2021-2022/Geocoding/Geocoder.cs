@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    A program that contains the various methods including manual address geocoding, location sensor geocoding, and IP address geocoding
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,24 +52,21 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             public string Postal { get; set; }
         }
 
+        // Manual Address Geocoding where the user can enter their address for the location option
         public static List<string> GetCoordinatesAsync(string address) 
-
         {
             string result;
 
-            //Connects to our own third party server so that api keys are safe
+            // Connects to our own server so that api keys are safe
             var requestsServerUrl = new StringBuilder(@"https://touristserver.sami200.repl.co/bingmaps?");
 
             var requestUrl = new StringBuilder(@"https://dev.virtualearth.net/REST/v1/Locations?q=");
 
             requestsServerUrl.Append(@"url=");
 
-            
-
             requestUrl.Append(address);
 
-            
-            requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString()));
+            requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString()));  // Encoding the url to pass it as a parameter to our server
 
             var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString());
 
@@ -86,6 +87,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             return addressesString;
         }
 
+        // Uses the user's location sensor to procure accurate location data for the user
         public static List<string> GetCoordinatesFromLocationSensor()
         {
             GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
@@ -106,6 +108,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             
         }
 
+        // This method find the IP Address for the user
         private static string GetIPAddressAsync()
         {
             String address = "";
@@ -124,12 +127,10 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             return address;
         }
 
+        // This method calls our server for a request to an API that returns the coordinates of an IP A
         public static List<string> GetCoordinatesFromIpAddress()
         {
-            string ipAddress = GetIPAddressAsync();
-            //Get Ip Address
-            
-
+            string ipAddress = GetIPAddressAsync(); //Get IP Address
 
             string jsonString;
             
@@ -140,9 +141,9 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             var request = (HttpWebRequest)WebRequest.Create(url.ToString());
 
             /*using (HttpWebResponse response =  await  Task.Factory.FromAsync(
-        request.BeginGetResponse,
-        asyncResult => request.EndGetResponse(asyncResult),
-        (object)null) as HttpWebResponse)
+            request.BeginGetResponse,
+            asyncResult => request.EndGetResponse(asyncResult),
+            (object)null) as HttpWebResponse)
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -150,9 +151,9 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             }*/
 
             Task<WebResponse> task = Task.Factory.FromAsync(
-        request.BeginGetResponse,
-        asyncResult => request.EndGetResponse(asyncResult),
-        (object)null);
+            request.BeginGetResponse,
+            asyncResult => request.EndGetResponse(asyncResult),
+            (object)null);
             
 
             jsonString = task.ContinueWith(t => ReadStreamFromResponse(t.Result)).Result;
@@ -164,6 +165,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             list.Add(tempList[0]);
             return list;
         }
+        
         private static string ReadStreamFromResponse(WebResponse response)
         {
             using (Stream responseStream = response.GetResponseStream())

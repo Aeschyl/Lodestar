@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    The logic for the category screen
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,6 +42,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             invokeProv.Invoke();
         }
 
+        // Increases the Progress Bar size to show the user their progress
         public static void IncrementProgressBar(ProgressBar p, int val) 
         {
             p.Value = val;

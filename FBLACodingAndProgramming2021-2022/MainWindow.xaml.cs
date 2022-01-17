@@ -1,4 +1,8 @@
-﻿using FBLACodingAndProgramming2021_2022.Core;
+﻿/*
+    The category screen where the user has options to select what category they want the attraction to be
+*/
+
+using FBLACodingAndProgramming2021_2022.Core;
 using FBLACodingAndProgramming2021_2022.MVMM.View;
 using FBLACodingAndProgramming2021_2022.MVMM.ViewModel;
 using Json;

@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    A static class to procure the user's CPU Serial number, which is unique and used to store data appropriately
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
