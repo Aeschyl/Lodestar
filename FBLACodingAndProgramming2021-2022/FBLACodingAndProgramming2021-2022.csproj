@@ -181,6 +181,7 @@
       <DependentUpon>ResultsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Results.cs" />
+    <Compile Include="WeatherInfo.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

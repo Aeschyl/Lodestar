@@ -1,10 +1,12 @@
 ﻿using FBLACodingAndProgramming2021_2022.ErrorHandling;
 using Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -117,9 +119,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         }
 
-        private async Task<string> GetWeatherInformation()
-        {
+       
 
+        private async void GetWeatherButton_Click(object sender, RoutedEventArgs e)
+        {
             var url = new StringBuilder(@"https://touristserver.sami200.repl.co/weather?");
             url.Append("long=");
             url.Append(selectedFeature.properties.lon);
@@ -127,30 +130,27 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             url.Append(selectedFeature.properties.lat);
 
             string outputString = "";
-            var request = (HttpWebRequest)WebRequest.Create(url.ToString());
+            var request = new HttpClient();
             try
             {
-                using (var response = request.GetResponseAsync())
-                using (Stream stream = response.Result.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    outputString = reader.ReadToEnd();
+                string response = await request.GetStringAsync(url.ToString());
 
-                }
+
+
+                outputString = response;
+
+
             }
             catch (Exception)
             {
                 new ErrorHandler().ShowError("Something went wrong with getting weather information");
-                return null;
+                return;
             }
-            return outputString;
-            
-        }
 
-        private void GetWeatherButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(GetWeatherInformation().Result);
-            ;
+            var weather = JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
+            FeatureInformation.Text += string.Format("\nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp,weather.weather[0].description);
+            
+            
         }
     }
 }
