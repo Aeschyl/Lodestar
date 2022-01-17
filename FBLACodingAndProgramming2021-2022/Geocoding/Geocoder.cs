@@ -52,8 +52,13 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             public string Postal { get; set; }
         }
 
+<<<<<<< HEAD
         // Manual Address Geocoding where the user can enter their address for the location option
         public static List<string> GetCoordinatesAsync(string address) 
+=======
+        public static List<string> GetCoordinatesAsync(string address)
+
+>>>>>>> b21452925ef52a48cbcc3038c56b890da1a6db20
         {
             string result;
 
@@ -64,13 +69,22 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
             requestsServerUrl.Append(@"url=");
 
+<<<<<<< HEAD
             requestUrl.Append(address);
 
             requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString()));  // Encoding the url to pass it as a parameter to our server
+=======
+
+
+            requestUrl.Append(address);
+
+
+            requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString()));
+>>>>>>> b21452925ef52a48cbcc3038c56b890da1a6db20
 
             var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString());
 
-            using (HttpWebResponse response =  (HttpWebResponse) request.GetResponse())
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -105,16 +119,21 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
                 return list;
             }
             throw new Exception(string.Format("Error: {0}, {1}", coord.Latitude, coord.Longitude));
-            
+
         }
 
+<<<<<<< HEAD
         // This method find the IP Address for the user
+=======
+
+>>>>>>> b21452925ef52a48cbcc3038c56b890da1a6db20
         private static string GetIPAddressAsync()
         {
             String address = "";
             WebRequest request = WebRequest.Create("http://checkip.dyndns.org/");
             request.Proxy = null;
-            using (WebResponse response =  request.GetResponse())
+
+            using (WebResponse response = request.GetResponse())
             using (StreamReader stream = new StreamReader(response.GetResponseStream()))
             {
                 address = stream.ReadToEnd();
@@ -130,10 +149,24 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
         // This method calls our server for a request to an API that returns the coordinates of an IP A
         public static List<string> GetCoordinatesFromIpAddress()
         {
+<<<<<<< HEAD
             string ipAddress = GetIPAddressAsync(); //Get IP Address
+=======
+            string ipAddress;
+            try
+            {
+                ipAddress = GetIPAddressAsync();
+                //Get Ip Address
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+>>>>>>> b21452925ef52a48cbcc3038c56b890da1a6db20
 
             string jsonString;
-            
+
             StringBuilder url = new StringBuilder(@"https://ipinfo.io/");
             url.Append(ipAddress);
             url.Append("/json");
@@ -150,13 +183,32 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
                 html = await reader.ReadToEndAsync();
             }*/
 
+<<<<<<< HEAD
             Task<WebResponse> task = Task.Factory.FromAsync(
             request.BeginGetResponse,
             asyncResult => request.EndGetResponse(asyncResult),
             (object)null);
+=======
+>>>>>>> b21452925ef52a48cbcc3038c56b890da1a6db20
             
+            try
+            {
+                using (WebResponse response = request.GetResponse())
+                using (StreamReader stream = new StreamReader(response.GetResponseStream()))
+                {
+                    jsonString = stream.ReadToEnd();
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
 
-            jsonString = task.ContinueWith(t => ReadStreamFromResponse(t.Result)).Result;
+
+
+
+
+            
 
             var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
             var list = new List<string>();

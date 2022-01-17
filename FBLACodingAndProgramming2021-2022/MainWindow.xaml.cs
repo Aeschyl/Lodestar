@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 ﻿/*
     The category screen where the user has options to select what category they want the attraction to be
 */
 
 using FBLACodingAndProgramming2021_2022.Core;
+=======
+﻿using FBLACodingAndProgramming2021_2022.Core;
+using FBLACodingAndProgramming2021_2022.ErrorHandling;
+>>>>>>> b21452925ef52a48cbcc3038c56b890da1a6db20
 using FBLACodingAndProgramming2021_2022.MVMM.View;
 using FBLACodingAndProgramming2021_2022.MVMM.ViewModel;
 using Json;
@@ -12,6 +17,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Management;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -39,10 +46,60 @@ namespace FBLACodingAndProgramming2021_2022
         public MainWindow()
         {
             InitializeComponent();
+
+            var result = CheckInternetConnectivityAsync();
+            
+            if (!result)
+            {
+                StayInErrorScreen();
+            }
+            
             ClickButton(CategoryActivator);
 
+            
 
 
+
+        }
+
+        private void StayInErrorScreen()
+        {
+            /*ErrorRectangle.Visibility = Visibility.Visible;
+            ErrorRectangle.Opacity = 20;*/
+            //ErrorText.Visibility = Visibility.Visible;
+
+            ErrorHandler handler = new ErrorHandler();
+
+            handler.ShowError("No Internet Connection", true);
+            
+
+            Application.Current.MainWindow.IsEnabled = false;
+            
+
+            LoadingAnimation.Visibility = Visibility.Visible;
+
+
+        }
+        
+
+        private  bool CheckInternetConnectivityAsync()
+        {
+            try
+            {
+
+                var hostUrl = "www.google.com";
+
+                Ping ping = new Ping();
+
+                ping.SendAsyncCancel();
+                PingReply result =  ping.Send(hostUrl, 10);
+                
+                return result.Status == IPStatus.Success;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
       
@@ -138,9 +195,12 @@ namespace FBLACodingAndProgramming2021_2022
         //FAQ Button
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var basePath = AppContext.BaseDirectory;
+            /*var basePath = AppContext.BaseDirectory;
             
-            System.Diagnostics.Process.Start(basePath + @"/Assets/faq.html");
+            System.Diagnostics.Process.Start(basePath + @"/Assets/faq.html");*/
+
+            faq_button.IsChecked = true;
+            
         }
         //Close Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -156,6 +216,11 @@ namespace FBLACodingAndProgramming2021_2022
             
 
             
+        }
+
+        private void faq_button_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

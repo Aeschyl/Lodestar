@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,6 +29,24 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
             
 
         }
+        public async void ShowError(string err, bool stay)
+        {
+            MainWindow form = Application.Current.Windows[0] as MainWindow;
+            form.ErrorTextBox.Text = err;
+            form.ErrorTextBox.Opacity = 100;
+            form.ErrorTextBox.Visibility = System.Windows.Visibility.Visible;
+            if (!stay)
+            {
+                await FadeTextBox(form);
+            }
+            
+
+            
+
+
+        }
+
+        
 
         // A method to gradually fade away the error box 
         public async Task FadeTextBox(MainWindow form)

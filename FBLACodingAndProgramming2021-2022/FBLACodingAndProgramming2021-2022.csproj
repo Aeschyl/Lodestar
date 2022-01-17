@@ -69,6 +69,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Geocoding, Version=3.6.0.0, Culture=neutral, PublicKeyToken=7c714700b88674c7, processorArchitecture=MSIL">
       <HintPath>..\packages\Geocoding.net.3.6.1\lib\net40\Geocoding.dll</HintPath>
     </Reference>
@@ -162,10 +165,14 @@
     <Compile Include="ErrorHandling\ErrorHandler.cs" />
     <Compile Include="Geocoding\Geocoder.cs" />
     <Compile Include="MVMM\ViewModel\DistanceViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\FAQViewModel.cs" />
     <Compile Include="MVMM\ViewModel\LocationViewModel.cs" />
     <Compile Include="MVMM\ViewModel\ResultsViewModel.cs" />
     <Compile Include="MVMM\View\DistanceView.xaml.cs">
       <DependentUpon>DistanceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\FAQView.xaml.cs">
+      <DependentUpon>FAQView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVMM\View\LocationView.xaml.cs">
       <DependentUpon>LocationView.xaml</DependentUpon>
@@ -202,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVMM\View\ExploreSubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVMM\View\FAQView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -315,8 +326,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Python\src\Input\Input.json" />
-    <None Include="Python\src\Output\Output.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -329,7 +338,6 @@
     <Content Include="Assets\faq.html" />
     <Resource Include="Assets\logo.png" />
     <Resource Include="logo.ico" />
-    <Content Include="Python\src\api.py" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

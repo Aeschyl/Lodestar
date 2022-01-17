@@ -21,6 +21,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.ViewModel
         public RelayCommand LocationViewCommand { get; set; }
         public RelayCommand DistanceViewCommand { get; set; }
         public RelayCommand ResultsViewCommand { get; set; }
+        public RelayCommand FAQViewCommand { get; set; }
 
         public HomeViewModel HomeVM { get; set; }
         public HaveFunSubViewModel HaveFunSubVM { get; set; }
@@ -32,6 +33,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.ViewModel
         public LocationViewModel LocationVM { get; set; }
         public DistanceViewModel DistanceVM { get; set; }
         public ResultsViewModel ResultsVM { get; set; }
+        public FAQViewModel FAQVM { get; set; }
 
         private object _currentView;
 
@@ -59,6 +61,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.ViewModel
             LocationVM = new LocationViewModel();
             DistanceVM = new DistanceViewModel();
             ResultsVM = new ResultsViewModel();
+            FAQVM = new FAQViewModel();
 
             HomeViewCommand = new RelayCommand(o => 
             {
@@ -108,6 +111,11 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.ViewModel
             ResultsViewCommand = new RelayCommand(o =>
             {
                 CurrentView = ResultsVM;
+            });
+
+            FAQViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = FAQVM;
             });
 
         }

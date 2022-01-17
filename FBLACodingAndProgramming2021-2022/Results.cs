@@ -9,6 +9,7 @@ namespace Json
 
     using System.Globalization;
     using System.IO;
+    using System.Management;
     using System.Net;
     using System.Text;
     using System.Web;
@@ -67,8 +68,23 @@ namespace Json
             public List<Feature> features { get; set; }
             public static string jsonString { get; set; }
             private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static string GetCPUSerialNumber()
+        {
+            string cpuInfo = string.Empty;
+            ManagementClass mc = new ManagementClass("win32_processor");
+            ManagementObjectCollection moc = mc.GetInstances();
 
+<<<<<<< HEAD
         // The method to issue an HTTP request to our own server which returns results from the API
+=======
+            foreach (ManagementObject mo in moc)
+            {
+                cpuInfo = mo.Properties["processorID"].Value.ToString();
+                break;
+            }
+            return cpuInfo;
+        }
+>>>>>>> b21452925ef52a48cbcc3038c56b890da1a6db20
         public static void GetJsonFromGeoApi()
         {
             string html;
@@ -129,6 +145,9 @@ namespace Json
             requestsServerUrl.Append("url=");
             requestsServerUrl.Append(HttpUtility.UrlEncode(builder.ToString()));
 
+            requestsServerUrl.Append("&cpuserialid=");
+            requestsServerUrl.Append(GetCPUSerialNumber());
+
             log.Debug("Http Request made to the link: " + requestsServerUrl.ToString());
 
 
@@ -159,6 +178,7 @@ namespace Json
             }
             
         }
+
     }
 
         

@@ -58,6 +58,12 @@
                 <view:ResultsView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:FAQViewModel}">
+                <view:FAQView />
+            </DataTemplate>
+                
+            
+
            
 
 
