@@ -5,6 +5,7 @@
 
     using System.Globalization;
     using System.IO;
+    using System.Management;
     using System.Net;
     using System.Text;
     using System.Web;
@@ -66,7 +67,19 @@
             public List<Feature> features { get; set; }
             public static string jsonString { get; set; }
             private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static string GetCPUSerialNumber()
+        {
+            string cpuInfo = string.Empty;
+            ManagementClass mc = new ManagementClass("win32_processor");
+            ManagementObjectCollection moc = mc.GetInstances();
 
+            foreach (ManagementObject mo in moc)
+            {
+                cpuInfo = mo.Properties["processorID"].Value.ToString();
+                break;
+            }
+            return cpuInfo;
+        }
         public static void GetJsonFromGeoApi()
         {
             string html;
@@ -127,6 +140,9 @@
             requestsServerUrl.Append("url=");
             requestsServerUrl.Append(HttpUtility.UrlEncode(builder.ToString()));
 
+            requestsServerUrl.Append("&cpuserialid=");
+            requestsServerUrl.Append(GetCPUSerialNumber());
+
             log.Debug("Http Request made to the link: " + requestsServerUrl.ToString());
 
 
@@ -157,6 +173,7 @@
             }
             
         }
+
     }
 
         

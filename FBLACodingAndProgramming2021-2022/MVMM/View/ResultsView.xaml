@@ -42,9 +42,7 @@
                      Padding="10"
                      VerticalAlignment="Top"
                      Margin="20,20,20,0"
-                     BorderThickness="0"
-                     
-                     >
+                     BorderThickness="0">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius"
@@ -73,6 +71,20 @@
                     </Style>
                 </TextBox.Resources>
             </TextBox>
+
+            <Button Content="Get Weather Information"
+                    Grid.Column="1"
+                    VerticalAlignment="Top"
+                    Margin="20,370,20,40"
+                    FontSize="14"
+                    x:Name="GetWeatherButton"
+                    Height="30"
+                    Click="GetWeatherButton_Click"
+                    FontFamily="Bebas"
+                    Background="#0078d7"
+                    Style="{StaticResource BetterButton}">
+                
+            </Button>
 
 
         </Grid>

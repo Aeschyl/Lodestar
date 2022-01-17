@@ -2,7 +2,9 @@
 using Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -113,6 +115,42 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             FeatureName.Text = selectedFeature.properties.name.Length > 31? selectedFeature.properties.name.Substring(0,29) + "...": selectedFeature.properties.name;
             FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance/1609.34,2));
 
+        }
+
+        private async Task<string> GetWeatherInformation()
+        {
+
+            var url = new StringBuilder(@"https://touristserver.sami200.repl.co/weather?");
+            url.Append("long=");
+            url.Append(selectedFeature.properties.lon);
+            url.Append("&lat=");
+            url.Append(selectedFeature.properties.lat);
+
+            string outputString = "";
+            var request = (HttpWebRequest)WebRequest.Create(url.ToString());
+            try
+            {
+                using (var response = request.GetResponseAsync())
+                using (Stream stream = response.Result.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    outputString = reader.ReadToEnd();
+
+                }
+            }
+            catch (Exception)
+            {
+                new ErrorHandler().ShowError("Something went wrong with getting weather information");
+                return null;
+            }
+            return outputString;
+            
+        }
+
+        private void GetWeatherButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(GetWeatherInformation().Result);
+            ;
         }
     }
 }

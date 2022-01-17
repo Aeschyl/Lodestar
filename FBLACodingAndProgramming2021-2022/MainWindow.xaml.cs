@@ -72,19 +72,7 @@ namespace FBLACodingAndProgramming2021_2022
 
 
         }
-        private string GetCPUSerialNumber()
-        {
-            string cpuInfo = string.Empty;
-            ManagementClass mc = new ManagementClass("win32_processor");
-            ManagementObjectCollection moc = mc.GetInstances();
-
-            foreach (ManagementObject mo in moc)
-            {
-                cpuInfo = mo.Properties["processorID"].Value.ToString();
-                break;
-            }
-            return cpuInfo;
-        }
+        
 
         private  bool CheckInternetConnectivityAsync()
         {
