@@ -60,10 +60,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
             requestsServerUrl.Append(@"url=");
 
-
-
             requestUrl.Append(address);
-
 
             requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString()));
 
@@ -76,12 +73,10 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
                 result = reader.ReadToEnd();
             }
 
-
             var addresses = JsonConvert.DeserializeObject<List<double>>(result);
             var addressesString = new List<string>();
             addressesString.Add(addresses.First().ToString());
             addressesString.Add(addresses.Last().ToString());
-
 
             return addressesString;
         }
@@ -128,10 +123,11 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
         public static List<string> GetCoordinatesFromIpAddress()
         {
+            
             string ipAddress;
             try
             {
-                ipAddress = GetIPAddressAsync();
+                ipAddress = GetIPAddressAsync(); // Im gonna assume this works
                 //Get Ip Address
             }
             catch (Exception)
@@ -140,13 +136,16 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             }
 
 
-            string jsonString;
+            string jsonString = "https://touristserver.sami200.repl.co/ipinfo?url=";
 
             StringBuilder url = new StringBuilder(@"https://ipinfo.io/");
             url.Append(ipAddress);
             url.Append("/json");
             //Get and return Location
-            var request = (HttpWebRequest)WebRequest.Create(url.ToString());
+            
+            jsonString += HttpUtility.UrlEncode(url.ToString());
+            
+            var request = (HttpWebRequest)WebRequest.Create(jsonString.ToString());
 
             /*using (HttpWebResponse response =  await  Task.Factory.FromAsync(
         request.BeginGetResponse,
