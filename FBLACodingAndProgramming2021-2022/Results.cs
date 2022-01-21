@@ -7,7 +7,9 @@
     using System.IO;
     using System.Management;
     using System.Net;
+    using System.Net.Http;
     using System.Text;
+    using System.Threading.Tasks;
     using System.Web;
     using FBLACodingAndProgramming2021_2022;
     using FBLACodingAndProgramming2021_2022.ErrorHandling;
@@ -80,9 +82,9 @@
             }
             return cpuInfo;
         }
-        public static void GetJsonFromGeoApi()
+        public static async Task GetJsonFromGeoApiAsync()
         {
-            string html;
+            
             string url = @"https://api.geoapify.com/v2/places/?";
             //Connects to our own third party server so that api keys are safe
             var requestsServerUrl = new StringBuilder(@"https://touristserver.sami200.repl.co/geoapify?");
@@ -146,15 +148,12 @@
             log.Debug("Http Request made to the link: " + requestsServerUrl.ToString());
 
 
-            var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString());
+            var request = new HttpClient();
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                html = reader.ReadToEnd();
-            }
-            jsonString = html;
+
+
+            jsonString = await request.GetStringAsync(requestsServerUrl.ToString());
+
         }
 
         public static Root FromJson(string json)

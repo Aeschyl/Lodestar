@@ -54,13 +54,13 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         }
 
 
-        public void InitializeListBox()
+        public async void InitializeListBox()
         {
             
 
             try
             {
-                Root.GetJsonFromGeoApi();
+                await Root.GetJsonFromGeoApiAsync();
             }
             catch (Exception)
             {
@@ -81,7 +81,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
              var list = new List<string>();
 
-            if(values == null)
+            if(values.features == null)
             {
                 log.Error("No results");
                 handler.ShowError("No Results, Click Restart");
@@ -105,9 +105,13 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             MainListBox.ItemsSource = null;
             MainListBox.ItemsSource = list;
+            var basePath = AppContext.BaseDirectory + @"\Assets\map.html";
             
+            
+            MainWebBrowser.NavigateToString(File.ReadAllText(basePath));
 
         }
+
 
       
 
@@ -120,15 +124,21 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
                 //31
             selectedFeature = GetFeatureByName(MainListBox.SelectedItem.ToString().Split(';')[0]);
-            FeatureName.Text = selectedFeature.properties.name.Length > 31? selectedFeature.properties.name.Substring(0,29) + "...": selectedFeature.properties.name;
+            
             FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance/1609.34,2));
+            GetWeather();
 
         }
 
        
 
-        private async void GetWeatherButton_Click(object sender, RoutedEventArgs e)
+        private async void GetWeather()
         {
+            if(selectedFeature == null)
+            {
+                new ErrorHandler().ShowError("No Place Selected");
+                return;
+            }
             var url = new StringBuilder(@"https://touristserver.sami200.repl.co/weather?");
             url.Append("long=");
             url.Append(selectedFeature.properties.lon);
@@ -154,7 +164,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
 
             var weather = JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
-            FeatureInformation.Text += string.Format("\nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp,weather.weather[0].description);
+            FeatureInformation.Text += string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp,weather.weather[0].description);
             
             
         }

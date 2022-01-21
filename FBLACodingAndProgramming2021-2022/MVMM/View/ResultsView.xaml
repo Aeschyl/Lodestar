@@ -16,76 +16,60 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            <Border CornerRadius="5"
+                    Margin="20"
+                    BorderThickness="2"
+                    BorderBrush="#d1d1d1">
+                <WebBrowser Grid.Column="0" Opacity="0" x:Name="MainWebBrowser"
+                            Margin="0">
+                    
+                </WebBrowser>
+            </Border>
 
-            <ListBox Foreground="Black"
-                     Background="#d1d1d1"
-                     Margin="20,20,0,20"
-                     x:Name="MainListBox"
-                     MouseDoubleClick="MainListBox_MouseDoubleClick">
-                <ListBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius"
-                                Value="5" />
-                    </Style>
-                </ListBox.Resources>
-            </ListBox>
+            
 
-            <TextBox x:Name="FeatureName"
-                     Background="#d1d1d1"
-                     Foreground="Black"
-                     FontFamily="bebas"
-                     FontSize="20"
-                     Grid.Column="1"
-                     TextWrapping="WrapWithOverflow"
-                     IsReadOnly="True"
-                     Height="60"
-                     Padding="10"
-                     VerticalAlignment="Top"
-                     Margin="20,20,20,0"
-                     BorderThickness="0">
-                <TextBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius"
-                                Value="5" />
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
 
-            <TextBox x:Name="FeatureInformation"
-                     Background="#d1d1d1"
-                     Foreground="Black"
-                     FontFamily="bebas"
-                     FontSize="14"
-                     VerticalScrollBarVisibility="Auto"
-                     Grid.Column="1"
-                     TextWrapping="WrapWithOverflow"
-                     IsReadOnly="True"
-                     Height="250"
-                     Padding="10"
-                     VerticalAlignment="Top"
-                     Margin="20,100,20,0"
-                     BorderThickness="0">
-                <TextBox.Resources>
-                    <Style TargetType="{x:Type Border}">
-                        <Setter Property="CornerRadius"
-                                Value="5" />
-                    </Style>
-                </TextBox.Resources>
-            </TextBox>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBox x:Name="FeatureInformation"
+                         Background="#d1d1d1"
+                         Foreground="Black"
+                         FontFamily="bebas"
+                         FontSize="14"
+                         VerticalScrollBarVisibility="Auto"
+                         TextWrapping="WrapWithOverflow"
+                         IsReadOnly="True"
+                         Padding="10"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch"
+                         Margin="20"
+                         BorderThickness="0">
+                    <TextBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius"
+                                    Value="5" />
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
 
-            <Button Content="Get Weather Information"
-                    Grid.Column="1"
-                    VerticalAlignment="Top"
-                    Margin="20,370,20,40"
-                    FontSize="14"
-                    x:Name="GetWeatherButton"
-                    Height="30"
-                    Click="GetWeatherButton_Click"
-                    FontFamily="Bebas"
-                    Background="#0078d7"
-                    Style="{StaticResource BetterButton}">
-                
-            </Button>
+                <ListBox Foreground="Black"
+                         Grid.Row="1"
+                         Background="#d1d1d1"
+                         Margin="20"
+                         x:Name="MainListBox"
+                         MouseDoubleClick="MainListBox_MouseDoubleClick">
+                    <ListBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius"
+                                    Value="5" />
+                        </Style>
+                    </ListBox.Resources>
+                </ListBox>
+            </Grid>
+
 
 
         </Grid>

@@ -87,60 +87,28 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
         public static List<string> GetCoordinatesFromLocationSensor()
         {
-            
 
-            watcher.StatusChanged += Watcher_StatusChanged;
-            
-            
 
-            GeoCoordinate coord = watcher.Position.Location;
+            watcher.TryStart(true, new TimeSpan(1000));
 
-            if (coord.IsUnknown != true)
+            for (int i = 0; i < 10; i++)
             {
-                var list = new List<string>();
-                list.Add(coord.Latitude.ToString());
-                list.Add(coord.Longitude.ToString());
-                return list;
+
+                GeoCoordinate coord = watcher.Position.Location;
+
+                if (coord.IsUnknown != true)
+                {
+                    var list = new List<string>();
+                    list.Add(coord.Latitude.ToString());
+                    list.Add(coord.Longitude.ToString());
+                    return list;
+                }
             }
-            throw new Exception(string.Format("Error: {0}, {1}", coord.Latitude, coord.Longitude));
+            throw new Exception();
 
         }
 
-        private static void Watcher_StatusChanged(object sender, GeoPositionStatusChangedEventArgs e)
-        {
-            var list = new List<string>();
-            try
-            {
-                if (e.Status == GeoPositionStatus.Ready)
-                {
-                    // Display the latitude and longitude.  
-                    if (watcher.Position.Location.IsUnknown)
-                    {
-                        log.Error("Could not get Local Location");
-                        throw new Exception();
-                        
-                    }
-                    else
-                    {
-                        list.Add(watcher.Position.Location.Latitude.ToString());
-                        list.Add(watcher.Position.Location.Longitude.ToString());
-                    }
-                }
-                else
-                {
-                    log.Error("Could not get Local Location");
-                    throw new Exception();
-                }
-                localList = list;
-            }
-            catch (Exception ex)
-            {
-                log.Error("Could not get Local Location: " + ex.Message);
-                throw new Exception();
-                
-                
-            }
-        }
+       
 
         private static string GetIPAddressAsync()
         {

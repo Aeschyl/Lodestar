@@ -31,7 +31,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
 
 
-        public string coordinates;
+        
         public LocationView()
         {
             InitializeComponent();
@@ -118,7 +118,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             
             
 
-            if (coordinates != null)
+            if (ipAddressLatitude != null)
             {
                 Parameters.Longitude = ipAddressLongitude;
                 Parameters.Latitude = ipAddressLatitude;
@@ -129,8 +129,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     var coordinates = Geocoder.GetCoordinatesFromIpAddress();
                 if (coordinates != null)
                 {
-                    ipAddressLatitude = coordinates[1];
-                    ipAddressLongitude = coordinates[0];
+                    Parameters.Latitude = coordinates[1];
+                    Parameters.Longitude = coordinates[0];
                 }
                 else
                 {
@@ -148,11 +148,11 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         private void IpAddressCoordinates()
         {
-            var coordinates = Geocoder.GetCoordinatesFromIpAddress();
-            if (coordinates != null)
+            var coor = Geocoder.GetCoordinatesFromIpAddress();
+            if (coor != null)
             {
-                ipAddressLatitude = coordinates[1];
-                ipAddressLongitude = coordinates[0];
+                ipAddressLatitude = coor[1];
+                ipAddressLongitude = coor[0];
             }
         }
 

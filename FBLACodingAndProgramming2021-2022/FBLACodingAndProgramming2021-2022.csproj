@@ -337,6 +337,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\faq.html" />
+    <Content Include="Assets\map.html" />
     <Resource Include="Assets\logo.png" />
     <Resource Include="logo.ico" />
   </ItemGroup>
