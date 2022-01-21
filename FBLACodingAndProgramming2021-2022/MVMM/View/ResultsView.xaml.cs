@@ -81,6 +81,12 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
              var list = new List<string>();
 
+            if(values == null)
+            {
+                log.Error("No results");
+                handler.ShowError("No Results, Click Restart");
+                return;
+            }
 
             int unknownCounter = 1;
             for(int i =0;i < values.features.Count; i++)

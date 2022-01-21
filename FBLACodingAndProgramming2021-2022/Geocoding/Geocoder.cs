@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace FBLACodingAndProgramming2021_2022.Geocoding
 {
+    using FBLACodingAndProgramming2021_2022.ErrorHandling;
     using global::Geocoding;
     using global::Geocoding.Microsoft;
     using Newtonsoft.Json;
@@ -21,6 +22,9 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
     class Geocoder
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        static GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+        static List<string> localList = new List<string>();
         public class IpInfo
         {
             [JsonProperty("ip")]
@@ -88,10 +92,11 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
         public static List<string> GetCoordinatesFromLocationSensor()
         {
-            GeoCoordinateWatcher watcher = new GeoCoordinateWatcher();
+            
 
-            // Do not suppress prompt, and wait 1000 milliseconds to start.
-            watcher.TryStart(true, TimeSpan.FromMilliseconds(5000));
+            watcher.StatusChanged += Watcher_StatusChanged;
+            
+            
 
             GeoCoordinate coord = watcher.Position.Location;
 
@@ -106,6 +111,41 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
         }
 
+        private static void Watcher_StatusChanged(object sender, GeoPositionStatusChangedEventArgs e)
+        {
+            var list = new List<string>();
+            try
+            {
+                if (e.Status == GeoPositionStatus.Ready)
+                {
+                    // Display the latitude and longitude.  
+                    if (watcher.Position.Location.IsUnknown)
+                    {
+                        log.Error("Could not get Local Location");
+                        throw new Exception();
+                        
+                    }
+                    else
+                    {
+                        list.Add(watcher.Position.Location.Latitude.ToString());
+                        list.Add(watcher.Position.Location.Longitude.ToString());
+                    }
+                }
+                else
+                {
+                    log.Error("Could not get Local Location");
+                    throw new Exception();
+                }
+                localList = list;
+            }
+            catch (Exception ex)
+            {
+                log.Error("Could not get Local Location: " + ex.Message);
+                throw new Exception();
+                
+                
+            }
+        }
 
         private static string GetIPAddressAsync()
         {
