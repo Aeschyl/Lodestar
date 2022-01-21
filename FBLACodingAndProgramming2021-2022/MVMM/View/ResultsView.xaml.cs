@@ -1,4 +1,6 @@
-﻿using FBLACodingAndProgramming2021_2022.ErrorHandling;
+﻿using CefSharp;
+using CefSharp.Wpf;
+using FBLACodingAndProgramming2021_2022.ErrorHandling;
 using Json;
 using Newtonsoft.Json;
 using System;
@@ -33,10 +35,19 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         ErrorHandler handler;
         public ResultsView()
         {
+            var settings = new CefSettings();
+
+            // Disable GPU in WPF and Offscreen examples until #1634 has been resolved
+            settings.CefCommandLineArgs.Add("disable-gpu", "1");
+            
+
+            Cef.Initialize(settings);
+            
+
             InitializeComponent();
             handler = new ErrorHandler();
             InitializeListBox();
-            //Clipboard.SetText(jsonText);
+            
             
 
         }
@@ -105,10 +116,12 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             MainListBox.ItemsSource = null;
             MainListBox.ItemsSource = list;
-            var basePath = AppContext.BaseDirectory + @"\Assets\map.html";
+
+
+
+            MainWebBrowser.Address = "https://mapapi-1.sami200.repl.co/map?userLat=39&userLong=-104&coords=39.59769398357406,-104.89756350239023,Pindustry,39.59617284146872,-104.87966780541137,Ch/n%20ick-Fil-Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+
             
-            
-            MainWebBrowser.NavigateToString(File.ReadAllText(basePath));
 
         }
 
