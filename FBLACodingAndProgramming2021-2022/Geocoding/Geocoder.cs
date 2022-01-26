@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    A program that contains the various methods including manual address geocoding, location sensor geocoding, and IP address geocoding
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,12 +56,12 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             public string Postal { get; set; }
         }
 
+        // Manual Address Geocoding where the user can enter their address for the location option
         public static List<string> GetCoordinatesAsync(string address)
-
         {
             string result;
 
-            //Connects to our own third party server so that api keys are safe
+            // Connects to our own server so that api keys are safe
             var requestsServerUrl = new StringBuilder(@"https://touristserver.sami200.repl.co/bingmaps?");
 
             var requestUrl = new StringBuilder(@"https://dev.virtualearth.net/REST/v1/Locations?q=");
@@ -66,9 +70,9 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
             requestUrl.Append(address);
 
-            requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString()));
+            requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString())); // Encoding the url to pass it as a parameter to our server
 
-            var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString());
+            var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString()); 
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (Stream stream = response.GetResponseStream())
@@ -85,10 +89,9 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             return addressesString;
         }
 
+        // Uses the user's location sensor to procure accurate location data for the user
         public static List<string> GetCoordinatesFromLocationSensor()
         {
-
-
             watcher.TryStart(true, new TimeSpan(1000));
 
             for (int i = 0; i < 10; i++)
@@ -108,8 +111,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
         }
 
-       
-
+        // This method find the IP Address for the user
         private static string GetIPAddressAsync()
         {
             String address = "";
@@ -135,14 +137,12 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             string ipAddress;
             try
             {
-                ipAddress = GetIPAddressAsync(); // Im gonna assume this works
-                //Get Ip Address
+                ipAddress = GetIPAddressAsync(); //Get IP Address
             }
             catch (Exception)
             {
                 return null;
             }
-
 
             string jsonString = "https://touristserver.sami200.repl.co/ipinfo?url=";
 
@@ -155,17 +155,6 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             
             var request = (HttpWebRequest)WebRequest.Create(jsonString.ToString());
 
-            /*using (HttpWebResponse response =  await  Task.Factory.FromAsync(
-        request.BeginGetResponse,
-        asyncResult => request.EndGetResponse(asyncResult),
-        (object)null) as HttpWebResponse)
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                html = await reader.ReadToEndAsync();
-            }*/
-
-            
             try
             {
                 using (WebResponse response = request.GetResponse())
@@ -179,12 +168,6 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
                 return null;
             }
 
-
-
-
-
-            
-
             var values = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonString);
             var list = new List<string>();
             var tempList = values["loc"].Split(',');
@@ -192,6 +175,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
             list.Add(tempList[0]);
             return list;
         }
+
         private static string ReadStreamFromResponse(WebResponse response)
         {
             using (Stream responseStream = response.GetResponseStream())

@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +37,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             invokeProv.Invoke();
         }
 
+        // A method to manage the slider in the distance screen
         private void Slider_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
             SliderValue.Text = (Slider.Value * 5).ToString("F0");
@@ -42,7 +45,6 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             {
                 SliderValue.Text = "1";
             }
-            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

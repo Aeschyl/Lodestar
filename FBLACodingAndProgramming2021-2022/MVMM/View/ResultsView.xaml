@@ -2,9 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
-             xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -19,20 +19,11 @@
             </Grid.ColumnDefinitions>
             <Border CornerRadius="5"
                     Margin="25,20,20,20"
-                    BorderThickness="2"
-                    BorderBrush="#d1d1d1">
-                <cefSharp:ChromiumWebBrowser Grid.Column="0"
-                                             x:Name="MainWebBrowser"
-                                             Height="450"
-                                             HorizontalAlignment="Left"
-                                             VerticalAlignment="Center"
-                                             Margin="0,10,0,0"
-                                             Width="700"
-                                             Cursor="Arrow"
-                                             
-                                             >
-
-                </cefSharp:ChromiumWebBrowser>
+                    BorderThickness="5"
+                    BorderBrush="#0078d7">
+                <m:Map x:Name="Map" CredentialsProvider="qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG" Mode="Aerial" >
+                    
+                </m:Map>
             </Border>
 
 

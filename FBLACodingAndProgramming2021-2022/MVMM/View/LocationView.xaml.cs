@@ -1,4 +1,8 @@
-﻿using FBLACodingAndProgramming2021_2022.ErrorHandling;
+﻿/*
+    The logic for the location screen
+*/
+
+using FBLACodingAndProgramming2021_2022.ErrorHandling;
 using FBLACodingAndProgramming2021_2022.Geocoding;
 using System;
 using System.Collections.Generic;
@@ -61,7 +65,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             
             e.Handled = true;
         }
-        //Address
+
+        // Manually entered Address
         private void get_coords_button_Click(object sender, RoutedEventArgs e)
         {
             
@@ -84,7 +89,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             
         }
-        //Local Location
+
+        // Uses Built-in Location sensor
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
@@ -111,7 +117,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             
         }
-        //IP Address
+
+        // IP Address Geocoding
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             

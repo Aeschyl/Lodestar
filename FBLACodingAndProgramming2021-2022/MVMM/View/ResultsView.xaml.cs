@@ -1,7 +1,7 @@
-﻿using CefSharp;
-using CefSharp.Wpf;
+﻿
 using FBLACodingAndProgramming2021_2022.ErrorHandling;
 using Json;
+using Microsoft.Maps.MapControl.WPF;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -35,21 +35,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         ErrorHandler handler;
         public ResultsView()
         {
-            var settings = new CefSettings();
-
-            // Disable GPU in WPF and Offscreen examples until #1634 has been resolved
-            settings.CefCommandLineArgs.Add("disable-gpu", "1");
-            
-
-            Cef.Initialize(settings);
-            
-
             InitializeComponent();
             handler = new ErrorHandler();
             InitializeListBox();
-            
-            
-
         }
 
         public Feature GetFeatureByName(string name)
@@ -117,16 +105,38 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             MainListBox.ItemsSource = null;
             MainListBox.ItemsSource = list;
 
-
-
-            MainWebBrowser.Address = "https://mapapi-1.sami200.repl.co/map?userLat=39&userLong=-104&coords=39.59769398357406,-104.89756350239023,Pindustry,39.59617284146872,-104.87966780541137,Ch/n%20ick-Fil-Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            AddPushPinsToMap();
+            
+            
 
             
 
         }
+        
+        private  void AddPushPinsToMap()
+        {
+            foreach(Feature f  in values.features)
+            {
+                
+                Pushpin pin = new Pushpin();
+                var location = new Location(f.properties.lat, f.properties.lon);
+                pin.Location = location;
+                pin.ToolTip = f.properties.name;
+                Map.Children.Add(pin);
+                var startingLocation = new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude));
+                Map.SetView(startingLocation, 10);
+                pin.MouseLeftButtonDown += delegate (object sender, MouseButtonEventArgs e)
+                {
+                    selectedFeature = GetFeatureByName(((Pushpin)sender).ToolTip.ToString());
 
+                    FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2));
+                    GetWeather();
+                };
 
-      
+            }
+        }
+
+        
 
         private void MainListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
