@@ -104,7 +104,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             MainListBox.ItemsSource = null;
             MainListBox.ItemsSource = list;
-
+            Map.Visibility = Visibility.Visible;
             AddPushPinsToMap();
             
             

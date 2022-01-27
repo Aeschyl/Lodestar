@@ -20,15 +20,15 @@
         <viewModel:MainViewModel />
     </Window.DataContext>
 
-    <Grid x:Name="TopGrid" Background="White">
+    <Grid x:Name="TopGrid"
+          Background="White">
 
         <Rectangle Fill="Gray"
                    HorizontalAlignment="Stretch"
                    VerticalAlignment="Stretch"
                    x:Name="ErrorRectangle"
                    Opacity="0"
-                   Visibility="Hidden"
-                   />
+                   Visibility="Hidden" />
         <TextBlock Text="No Internet Connection"
                    FontFamily="bebas"
                    FontSize="20"
@@ -38,20 +38,19 @@
                    HorizontalAlignment="Center"
                    Margin="100,0,0,100"
                    x:Name="ErrorText"
-                   Visibility="Hidden"/>
+                   Visibility="Hidden" />
         <fa:ImageAwesome Icon="Refresh"
                          Spin="True"
                          Height="48"
-                         Width="48" 
+                         Width="48"
                          Margin="200,0,0,50"
                          HorizontalAlignment="Center"
                          VerticalAlignment="Center"
                          x:Name="LoadingAnimation"
-                         Visibility="Hidden"/>
+                         Visibility="Hidden" />
 
 
-        <Border 
-                CornerRadius="10"
+        <Border CornerRadius="10"
                 x:Name="MainBorder">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -133,6 +132,12 @@
                            FontSize="30"
                            Margin="20,0,0,0"
                            FontFamily="Bebas" />
+
+                <Image Name="LogoImage"
+                       Grid.Column="0"
+                       Grid.Row="0"
+                       HorizontalAlignment="Right"
+                       Margin="20" />
 
                 <StackPanel Grid.Row="1">
 

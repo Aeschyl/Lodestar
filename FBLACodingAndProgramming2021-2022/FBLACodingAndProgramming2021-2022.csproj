@@ -54,7 +54,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>LodestarIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>475248FCF0D9D72ACB6E89ACC5C41C9DE7F12950</ManifestCertificateThumbprint>
@@ -328,9 +328,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\faq.html" />
+    <Content Include="Assets\LodestarIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\map.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="LodestarIcon.ico" />
     <Resource Include="Assets\logo.png" />
     <Resource Include="logo.ico" />
   </ItemGroup>

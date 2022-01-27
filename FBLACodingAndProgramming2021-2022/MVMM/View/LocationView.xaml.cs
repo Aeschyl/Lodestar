@@ -29,8 +29,6 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     {
         MainWindow form = Application.Current.Windows[0] as MainWindow;
         ErrorHandling.ErrorHandler handler = new ErrorHandling.ErrorHandler();
-        string ipAddressLongitude;
-        string ipAddressLatitude;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
 
@@ -39,7 +37,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         public LocationView()
         {
             InitializeComponent();
-            IpAddressCoordinates();
+            
 
         }
 
@@ -119,21 +117,18 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         }
 
         // IP Address Geocoding
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
-            
-            
+            ClickButton(form.DistanceActivator);
+            form.distance_button.IsChecked = true;
+            form.location_button.IsChecked = false;
 
-            if (ipAddressLatitude != null)
-            {
-                Parameters.Longitude = ipAddressLongitude;
-                Parameters.Latitude = ipAddressLatitude;
-            }
-            else
-            {
-               
-                    var coordinates = Geocoder.GetCoordinatesFromIpAddress();
+
+
+
+
+
+            var coordinates = await Geocoder.GetCoordinatesFromIpAddress();
                 if (coordinates != null)
                 {
                     Parameters.Latitude = coordinates[1];
@@ -147,21 +142,11 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 }
 
                 
-            }
-            ClickButton(form.DistanceActivator);
-            form.distance_button.IsChecked = true;
-            form.location_button.IsChecked = false;
+            
+            
         }
 
-        private void IpAddressCoordinates()
-        {
-            var coor = Geocoder.GetCoordinatesFromIpAddress();
-            if (coor != null)
-            {
-                ipAddressLatitude = coor[1];
-                ipAddressLongitude = coor[0];
-            }
-        }
+        
 
        
     }

@@ -21,7 +21,7 @@
                     Margin="25,20,20,20"
                     BorderThickness="5"
                     BorderBrush="#0078d7">
-                <m:Map x:Name="Map" CredentialsProvider="qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG" Mode="Aerial" >
+                <m:Map x:Name="Map" CredentialsProvider="qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG" Mode="Aerial"  Visibility="Hidden">
                     
                 </m:Map>
             </Border>
