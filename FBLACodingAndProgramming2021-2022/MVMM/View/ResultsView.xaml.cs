@@ -115,6 +115,13 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         
         private  void AddPushPinsToMap()
         {
+
+            Pushpin currentLocation = new Pushpin();
+            currentLocation.Location = new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude));
+            currentLocation.Background = new BrushConverter().ConvertFrom("#0078d7") as SolidColorBrush;
+            currentLocation.ToolTip = "Your Current Location\n(Might be innacurate if used Ip Address)";
+            Map.Children.Add(currentLocation);
+            Map.SetView(new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude)), 15);
             foreach(Feature f  in values.features)
             {
                 
@@ -124,7 +131,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 pin.ToolTip = f.properties.name;
                 Map.Children.Add(pin);
                 var startingLocation = new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude));
-                Map.SetView(startingLocation, 10);
+                
                 pin.MouseLeftButtonDown += delegate (object sender, MouseButtonEventArgs e)
                 {
                     selectedFeature = GetFeatureByName(((Pushpin)sender).ToolTip.ToString());

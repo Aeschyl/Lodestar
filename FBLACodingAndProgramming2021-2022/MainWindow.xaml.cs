@@ -51,6 +51,7 @@ namespace FBLACodingAndProgramming2021_2022
             }
             
             ClickButton(MainScreenActivator);
+            main_screen_button.IsChecked = true;
 
 
 

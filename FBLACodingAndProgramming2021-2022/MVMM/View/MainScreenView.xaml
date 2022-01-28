@@ -8,67 +8,76 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
              mc:Ignorable="d"
              d:DesignHeight="450"
-             d:DesignWidth="800" >
-    <StackPanel CanVerticallyScroll="true" Loaded="StackPanel_Loaded">
+             d:DesignWidth="800">
+    <Border BorderBrush="#0078d7"
+            BorderThickness="5"
+            CornerRadius="5">
+        <StackPanel CanVerticallyScroll="true"
+                    Loaded="StackPanel_Loaded">
 
 
 
-        <TextBlock Text="Recomendations"
-                   HorizontalAlignment="Center"
-                   FontFamily="Bebas"
-                   Margin="30"
-                   FontSize="30"
-                   Foreground="Black" />
-
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                
-                <ColumnDefinition />
-                
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-
-            <TextBlock x:Name="TopLeftTextBox"
-                       FontFamily="bebas"
-                       FontSize="14"
-                       Grid.Row="0"
-                       Grid.Column="0"
+            <TextBlock Text="Recomendations"
+                       HorizontalAlignment="Center"
+                       FontFamily="Bebas"
+                       Margin="30"
+                       FontSize="30"
                        Foreground="Black" />
-            <TextBlock x:Name="TopRightTextBox"
-                       FontFamily="bebas"
-                       FontSize="14"
-                       Grid.Row="0"
-                       Grid.Column="1"
-                       Foreground="Black" />
-            <TextBlock x:Name="BottomRightTextBox"
-                       FontFamily="bebas"
-                       FontSize="14"
-                       Grid.Row="1"
-                       Grid.Column="1"
-                       Foreground="Black" />
-            <TextBlock x:Name="BottomLeftTextBox"
-                       FontFamily="bebas"
-                       FontSize="14"
-                       Grid.Row="1"
-                       Grid.Column="0"
-                       Foreground="Black" />
-        </Grid>
 
-        <Button Content="Find Attractions!"
-                FontFamily="Bebas"
-                FontSize="20"
-                Margin="20"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Command="{Binding HomeViewCommand}" 
-                Background="#0078d7"
-                Foreground="White"
-                Style="{StaticResource BetterButton}" />
-    </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
 
+                    <ColumnDefinition />
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <TextBlock x:Name="TopLeftTextBox"
+                           FontFamily="bebas"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           Foreground="Black" />
+                <TextBlock x:Name="TopRightTextBox"
+                           FontFamily="bebas"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           Foreground="Black" />
+                <TextBlock x:Name="BottomRightTextBox"
+                           FontFamily="bebas"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Foreground="Black" />
+                <TextBlock x:Name="BottomLeftTextBox"
+                           FontFamily="bebas"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           Foreground="Black" />
+            </Grid>
+
+            <Button Content="Find Attractions!"
+                    FontFamily="Bebas"
+                    FontSize="20"
+                    Margin="20"
+                    x:Name="FindAttractionsButton"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Click="Button_Click"
+                    Background="#0078d7"
+                    Foreground="White"
+                    Style="{StaticResource BetterButton}" />
+        </StackPanel>
+    </Border>
 
 </UserControl>
