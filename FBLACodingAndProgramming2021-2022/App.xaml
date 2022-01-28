@@ -61,6 +61,14 @@
             <DataTemplate DataType="{x:Type viewModel:FAQViewModel}">
                 <view:FAQView />
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:MainScreenViewModel}">
+                <view:MainScreenView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CopyrightViewModel}">
+                <view:CopyrightView />
+            </DataTemplate>
                 
             
 

@@ -28,7 +28,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -155,10 +155,15 @@
     </ApplicationDefinition>
     <Compile Include="ErrorHandling\ErrorHandler.cs" />
     <Compile Include="Geocoding\Geocoder.cs" />
+    <Compile Include="MVMM\ViewModel\CopyrightViewModel.cs" />
     <Compile Include="MVMM\ViewModel\DistanceViewModel.cs" />
     <Compile Include="MVMM\ViewModel\FAQViewModel.cs" />
     <Compile Include="MVMM\ViewModel\LocationViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\MainScreenViewModel.cs" />
     <Compile Include="MVMM\ViewModel\ResultsViewModel.cs" />
+    <Compile Include="MVMM\View\CopyrightView.xaml.cs">
+      <DependentUpon>CopyrightView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVMM\View\DistanceView.xaml.cs">
       <DependentUpon>DistanceView.xaml</DependentUpon>
     </Compile>
@@ -167,6 +172,9 @@
     </Compile>
     <Compile Include="MVMM\View\LocationView.xaml.cs">
       <DependentUpon>LocationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\MainScreenView.xaml.cs">
+      <DependentUpon>MainScreenView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVMM\View\ResultsView.xaml.cs">
       <DependentUpon>ResultsView.xaml</DependentUpon>
@@ -189,6 +197,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MVMM\View\AmenitiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVMM\View\CopyrightView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,6 +229,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVMM\View\LocationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVMM\View\MainScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

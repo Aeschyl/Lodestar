@@ -22,6 +22,22 @@
 
     <Grid x:Name="TopGrid"
           Background="White">
+        <DockPanel Background="White" Grid.Column="1" HorizontalAlignment="Left">
+            <Menu DockPanel.Dock="Top"
+                  Background="White">
+                
+                <MenuItem Header="_Info"
+                          HorizontalAlignment="Left"
+                          FontFamily="Bebas">
+                    <MenuItem Header="_Faq"
+                              
+                              Command="{Binding FAQViewCommand}" />
+                    <MenuItem Header="_Copyright" Command="{Binding CopyrightViewCommand}" />
+
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+
 
         <Rectangle Fill="Gray"
                    HorizontalAlignment="Stretch"
@@ -52,9 +68,11 @@
 
         <Border CornerRadius="10"
                 x:Name="MainBorder">
+            
             <Grid>
+                
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -62,6 +80,12 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
+                <Button Height="0"
+                        Width="0"
+                        Command="{Binding MainScreenViewCommand}"
+                        x:Name="MainScreenActivator"
+                        x:FieldModifier="public" />
+                
                 <Button Height="0"
                         Width="0"
                         Command="{Binding HaveFunSubViewCommand}"
@@ -141,6 +165,16 @@
 
                 <StackPanel Grid.Row="1">
 
+                    <RadioButton Content="Main Screen"
+                                 Height="50"
+                                 Foreground="Black"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 IsChecked="False"
+                                 Command="{Binding MainScreenViewCommand}"
+                                 x:Name="main_screen_button"
+                                 IsEnabled="true" />
+
                     <RadioButton Content="Category"
                                  Height="50"
                                  Foreground="Black"
@@ -193,14 +227,7 @@
                                  x:Name="results_button"
                                  Checked="results_button_Checked"
                                  IsEnabled="False" />
-                    <RadioButton Content="FAQ"
-                                 Height="50"
-                                 Foreground="Black"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 x:Name="faq_button"
-                                 Checked="faq_button_Checked"
-                                 IsEnabled="False" />
+                    
                     <Button Content="Restart"
                             FontFamily="bebas"
                             FontSize="14"
@@ -208,19 +235,11 @@
                             Style="{StaticResource BetterButton}"
                             HorizontalAlignment="Left"
                             Foreground="White"
-                            Margin="20,60,0,0"
+                            Margin="20,100,0,0"
                             Command="{Binding HomeViewCommand}"
                             Click="Button_Click_3" />
                     <StackPanel Orientation="Horizontal">
-                        <Button Style="{StaticResource BetterButton}"
-                                Foreground="White"
-                                Background="Black"
-                                Command="{Binding FAQViewCommand}"
-                                HorizontalAlignment="Left"
-                                FontFamily="Bebas"
-                                Margin="20,20,0,0"
-                                Content="FAQ"
-                                Click="Button_Click_1" />
+                       
                     </StackPanel>
                 </StackPanel>
 

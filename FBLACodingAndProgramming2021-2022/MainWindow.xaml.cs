@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Net.NetworkInformation;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -49,10 +50,11 @@ namespace FBLACodingAndProgramming2021_2022
                 StayInErrorScreen();
             }
             
-            ClickButton(CategoryActivator);
+            ClickButton(MainScreenActivator);
 
-            
 
+
+           
 
 
         }
@@ -187,16 +189,7 @@ namespace FBLACodingAndProgramming2021_2022
             ClickButton(DistanceActivator);
             IncrementProgressBar(MainProgressBar, 83);
         }
-        //FAQ Button
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            /*var basePath = AppContext.BaseDirectory;
-            
-            System.Diagnostics.Process.Start(basePath + @"/Assets/faq.html");*/
-
-            faq_button.IsChecked = true;
-            
-        }
+        
         //Close Button
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {

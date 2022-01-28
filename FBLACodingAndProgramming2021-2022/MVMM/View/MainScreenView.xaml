@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.MainScreenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+             xmlns:viewmodel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800" >
+    <StackPanel CanVerticallyScroll="true" Loaded="StackPanel_Loaded">
+
+
+
+        <TextBlock Text="Recomendations"
+                   HorizontalAlignment="Center"
+                   FontFamily="Bebas"
+                   Margin="30"
+                   FontSize="30"
+                   Foreground="Black" />
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                
+                <ColumnDefinition />
+                
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="TopLeftTextBox"
+                       FontFamily="bebas"
+                       FontSize="14"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Foreground="Black" />
+            <TextBlock x:Name="TopRightTextBox"
+                       FontFamily="bebas"
+                       FontSize="14"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Foreground="Black" />
+            <TextBlock x:Name="BottomRightTextBox"
+                       FontFamily="bebas"
+                       FontSize="14"
+                       Grid.Row="1"
+                       Grid.Column="1"
+                       Foreground="Black" />
+            <TextBlock x:Name="BottomLeftTextBox"
+                       FontFamily="bebas"
+                       FontSize="14"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Foreground="Black" />
+        </Grid>
+
+        <Button Content="Find Attractions!"
+                FontFamily="Bebas"
+                FontSize="20"
+                Margin="20"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Command="{Binding HomeViewCommand}" 
+                Background="#0078d7"
+                Foreground="White"
+                Style="{StaticResource BetterButton}" />
+    </StackPanel>
+
+
+</UserControl>

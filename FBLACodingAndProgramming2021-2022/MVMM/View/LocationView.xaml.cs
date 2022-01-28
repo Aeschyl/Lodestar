@@ -119,9 +119,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         // IP Address Geocoding
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ClickButton(form.DistanceActivator);
-            form.distance_button.IsChecked = true;
-            form.location_button.IsChecked = false;
+            
 
 
 
@@ -141,9 +139,11 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     return;
                 }
 
-                
-            
-            
+            ClickButton(form.DistanceActivator);
+            form.distance_button.IsChecked = true;
+            form.location_button.IsChecked = false;
+
+
         }
 
         
