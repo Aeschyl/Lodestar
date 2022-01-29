@@ -1,4 +1,5 @@
 # Lodestar
+## An app to help users find tourist attractions in Colorado
 
 ![Logo](./FBLACodingAndProgramming2021-2022/Assets/logo.png)
 
