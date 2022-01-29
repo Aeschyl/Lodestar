@@ -1,6 +1,6 @@
 # Tourist Attractions App
 
-![Hey](./FBLACodingAndProgramming2021-2022/Assets/logo.png)
+![Logo](./FBLACodingAndProgramming2021-2022/Assets/logo.png)
 
 ## Download
 
