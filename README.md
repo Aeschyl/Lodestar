@@ -6,7 +6,7 @@
 
 [Download source code and build app yourself](https://github.com/Aeschyl/FBLA-Attractions-App/archive/refs/heads/master.zip)
 
-[Download latest app build](#) _(Add link for this eventually)_
+[Download latest app build](https://github.com/Aeschyl/Lodestar/releases/download/v0.0.3/Lodestar.zip)
 
 
 ## Lodestar Client Documentation
