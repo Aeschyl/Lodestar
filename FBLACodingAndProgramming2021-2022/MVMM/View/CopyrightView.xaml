@@ -71,7 +71,7 @@
                            Margin="20,0,0,0"
                            FontSize="15">
                     <Hyperlink NavigateUri="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/overview/?view=netdesktop-6.0"
-                               RequestNavigate="Hyperlink_RequestNavigate">Winfows Presentation Foundation</Hyperlink>
+                               RequestNavigate="Hyperlink_RequestNavigate">Windows Presentation Foundation</Hyperlink>
                 </TextBlock>
                 <TextBlock TextWrapping="Wrap"
                            FontFamily="Bebas"
