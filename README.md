@@ -48,7 +48,7 @@ Finally the server makes calls to Places API provided by Geoapify to return the 
 - In this endpoint, specify the CPU Serial ID for database. And specify the current latitude and longitude, preferably recieved from the built-in location sensor
 - This will return to you a geoapify response with 5 locations that the user may like
 ### Geoapify Endpoint
-- https://TouristServer.sami200.repl.co/geoapify?https%3A%2F%2Fapi.geoapify.com%2Fv2%2Fplaces%2F%3Fcategories%3Dcatering.fast_food%26filter%3Dcircle%3A11%2C12%2C80450%26bias%3Dproximity%3A11%2C12%26limit%3D10&cpuserialid=123456
+- https://TouristServer.sami200.repl.co/geoapify?url=https%3A%2F%2Fapi.geoapify.com%2Fv2%2Fplaces%2F%3Fcategories%3Dcatering.fast_food%26filter%3Dcircle%3A11%2C12%2C80450%26bias%3Dproximity%3A11%2C12%26limit%3D10&cpuserialid=123456
 - In this endpoint, specify the CPU Serial ID for database. And give a geoapify places api request without the API key, which is appended by the server
 - This will return to you a geoapify response
 ### Parking Endpoint
