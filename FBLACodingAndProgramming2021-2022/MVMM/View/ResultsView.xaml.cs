@@ -1,4 +1,9 @@
-﻿
+﻿/*
+    The logic for the Resyults screen, with a map, list of places, and details about a particular place
+*/
+
+using Aspose.Cells;
+using Aspose.Cells.Utility;
 using FBLACodingAndProgramming2021_2022.ErrorHandling;
 using Json;
 using Microsoft.Maps.MapControl.WPF;
@@ -52,11 +57,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             return null;
         }
 
-
+        // Calls the API to receive data about the attractions as defined according to the user
         public async void InitializeListBox()
         {
-            
-
             try
             {
                 await Root.GetJsonFromGeoApiAsync();
@@ -70,6 +73,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             try
             {
                 values = Root.FromJson(Root.jsonString);
+                Clipboard.SetText(Root.jsonString);
             }
             catch (Exception)
             {
@@ -197,6 +201,69 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             FeatureInformation.Text += string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp,weather.weather[0].description);
             
             
+        }
+        //Download Button
+        private void DownloadResultsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // create a blank Workbook object
+            var workbook = new Workbook();
+
+            // access default empty worksheet
+            var worksheet = workbook.Worksheets[0];
+
+            // set JsonLayoutOptions for formatting
+            var layoutOptions = new JsonLayoutOptions();
+            layoutOptions.ArrayAsTable = true;
+
+            // import JSON data to CSV
+            JsonUtility.ImportData(jsonText, worksheet.Cells, 0, 0, layoutOptions);
+
+            string filePath = (System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LodestarResults", "Results[" + DateTime.Now.ToLongTimeString().Replace(":", "-").Replace(" ", "") + "].csv"));
+
+            // Create directory temp1 if it doesn't exist
+            Directory.CreateDirectory(Directory.GetParent(filePath).FullName);
+            // save CSV file
+            workbook.Save(filePath, SaveFormat.Csv);
+
+            //Cleans up the json File
+            RemoveColumnByIndex(filePath, 0);
+            RemoveColumnByIndex(filePath, 0);
+
+            Clipboard.SetText(filePath);
+            MessageBox.Show("Path copied to clipboard");
+
+        }
+
+        private void RemoveColumnByIndex(string path, int index)
+        {
+            List<string> lines = new List<string>();
+            using (StreamReader reader = new StreamReader(path))
+            {
+                var line = reader.ReadLine();
+                List<string> values = new List<string>();
+                while (line != null)
+                {
+                    values.Clear();
+                    var cols = line.Split(',');
+                    for (int i = 0; i < cols.Length; i++)
+                    {
+                        if (i != index)
+                            values.Add(cols[i]);
+                    }
+                    var newLine = string.Join(",", values);
+                    lines.Add(newLine);
+                    line = reader.ReadLine();
+                }
+            }
+
+            using (StreamWriter writer = new StreamWriter(path, false))
+            {
+                foreach (var line in lines)
+                {
+                    writer.WriteLine(line);
+                }
+            }
+
         }
     }
 }

@@ -55,8 +55,12 @@
                     </TextBox.Resources>
                 </TextBox>
 
+
+                <StackPanel Grid.Row="1"
+                            Grid.Column="1">
                 <ListBox Foreground="Black"
                          Grid.Row="1"
+                         Height="140"
                          Background="#d1d1d1"
                          Margin="20"
                          x:Name="MainListBox"
@@ -68,6 +72,19 @@
                         </Style>
                     </ListBox.Resources>
                 </ListBox>
+
+                <Button Content="Download Results To Excel Spreadsheet"
+                        FontFamily="Bebas"
+                        FontSize="14"
+                            Background="#0078d7"
+                        HorizontalAlignment="Center"
+                        Padding="10,0,10,0"
+                        x:Name="DownloadResultsButton"
+                        Style="{StaticResource BetterButton}"
+                        Grid.Column="1"
+                        Click="DownloadResultsButton_Click"
+                        Grid.Row="1" />
+                </StackPanel>
             </Grid>
 
 

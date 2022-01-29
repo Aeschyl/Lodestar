@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    The file that enables the hyperlinks on the copyright screen to open in a browser
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;

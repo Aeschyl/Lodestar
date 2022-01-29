@@ -9,15 +9,19 @@
                 Value="23" />
         <Setter Property="MinWidth"
                 Value="75" />
+        
+                
+        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
+                    
                     <Border Name="Border"
                             CornerRadius="5"
                             BorderThickness="0"
                             Background="{TemplateBinding Background}"
                             BorderBrush="#404040">
-                        <ContentPresenter Margin="2"
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="Center"
                                           VerticalAlignment="Center"
                                           RecognizesAccessKey="True" 

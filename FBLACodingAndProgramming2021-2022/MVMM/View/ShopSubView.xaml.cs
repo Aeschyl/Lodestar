@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    The logic for the Shopping Subcategory
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

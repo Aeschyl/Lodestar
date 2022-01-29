@@ -1,4 +1,6 @@
-﻿
+﻿/*
+    The logic for the distance screen
+*/
 
 using System;
 using System.Collections.Generic;

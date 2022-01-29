@@ -87,6 +87,13 @@
                     <Hyperlink NavigateUri="https://github.com/microsoft/BingMapsRESTToolkit"
                                RequestNavigate="Hyperlink_RequestNavigate">BingMaps</Hyperlink>
                 </TextBlock>
+                <TextBlock TextWrapping="Wrap"
+                           FontFamily="Bebas"
+                           Margin="20,0,0,0"
+                           FontSize="15">
+                    <Hyperlink NavigateUri="https://products.aspose.com/cells/net/"
+                               RequestNavigate="Hyperlink_RequestNavigate">Aspose-Cells</Hyperlink>
+                </TextBlock>
             </StackPanel>
             <Button Grid.Row="1"
                     Background="#0078d7"
