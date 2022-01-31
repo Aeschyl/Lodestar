@@ -9,9 +9,6 @@
 
 [Download latest app build](https://github.com/Aeschyl/Lodestar/releases/download/v0.0.3/Lodestar.zip)
 
-
-## Lodestar Client Documentation
-
 ## Lodestar Server Documentation
 
 Visit [Lodestar Server](https://replit.com/@Sami200/TouristServer)
@@ -39,7 +36,7 @@ Visit [Lodestar Server](https://replit.com/@Sami200/TouristServer)
 - Provide the full url as a "url" parameter
 - Simply the coordinates will be returned to you
 
-## How to Use
+## Lodestar Client Documentation
 ### Main Screen
 - Shown when you open the application
 - Has recommendations of locations that you may be interested in
