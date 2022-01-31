@@ -1,9 +1,10 @@
 # Lodestar
 ## An app to help users find tourist attractions in Colorado
 
-![Logo](./FBLACodingAndProgramming2021-2022/Assets/logo.png)
+
 
 ### Download
+![New Project (6)](https://user-images.githubusercontent.com/72280649/151738750-266236f3-d125-4c55-a18b-3a5e23e5a29f.png)
 
 [Download source code and build app yourself](https://github.com/Aeschyl/FBLA-Attractions-App/archive/refs/heads/master.zip)
 
