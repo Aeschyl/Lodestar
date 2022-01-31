@@ -1,10 +1,9 @@
 # Lodestar
 ## An app to help users find tourist attractions in Colorado
 
-
+![Logo](https://user-images.githubusercontent.com/72280649/151738750-266236f3-d125-4c55-a18b-3a5e23e5a29f.png)
 
 ### Download
-![New Project (6)](https://user-images.githubusercontent.com/72280649/151738750-266236f3-d125-4c55-a18b-3a5e23e5a29f.png)
 
 [Download source code and build app yourself](https://github.com/Aeschyl/FBLA-Attractions-App/archive/refs/heads/master.zip)
 
@@ -26,7 +25,6 @@ For the best user experience, the app provides 3 different options to procure th
 Moreover, in the distance section, the app provides two options of deciding how far the user is willing to go:
 
 1. The first one is a simple slider that lets the user decide how far they are willing to go (ranging from 1 mile to 20 miles)
-2. The second one gameifies the app and improves user experience by providing the option of drawing a box or circle around their location letting them decide how far they are willing to go (not yet implemented)
 
 ### Tools used
 
@@ -42,6 +40,7 @@ For the IP Address option, the server procures the user's IP Address and then ca
 
 Finally the server makes calls to Places API provided by Geoapify to return the required results of various different attractions. [Places API](https://www.geoapify.com/places-api)
 
+The application uses Bing Maps to generate the images
 
 ## Lodestar Server Documentation
 
