@@ -69,3 +69,41 @@ Visit [Lodestar Server](https://replit.com/@Sami200/TouristServer)
 - Provide the full url as a "url" parameter
 - Simply the coordinates will be returned to you
 
+## How to Use
+### Main Screen
+- Shown when you open the application
+- Has recommendations of locations that you may be interested in
+- Press the blue `Find Attractions!` button to start searching
+  - If you mess up in any of the searching process, press the blue `Restart` button at the bottom left
+### Category Page
+- Select one of the options
+- This step is required
+### Sub-Category Page
+- Select any of these to narrow down your search
+- This step is optional
+### Amenities Page
+- You may select multiple options for this page
+- These allow you to narrow down locations to fit any accessibility needs
+- This is optional
+### Location Page
+- Select any of the options, typing in your address is the most accurate
+- This step is required
+### Distance Page
+- Move the slider to the amount of miles within which you would like your location
+- If you skip this, it will only search within a 1 mile radius, which may not show the most locations
+### Results Page
+- This page has a map
+  - You can click an orange marker on this map to get details on it
+- This page also has a list of locations
+  - You can also click on these to get details on it
+- The details include of the attraction, distance, and weather conditions
+### Extra Pages
+- These pages don't pertain to finding attractions
+- Press the info button on the top left to locate these pages
+#### FAQ Page
+- This page answers some commonly asked questions about the app
+- Click the circle with a triangle inside it to locate the answer
+#### Copyright Page
+- This page contains resources used to create the app
+- Press the blue contact us button in the bottom right to send us an email
+
