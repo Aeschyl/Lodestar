@@ -12,36 +12,6 @@
 
 ## Lodestar Client Documentation
 
-### How to use
-
-The user is welcomed by a splash screen and led through easy to understand and interactive screens in the app that let them apply the filters they require to search for attractions nearby. Eventually they reach the final screen which displays the results on a map. The user can click on a marker on the map to know more about the place.
-
-For the best user experience, the app provides 3 different options to procure the user's location:
-
-1. Using the built-in location sensor of the computer to obtain the coordinates (recommended)
-2. The option for the user to manually enter their address
-3. Using the Public IP Address of the user to determine their location (note completely accurate but maintains better privacy)
-
-Moreover, in the distance section, the app provides two options of deciding how far the user is willing to go:
-
-1. The first one is a simple slider that lets the user decide how far they are willing to go (ranging from 1 mile to 20 miles)
-
-### Tools used
-
-This application implements WPF Framework in C# language for frontend. It uses NodeJS for the backend server, this is because sensitive api keys are attatched in the server and the relevant data is returned to the C#, hence securing the api keys from any possible compromises
-
-The server uses the express and request packages from npm
-
-The app implements different APIs to enable different methods of obtaining the location of the user, these apis are managed by the server.
-
-For the option of manually entering their address, the server makes a call to the Bing Geocoding API to find the coordinates and returns it to C#
-
-For the IP Address option, the server procures the user's IP Address and then calls the [IPinfo API](https://ipinfo.io/products/ip-geolocation-api) to find the coordinates
-
-Finally the server makes calls to Places API provided by Geoapify to return the required results of various different attractions. [Places API](https://www.geoapify.com/places-api)
-
-The application uses Bing Maps to generate the images
-
 ## Lodestar Server Documentation
 
 Visit [Lodestar Server](https://replit.com/@Sami200/TouristServer)
