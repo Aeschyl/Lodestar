@@ -107,7 +107,7 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Margin="0, 0, 10, 10"
-                    Click="ContactUs">
+                    Click="Button_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius"

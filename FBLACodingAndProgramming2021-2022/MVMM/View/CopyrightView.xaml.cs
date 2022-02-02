@@ -34,9 +34,12 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
-        private void ContactUs(object sender, RequestNavigateEventArgs e)
+     
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStart("mailto:help.lodestar@gmail.com"));
+            Clipboard.SetText("help.lodestar@gmail.com");
+            MessageBox.Show("Copied email");
             e.Handled = true;
         }
     }
