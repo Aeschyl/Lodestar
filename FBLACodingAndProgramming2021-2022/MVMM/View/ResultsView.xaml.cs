@@ -1,5 +1,5 @@
 ﻿/*
-    The logic for the Resyults screen, with a map, list of places, and details about a particular place
+    The logic for the Results screen, with a map, list of places, and details about a particular place
 */
 
 using Aspose.Cells;
@@ -101,6 +101,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     }
             }
             
+            // Cycles through the objects to place them on the map
             foreach (Feature featureObject in values.features)
             {
                 
@@ -110,13 +111,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             MainListBox.ItemsSource = list;
             Map.Visibility = Visibility.Visible;
             AddPushPinsToMap();
-            
-            
-
-            
 
         }
         
+        // Adds Markers to the Bing Maps generated in the Results screen
         private  void AddPushPinsToMap()
         {
 
@@ -146,8 +144,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             }
         }
-
-        
+  
 
         private void MainListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -165,7 +162,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         }
 
        
-
+        // Gets weather for the place the user has selected. Helps inform the user of the current conditions in the location
         private async void GetWeather()
         {
             if(selectedFeature == null)
@@ -185,8 +182,6 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             {
                 string response = await request.GetStringAsync(url.ToString());
 
-
-
                 outputString = response;
 
 
@@ -198,7 +193,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
 
             var weather = JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
-            FeatureInformation.Text += string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp,weather.weather[0].description);
+            FeatureInformation.Text += FeatureInformation.Text.Contains("Weather")? string.Empty: string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp,weather.weather[0].description);
             
             
         }
@@ -234,6 +229,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         }
 
+        // Cleans the data about the place to generate a human readable output report
         private void RemoveColumnByIndex(string path, int index)
         {
             List<string> lines = new List<string>();

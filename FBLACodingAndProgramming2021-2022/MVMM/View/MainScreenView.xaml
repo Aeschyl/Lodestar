@@ -41,12 +41,14 @@
                            FontSize="14"
                            HorizontalAlignment="Center"
                            Grid.Row="0"
+                           Padding="20"
                            TextWrapping="WrapWithOverflow"
                            Grid.Column="0"
                            Foreground="Black" />
                 <TextBlock x:Name="TopRightTextBox"
                            FontFamily="bebas"
                            FontSize="14"
+                           Padding="20"
                            HorizontalAlignment="Center"
                            Grid.Row="0"
                            TextWrapping="WrapWithOverflow"
@@ -54,6 +56,7 @@
                            Foreground="Black" />
                 <TextBlock x:Name="BottomRightTextBox"
                            FontFamily="bebas"
+                           Padding="20"
                            FontSize="14"
                            HorizontalAlignment="Center"
                            TextWrapping="WrapWithOverflow"
@@ -65,6 +68,7 @@
                            FontSize="14"
                            TextWrapping="WrapWithOverflow"
                            HorizontalAlignment="Center"
+                           Padding="20"
                            Grid.Row="1"
                            Grid.Column="0"
                            Foreground="Black" />

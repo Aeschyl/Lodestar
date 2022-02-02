@@ -105,12 +105,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             }
             catch(Exception error)
-            {
-                
+            {  
                 log.Error("Could not get local location;" + error.Message);
                 handler.ShowError("Something went wrong, try one of the other options");
-                
-                
             }
 
             

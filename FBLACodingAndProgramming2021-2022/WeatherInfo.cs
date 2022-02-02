@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+    A file to process the weather data
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

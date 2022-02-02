@@ -1,4 +1,8 @@
-﻿using FBLACodingAndProgramming2021_2022.Geocoding;
+﻿/*
+    The logic for the home screen that contains recommendations for the user
+*/
+
+using FBLACodingAndProgramming2021_2022.Geocoding;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -42,6 +46,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         }
 
 
+        // Loading in the recommendations for the user based on their search behavior
         private async Task LoadRecomendations()
         {
 
@@ -55,7 +60,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 return;
             }
 
-            var values = JsonConvert.DeserializeObject<Root>(json);
+            var values = JsonConvert.DeserializeObject<Root>(json); // Converting the recommendations
 
 
             TopRightTextBox.Text = values.features[0].properties.name + "\n" + values.features[0].properties.address_line1 + values.features[0].properties.address_line2;
@@ -64,6 +69,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             BottomRightTextBox.Text = values.features[3].properties.name + "\n" + values.features[3].properties.address_line1 + values.features[3].properties.address_line2;
         }
 
+        // Calling the lodestar server for recommendations for the user
         private async Task<string> GetJsonStringRecomendationAsync()
         {
             var coords = await Geocoder.GetCoordinatesFromIpAddress();
@@ -86,6 +92,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             string json = await client.GetStringAsync(url.ToString());
             return json;
         }
+
+        // Obtaining the user's CPU Serial Number to track their data without directly linking or making them create an account
         private static string GetCPUSerialNumber()
         {
             string cpuInfo = string.Empty;

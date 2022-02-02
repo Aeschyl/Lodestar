@@ -1,5 +1,5 @@
 ﻿/*
-    The logic for the distance screen
+    The logic for the distance screen that enables the user to select how far they are willing to go
 */
 
 using System;

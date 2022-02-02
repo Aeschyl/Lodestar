@@ -3,6 +3,7 @@
                     xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.Theme">
     <Style TargetType="{x:Type TextBox}"
            x:Key="ModernTextBox">
+        <Setter Property="TextElement.FontFamily" Value="Fonts/#Bebas-Regular"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">

@@ -1,4 +1,9 @@
-﻿namespace Json
+﻿/*
+    The logic for the results screen where it calls the Lodestar server and APIs to create the best experience for the user
+    Calls Geoapify for places
+*/
+
+namespace Json
 {
     using System;
     using System.Collections.Generic;
@@ -82,6 +87,8 @@
             }
             return cpuInfo;
         }
+
+        // Gets data from the API
         public static async Task GetJsonFromGeoApiAsync()
         {
             
