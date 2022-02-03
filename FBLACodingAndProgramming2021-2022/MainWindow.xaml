@@ -15,6 +15,7 @@
         WindowStyle="ThreeDBorderWindow"
         ResizeMode="NoResize"
         Background="White">
+    
 
     <Window.DataContext>
         <viewModel:MainViewModel />
@@ -165,7 +166,7 @@
 
                 <StackPanel Grid.Row="1">
 
-                    <RadioButton Content="Main Screen"
+                    <RadioButton Content="Home"
                                  Height="50"
                                  Foreground="Black"
                                  FontSize="14"

@@ -136,6 +136,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 
                 pin.MouseLeftButtonDown += delegate (object sender, MouseButtonEventArgs e)
                 {
+                    Map.SetView(new Location(((Pushpin) sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
                     selectedFeature = GetFeatureByName(((Pushpin)sender).ToolTip.ToString());
 
                     FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2));
