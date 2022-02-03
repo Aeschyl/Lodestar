@@ -67,7 +67,7 @@
                                FontFamily="Bebas"
                                Margin="20,10,0,0"
                                FontSize="15">
-                Lodestar stores your last location, and the kind of places you search up.
+                Lodestar stores the kind of places you search for
                     This is so that we can offer recommendations that might interest you on startup.
                 </TextBlock>
             </Expander>
@@ -84,6 +84,30 @@
                 </TextBlock>
             </Expander>
         </StackPanel>
-    </Grid>
+            <Button
+                Grid.Row="1"
+                Background="#0078d7"
+                Foreground="White"
+                Height="40"
+                Width="120"
+                Content="Contact Us"
+                FontSize="15"
+                FontFamily="Bebas"
+                VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Margin="0, 0, 10, 10"
+                Click="Button_Click">
+                <Button.Resources>
+                    <Style
+                        TargetType="Border">
+                        <Setter
+                            Property="CornerRadius"
+                            Value="5" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
     </Border>
 </UserControl>

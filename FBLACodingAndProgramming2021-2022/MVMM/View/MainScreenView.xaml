@@ -77,13 +77,14 @@
             <Button Content="Find Attractions!"
                     FontFamily="Bebas"
                     FontSize="20"
-                    Margin="20"
+                    Margin="30"
                     x:Name="FindAttractionsButton"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Click="Button_Click"
                     Background="#0078d7"
                     Foreground="White"
+                    Padding="7"
                     Style="{StaticResource BetterButton}" />
         </StackPanel>
     </Border>

@@ -56,7 +56,7 @@
                            Foreground="Black"
                            HorizontalAlignment="Center"
                            FontSize="40" />
-                <TextBlock Text="Manually Enter Adress: "
+                <TextBlock Text="Enter Address/Zipcode: "
                            HorizontalAlignment="Center"
                            FontFamily="bebas"
                            Foreground="Black"

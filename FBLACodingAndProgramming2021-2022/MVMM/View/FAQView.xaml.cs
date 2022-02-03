@@ -24,5 +24,11 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             InitializeComponent();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText("help.lodestar@gmail.com");
+            MessageBox.Show("Copied email");
+            e.Handled = true;
+        }
     }
 }

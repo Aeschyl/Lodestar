@@ -33,7 +33,7 @@
                     <MenuItem Header="_Faq"
                               
                               Command="{Binding FAQViewCommand}" />
-                    <MenuItem Header="_Copyright" Command="{Binding CopyrightViewCommand}" />
+                    <MenuItem Header="_Resources" Command="{Binding CopyrightViewCommand}" />
 
                 </MenuItem>
             </Menu>
