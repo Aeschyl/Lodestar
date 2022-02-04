@@ -54,7 +54,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>LodestarIcon.ico</ApplicationIcon>
+    <ApplicationIcon>LodestarIcon%281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Cells, Version=22.1.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
@@ -338,6 +338,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\LodeStarIconSVG.svg" />
+    <Resource Include="LodestarIcon%281%29.ico" />
     <Resource Include="LodestarIcon.ico" />
     <Resource Include="Assets\logo.png" />
     <Resource Include="logo.ico" />
