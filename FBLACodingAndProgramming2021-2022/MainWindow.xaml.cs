@@ -43,7 +43,9 @@ namespace FBLACodingAndProgramming2021_2022
 
 
             LogoImage.Source = new BitmapImage(new Uri(imagePath));
-            var result = CheckInternetConnectivityAsync();
+            var result = CheckInternetConnectivity();
+            
+            
             
             if (!result)
             {
@@ -59,6 +61,8 @@ namespace FBLACodingAndProgramming2021_2022
 
 
         }
+
+
 
         private void StayInErrorScreen()
         {
@@ -80,24 +84,30 @@ namespace FBLACodingAndProgramming2021_2022
         }
         
 
-        private  bool CheckInternetConnectivityAsync()
+        private bool CheckInternetConnectivity()
         {
-            try
+            var boolList = new List<bool>();
+            for (int i = 0; i < 10; i++)
             {
+                try
+                {
 
-                var hostUrl = "www.google.com";
+                    var hostUrl = "www.google.com";
 
-                Ping ping = new Ping();
+                    Ping ping = new Ping();
 
-                ping.SendAsyncCancel();
-                PingReply result =  ping.Send(hostUrl, 10);
-                
-                return result.Status == IPStatus.Success;
+                    
+                    PingReply result = ping.Send(hostUrl, 100);
+
+                    boolList.Add( result.Status == IPStatus.Success);
+                }
+                catch (Exception)
+                {
+                    boolList.Add( false);
+                }
             }
-            catch (Exception)
-            {
-                return false;
-            }
+
+            return boolList.FindAll(e => e == true).Count > 0;
         }
 
       

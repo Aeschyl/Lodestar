@@ -92,13 +92,32 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
 
             int unknownCounter = 1;
+            int repeatCounter = 1;
             for(int i =0;i < values.features.Count; i++)
             {
+
+
                 if (values.features[i].properties.name == null)
                     {
                     values.features[i].properties.name = "Unamed " + values.features[i].properties.categories[0] + " Location " + unknownCounter;
                     unknownCounter++;
                     }
+                
+            }
+
+            //Makes it so that program can differentiate by different names
+            foreach(Feature f in values.features)
+            {
+                var duplicates = values.features.FindAll(e => e.properties.name.Equals(f.properties.name));
+                if (duplicates.Count > 1)
+                {
+                    duplicates.ForEach(e =>
+                    {
+                        e.properties.name = e.properties.name + " #" + repeatCounter;
+                        repeatCounter++;
+                    });
+                }
+                repeatCounter = 1;
             }
             
             // Cycles through the objects to place them on the map
@@ -156,7 +175,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
                 //31
             selectedFeature = GetFeatureByName(MainListBox.SelectedItem.ToString().Split(';')[0]);
-            
+
+            Map.SetView(new Location(selectedFeature.properties.lat, selectedFeature.properties.lon), 20);
+
             FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance/1609.34,2));
             GetWeather();
 
