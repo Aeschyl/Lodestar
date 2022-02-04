@@ -14,8 +14,9 @@
         Width="920"
         WindowStyle="ThreeDBorderWindow"
         ResizeMode="NoResize"
+        UseLayoutRounding="True"
         Background="White">
-    
+
 
     <Window.DataContext>
         <viewModel:MainViewModel />
@@ -26,7 +27,7 @@
         <DockPanel Background="White" Grid.Column="1" HorizontalAlignment="Left">
             <Menu DockPanel.Dock="Top"
                   Background="White">
-                
+
                 <MenuItem Header="_Info"
                           HorizontalAlignment="Left"
                           FontFamily="Bebas">
@@ -69,9 +70,9 @@
 
         <Border CornerRadius="10"
                 x:Name="MainBorder">
-            
+
             <Grid>
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition />
@@ -86,7 +87,7 @@
                         Command="{Binding MainScreenViewCommand}"
                         x:Name="MainScreenActivator"
                         x:FieldModifier="public" />
-                
+
                 <Button Height="0"
                         Width="0"
                         Command="{Binding HaveFunSubViewCommand}"
@@ -157,12 +158,23 @@
                            FontSize="30"
                            Margin="20,0,0,0"
                            FontFamily="Bebas" />
-
-                <Image Name="LogoImage"
-                       Grid.Column="0"
-                       Grid.Row="0"
-                       HorizontalAlignment="Right"
-                       Margin="20" />
+                <Ellipse Grid.Column="0"
+                         Height="60"
+                         Width="60"
+                         StrokeThickness="0"
+                         HorizontalAlignment="Right"
+                         VerticalAlignment="Center"
+                       Grid.Row="0" Margin ="-5">
+                    <Ellipse.Clip>
+                        <EllipseGeometry RadiusX="25" RadiusY="25" Center="30,30"/>
+                    </Ellipse.Clip>
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="LogoImage"
+                       
+                      />
+                    </Ellipse.Fill>
+                </Ellipse>
+                
 
                 <StackPanel Grid.Row="1">
 
@@ -228,7 +240,7 @@
                                  x:Name="results_button"
                                  Checked="results_button_Checked"
                                  IsEnabled="False" />
-                    
+
                     <Button Content="Restart"
                             FontFamily="bebas"
                             FontSize="14"
@@ -240,7 +252,7 @@
                             Command="{Binding HomeViewCommand}"
                             Click="Button_Click_3" />
                     <StackPanel Orientation="Horizontal">
-                       
+
                     </StackPanel>
                 </StackPanel>
 
