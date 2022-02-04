@@ -42,7 +42,7 @@ namespace FBLACodingAndProgramming2021_2022
             var imagePath = AppContext.BaseDirectory + @"/Assets/LodestarIcon.png";
 
 
-            LogoImage.Source = new BitmapImage(new Uri(imagePath));
+            LogoImage.ImageSource = new BitmapImage(new Uri(imagePath));
             var result = CheckInternetConnectivity();
             
             
@@ -86,6 +86,7 @@ namespace FBLACodingAndProgramming2021_2022
 
         private bool CheckInternetConnectivity()
         {
+            LoadingAnimation.Visibility = Visibility.Visible;
             var boolList = new List<bool>();
             for (int i = 0; i < 10; i++)
             {
@@ -106,7 +107,7 @@ namespace FBLACodingAndProgramming2021_2022
                     boolList.Add( false);
                 }
             }
-
+            LoadingAnimation.Visibility = Visibility.Hidden;
             return boolList.FindAll(e => e == true).Count > 0;
         }
 

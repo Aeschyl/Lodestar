@@ -337,6 +337,7 @@
     <Content Include="Assets\LodestarIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\LodeStarIconSVG.svg" />
     <Resource Include="LodestarIcon.ico" />
     <Resource Include="Assets\logo.png" />
     <Resource Include="logo.ico" />
