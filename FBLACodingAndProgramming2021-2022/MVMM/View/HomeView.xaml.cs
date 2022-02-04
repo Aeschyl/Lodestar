@@ -46,11 +46,6 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             p.Value = val;
         }
-        private void EatingButton_Click(object sender, RoutedEventArgs e)
-        {
-          
-
-        }
         //Have Fun Button
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
