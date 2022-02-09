@@ -148,6 +148,12 @@
                         x:Name="ResultsActivator"
                         x:FieldModifier="public" />
 
+                <Button Height="0"
+                        Width="0"
+                        Command="{Binding TermsViewCommand}"
+                        x:Name="TermsActivator"
+                        x:FieldModifier="public" />
+
 
 
 

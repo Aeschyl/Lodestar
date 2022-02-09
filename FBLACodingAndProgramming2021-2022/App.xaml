@@ -89,6 +89,10 @@
                 <view:CopyrightView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:TermsViewModel}">
+                <view:TermsView/>
+            </DataTemplate>
+
 
 
 

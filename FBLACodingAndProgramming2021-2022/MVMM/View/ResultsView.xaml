@@ -67,7 +67,7 @@
                         <Button Content="Aplhabetical Order"
                                 Style="{StaticResource BetterButton}"
                                 FontFamily="Bebas"
-                                Background="#d1d1d1"
+                                Background="#0078d7"
                                 Padding="10,0,10,0"
                                 HorizontalAlignment="Center"
                                 Click="AlphabeticalOrder_Click"
@@ -78,7 +78,7 @@
                                 Style="{StaticResource BetterButton}"
                                 FontFamily="Bebas"
                                 Click="DistanceFromHome_Click"
-                                Background="#d1d1d1"
+                                Background="#0078d7"
                                 HorizontalAlignment="Center"
                                 FontSize="14"/>
                     </Grid>

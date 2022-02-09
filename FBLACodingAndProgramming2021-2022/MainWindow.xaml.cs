@@ -39,10 +39,15 @@ namespace FBLACodingAndProgramming2021_2022
         public MainWindow()
         {
             InitializeComponent();
+
+
+            
             var imagePath = AppContext.BaseDirectory + @"/Assets/LodestarIcon.png";
 
 
             LogoImage.ImageSource = new BitmapImage(new Uri(imagePath));
+
+            ClickButton(TermsActivator);
             var result = CheckInternetConnectivity();
             
             
@@ -52,7 +57,7 @@ namespace FBLACodingAndProgramming2021_2022
                 StayInErrorScreen();
             }
             
-            ClickButton(MainScreenActivator);
+            
             main_screen_button.IsChecked = true;
 
 

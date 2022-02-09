@@ -11,7 +11,24 @@
     <Border
         BorderBrush="#0078d7"
         BorderThickness="5">
+
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+            <Button Content="I understand and accpet"
+                    FontFamily="Bebas"
+                    FontSize="14"
+                    Grid.Row="1"
+                    Background="#0078d7"
+                    HorizontalAlignment="Center"
+                    Padding="20,0,20,0"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource BetterButton}" Click="Button_Click"
+                    />
+            <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -20,11 +37,14 @@
                 Grid.Column="0">
                 <TextBlock
                     FontSize="20"
+                    FontFamily="bebas"
                     Margin="20, 20, 0, 0">Terms of Use</TextBlock>
-                <TextBlock
+                <TextBox
                     FontFamily="Bebas"
                     Margin="20, 20, 40, 20"
-                    ScrollViewer.CanContentScroll="True"
+                    Height="300"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    IsReadOnly="True"
                     TextWrapping="WrapWithOverflow">
                 1. AGREEMENT TO TERMS
 These Terms of Use constitute a legally binding agreement made between you,
@@ -493,17 +513,21 @@ Lodestar
 United States
 help.lodestar@gmail.com
 
-                </TextBlock>
+                </TextBox>
             </StackPanel>
             <StackPanel
                 Grid.Column="1">
                 <TextBlock
                     FontSize="20"
+                    FontFamily="bebas"
                     Margin="20, 20, 0, 0">Privacy Policy</TextBlock>
-                <TextBlock
+                <TextBox
                     FontFamily="Bebas"
                     Margin="20, 20, 40, 20"
-                    ScrollViewer.CanContentScroll="True"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    IsReadOnly="True"
+                    
+                    Height="300"
                     TextWrapping="WrapWithOverflow">
                     Privacy Policy
 Last updated: February 09, 2022
@@ -637,8 +661,9 @@ Contact Us
 If you have any questions about this Privacy Policy, You can contact us:
 
 By email: help.lodestar@gmail.com
-                </TextBlock>
+                </TextBox>
             </StackPanel>
+        </Grid>
         </Grid>
     </Border>
 </UserControl>
