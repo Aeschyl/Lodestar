@@ -58,11 +58,36 @@
 
                 <StackPanel Grid.Row="1"
                             Grid.Column="1">
+
+                    <Grid Margin="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Aplhabetical Order"
+                                Style="{StaticResource BetterButton}"
+                                FontFamily="Bebas"
+                                Background="#d1d1d1"
+                                Padding="10,0,10,0"
+                                HorizontalAlignment="Center"
+                                Click="AlphabeticalOrder_Click"
+                                FontSize="14"/>
+                        <Button Content="Distance From Home"
+                                Grid.Column="1"
+                                Padding="10,0,10,0"
+                                Style="{StaticResource BetterButton}"
+                                FontFamily="Bebas"
+                                Click="DistanceFromHome_Click"
+                                Background="#d1d1d1"
+                                HorizontalAlignment="Center"
+                                FontSize="14"/>
+                    </Grid>
+                    
                 <ListBox Foreground="Black"
                          Grid.Row="1"
-                         Height="140"
+                         Height="100"
                          Background="#d1d1d1"
-                         Margin="20"
+                         Margin="20,0,20,20"
                          x:Name="MainListBox"
                          MouseDoubleClick="MainListBox_MouseDoubleClick">
                     <ListBox.Resources>

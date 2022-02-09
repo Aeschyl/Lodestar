@@ -38,6 +38,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         Feature selectedFeature;
         string jsonText;
         ErrorHandler handler;
+        List<string> list = new List<string>();
         public ResultsView()
         {
             InitializeComponent();
@@ -82,7 +83,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 return;
             }
 
-             var list = new List<string>();
+            
 
             if(values.features == null)
             {
@@ -283,5 +284,27 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
 
         }
+
+        //Sort list by alphabetical order
+        private void AlphabeticalOrder_Click(object sender, RoutedEventArgs e)
+        {
+            values.features = values.features.OrderBy(x => x.properties.name).ToList();
+            MainListBox.ItemsSource = values.features.Select(x => x.properties.name).ToList();
+        }
+
+        //Sort list by distance from the user
+        private void DistanceFromHome_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+            values.features = values.features.OrderBy(x => x.properties.distance).ToList();
+            list = values.features.Select(x => x.properties.name).ToList();
+            MainListBox.ItemsSource = list;
+
+        }
+
+        
+
+       
     }
 }
