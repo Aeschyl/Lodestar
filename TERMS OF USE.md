@@ -29,7 +29,7 @@ applicable.
 The Site is not tailored to comply with industry-specific regulations (Health Insurance
 Portability and Accountability Act (HIPAA), Federal Information Security Management
 Act (FISMA), etc.), so if your interactions would be subjected to such laws, you may
-not use this Site. You may not use the Site in a way that would violate the GrammLeach-Bliley Act (GLBA).
+not use this Site. You may not use the Site in a way that would violate the Gramm Leach-Bliley Act (GLBA).
 All users who are minors in the jurisdiction in which they reside (generally under the
 age of 18) must have the permission of, and be directly supervised by, their parent or
 guardian to use the Site. If you are a minor, you must have your parent or guardian
@@ -198,7 +198,7 @@ Submissions are original with you or that you have the right to submit such
 Submissions. You agree there shall be no recourse against us for any alleged or
 actual infringement or misappropriation of any proprietary right in your Submissions.
 8. THIRD-PARTY WEBSITE AND CONTENT
-The Site may contain (or you may be sent via the Site) links to other websites ("ThirdParty Websites") as well as articles, photographs, text, graphics, pictures, designs,
+The Site may contain (or you may be sent via the Site) links to other websites ("Third Party Websites") as well as articles, photographs, text, graphics, pictures, designs,
 music, sound, video, information, applications, software, and other content or items
 belonging to or originating from third parties ("Third-Party Content"). Such Third-Party
 Websites and Third-Party Content are not investigated, monitored, or checked for
