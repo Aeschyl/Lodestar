@@ -64,7 +64,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Button Content="Aplhabetical Order"
+                        <Button Content="Alphabetical Order"
                                 Style="{StaticResource BetterButton}"
                                 FontFamily="Bebas"
                                 Background="#0078d7"

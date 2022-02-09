@@ -63,6 +63,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             try
             {
+                //Get Json String from Lodestar api
                 await Root.GetJsonFromGeoApiAsync();
             }
             catch (Exception)
@@ -73,8 +74,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             jsonText = Root.jsonString;
             try
             {
+                //Make object from json string
                 values = Root.FromJson(Root.jsonString);
-                Clipboard.SetText(Root.jsonString);
             }
             catch (Exception)
             {

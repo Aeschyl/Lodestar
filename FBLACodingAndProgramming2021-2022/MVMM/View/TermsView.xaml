@@ -18,7 +18,7 @@
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
 
-            <Button Content="I understand and accpet"
+            <Button Content="I understand and accept"
                     FontFamily="Bebas"
                     FontSize="14"
                     Grid.Row="1"
