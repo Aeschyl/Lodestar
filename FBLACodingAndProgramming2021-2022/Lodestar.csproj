@@ -155,6 +155,7 @@
     <Compile Include="MVMM\ViewModel\LocationViewModel.cs" />
     <Compile Include="MVMM\ViewModel\MainScreenViewModel.cs" />
     <Compile Include="MVMM\ViewModel\ResultsViewModel.cs" />
+    <Compile Include="MVMM\ViewModel\TermsViewModel.cs" />
     <Compile Include="MVMM\View\CopyrightView.xaml.cs">
       <DependentUpon>CopyrightView.xaml</DependentUpon>
     </Compile>
@@ -172,6 +173,9 @@
     </Compile>
     <Compile Include="MVMM\View\ResultsView.xaml.cs">
       <DependentUpon>ResultsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\TermsView.xaml.cs">
+      <DependentUpon>TermsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Results.cs" />
     <Compile Include="WeatherInfo.cs" />
@@ -239,6 +243,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MVMM\View\StaySubView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVMM\View\TermsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
