@@ -1,7 +1,7 @@
 # Lodestar
 ## An app to help users find tourist attractions in Colorado
 
-![Logo](https://user-images.githubusercontent.com/72280649/151738750-266236f3-d125-4c55-a18b-3a5e23e5a29f.png)
+<img src="https://user-images.githubusercontent.com/72280649/151738750-266236f3-d125-4c55-a18b-3a5e23e5a29f.png" alt="Logo" width="200"/>
 
 ### Download
 
