@@ -12,19 +12,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FBLACodingAndProgramming2021_2022.MVMM.View
 {
@@ -39,6 +32,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         string jsonText;
         ErrorHandler handler;
         List<string> list = new List<string>();
+        Dictionary<Feature, (DateTime, string)> weatherCache = new Dictionary<Feature, (DateTime, string)>();
         public ResultsView()
         {
             InitializeComponent();
@@ -136,13 +130,18 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         }
         
         // Adds Markers to the Bing Maps generated in the Results screen
-        private  void AddPushPinsToMap()
+        private void AddPushPinsToMap()
         {
 
             Pushpin currentLocation = new Pushpin();
             currentLocation.Location = new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude));
             currentLocation.Background = new BrushConverter().ConvertFrom("#0078d7") as SolidColorBrush;
             currentLocation.ToolTip = "Your Current Location\n(Might be innacurate if used Ip Address)";
+            currentLocation.MouseLeftButtonDown += (object sender, MouseButtonEventArgs e) =>
+            {
+                Map.SetView(new Location(((Pushpin)sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
+                FeatureInformation.Text = "Your Location";
+            };
             Map.Children.Add(currentLocation);
             Map.SetView(new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude)), 15);
             foreach(Feature f  in values.features)
@@ -155,7 +154,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 Map.Children.Add(pin);
                 var startingLocation = new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude));
                 
-                pin.MouseLeftButtonDown += delegate (object sender, MouseButtonEventArgs e)
+                pin.MouseLeftButtonDown += (object sender, MouseButtonEventArgs e) =>
                 {
                     Map.SetView(new Location(((Pushpin) sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
                     selectedFeature = GetFeatureByName(((Pushpin)sender).ToolTip.ToString());
@@ -194,31 +193,42 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 new ErrorHandler().ShowError("No Place Selected");
                 return;
             }
-            var url = new StringBuilder(@"https://touristserver.sami200.repl.co/weather?");
-            url.Append("long=");
-            url.Append(selectedFeature.properties.lon);
-            url.Append("&lat=");
-            url.Append(selectedFeature.properties.lat);
-
-            string outputString = "";
-            var request = new HttpClient();
-            try
-            {
-                string response = await request.GetStringAsync(url.ToString());
-
-                outputString = response;
-
-
-            }
-            catch (Exception)
-            {
-                new ErrorHandler().ShowError("Something went wrong with getting weather information");
-                return;
-            }
-
-            var weather = JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
-            FeatureInformation.Text += FeatureInformation.Text.Contains("Weather")? string.Empty: string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp,weather.weather[0].description);
             
+
+            if (weatherCache.ContainsKey(selectedFeature) && weatherCache[selectedFeature].Item1.Subtract(DateTime.Now) < TimeSpan.FromMinutes(10))
+            {
+                FeatureInformation.Text += weatherCache[selectedFeature].Item2;
+            }
+            else
+            {
+                
+
+                var url = new StringBuilder(@"https://touristserver.sami200.repl.co/weather?");
+                url.Append("long=");
+                url.Append(selectedFeature.properties.lon);
+                url.Append("&lat=");
+                url.Append(selectedFeature.properties.lat);
+
+                string outputString = "";
+                var request = new HttpClient();
+                try
+                {
+                    string response = await request.GetStringAsync(url.ToString());
+
+                    outputString = response;
+
+
+                }
+                catch (Exception)
+                {
+                    new ErrorHandler().ShowError("Something went wrong with getting weather information");
+                    return;
+                }
+
+                var weather = JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
+                FeatureInformation.Text += FeatureInformation.Text.Contains("Weather") ? string.Empty : string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description);
+                weatherCache.Add(selectedFeature, (DateTime.Now, string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description)));
+            }
             
         }
         //Download Button

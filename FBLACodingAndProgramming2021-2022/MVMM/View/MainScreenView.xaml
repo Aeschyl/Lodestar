@@ -56,11 +56,11 @@
                            Foreground="Black" />
                 <TextBlock x:Name="BottomRightTextBox"
                            FontFamily="bebas"
-                           Padding="20"
                            FontSize="14"
+                           Padding="20"
                            HorizontalAlignment="Center"
-                           TextWrapping="WrapWithOverflow"
                            Grid.Row="1"
+                           TextWrapping="WrapWithOverflow"
                            Grid.Column="1"
                            Foreground="Black" />
                 <TextBlock x:Name="BottomLeftTextBox"

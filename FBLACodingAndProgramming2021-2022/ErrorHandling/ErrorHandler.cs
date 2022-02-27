@@ -23,12 +23,14 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
             form.ErrorTextBox.Text = err;
             form.ErrorTextBox.Opacity = 100;
             form.ErrorTextBox.Visibility = System.Windows.Visibility.Visible;
+            //Waiting for box to fade out
             await FadeTextBox(form);
-
+            //Resets text box
             form.ErrorTextBox.Text = string.Empty;
             
 
         }
+        //Same Error Showing but stays on the screen
         public async void ShowError(string err, bool stay)
         {
             MainWindow form = Application.Current.Windows[0] as MainWindow;
