@@ -4,6 +4,7 @@
 
 using Aspose.Cells;
 using Aspose.Cells.Utility;
+using BingMapsRESTToolkit;
 using FBLACodingAndProgramming2021_2022.ErrorHandling;
 using Json;
 using Microsoft.Maps.MapControl.WPF;
@@ -20,6 +21,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Location = Microsoft.Maps.MapControl.WPF.Location;
 
 namespace FBLACodingAndProgramming2021_2022.MVMM.View
 {
@@ -29,12 +31,14 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     public partial class ResultsView : UserControl
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        List<Feature> routeWaypoints = new List<Feature>();
         Root values;
         Feature selectedFeature;
         string jsonText;
         ErrorHandler handler;
         List<string> list = new List<string>();
         Dictionary<Feature, (DateTime, string)> weatherCache = new Dictionary<Feature, (DateTime, string)>();
+        MapPolyline previousRoute;
         public ResultsView()
         {
             InitializeComponent();
@@ -44,7 +48,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         public Feature GetFeatureByName(string name)
         {
-            foreach(Feature temp in values.features)
+            foreach (Feature temp in values.features)
             {
                 if (temp.properties.name.Equals(name))
                 {
@@ -80,9 +84,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 return;
             }
 
-            
 
-            if(values.features == null)
+
+            if (values.features == null)
             {
                 log.Error("No results");
                 handler.ShowError("No Results, Click Restart");
@@ -91,20 +95,20 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             int unknownCounter = 1;
             int repeatCounter = 1;
-            for(int i =0;i < values.features.Count; i++)
+            for (int i = 0; i < values.features.Count; i++)
             {
 
 
                 if (values.features[i].properties.name == null)
-                    {
+                {
                     values.features[i].properties.name = "Unamed " + values.features[i].properties.categories[0] + " Location " + unknownCounter;
                     unknownCounter++;
-                    }
-                
+                }
+
             }
 
             //Makes it so that program can differentiate by different names
-            foreach(Feature f in values.features)
+            foreach (Feature f in values.features)
             {
                 var duplicates = values.features.FindAll(e => e.properties.name.Equals(f.properties.name));
                 if (duplicates.Count > 1)
@@ -117,20 +121,77 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 }
                 repeatCounter = 1;
             }
-            
+
             // Cycles through the objects to place them on the map
             foreach (Feature featureObject in values.features)
             {
-                
+
                 list.Add(featureObject.properties.name + "; " + Math.Round(featureObject.properties.distance / 1609.34, 2) + " mi");
             }
             MainListBox.ItemsSource = null;
             MainListBox.ItemsSource = list;
             Map.Visibility = Visibility.Visible;
             AddPushPinsToMap();
+            
+            
 
         }
-        
+
+        private async Task AddRouteToMap(List<Feature> points)
+        {
+            //Take out any previous routes on the map
+            if (previousRoute != null)
+                Map.Children.Remove(previousRoute);
+            
+            //Convert features to SimpleWaypoints
+            var waypointList = points.Select(e => new SimpleWaypoint() { Coordinate = new Coordinate(e.properties.lat, e.properties.lon) }).ToList();
+            waypointList.Insert(0, new SimpleWaypoint(new Coordinate(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude))));
+            var request = new RouteRequest()
+            {
+                RouteOptions = new RouteOptions()
+                {
+                    RouteAttributes = new List<RouteAttributeType>()
+                    {
+                        RouteAttributeType.RoutePath
+                    }
+                },
+                Waypoints = waypointList,
+                BingMapsKey = "qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG"
+
+            };
+
+            var response = await ServiceManager.GetResponseAsync(request);
+
+            if (response != null &&
+                response.ResourceSets != null &&
+                response.ResourceSets.Length > 0 &&
+                response.ResourceSets[0].Resources != null &&
+                response.ResourceSets[0].Resources.Length > 0)
+            {
+
+                var route = response.ResourceSets[0].Resources[0] as Route;
+                var coords = route.RoutePath.Line.Coordinates; //This is 2D array of lat/long values.
+                var locs = new LocationCollection();
+
+                for (int i = 0; i < coords.Length; i++)
+                {
+                    locs.Add(new Location(coords[i][0], coords[i][1]));
+                }
+
+                var routeLine = new MapPolyline()
+                {
+                    Locations = locs,
+                    Stroke = new SolidColorBrush(Colors.LightBlue),
+                    StrokeThickness = 5,
+                    
+                   
+                };
+
+                Map.Children.Add(routeLine);
+                previousRoute = routeLine;
+            }
+        }
+
         // Adds Markers to the Bing Maps generated in the Results screen
         private void AddPushPinsToMap()
         {
@@ -146,19 +207,19 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             };
             Map.Children.Add(currentLocation);
             Map.SetView(new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude)), 15);
-            foreach(Feature f  in values.features)
+            foreach (Feature f in values.features)
             {
-                
+
                 Pushpin pin = new Pushpin();
                 var location = new Location(f.properties.lat, f.properties.lon);
                 pin.Location = location;
                 pin.ToolTip = f.properties.name;
                 Map.Children.Add(pin);
                 var startingLocation = new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude));
-                
+
                 pin.MouseLeftButtonDown += (object sender, MouseButtonEventArgs e) =>
                 {
-                    Map.SetView(new Location(((Pushpin) sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
+                    Map.SetView(new Location(((Pushpin)sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
                     selectedFeature = GetFeatureByName(((Pushpin)sender).ToolTip.ToString());
 
                     FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2));
@@ -167,7 +228,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             }
         }
-  
+
 
         private void MainListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -176,21 +237,21 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 log.Debug("Got No Results From Api");
                 return;
             }
-                //31
+            //31
             selectedFeature = GetFeatureByName(MainListBox.SelectedItem.ToString().Split(';')[0]);
 
             Map.SetView(new Location(selectedFeature.properties.lat, selectedFeature.properties.lon), 20);
 
-            FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance/1609.34,2));
+            FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2));
             GetWeather();
 
         }
 
-       
+
         // Gets weather for the place the user has selected. Helps inform the user of the current conditions in the location
         private async void GetWeather()
         {
-            if(selectedFeature == null)
+            if (selectedFeature == null)
             {
                 new ErrorHandler().ShowError("No Place Selected");
                 return;
@@ -234,13 +295,13 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     weatherCache.Add(selectedFeature, (DateTime.Now, string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description)));
                 }
                 catch (Exception) { log.Error("Failed to add object to cache"); }
-                }
-            
+            }
+
         }
         //Download Button
         private async void DownloadResultsButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
             // create a blank Workbook object
             var workbook = new Workbook();
 
@@ -253,7 +314,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             // import JSON data to CSV
             await Task.Run(() => JsonUtility.ImportData(jsonText, worksheet.Cells, 0, 0, layoutOptions));
-            
+
 
             string filePath = (System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LodestarResults", "Results[" + DateTime.Now.ToLongTimeString().Replace(":", "-").Replace(" ", "") + "].csv"));
 
@@ -318,16 +379,53 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         //Sort list by distance from the user
         private void DistanceFromHome_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+
+
             values.features = values.features.OrderBy(x => x.properties.distance).ToList();
             list = values.features.Select(x => x.properties.name + "; " + Math.Round(x.properties.distance / 1609.34, 2) + " mi").ToList();
             MainListBox.ItemsSource = list;
 
         }
 
-        
+        private async void AddToRoute_Click(object sender, RoutedEventArgs e)
+        {
+            //Check if there is an selected feature
+            if (selectedFeature == null)
+            {
+                handler.ShowError("No feature selected");
+                e.Handled = true;
+                return;
+            }
+                
+            if (routeWaypoints.Contains(selectedFeature))
+            {
+                handler.ShowError("Already added to route");
+                e.Handled = true;
+                return;
+            }
 
-       
+            routeWaypoints.Add(selectedFeature);
+            await AddRouteToMap(routeWaypoints);
+
+        }
+
+        private async void RemoveFromRoute_Click(object sender, RoutedEventArgs e)
+        {
+            //Check if there is an selected feature
+            if (selectedFeature == null)
+            {
+                handler.ShowError("No feature selected");
+                e.Handled = true;
+                return;
+            }
+            if (!routeWaypoints.Contains(selectedFeature))
+            {
+                handler.ShowError("Already taken out");
+                e.Handled = true;
+                return;
+            }
+            routeWaypoints.Remove(selectedFeature);
+            await AddRouteToMap(routeWaypoints);
+        }
     }
 }

@@ -22,7 +22,7 @@
                     BorderThickness="5"
                     BorderBrush="#0078d7">
                 <m:Map x:Name="Map" CredentialsProvider="qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG" Mode="Aerial"  Visibility="Hidden">
-                    
+
                 </m:Map>
             </Border>
 
@@ -31,29 +31,86 @@
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
+                    <RowDefinition 
+                        />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <TextBox x:Name="FeatureInformation"
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+
+
+
+                    <TextBox x:Name="FeatureInformation"
                          Background="#d1d1d1"
                          Foreground="Black"
                          FontFamily="bebas"
                          FontSize="14"
+                          
                          VerticalScrollBarVisibility="Auto"
                          TextWrapping="WrapWithOverflow"
                          IsReadOnly="True"
                          Padding="10"
                          HorizontalAlignment="Stretch"
                          VerticalAlignment="Stretch"
-                         Margin="20"
+                         Margin="20,20,20,10"
                          BorderThickness="0">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius"
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius"
                                     Value="5" />
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Border 
+                            CornerRadius="5"
+                            BorderBrush="#0078d7"
+                        Grid.Row="1"
+                        Margin="20,0,20,0"
+                            BorderThickness="5">
+                        <Grid Grid.Row="1"
+                          Margin="20,0,20,0"
+                          >
+
+
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="AddToRoute"
+                            Grid.Column="0"
+                            Content="Add To Route"
+                            FontSize="14"
+                            Background="#0078d7"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Click="AddToRoute_Click"
+                                Padding="10,0,10,0"
+                            Style="{StaticResource BetterButton}"
+                            FontFamily="bebas"
+                            />
+                            <Button x:Name="RemoveFromRoute"
+                            Grid.Column="1"
+                            Content="Remove From Route"
+                            FontSize="14"
+                            Background="#0078d7"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Padding="10,0,10,0"
+                            Click="RemoveFromRoute_Click"
+                            Style="{StaticResource BetterButton}"
+                            FontFamily="bebas"
+                            />
+                        </Grid>
+
+                    </Border>
+
+                </Grid>
 
 
                 <StackPanel Grid.Row="1"
@@ -82,23 +139,23 @@
                                 HorizontalAlignment="Center"
                                 FontSize="14"/>
                     </Grid>
-                    
-                <ListBox Foreground="Black"
+
+                    <ListBox Foreground="Black"
                          Grid.Row="1"
                          Height="100"
                          Background="#d1d1d1"
                          Margin="20,0,20,20"
                          x:Name="MainListBox"
                          MouseDoubleClick="MainListBox_MouseDoubleClick">
-                    <ListBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius"
+                        <ListBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius"
                                     Value="5" />
-                        </Style>
-                    </ListBox.Resources>
-                </ListBox>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
 
-                <Button Content="Download Results To Excel Spreadsheet"
+                    <Button Content="Download Results To Excel Spreadsheet"
                         FontFamily="Bebas"
                         FontSize="14"
                         Background="#0078d7"

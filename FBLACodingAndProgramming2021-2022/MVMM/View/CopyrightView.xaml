@@ -118,6 +118,18 @@
                         NavigateUri="https://products.aspose.com/cells/net/"
                         RequestNavigate="Hyperlink_RequestNavigate">Aspose-Cells</Hyperlink>
                 </TextBlock>
+                <TextBlock
+                    TextWrapping="Wrap"
+                    FontFamily="Bebas"
+                    Margin="20,0,0,0"
+                    FontSize="15">
+                    <Hyperlink
+                        NavigateUri="https://github.com/Microsoft/BingMapsRESTToolkit"
+                        RequestNavigate="Hyperlink_RequestNavigate">BingMapsRESTToolkit
+                        
+                    </Hyperlink>
+                    
+                </TextBlock>
             </StackPanel>
         </Grid>
     </Border>
