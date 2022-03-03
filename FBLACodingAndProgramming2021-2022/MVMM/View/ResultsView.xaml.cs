@@ -10,10 +10,12 @@ using Microsoft.Maps.MapControl.WPF;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -193,7 +195,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 new ErrorHandler().ShowError("No Place Selected");
                 return;
             }
-            
+
 
             if (weatherCache.ContainsKey(selectedFeature) && weatherCache[selectedFeature].Item1.Subtract(DateTime.Now) < TimeSpan.FromMinutes(10))
             {
@@ -201,7 +203,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             else
             {
-                
+
 
                 var url = new StringBuilder(@"https://touristserver.sami200.repl.co/weather?");
                 url.Append("long=");
@@ -227,13 +229,18 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
                 var weather = JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
                 FeatureInformation.Text += FeatureInformation.Text.Contains("Weather") ? string.Empty : string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description);
-                weatherCache.Add(selectedFeature, (DateTime.Now, string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description)));
-            }
+                try
+                {
+                    weatherCache.Add(selectedFeature, (DateTime.Now, string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description)));
+                }
+                catch (Exception) { log.Error("Failed to add object to cache"); }
+                }
             
         }
         //Download Button
-        private void DownloadResultsButton_Click(object sender, RoutedEventArgs e)
+        private async void DownloadResultsButton_Click(object sender, RoutedEventArgs e)
         {
+            
             // create a blank Workbook object
             var workbook = new Workbook();
 
@@ -245,7 +252,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             layoutOptions.ArrayAsTable = true;
 
             // import JSON data to CSV
-            JsonUtility.ImportData(jsonText, worksheet.Cells, 0, 0, layoutOptions);
+            await Task.Run(() => JsonUtility.ImportData(jsonText, worksheet.Cells, 0, 0, layoutOptions));
+            
 
             string filePath = (System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LodestarResults", "Results[" + DateTime.Now.ToLongTimeString().Replace(":", "-").Replace(" ", "") + "].csv"));
 
@@ -255,11 +263,15 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             workbook.Save(filePath, SaveFormat.Csv);
 
             //Cleans up the json File
-            RemoveColumnByIndex(filePath, 0);
-            RemoveColumnByIndex(filePath, 0);
+            await Task.Run(() =>
+            {
+                RemoveColumnByIndex(filePath, 0);
+                RemoveColumnByIndex(filePath, 0);
+            });
 
             Clipboard.SetText(filePath);
-            MessageBox.Show("Path copied to clipboard");
+
+            Process.Start(filePath);
 
         }
 
@@ -309,7 +321,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             
             
             values.features = values.features.OrderBy(x => x.properties.distance).ToList();
-            list = values.features.Select(x => x.properties.name).ToList();
+            list = values.features.Select(x => x.properties.name + "; " + Math.Round(x.properties.distance / 1609.34, 2) + " mi").ToList();
             MainListBox.ItemsSource = list;
 
         }

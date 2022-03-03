@@ -26,8 +26,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText("help.lodestar@gmail.com");
-            MessageBox.Show("Copied email");
+            //Opens Users defauly emailing application
+            System.Diagnostics.Process.Start("mailto:help.lodestar@gmail.com");
             e.Handled = true;
         }
     }
