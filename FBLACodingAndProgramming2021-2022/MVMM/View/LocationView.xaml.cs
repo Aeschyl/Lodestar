@@ -65,7 +65,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         }
 
         // Manually entered Address
-        private void get_coords_button_Click(object sender, RoutedEventArgs e)
+        private async void get_coords_button_Click(object sender, RoutedEventArgs e)
         {
             
             
@@ -74,7 +74,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             try
             {
                 log.Debug("Inputted address: " + address_text.Text);
-                var arr = Geocoder.GetCoordinatesAsync(address_text.Text).ToArray();
+                var arr = await Geocoder.GetCoordinatesAsync(address_text.Text);
+
                 Parameters.Longitude = arr[1];
                 Parameters.Latitude = arr[0];
                 ClickButton(form.DistanceActivator);

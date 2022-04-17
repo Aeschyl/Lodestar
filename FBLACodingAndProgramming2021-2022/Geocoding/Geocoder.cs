@@ -57,7 +57,7 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
         }
 
         // Manual Address Geocoding where the user can enter their address for the location option
-        public static List<string> GetCoordinatesAsync(string address)
+        public async static Task<List<string>> GetCoordinatesAsync(string address)
         {
             string result;
 
@@ -72,14 +72,14 @@ namespace FBLACodingAndProgramming2021_2022.Geocoding
 
             requestsServerUrl.Append(HttpUtility.UrlEncode(requestUrl.ToString())); // Encoding the url to pass it as a parameter to our server
 
-            var request = (HttpWebRequest)WebRequest.Create(requestsServerUrl.ToString()); 
+            var client = new HttpClient();
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                result = reader.ReadToEnd();
-            }
+
+          
+
+
+            result = await client.GetStringAsync(requestsServerUrl.ToString());
+            
 
             var addresses = JsonConvert.DeserializeObject<List<double>>(result);
             var addressesString = new List<string>();

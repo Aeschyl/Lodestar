@@ -203,7 +203,7 @@
                                  Command="{Binding HomeViewCommand}"
                                  x:Name="category_button"
                                  Checked="category_button_Checked"
-                                 IsEnabled="False" />
+                                 IsEnabled="True" />
                     <RadioButton Content="Sub-Category"
                                  Height="50"
                                  Foreground="Black"
@@ -211,7 +211,7 @@
                                  Style="{StaticResource MenuButtonTheme}"
                                  x:Name="sub_category_button"
                                  Checked="sub_category_button_Checked"
-                                 IsEnabled="False" />
+                                 IsEnabled="True" />
                     <RadioButton Content="Amenities"
                                  Height="50"
                                  Foreground="Black"
@@ -220,7 +220,7 @@
                                  x:Name="amenities_button"
                                  Command="{Binding AmenitiesViewCommand}"
                                  Checked="amenities_button_Checked"
-                                 IsEnabled="False" />
+                                 IsEnabled="True" />
                     <RadioButton Content="Location"
                                  Height="50"
                                  Foreground="Black"
@@ -229,7 +229,7 @@
                                  x:Name="location_button"
                                  Command="{Binding LocationViewCommand}"
                                  Checked="location_button_Checked"
-                                 IsEnabled="False" />
+                                 IsEnabled="True" />
                     <RadioButton Content="Distance"
                                  Height="50"
                                  Foreground="Black"
@@ -237,7 +237,7 @@
                                  Style="{StaticResource MenuButtonTheme }"
                                  x:Name="distance_button"
                                  Checked="distance_button_Checked"
-                                 IsEnabled="False" />
+                                 IsEnabled="True" />
                     <RadioButton Content="Results"
                                  Height="50"
                                  Foreground="Black"
