@@ -14,24 +14,55 @@ using System.Windows;
 
 namespace FBLACodingAndProgramming2021_2022.ErrorHandling
 {
+
+    
     class ErrorHandler
     {
-        // Overloaded methods to display the error box with the error that has occured
-        public async void ShowError(string err)
+
+        volatile static Queue<ErrorShower> errorShowers = new Queue<ErrorShower>();
+        
+        
+        
+        //Same Error Showing but stays on the screen
+        public async void ShowError(string err, bool stay = false)
         {
-            MainWindow form = Application.Current.Windows[0] as MainWindow;
-            form.ErrorTextBox.Text = err;
-            form.ErrorTextBox.Opacity = 100;
-            form.ErrorTextBox.Visibility = System.Windows.Visibility.Visible;
-            //Waiting for box to fade out
-            await FadeTextBox(form);
-            //Resets text box
-            form.ErrorTextBox.Text = string.Empty;
+            errorShowers.Enqueue(new ErrorShower(err, stay));
+
+            await ShowErrorsInQueue();
             
 
         }
+
+        
+
+        private async Task ShowErrorsInQueue()
+        {
+            while(errorShowers.Count > 0)
+            {
+                await errorShowers.Dequeue().ShowError();
+            }
+        }
+
+        
+
+       
+
+
+    }
+
+    class ErrorShower
+    {
+        public string err { get; set; }
+        public bool stay { get; set; }
+        public ErrorShower(string err, bool stay)
+        {
+            this.err = err;
+            this.stay = stay;
+        }
+        // Overloaded methods to display the error box with the error that has occured
+        
         //Same Error Showing but stays on the screen
-        public async void ShowError(string err, bool stay)
+        public async Task ShowError()
         {
             MainWindow form = Application.Current.Windows[0] as MainWindow;
             form.ErrorTextBox.Text = err;
@@ -40,11 +71,13 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
             if (!stay)
             {
                 await FadeTextBox(form);
+                form.ErrorTextBox.Text = string.Empty;
             }
             
+
         }
 
-        
+
 
         public async Task FadeTextBox(MainWindow form)
         {
@@ -58,11 +91,9 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
             }
 
             form.ErrorTextBox.Visibility = System.Windows.Visibility.Hidden;
-            
+
 
             form.ErrorTextBox.Opacity = 0;
         }
-
-
     }
 }

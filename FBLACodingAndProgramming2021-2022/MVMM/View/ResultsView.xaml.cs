@@ -425,7 +425,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 return;
             }
             routeWaypoints.Remove(selectedFeature);
+            if (routeWaypoints.Count != 0)
             await AddRouteToMap(routeWaypoints);
+            
+            
         }
     }
 }
