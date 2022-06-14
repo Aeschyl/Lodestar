@@ -34,6 +34,7 @@ namespace Json
 
         public class Properties
         {
+            public string imgLink { get; set; }
             public string name { get; set; }
             public string street { get; set; }
             public string city { get; set; }
@@ -66,7 +67,8 @@ namespace Json
             public string type { get; set; }
             public Properties properties { get; set; }
             public Geometry geometry { get; set; }
-        }
+     
+    }
 
         public class Root
         {

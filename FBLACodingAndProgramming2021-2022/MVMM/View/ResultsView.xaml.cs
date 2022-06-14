@@ -19,8 +19,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Location = Microsoft.Maps.MapControl.WPF.Location;
 
 namespace FBLACodingAndProgramming2021_2022.MVMM.View
@@ -31,13 +33,13 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     public partial class ResultsView : UserControl
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        List<Feature> routeWaypoints = new List<Feature>();
+        readonly List<Feature> routeWaypoints = new List<Feature>();
         Root values;
         Feature selectedFeature;
         string jsonText;
-        ErrorHandler handler;
+        readonly ErrorHandler handler;
         List<string> list = new List<string>();
-        Dictionary<Feature, (DateTime, string)> weatherCache = new Dictionary<Feature, (DateTime, string)>();
+        readonly Dictionary<Feature, (DateTime, string)> weatherCache = new Dictionary<Feature, (DateTime, string)>();
         MapPolyline previousRoute;
         public ResultsView()
         {
@@ -196,14 +198,16 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         private void AddPushPinsToMap()
         {
 
-            Pushpin currentLocation = new Pushpin();
-            currentLocation.Location = new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude));
-            currentLocation.Background = new BrushConverter().ConvertFrom("#0078d7") as SolidColorBrush;
-            currentLocation.ToolTip = "Your Current Location\n(Might be innacurate if used Ip Address)";
+            Pushpin currentLocation = new Pushpin()
+            {
+                Location = new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude)),
+                Background = new BrushConverter().ConvertFrom("#0078d7") as SolidColorBrush,
+                ToolTip = "Your Current Location\n(Might be innacurate if used Ip Address)"
+            };
             currentLocation.MouseLeftButtonDown += (object sender, MouseButtonEventArgs e) =>
             {
                 Map.SetView(new Location(((Pushpin)sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
-                FeatureInformation.Text = "Your Location";
+                FeatureInformation.AppendText("Your Location");
             };
             Map.Children.Add(currentLocation);
             Map.SetView(new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude)), 15);
@@ -221,8 +225,24 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 {
                     Map.SetView(new Location(((Pushpin)sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
                     selectedFeature = GetFeatureByName(((Pushpin)sender).ToolTip.ToString());
+                    FeatureInformation.Document.Blocks.Clear();
+                    if (selectedFeature.properties.imgLink != null)
+                    {
 
-                    FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2));
+
+                        var pr = new Paragraph();
+                        var image = new BitmapImage(new Uri(selectedFeature.properties.imgLink));
+
+                        pr.Inlines.Add(new Image()
+                        {
+                            Source = image,
+
+                        });
+                        pr.Inlines.Add("\n\n");
+                        FeatureInformation.Document.Blocks.Add(pr);
+
+                    }
+                    FeatureInformation.AppendText(string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2)));
                     GetWeather();
                 };
 
@@ -240,9 +260,24 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             //31
             selectedFeature = GetFeatureByName(MainListBox.SelectedItem.ToString().Split(';')[0]);
 
-            Map.SetView(new Location(selectedFeature.properties.lat, selectedFeature.properties.lon), 20);
+            Map.SetView(new Location(selectedFeature.properties.lat, selectedFeature.properties.lon), 15);
+            FeatureInformation.Document.Blocks.Clear();
+            if (selectedFeature.properties.imgLink != null)
+            {
 
-            FeatureInformation.Text = string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2));
+
+                var pr = new Paragraph();
+                var image = new BitmapImage(new Uri(selectedFeature.properties.imgLink));
+
+                pr.Inlines.Add(new Image()
+                {
+                    Source = image,
+
+                });
+                pr.Inlines.Add("\n\n");
+                FeatureInformation.Document.Blocks.Add(pr);
+            }
+            FeatureInformation.AppendText(string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2)));
             GetWeather();
 
         }
@@ -260,7 +295,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             if (weatherCache.ContainsKey(selectedFeature) && weatherCache[selectedFeature].Item1.Subtract(DateTime.Now) < TimeSpan.FromMinutes(10))
             {
-                FeatureInformation.Text += weatherCache[selectedFeature].Item2;
+                FeatureInformation.AppendText(weatherCache[selectedFeature].Item2);
             }
             else
             {
@@ -272,7 +307,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 url.Append("&lat=");
                 url.Append(selectedFeature.properties.lat);
 
-                string outputString = "";
+                string outputString;
                 var request = new HttpClient();
                 try
                 {
@@ -289,7 +324,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 }
 
                 var weather = JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
-                FeatureInformation.Text += FeatureInformation.Text.Contains("Weather") ? string.Empty : string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description);
+                FeatureInformation.AppendText(new TextRange(FeatureInformation.Document.ContentStart, FeatureInformation.Document.ContentEnd).Text.Contains("Weather") ? string.Empty : string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description));
                 try
                 {
                     weatherCache.Add(selectedFeature, (DateTime.Now, string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description)));
@@ -309,17 +344,21 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             var worksheet = workbook.Worksheets[0];
 
             // set JsonLayoutOptions for formatting
-            var layoutOptions = new JsonLayoutOptions();
-            layoutOptions.ArrayAsTable = true;
+            var layoutOptions = new JsonLayoutOptions()
+            {
+                ArrayAsTable = true
+            };
 
             // import JSON data to CSV
-            await Task.Run(() => JsonUtility.ImportData(jsonText, worksheet.Cells, 0, 0, layoutOptions));
+            var task = Task.Run(() => JsonUtility.ImportData(jsonText, worksheet.Cells, 0, 0, layoutOptions));
 
 
             string filePath = (System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LodestarResults", "Results[" + DateTime.Now.ToLongTimeString().Replace(":", "-").Replace(" ", "") + "].csv"));
 
             // Create directory temp1 if it doesn't exist
             Directory.CreateDirectory(Directory.GetParent(filePath).FullName);
+            //Making sure task finished
+            await task;
             // save CSV file
             workbook.Save(filePath, SaveFormat.Csv);
 

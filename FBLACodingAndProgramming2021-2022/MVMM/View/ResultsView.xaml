@@ -44,27 +44,28 @@
 
 
 
-                    <TextBox x:Name="FeatureInformation"
+                    <RichTextBox x:Name="FeatureInformation"
                          Background="#d1d1d1"
                          Foreground="Black"
                          FontFamily="bebas"
                          FontSize="14"
                           
                          VerticalScrollBarVisibility="Auto"
-                         TextWrapping="WrapWithOverflow"
+                         
                          IsReadOnly="True"
                          Padding="10"
                          HorizontalAlignment="Stretch"
                          VerticalAlignment="Stretch"
                          Margin="20,20,20,10"
                          BorderThickness="0">
-                        <TextBox.Resources>
+                        <RichTextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius"
                                     Value="5" />
                             </Style>
-                        </TextBox.Resources>
-                    </TextBox>
+                        </RichTextBox.Resources>
+                        
+                    </RichTextBox>
                     <Border 
                             CornerRadius="5"
                             BorderBrush="#0078d7"
