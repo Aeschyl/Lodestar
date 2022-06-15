@@ -63,15 +63,26 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 return;
             }
             var values = JsonConvert.DeserializeObject<Root>(json); // Converting the recommendations
-            List<BitmapImage> linkList = new List<BitmapImage>();
-            foreach (var i in values.features)
+            Dictionary<int, BitmapImage> images = new Dictionary<int, BitmapImage>();
+            var counter = 0;
+            values.features.ForEach(e =>
             {
-                linkList.Add(new BitmapImage(new Uri(i.properties.imgLink)));
-            }
-            Image1.Source = linkList[0];
-            Image2.Source = linkList[1];
-            Image3.Source = linkList[2];
-            Image4.Source = linkList[3];
+                Uri outUri;
+                if(Uri.TryCreate(e.properties.imgLink, UriKind.Absolute, out outUri))
+                {
+                    images.Add(counter, new BitmapImage(outUri));
+                }
+                counter++;
+            });
+            var listOfImages = new List<Image>{Image1, Image2, Image3, Image4 };
+
+            counter = 0;
+            listOfImages.ForEach(e =>
+            {
+                e.Source = images.ContainsKey(counter)? images[counter] : null;
+                counter++;
+            });
+            
             TopLeftTextBox.Text = values.features[0].properties.formatted.Replace(",", "\n");
             TopRightTextBox.Text = values.features[1].properties.formatted.Replace(",", "\n");
             BottomLeftTextBox.Text = values.features[2].properties.formatted.Replace(",", "\n");

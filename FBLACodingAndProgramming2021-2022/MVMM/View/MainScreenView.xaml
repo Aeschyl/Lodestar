@@ -35,30 +35,48 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
+                <Border CornerRadius="5"
+                        Grid.Row="0"
+                        Grid.Column="1">
                 <Image
-                    x:Name="Image1"
-                    Grid.Row="0"
-                    Height="200"
-                    Grid.Column="1">
+                    x:Name="Image1" Stretch="None"
+                    
+                    
+                    
+                    
+                    >
                 </Image>
+                </Border>
+                <Border CornerRadius="5"
+                        Grid.Row="0"
+                        Grid.Column="3">
                 <Image
                     x:Name="Image2"
                     Grid.Row="0"
-                    Height="200"
+                    Stretch="None"
                     Grid.Column="3">
                 </Image>
+                </Border>
+                <Border CornerRadius="5"
+                        Grid.Row="1"
+                        Grid.Column="1">
                 <Image
                     x:Name="Image3"
                     Grid.Row="1"
-                    Height="200"
+                    Stretch="None"
                     Grid.Column="1">
                 </Image>
+                </Border>
+                <Border CornerRadius="5"
+                        Grid.Row="1"
+                        Grid.Column="3">
                 <Image
                     x:Name="Image4"
                     Grid.Row="1"
-                    Height="200"
+                    Stretch="None"
                     Grid.Column="3">
                 </Image>
+                </Border>
                 <TextBlock x:Name="TopLeftTextBox"
                            FontFamily="bebas"
                            FontSize="14"

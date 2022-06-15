@@ -230,19 +230,11 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     {
 
 
-                        var pr = new Paragraph();
                         var image = new BitmapImage(new Uri(selectedFeature.properties.imgLink));
-
-                        pr.Inlines.Add(new Image()
-                        {
-                            Source = image,
-
-                        });
-                        pr.Inlines.Add("\n\n");
-                        FeatureInformation.Document.Blocks.Add(pr);
+                        ThumbnailImage.Source = image;
 
                     }
-                    FeatureInformation.AppendText(string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2)));
+                    FeatureInformation.AppendText(string.Format("{0}\n{1}\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2)));
                     GetWeather();
                 };
 
@@ -262,20 +254,15 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             Map.SetView(new Location(selectedFeature.properties.lat, selectedFeature.properties.lon), 15);
             FeatureInformation.Document.Blocks.Clear();
+            WeatherInformation.Document.Blocks.Clear();
             if (selectedFeature.properties.imgLink != null)
             {
 
 
-                var pr = new Paragraph();
+             
                 var image = new BitmapImage(new Uri(selectedFeature.properties.imgLink));
-
-                pr.Inlines.Add(new Image()
-                {
-                    Source = image,
-
-                });
-                pr.Inlines.Add("\n\n");
-                FeatureInformation.Document.Blocks.Add(pr);
+                ThumbnailImage.Source = image;
+                
             }
             FeatureInformation.AppendText(string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2)));
             GetWeather();
@@ -292,10 +279,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 return;
             }
 
-
+            WeatherInformation.Document.Blocks.Clear();
             if (weatherCache.ContainsKey(selectedFeature) && weatherCache[selectedFeature].Item1.Subtract(DateTime.Now) < TimeSpan.FromMinutes(10))
             {
-                FeatureInformation.AppendText(weatherCache[selectedFeature].Item2);
+                WeatherInformation.AppendText(weatherCache[selectedFeature].Item2);
             }
             else
             {
@@ -322,9 +309,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     new ErrorHandler().ShowError("Something went wrong with getting weather information");
                     return;
                 }
-
+                WeatherInformation.Document.Blocks.Clear();
                 var weather = JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
-                FeatureInformation.AppendText(new TextRange(FeatureInformation.Document.ContentStart, FeatureInformation.Document.ContentEnd).Text.Contains("Weather") ? string.Empty : string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description));
+                WeatherInformation.AppendText(new TextRange(WeatherInformation.Document.ContentStart, WeatherInformation.Document.ContentEnd).Text.Contains("Weather") ? string.Empty : string.Format("Wind: {0} \nTemperature: {1} \nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description));
                 try
                 {
                     weatherCache.Add(selectedFeature, (DateTime.Now, string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description)));
@@ -412,7 +399,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         private void AlphabeticalOrder_Click(object sender, RoutedEventArgs e)
         {
             values.features = values.features.OrderBy(x => x.properties.name).ToList();
-            MainListBox.ItemsSource = values.features.Select(x => x.properties.name).ToList();
+            MainListBox.ItemsSource = values.features.Select(x => x.properties.name + "; " + Math.Round(x.properties.distance / 1609.34, 2) + " mi").ToList();
         }
 
         //Sort list by distance from the user
