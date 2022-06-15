@@ -17,7 +17,7 @@
 
 
 
-            <TextBlock Text="Recomendations"
+            <TextBlock Text="Recommendations"
                        HorizontalAlignment="Center"
                        FontFamily="Bebas"
                        Margin="30"
@@ -27,48 +27,71 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
-
                     <ColumnDefinition />
-
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-
+                <Image
+                    x:Name="Image1"
+                    Grid.Row="0"
+                    Height="200"
+                    Grid.Column="1">
+                </Image>
+                <Image
+                    x:Name="Image2"
+                    Grid.Row="0"
+                    Height="200"
+                    Grid.Column="3">
+                </Image>
+                <Image
+                    x:Name="Image3"
+                    Grid.Row="1"
+                    Height="200"
+                    Grid.Column="1">
+                </Image>
+                <Image
+                    x:Name="Image4"
+                    Grid.Row="1"
+                    Height="200"
+                    Grid.Column="3">
+                </Image>
                 <TextBlock x:Name="TopLeftTextBox"
                            FontFamily="bebas"
                            FontSize="14"
                            HorizontalAlignment="Center"
                            Grid.Row="0"
-                           Padding="20"
-                           TextWrapping="WrapWithOverflow"
+                           Padding="50"
+                    TextWrapping="Wrap"
                            Grid.Column="0"
                            Foreground="Black" />
                 <TextBlock x:Name="TopRightTextBox"
                            FontFamily="bebas"
                            FontSize="14"
-                           Padding="20"
+                           Padding="50"
                            HorizontalAlignment="Center"
                            Grid.Row="0"
-                           TextWrapping="WrapWithOverflow"
-                           Grid.Column="1"
+                    TextWrapping="Wrap"
+                           Grid.Column="2"
                            Foreground="Black" />
                 <TextBlock x:Name="BottomRightTextBox"
                            FontFamily="bebas"
                            FontSize="14"
-                           Padding="20"
+                           Padding="50"
                            HorizontalAlignment="Center"
                            Grid.Row="1"
-                           TextWrapping="WrapWithOverflow"
-                           Grid.Column="1"
+                    TextWrapping="Wrap"
+                           Grid.Column="2"
                            Foreground="Black" />
                 <TextBlock x:Name="BottomLeftTextBox"
                            FontFamily="bebas"
                            FontSize="14"
-                           TextWrapping="WrapWithOverflow"
+                           TextWrapping="Wrap"
                            HorizontalAlignment="Center"
-                           Padding="20"
+                           Padding="50"
                            Grid.Row="1"
                            Grid.Column="0"
                            Foreground="Black" />

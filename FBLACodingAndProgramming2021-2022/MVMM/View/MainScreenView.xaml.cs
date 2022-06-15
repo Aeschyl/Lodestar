@@ -55,20 +55,27 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             string json = await GetJsonStringRecomendationAsync();
             if (json.Contains("Error") || json.Length == 0)
             {
+                Clipboard.SetText(json);
                 TopRightTextBox.Text = "No recomendations yet";
                 TopLeftTextBox.Text = "No recomendations yet";
                 BottomLeftTextBox.Text = "No recomendations yet";
                 BottomRightTextBox.Text = "No recomendations yet";
                 return;
             }
-
             var values = JsonConvert.DeserializeObject<Root>(json); // Converting the recommendations
-
-
-            TopRightTextBox.Text = values.features[0].properties.name + "\n" + values.features[0].properties.address_line1 + values.features[0].properties.address_line2;
-            TopLeftTextBox.Text = values.features[1].properties.name + "\n" + values.features[1].properties.address_line1 + values.features[1].properties.address_line2;
-            BottomLeftTextBox.Text = values.features[2].properties.name + "\n" + values.features[2].properties.address_line1 + values.features[2].properties.address_line2;
-            BottomRightTextBox.Text = values.features[3].properties.name + "\n" + values.features[3].properties.address_line1 + values.features[3].properties.address_line2;
+            List<BitmapImage> linkList = new List<BitmapImage>();
+            foreach (var i in values.features)
+            {
+                linkList.Add(new BitmapImage(new Uri(i.properties.imgLink)));
+            }
+            Image1.Source = linkList[0];
+            Image2.Source = linkList[1];
+            Image3.Source = linkList[2];
+            Image4.Source = linkList[3];
+            TopLeftTextBox.Text = values.features[0].properties.formatted.Replace(",", "\n");
+            TopRightTextBox.Text = values.features[1].properties.formatted.Replace(",", "\n");
+            BottomLeftTextBox.Text = values.features[2].properties.formatted.Replace(",", "\n");
+            BottomRightTextBox.Text = values.features[3].properties.formatted.Replace(",", "\n");
         }
 
         // Calling the lodestar server for recommendations for the user
@@ -120,6 +127,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         public class Properties
         {
+            public string imgLink { get; set; }
             public string name { get; set; }
             public string street { get; set; }
             public string city { get; set; }

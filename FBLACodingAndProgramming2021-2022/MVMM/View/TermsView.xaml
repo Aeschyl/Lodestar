@@ -42,7 +42,7 @@
                 <TextBox
                     FontFamily="Bebas"
                     Margin="20, 20, 40, 20"
-                    Height="300"
+                    Height="600"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     IsReadOnly="True"
                     TextWrapping="WrapWithOverflow">
@@ -527,7 +527,7 @@ help.lodestar@gmail.com
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     IsReadOnly="True"
                     
-                    Height="300"
+                    Height="600"
                     TextWrapping="WrapWithOverflow">
                     Privacy Policy
 Last updated: February 09, 2022

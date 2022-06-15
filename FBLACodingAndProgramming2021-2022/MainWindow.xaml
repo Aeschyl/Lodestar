@@ -12,8 +12,9 @@
         mc:Ignorable="d"
         Height="600"
         Width="920"
+        WindowState="Maximized"
         WindowStyle="ThreeDBorderWindow"
-        ResizeMode="NoResize"
+        ResizeMode="CanResize"
         UseLayoutRounding="True"
         Background="White">
 
