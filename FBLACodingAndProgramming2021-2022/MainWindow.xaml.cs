@@ -126,6 +126,14 @@ namespace FBLACodingAndProgramming2021_2022
 
         public static void IncrementProgressBar(ProgressBar p, int val)
         {
+            if (val == 100)
+            {
+                p.Foreground = new SolidColorBrush(Colors.SpringGreen);
+            }
+            else
+            {
+                p.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0078d7"));
+            }
             p.Value = val;
         }
 
