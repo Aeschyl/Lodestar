@@ -27,6 +27,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     
     public partial class LocationView : UserControl
     {
+        private (string, string)? coordinatesTuple;
         MainWindow form = Application.Current.Windows[0] as MainWindow;
         ErrorHandling.ErrorHandler handler = new ErrorHandling.ErrorHandler();
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -89,38 +90,41 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             
         }
 
-        // Uses Built-in Location sensor
-        private void Button_Click(object sender, RoutedEventArgs e)
+        // Uses Zipcode
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            form.distance_button.IsChecked = true;
+            form.location_button.IsChecked = false;
             try
             {
-                var list=Geocoder.GetCoordinatesFromLocationSensor();
+                log.Debug("Inputted address: " + zipcode_text.Text);
+                var arr = await Geocoder.GetCoordinatesAsync(zipcode_text.Text);
 
-                Parameters.Latitude = list[0].ToString();
-                Parameters.Longitude = list[1].ToString();
+                Parameters.Longitude = arr[1];
+                Parameters.Latitude = arr[0];
                 ClickButton(form.DistanceActivator);
-                form.distance_button.IsChecked = true;
-                form.location_button.IsChecked = false;
-                
-
             }
-            catch(Exception error)
-            {  
-                log.Error("Could not get local location;" + error.Message);
+            catch (Exception error)
+            {
+                log.Error("Could not get coordinates from address; " + error.Message);
                 handler.ShowError("Something went wrong, try one of the other options");
+                ClickButton(form.LocationActivator);
             }
 
-            
         }
 
         // IP Address Geocoding
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
 
 
 
+            if (coordinatesTuple.HasValue)
+            {
+                (Parameters.Longitude, Parameters.Latitude) = coordinatesTuple.Value;
+                return;
+            }
 
 
 
@@ -129,10 +133,11 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 {
                     Parameters.Latitude = coordinates[1];
                     Parameters.Longitude = coordinates[0];
+                    coordinatesTuple = (coordinates[0], coordinates[1]);
                 }
                 else
                 {
-                    new ErrorHandling.ErrorHandler().ShowError("An Error Occurred with getting Ip Address\nTry Another option or try again");
+                    new ErrorHandler().ShowError("An Error Occurred with getting Ip Address\nTry Another option or try again");
                     e.Handled = true;
                     return;
                 }

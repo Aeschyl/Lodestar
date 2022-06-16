@@ -33,8 +33,8 @@
                 <MenuItem Header="_Info"
                           HorizontalAlignment="Left"
                           FontFamily="Bebas"
-                          FontSize="17"
-                          Padding="10">
+                          FontSize="12"
+                          Padding="5">
                     <MenuItem Header="_Faq"
                               
                               Command="{Binding FAQViewCommand}" />
@@ -161,20 +161,23 @@
 
 
 
-                <TextBlock Text="LodeStar"
+                <TextBlock Grid.Row="0" Text="LodeStar"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            Foreground="Black"
                            FontSize="30"
-                           Margin="20,25,0,0"
+                           Margin="20,20,0,0"
                            FontFamily="Bebas" />
                 <Ellipse Grid.Column="0"
+                         Grid.RowSpan="2"
+                         
                          Height="60"
                          Width="60"
+                         Margin="0,15,0,0"
                          StrokeThickness="0"
                          HorizontalAlignment="Right"
-                         VerticalAlignment="Center"
-                       Grid.Row="0" Margin ="-5">
+                         VerticalAlignment="Top"
+                       Grid.Row="0">
                     <Ellipse.Clip>
                         <EllipseGeometry RadiusX="25" RadiusY="25" Center="30,30"/>
                     </Ellipse.Clip>
@@ -258,12 +261,11 @@
                             Style="{StaticResource BetterButton}"
                             HorizontalAlignment="Left"
                             Foreground="White"
-                            Margin="20,100,0,0"
+                            Padding="20,10,20,10"
+                            Margin="20,230,0,0"
                             Command="{Binding HomeViewCommand}"
                             Click="Button_Click_3" />
-                    <StackPanel Orientation="Horizontal">
-
-                    </StackPanel>
+                   
                 </StackPanel>
 
 

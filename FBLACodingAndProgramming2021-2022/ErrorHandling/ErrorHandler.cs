@@ -18,30 +18,29 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
     
     class ErrorHandler
     {
-
-        volatile static Queue<ErrorShower> errorShowers = new Queue<ErrorShower>();
+        private bool isBusy;
+        
         
         
         
         //Same Error Showing but stays on the screen
         public async void ShowError(string err, bool stay = false)
         {
-            errorShowers.Enqueue(new ErrorShower(err, stay));
+            if (isBusy)
+            {
+                return;
+            }
+            isBusy = true;
+            await new ErrorShower(err, stay).ShowError();
+            isBusy = false;
 
-            await ShowErrorsInQueue();
-            
+
 
         }
 
         
 
-        private async Task ShowErrorsInQueue()
-        {
-            while(errorShowers.Count > 0)
-            {
-                await errorShowers.Dequeue().ShowError();
-            }
-        }
+        
 
         
 
