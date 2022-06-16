@@ -15,16 +15,18 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
 
             <Button Content="I understand and accept"
                     FontFamily="Bebas"
-                    FontSize="14"
+                    FontSize="20"
                     Grid.Row="1"
                     Background="#0078d7"
+                    Foreground="White"
                     HorizontalAlignment="Center"
-                    Padding="20,0,20,0"
+                    Padding="20,10,20,10"
+                    Margin="0, 0, 20, 0"
                     VerticalAlignment="Center"
                     Style="{StaticResource BetterButton}" Click="Button_Click"
                     />
@@ -41,8 +43,9 @@
                     Margin="20, 20, 0, 0">Terms of Use</TextBlock>
                 <TextBox
                     FontFamily="Bebas"
-                    Margin="20, 20, 40, 20"
-                    Height="600"
+                    FontSize="17"
+                    Margin="20, 5, 40, 20"
+                    Height="800"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     IsReadOnly="True"
                     TextWrapping="WrapWithOverflow">
@@ -523,11 +526,11 @@ help.lodestar@gmail.com
                     Margin="20, 20, 0, 0">Privacy Policy</TextBlock>
                 <TextBox
                     FontFamily="Bebas"
-                    Margin="20, 20, 40, 20"
+                    Margin="20, 5, 40, 20"
                     ScrollViewer.VerticalScrollBarVisibility="Visible"
                     IsReadOnly="True"
-                    
-                    Height="600"
+                    FontSize="17"
+                    Height="800"
                     TextWrapping="WrapWithOverflow">
                     Privacy Policy
 Last updated: February 09, 2022

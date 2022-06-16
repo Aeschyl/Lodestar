@@ -27,11 +27,14 @@
           Background="White">
         <DockPanel Background="White" Grid.Column="1" HorizontalAlignment="Left">
             <Menu DockPanel.Dock="Top"
+                  
                   Background="White">
 
                 <MenuItem Header="_Info"
                           HorizontalAlignment="Left"
-                          FontFamily="Bebas">
+                          FontFamily="Bebas"
+                          FontSize="17"
+                          Padding="10">
                     <MenuItem Header="_Faq"
                               
                               Command="{Binding FAQViewCommand}" />
@@ -163,7 +166,7 @@
                            HorizontalAlignment="Left"
                            Foreground="Black"
                            FontSize="30"
-                           Margin="20,0,0,0"
+                           Margin="20,25,0,0"
                            FontFamily="Bebas" />
                 <Ellipse Grid.Column="0"
                          Height="60"
