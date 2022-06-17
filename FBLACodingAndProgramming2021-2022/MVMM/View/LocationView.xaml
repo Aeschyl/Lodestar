@@ -110,7 +110,7 @@
                          HorizontalAlignment="Center"
                          MinWidth="100"
                          TextChanged="TextBox_TextChanged"
-                         KeyUp="TextBox_KeyUp"
+                         KeyUp="Zipcode_text_OnKeyUp"
                          x:Name="zipcode_text"
                          BorderBrush="#0078d7"
                          Template="{StaticResource RoundedTextBox}"/>

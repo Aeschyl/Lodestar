@@ -18,6 +18,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.Model
         public BitmapImage Image { get; set; }
         public Json.Feature FeatureRef { get; set; }
         public string WeatherDescription { get; set; }
+        public string FeatureName { get; set; }
 
     }
 }

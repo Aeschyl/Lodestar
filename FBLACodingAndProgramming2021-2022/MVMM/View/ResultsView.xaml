@@ -65,6 +65,7 @@
 
                     <ListBox Foreground="Black"
                          Grid.Row="1"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                          Height="450"
                          Background="#d1d1d1"
                          Margin="20,0,20,20"
@@ -94,13 +95,13 @@
                                         </Border>
                                         <StackPanel Grid.Column="1">
                                             <Label Content="{Binding Title}" FontSize="15" Margin="10,5,0,0"></Label>
-                                            <Label Content="{Binding Address}" FontSize="10" Margin="10,5,0,0"></Label>
+                                            <TextBox BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Text="{Binding Address}"  FontSize="10" Margin="10,5,0,0"></TextBox>
                                             <Label Content="{Binding DistanceFromHome}" FontSize="10" Margin="10,5,0,0"></Label>
                                             <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                                 <Label Content="{Binding Temperature}"></Label>
                                                 <Image Source="{Binding Icon}" Height="30" Width="30" Stretch="Uniform" ToolTip="{Binding WeatherDescription}"></Image>
-                                                <Button Click="AddToRoute_Click" Style="{StaticResource BetterButton}" Content="Add To Route" Margin="20,0,0,5"></Button>
-                                                <Button Click="RemoveFromRoute_Click" Style="{StaticResource BetterButton}" Margin="5,0,0,5">Remove</Button>
+                                                <Button Click="AddToRoute_Click" ToolTip="{Binding FeatureName}" Style="{StaticResource BetterButton}" Content="Add To Route" Margin="20,0,0,5"></Button>
+                                                <Button Click="RemoveFromRoute_Click" ToolTip="{Binding FeatureName}" Style="{StaticResource BetterButton}" Margin="5,0,0,5">Remove</Button>
                                             </StackPanel>
                                     </StackPanel>
 

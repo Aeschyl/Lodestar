@@ -161,7 +161,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                         ? new BitmapImage(iconUri)
                         : null,
                     FeatureRef = e.Feature,
-                    WeatherDescription = e.Weather.weather[0].description
+                    WeatherDescription = e.Weather.weather[0].description,
+                    FeatureName = e.Feature.properties.name
                     
 
                 });
@@ -444,34 +445,41 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             //Check if there is an selected feature
             var button = sender as Button;
-            //TODO Use tooltip of button to identify what item it came from
+            var feature = GetFeatureByName(button.ToolTip.ToString());
+            
 
-            if (routeWaypoints.Contains(selectedFeature))
+            if (routeWaypoints.Contains(feature))
             {
                 handler.ShowError("Already added to route");
                 e.Handled = true;
                 return;
             }
 
-            routeWaypoints.Add(selectedFeature);
+            routeWaypoints.Add(feature);
             await AddRouteToMap(routeWaypoints);
 
         }
 
         private async void RemoveFromRoute_Click(object sender, RoutedEventArgs e)
         {
+            
+            var button = sender as Button;
+            var feature = GetFeatureByName(button.ToolTip.ToString());
             //Check if there is an selected feature
             
-            if (!routeWaypoints.Contains(selectedFeature))
+            if (!routeWaypoints.Contains(feature))
             {
                 handler.ShowError("Already taken out");
                 e.Handled = true;
                 return;
             }
-            routeWaypoints.Remove(selectedFeature);
+            routeWaypoints.Remove(feature);
             if (routeWaypoints.Count != 0)
                 await AddRouteToMap(routeWaypoints);
-
+            else
+            {
+             Map.Children.RemoveAt(Map.Children.Count-1);
+            }
 
         }
     }

@@ -149,8 +149,13 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         }
 
-        
 
-       
+        private void Zipcode_text_OnKeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Enter)
+                return;
+            Button_Click(null, null);
+            e.Handled = true;
+        }
     }
 }
