@@ -6,6 +6,7 @@ using Aspose.Cells;
 using Aspose.Cells.Utility;
 using BingMapsRESTToolkit;
 using FBLACodingAndProgramming2021_2022.ErrorHandling;
+using FBLACodingAndProgramming2021_2022.MVMM.Model;
 using Json;
 using Microsoft.Maps.MapControl.WPF;
 using Newtonsoft.Json;
@@ -34,18 +35,24 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         readonly List<Feature> routeWaypoints = new List<Feature>();
+        MainWindow _form = Application.Current.Windows[0] as MainWindow;
         Root values;
         Feature selectedFeature;
         string jsonText;
         readonly ErrorHandler handler;
-        List<string> list = new List<string>();
+        List<ListViewFeature> list = new List<ListViewFeature>();
         readonly Dictionary<Feature, (DateTime, string)> weatherCache = new Dictionary<Feature, (DateTime, string)>();
         MapPolyline previousRoute;
         public ResultsView()
         {
+            _form.LoadingAnimation.Visibility = Visibility.Visible;
+            _form.LoadingAnimation.IsEnabled = true;
             InitializeComponent();
             handler = new ErrorHandler();
+            
             InitializeListBox();
+            _form.LoadingAnimation.Visibility = Visibility.Hidden;
+            _form.LoadingAnimation.IsEnabled = false;
         }
 
         public Feature GetFeatureByName(string name)
@@ -124,18 +131,47 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 repeatCounter = 1;
             }
 
-            // Cycles through the objects to place them on the map
-            foreach (Feature featureObject in values.features)
+            //Gets all the Weather Data asynchrounously
+            List<Task<WeatherInfo.Root>> weatherInformationTasks = new List<Task<WeatherInfo.Root>>();
+            values.features.ForEach(e =>
             {
+                weatherInformationTasks.Add(GetWeather(e));
+            });
+            await Task.WhenAll(weatherInformationTasks);
 
-                list.Add(featureObject.properties.name + "; " + Math.Round(featureObject.properties.distance / 1609.34, 2) + " mi");
-            }
+            var weatherInformation = weatherInformationTasks.Select(e => e.Result).ToList();
+
+            var res = weatherInformation.Zip(values.features,
+                ((root, feature) => new { Feature = feature, Weather = root })).ToList();
+
+            // Cycles through the objects to place them on the map
+            res.ForEach(e =>
+            {
+                Uri outUri;
+                Uri iconUri;
+                list.Add(new ListViewFeature()
+                {
+                    Address = e.Feature.properties.formatted,
+                    Title = e.Feature.properties.name,
+                    DistanceFromHome = Math.Round(e.Feature.properties.distance / 1609.34, 2) + " mi",
+                    Image = Uri.TryCreate(e.Feature.properties.imgLink, UriKind.Absolute, out outUri) ? new BitmapImage(outUri) : null,
+                    Temperature = e.Weather.main.temp.ToString() + "F",
+                    Icon = Uri.TryCreate(@"http://openweathermap.org/img/w/" + e.Weather.weather[0].icon + @".png",
+                        UriKind.Absolute, out iconUri)
+                        ? new BitmapImage(iconUri)
+                        : null,
+                    FeatureRef = e.Feature,
+                    WeatherDescription = e.Weather.weather[0].description
+                    
+
+                });
+            });
             MainListBox.ItemsSource = null;
             MainListBox.ItemsSource = list;
             Map.Visibility = Visibility.Visible;
             AddPushPinsToMap();
-            
-            
+
+
 
         }
 
@@ -144,7 +180,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             //Take out any previous routes on the map
             if (previousRoute != null)
                 Map.Children.Remove(previousRoute);
-            
+
             //Convert features to SimpleWaypoints
             var waypointList = points.Select(e => new SimpleWaypoint() { Coordinate = new Coordinate(e.properties.lat, e.properties.lon) }).ToList();
             waypointList.Insert(0, new SimpleWaypoint(new Coordinate(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude))));
@@ -185,8 +221,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     Locations = locs,
                     Stroke = new SolidColorBrush(Colors.LightBlue),
                     StrokeThickness = 5,
-                    
-                   
+
+
                 };
 
                 Map.Children.Add(routeLine);
@@ -207,7 +243,16 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             currentLocation.MouseLeftButtonDown += (object sender, MouseButtonEventArgs e) =>
             {
                 Map.SetView(new Location(((Pushpin)sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
-                FeatureInformation.AppendText("Your Location");
+                var p = sender as Pushpin;
+                for (var i = 0; i < MainListBox.Items.Count; i++)
+                {
+                    if (p.ToolTip.ToString().Equals(((ListViewFeature)MainListBox.Items[i]).Title,
+                            StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        MainListBox.SelectedIndex = i;
+                    }
+                }
+
             };
             Map.Children.Add(currentLocation);
             Map.SetView(new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude)), 15);
@@ -225,17 +270,18 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 {
                     Map.SetView(new Location(((Pushpin)sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
                     selectedFeature = GetFeatureByName(((Pushpin)sender).ToolTip.ToString());
-                    FeatureInformation.Document.Blocks.Clear();
-                    if (selectedFeature.properties.imgLink != null)
+                    var p = sender as Pushpin;
+                    for (int i = 0; i < MainListBox.Items.Count; i++)
                     {
-
-
-                        var image = new BitmapImage(new Uri(selectedFeature.properties.imgLink));
-                        ThumbnailImage.Source = image;
-
+                        if (p.ToolTip.ToString().Equals((MainListBox.Items[i] as ListViewFeature)?.Title,
+                                StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            MainListBox.SelectedIndex = i;
+                            MainListBox.ScrollIntoView(MainListBox.SelectedItem);
+                        }
                     }
-                    FeatureInformation.AppendText(string.Format("{0}\n{1}\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2)));
-                    GetWeather();
+
+
                 };
 
             }
@@ -249,75 +295,53 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 log.Debug("Got No Results From Api");
                 return;
             }
+
+            
+            var listViewFeature = (MainListBox.SelectedItem as ListViewFeature);
             //31
-            selectedFeature = GetFeatureByName(MainListBox.SelectedItem.ToString().Split(';')[0]);
-
-            Map.SetView(new Location(selectedFeature.properties.lat, selectedFeature.properties.lon), 15);
-            FeatureInformation.Document.Blocks.Clear();
-            WeatherInformation.Document.Blocks.Clear();
-            if (selectedFeature.properties.imgLink != null)
-            {
+            Clipboard.SetText(listViewFeature.Address);
+            var box = MessageBox.Show("Copied Address");
+            
 
 
-             
-                var image = new BitmapImage(new Uri(selectedFeature.properties.imgLink));
-                ThumbnailImage.Source = image;
-                
-            }
-            FeatureInformation.AppendText(string.Format("{0}\n\n{1}\n\nDistance: {2} mi", selectedFeature.properties.name, selectedFeature.properties.address_line2, Math.Round(selectedFeature.properties.distance / 1609.34, 2)));
-            GetWeather();
+            
+            Map.SetView(new Location(listViewFeature.FeatureRef.properties.lat, listViewFeature.FeatureRef.properties.lon), 15);
+
+
 
         }
 
 
         // Gets weather for the place the user has selected. Helps inform the user of the current conditions in the location
-        private async void GetWeather()
+        private async Task<WeatherInfo.Root> GetWeather(Feature feature)
         {
-            if (selectedFeature == null)
-            {
-                new ErrorHandler().ShowError("No Place Selected");
-                return;
-            }
-
-            WeatherInformation.Document.Blocks.Clear();
-            if (weatherCache.ContainsKey(selectedFeature) && weatherCache[selectedFeature].Item1.Subtract(DateTime.Now) < TimeSpan.FromMinutes(10))
-            {
-                WeatherInformation.AppendText(weatherCache[selectedFeature].Item2);
-            }
-            else
-            {
 
 
-                var url = new StringBuilder(@"https://touristserver.sami200.repl.co/weather?");
-                url.Append("long=");
-                url.Append(selectedFeature.properties.lon);
-                url.Append("&lat=");
-                url.Append(selectedFeature.properties.lat);
-
-                string outputString;
-                var request = new HttpClient();
-                try
-                {
-                    string response = await request.GetStringAsync(url.ToString());
-
-                    outputString = response;
 
 
-                }
-                catch (Exception)
-                {
-                    new ErrorHandler().ShowError("Something went wrong with getting weather information");
-                    return;
-                }
-                WeatherInformation.Document.Blocks.Clear();
-                var weather = JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
-                WeatherInformation.AppendText(new TextRange(WeatherInformation.Document.ContentStart, WeatherInformation.Document.ContentEnd).Text.Contains("Weather") ? string.Empty : string.Format("Wind: {0} \nTemperature: {1} \nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description));
-                try
-                {
-                    weatherCache.Add(selectedFeature, (DateTime.Now, string.Format("\n\nWeather: \nWind: {0}\nTemperature: {1}\nClouds: {2}", weather.wind.speed, weather.main.temp, weather.weather[0].description)));
-                }
-                catch (Exception) { log.Error("Failed to add object to cache"); }
-            }
+
+
+            var url = new StringBuilder(@"https://touristserver.sami200.repl.co/weather?");
+            url.Append("long=");
+            url.Append(feature.properties.lon);
+            url.Append("&lat=");
+            url.Append(feature.properties.lat);
+
+            string outputString = await new HttpClient().GetStringAsync(url.ToString()); ;
+
+
+
+
+
+
+
+
+            return JsonConvert.DeserializeObject<WeatherInfo.Root>(outputString);
+
+
+
+
+
 
         }
         //Download Button
@@ -398,8 +422,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         //Sort list by alphabetical order
         private void AlphabeticalOrder_Click(object sender, RoutedEventArgs e)
         {
-            values.features = values.features.OrderBy(x => x.properties.name).ToList();
-            MainListBox.ItemsSource = values.features.Select(x => x.properties.name + "; " + Math.Round(x.properties.distance / 1609.34, 2) + " mi").ToList();
+            var items = Enumerable.ToList<ListViewFeature>((IEnumerable<ListViewFeature>)MainListBox.ItemsSource).OrderBy(x => x.Title).ToList();
+
+
+            MainListBox.ItemsSource = items;
         }
 
         //Sort list by distance from the user
@@ -407,9 +433,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
 
 
-            values.features = values.features.OrderBy(x => x.properties.distance).ToList();
-            list = values.features.Select(x => x.properties.name + "; " + Math.Round(x.properties.distance / 1609.34, 2) + " mi").ToList();
-            MainListBox.ItemsSource = list;
+            var items = Enumerable.ToList<ListViewFeature>((IEnumerable<ListViewFeature>)MainListBox.ItemsSource).OrderBy(x => x.DistanceFromHome).ToList();
+
+
+            MainListBox.ItemsSource = items;
 
         }
 
@@ -422,7 +449,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 e.Handled = true;
                 return;
             }
-                
+
             if (routeWaypoints.Contains(selectedFeature))
             {
                 handler.ShowError("Already added to route");
@@ -452,9 +479,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             routeWaypoints.Remove(selectedFeature);
             if (routeWaypoints.Count != 0)
-            await AddRouteToMap(routeWaypoints);
-            
-            
+                await AddRouteToMap(routeWaypoints);
+
+
         }
     }
 }

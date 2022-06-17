@@ -5,6 +5,7 @@
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+             xmlns:model="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.Model"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -29,141 +30,10 @@
 
 
 
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition 
-                        />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions>
+            
 
 
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <RichTextBox x:Name="FeatureInformation"
-                         Background="#d1d1d1"
-                         Foreground="Black"
-                         FontFamily="bebas"
-                         FontSize="14"
-                          Grid.RowSpan="2"
-                         VerticalScrollBarVisibility="Auto"
-                         
-                         IsReadOnly="True"
-                         Padding="10"
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Stretch"
-                         Margin="20,10,10,10"
-                         BorderThickness="0">
-                            
-                            <RichTextBox.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius"
-                                    Value="5" />
-                                </Style>
-                            </RichTextBox.Resources>
-
-                        </RichTextBox>
-                        <Border Background="#d1d1d1"
-                                BorderThickness="2"
-                                BorderBrush="#0078d7"
-                                Margin="10, 10, 10, -10"
-                                CornerRadius="5"
-                                Grid.Row="0"
-                                Grid.Column="1">
-                            <Image x:Name="ThumbnailImage" Stretch="Uniform">
-                                
-                            </Image>
-                        </Border>
-
-                        <RichTextBox
-                            x:Name="WeatherInformation"
-                            Background="#d1d1d1"
-                            Foreground="Black"
-                            FontFamily="bebas"
-                            FontSize="14"
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            IsReadOnly="True"
-                            Padding="10"
-                            HorizontalAlignment="Stretch"
-                            VerticalAlignment="Stretch"
-                            Margin="10, 20, 10, 10"
-                            BorderThickness="0">
-                            <RichTextBox.Resources>
-                                <Style TargetType="{x:Type Border}">
-                                    <Setter Property="CornerRadius"
-                                    Value="5" />
-                                </Style>
-                            </RichTextBox.Resources>
-
-                        </RichTextBox>
-
-
-                    </Grid>
-                    
-                    <Border 
-                            CornerRadius="5"
-                            BorderBrush="#0078d7"
-                        Grid.Row="1"
-                        Margin="20,0,20,0"
-                            BorderThickness="5">
-                        <Grid Grid.Row="1"
-                          Margin="20,0,20,0"
-                          >
-
-
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-
-                            <Button x:Name="AddToRoute"
-                            Grid.Column="0"
-                            Foreground="White"
-                            Content="Add To Route"
-                            FontSize="14"
-                            Background="#0078d7"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Click="AddToRoute_Click"
-                                Padding="10,0,10,0"
-                            Style="{StaticResource BetterButton}"
-                            FontFamily="bebas"
-                            />
-                            <Button x:Name="RemoveFromRoute"
-                            Grid.Column="1"
-                            Foreground="White"
-                            Content="Remove From Route"
-                            FontSize="14"
-                            Background="#0078d7"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Padding="10,0,10,0"
-                            Click="RemoveFromRoute_Click"
-                            Style="{StaticResource BetterButton}"
-                            FontFamily="bebas"
-                            />
-                        </Grid>
-
-                    </Border>
-
-                </Grid>
-
-
-                <StackPanel Grid.Row="1"
+                <StackPanel Grid.Row="0"
                             Grid.Column="1">
 
                     <Grid Margin="20">
@@ -194,7 +64,7 @@
 
                     <ListBox Foreground="Black"
                          Grid.Row="1"
-                         Height="175"
+                         Height="450"
                          Background="#d1d1d1"
                          Margin="20,0,20,20"
                          x:Name="MainListBox"
@@ -205,6 +75,51 @@
                                     Value="5" />
                             </Style>
                         </ListBox.Resources>
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="model:ListViewFeature">
+                                <Border CornerRadius="5" Margin="5" BorderThickness="1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Border CornerRadius="20" BorderBrush="Black" BorderThickness="2" Height="100" Width="100">
+                                            <Border.Background>
+                                                
+                                                <ImageBrush Grid.Column="0"  ImageSource="{Binding Image}" Stretch="UniformToFill"></ImageBrush>
+                                                
+                                            </Border.Background>
+                                        </Border>
+                                        <StackPanel Grid.Column="1">
+                                            <Label Content="{Binding Title}" FontSize="15" Margin="10,5,0,0"></Label>
+                                            <Label Content="{Binding Address}" FontSize="10" Margin="10,5,0,0"></Label>
+                                            <Label Content="{Binding DistanceFromHome}" FontSize="10" Margin="10,5,0,0"></Label>
+                                            <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                                                <Label Content="{Binding Temperature}"></Label>
+                                                <Image Source="{Binding Icon}" Height="30" Width="30" Stretch="Uniform" ToolTip="{Binding WeatherDescription}"></Image>
+                                            </StackPanel>
+                                    </StackPanel>
+
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}">
+                                <Style.Resources>
+                                    
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"></Setter>
+                                    </Style>
+                                </Style.Resources>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#0078d7"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
                     </ListBox>
 
                     <Button Content="Download Results To Excel Spreadsheet"
@@ -224,6 +139,6 @@
 
 
 
-        </Grid>
+        
     </Border>
 </UserControl>

@@ -152,6 +152,7 @@
     </ApplicationDefinition>
     <Compile Include="ErrorHandling\ErrorHandler.cs" />
     <Compile Include="Geocoding\Geocoder.cs" />
+    <Compile Include="MVMM\Model\ListViewFeature.cs" />
     <Compile Include="MVMM\ViewModel\CopyrightViewModel.cs" />
     <Compile Include="MVMM\ViewModel\DistanceViewModel.cs" />
     <Compile Include="MVMM\ViewModel\FAQViewModel.cs" />
@@ -345,7 +346,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
-    <Folder Include="MVMM\Model\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\LodestarIcon.png">

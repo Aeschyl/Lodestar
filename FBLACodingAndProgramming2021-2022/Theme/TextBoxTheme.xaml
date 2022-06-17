@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.Theme">
+                    xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022">
     <Style TargetType="{x:Type TextBox}"
            x:Key="ModernTextBox">
         <Setter Property="TextElement.FontFamily" Value="Fonts/#Bebas-Regular"/>
