@@ -94,7 +94,8 @@
             </DataTemplate>
 
 
-
+            <FontFamily x:Key="FontAwesome">/Fonts/FontAwesome.ttf#FontAwesome</FontFamily>
+            
 
 
 
