@@ -443,12 +443,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         private async void AddToRoute_Click(object sender, RoutedEventArgs e)
         {
             //Check if there is an selected feature
-            if (selectedFeature == null)
-            {
-                handler.ShowError("No feature selected");
-                e.Handled = true;
-                return;
-            }
+            var button = sender as Button;
+            //TODO Use tooltip of button to identify what item it came from
 
             if (routeWaypoints.Contains(selectedFeature))
             {
@@ -465,12 +461,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         private async void RemoveFromRoute_Click(object sender, RoutedEventArgs e)
         {
             //Check if there is an selected feature
-            if (selectedFeature == null)
-            {
-                handler.ShowError("No feature selected");
-                e.Handled = true;
-                return;
-            }
+            
             if (!routeWaypoints.Contains(selectedFeature))
             {
                 handler.ShowError("Already taken out");
