@@ -37,45 +37,59 @@
                 </Grid.RowDefinitions>
                 <Border CornerRadius="5"
                         Grid.Row="0"
+                        Height="100" Width="100"
                         Grid.Column="1">
-                <Image
-                    x:Name="Image1" Stretch="None"
-                    
-                    
-                    
-                    
+                    <Border.Background>
+                    <ImageBrush
+                    x:Name="Image1" 
+                     
+                    Stretch="UniformToFill"
                     >
-                </Image>
+                </ImageBrush>
+                    </Border.Background>
                 </Border>
                 <Border CornerRadius="5"
                         Grid.Row="0"
+                        Height="100" Width="100"
                         Grid.Column="3">
-                <Image
+                    <Border.Background>
+                    <ImageBrush
                     x:Name="Image2"
+                   
                     Grid.Row="0"
-                    Stretch="None"
+                    Stretch="UniformToFill"
                     Grid.Column="3">
-                </Image>
+                    </ImageBrush>
+                    </Border.Background>
                 </Border>
                 <Border CornerRadius="5"
                         Grid.Row="1"
+                        Height="100" Width="100"
                         Grid.Column="1">
-                <Image
+                    <Border.Background>
+                    <ImageBrush
                     x:Name="Image3"
                     Grid.Row="1"
-                    Stretch="None"
+
+                    Stretch="UniformToFill"
                     Grid.Column="1">
-                </Image>
+                </ImageBrush>
+                    </Border.Background>
                 </Border>
                 <Border CornerRadius="5"
                         Grid.Row="1"
+                        Height="100" Width="100"
                         Grid.Column="3">
-                <Image
+                    <Border.Background>
+                    <ImageBrush
                     x:Name="Image4"
                     Grid.Row="1"
-                    Stretch="None"
+                   
+                    Stretch="UniformToFill"
                     Grid.Column="3">
-                </Image>
+                        
+                    </ImageBrush>
+                    </Border.Background>
                 </Border>
                 <TextBlock x:Name="TopLeftTextBox"
                            FontFamily="bebas"
