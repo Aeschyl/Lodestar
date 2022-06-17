@@ -5,6 +5,7 @@
              xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+             
              xmlns:model="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.Model"
              mc:Ignorable="d"
              d:DesignHeight="450"
@@ -34,10 +35,15 @@
             
 
 
-                <StackPanel Grid.Row="0"
+                <Grid Grid.Row="0"
                             Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".5*"></RowDefinition>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height=".5*"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-                    <Grid Margin="20">
+                    <Grid VerticalAlignment="Center" Grid.Row="0" Margin="20">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -53,6 +59,7 @@
                                 FontSize="14"/>
                         <Button Content="Distance From Home"
                                 Grid.Column="1"
+                                VerticalAlignment="Center"
                                 Padding="10,0,10,0"
                                 Foreground="White"
                                 Style="{StaticResource BetterButton}"
@@ -95,13 +102,24 @@
                                         </Border>
                                         <StackPanel Grid.Column="1">
                                             <Label Content="{Binding Title}" FontSize="15" Margin="10,5,0,0"></Label>
-                                            <TextBox IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Text="{Binding Address}"  FontSize="10" Margin="10,5,0,0"></TextBox>
+                                            
+                                            <TextBox IsHitTestVisible="False" IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Text="{Binding Address}"  FontSize="10" Margin="10,5,0,0"></TextBox>
                                             <Label Content="{Binding DistanceFromHome}" FontSize="10" Margin="10,5,0,0"></Label>
                                             <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                                 <Label Content="{Binding Temperature}"></Label>
                                                 <Image Source="{Binding Icon}" Height="30" Width="30" Stretch="Uniform" ToolTip="{Binding WeatherDescription}"></Image>
-                                                <Button Click="AddToRoute_Click" ToolTip="{Binding FeatureName}" Style="{StaticResource BetterButton}" Content="Add To Route" Margin="20,0,0,5"></Button>
-                                                <Button Click="RemoveFromRoute_Click" ToolTip="{Binding FeatureName}" Style="{StaticResource BetterButton}" Margin="5,0,0,5">Remove</Button>
+                                                <Button Click="AddToRoute_Click" ToolTip="{Binding FeatureName}"  Content="Add To Route" Margin="20,0,0,5" Padding="5,0,5,0">
+                                                    <Button.Background>
+                                                        <SolidColorBrush Color="SpringGreen" Opacity=".6"></SolidColorBrush>
+                                                    </Button.Background>
+                                                </Button>
+                                                <Button Click="RemoveFromRoute_Click" Height="23" Width="23" ToolTip="{Binding FeatureName}"  Margin="5,0,0,5">
+                                                    <Button.Content>
+                                                        <Image Source="/Images/CancelIcon.png"></Image>
+                                                    </Button.Content>
+                                                    
+                                                    
+                                                </Button>
                                             </StackPanel>
                                     </StackPanel>
 
@@ -125,20 +143,21 @@
                             </Style>
                         </ListBox.ItemContainerStyle>
                     </ListBox>
-
-                    <Button Content="Download Results To Excel Spreadsheet"
+                    
+                    <Button  Content="Download Results To Excel Spreadsheet"
                         FontFamily="Bebas"
                         FontSize="14"
                         Background="#0078d7"
                         Foreground="White"
+                        Margin="20,0,20,10"
                         HorizontalAlignment="Center"
                         Padding="10,0,10,0"
                         x:Name="DownloadResultsButton"
                         Style="{StaticResource BetterButton}"
-                        Grid.Column="1"
+                        VerticalAlignment="Center"
                         Click="DownloadResultsButton_Click"
-                        Grid.Row="1" />
-                </StackPanel>
+                        Grid.Row="2" />
+                </Grid>
             </Grid>
 
 

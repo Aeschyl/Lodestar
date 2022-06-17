@@ -20,7 +20,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -211,6 +210,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 var route = response.ResourceSets[0].Resources[0] as Route;
                 var coords = route.RoutePath.Line.Coordinates; //This is 2D array of lat/long values.
                 var locs = new LocationCollection();
+                
 
                 for (int i = 0; i < coords.Length; i++)
                 {
@@ -220,7 +220,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 var routeLine = new MapPolyline()
                 {
                     Locations = locs,
-                    Stroke = new SolidColorBrush(Colors.LightBlue),
+                    Stroke = new SolidColorBrush(Colors.SpringGreen),
                     StrokeThickness = 5,
 
 
@@ -484,6 +484,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
 
         }
+
 
         
     }

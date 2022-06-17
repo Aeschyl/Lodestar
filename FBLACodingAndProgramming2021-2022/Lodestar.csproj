@@ -345,13 +345,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Assets\LodestarIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\LodeStarIconSVG.svg" />
+    <Resource Include="Images\CancelIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Fonts\FontAwesome.ttf" />
     <Resource Include="LodestarIcon%281%29.ico" />
     <Resource Include="LodestarIcon.ico" />
