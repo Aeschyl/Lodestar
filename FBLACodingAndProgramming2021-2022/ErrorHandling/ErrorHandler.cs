@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
+using log4net.Appender;
 
 namespace FBLACodingAndProgramming2021_2022.ErrorHandling
 {
@@ -19,19 +21,20 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
     class ErrorHandler
     {
         private bool isBusy;
-        
+        private Brush _defaultColor = new SolidColorBrush(Colors.Red);
         
         
         
         //Same Error Showing but stays on the screen
-        public async void ShowError(string err, bool stay = false)
+        public async void ShowError(string err, bool stay = false, Brush color = null)
         {
             if (isBusy)
             {
                 return;
             }
             isBusy = true;
-            await new ErrorShower(err, stay).ShowError();
+            color ??= _defaultColor;
+            await new ErrorShower(err, stay, color).ShowError();
             isBusy = false;
 
 
@@ -49,14 +52,16 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
 
     }
 
-    class ErrorShower
+    internal class ErrorShower
     {
         public string err { get; set; }
         public bool stay { get; set; }
-        public ErrorShower(string err, bool stay)
+        public Brush brush { get; set; }
+        public ErrorShower(string err, bool stay, Brush color = null)
         {
             this.err = err;
             this.stay = stay;
+            brush = color ?? new SolidColorBrush(Colors.Red);
         }
         // Overloaded methods to display the error box with the error that has occured
         
@@ -64,6 +69,7 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
         public async Task ShowError()
         {
             MainWindow form = Application.Current.Windows[0] as MainWindow;
+            form.ErrorTextBox.Background = brush;
             form.ErrorTextBox.Text = err;
             form.ErrorTextBox.Opacity = 100;
             form.ErrorTextBox.Visibility = System.Windows.Visibility.Visible;

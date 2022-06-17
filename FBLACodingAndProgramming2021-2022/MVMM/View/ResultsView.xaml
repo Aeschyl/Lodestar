@@ -95,7 +95,7 @@
                                         </Border>
                                         <StackPanel Grid.Column="1">
                                             <Label Content="{Binding Title}" FontSize="15" Margin="10,5,0,0"></Label>
-                                            <TextBox BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Text="{Binding Address}"  FontSize="10" Margin="10,5,0,0"></TextBox>
+                                            <TextBox IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Text="{Binding Address}"  FontSize="10" Margin="10,5,0,0"></TextBox>
                                             <Label Content="{Binding DistanceFromHome}" FontSize="10" Margin="10,5,0,0"></Label>
                                             <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                                 <Label Content="{Binding Temperature}"></Label>

@@ -300,8 +300,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             
             var listViewFeature = (MainListBox.SelectedItem as ListViewFeature);
             //31
-            Clipboard.SetText(listViewFeature.Address);
-            var box = MessageBox.Show("Copied Address");
+            
+            
+            Clipboard.SetText(listViewFeature.FeatureRef.properties.formatted);
+            new ErrorHandler().ShowError("Copied Address", color: new SolidColorBrush(Colors.SpringGreen));
             
 
 
@@ -482,5 +484,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
 
         }
+
+        
     }
 }
