@@ -39,7 +39,7 @@
                             Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height=".5*"></RowDefinition>
-                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="4*"></RowDefinition>
                         <RowDefinition Height=".5*"></RowDefinition>
                     </Grid.RowDefinitions>
 
@@ -56,7 +56,7 @@
                                 Padding="10,0,10,0"
                                 HorizontalAlignment="Center"
                                 Click="AlphabeticalOrder_Click"
-                                FontSize="14"/>
+                                FontSize="20"/>
                         <Button Content="Distance From Home"
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
@@ -67,15 +67,16 @@
                                 Click="DistanceFromHome_Click"
                                 Background="#0078d7"
                                 HorizontalAlignment="Center"
-                                FontSize="14"/>
+                                FontSize="20"/>
                     </Grid>
 
                     <ListBox Foreground="Black"
                          Grid.Row="1"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         Height="450"
-                         Background="#d1d1d1"
+                         Height="700"
+                         Background="White"
                          Margin="20,0,20,20"
+                         BorderThickness="0"
                          x:Name="MainListBox"
                          MouseDoubleClick="MainListBox_MouseDoubleClick">
                         <ListBox.Resources>
@@ -89,22 +90,24 @@
                             <DataTemplate DataType="model:ListViewFeature">
                                 <Border CornerRadius="5" Margin="5" BorderThickness="1">
                                     <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Border CornerRadius="20" BorderBrush="Black" BorderThickness="2" Height="100" Width="100">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition
+                                            Width="1.5*"></ColumnDefinition>
+                                        <ColumnDefinition
+                                            Width="2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Border CornerRadius="20" BorderBrush="Black" BorderThickness="2" Height="150" Width="300">
                                             <Border.Background>
                                                 
-                                                <ImageBrush Grid.Column="0"  ImageSource="{Binding Image}" Stretch="UniformToFill"></ImageBrush>
+                                                <ImageBrush ImageSource="{Binding Image}" Stretch="Uniform"></ImageBrush>
                                                 
                                             </Border.Background>
                                         </Border>
                                         <StackPanel Grid.Column="1">
                                             <Label Content="{Binding Title}" FontSize="15" Margin="10,5,0,0"></Label>
                                             
-                                            <TextBox IsHitTestVisible="False" IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Text="{Binding Address}"  FontSize="10" Margin="10,5,0,0"></TextBox>
-                                            <Label Content="{Binding DistanceFromHome}" FontSize="10" Margin="10,5,0,0"></Label>
+                                            <TextBox IsHitTestVisible="False" IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Text="{Binding Address}" Margin="10,5,0,0"></TextBox>
+                                            <Label Content="{Binding DistanceFromHome}" Margin="10,5,0,0"></Label>
                                             <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
                                                 <Label Content="{Binding Temperature}"></Label>
                                                 <Image Source="{Binding Icon}" Height="30" Width="30" Stretch="Uniform" ToolTip="{Binding WeatherDescription}"></Image>
@@ -146,7 +149,7 @@
                     
                     <Button  Content="Download Results To Excel Spreadsheet"
                         FontFamily="Bebas"
-                        FontSize="14"
+                        FontSize="20"
                         Background="#0078d7"
                         Foreground="White"
                         Margin="20,0,20,10"

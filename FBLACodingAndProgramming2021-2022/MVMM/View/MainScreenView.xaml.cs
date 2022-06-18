@@ -42,9 +42,18 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             e.Handled = true;
             FindAttractionsButton.IsEnabled = false;
             FindAttractionsButton.Visibility = Visibility.Hidden;
+            TopLeftBorder.Visibility = Visibility.Hidden;
+            TopRightBorder.Visibility = Visibility.Hidden;
+            BottomLeftBorder.Visibility = Visibility.Hidden;
+            BottomRightBorder.Visibility = Visibility.Hidden;
+
             form.LoadingAnimation.Visibility = Visibility.Visible;
             await LoadRecomendations();
             form.LoadingAnimation.Visibility = Visibility.Hidden;
+            TopLeftBorder.Visibility = Visibility.Visible;
+            TopRightBorder.Visibility = Visibility.Visible;
+            BottomLeftBorder.Visibility = Visibility.Visible;
+            BottomRightBorder.Visibility = Visibility.Visible;
             FindAttractionsButton.Visibility = Visibility.Visible;
             FindAttractionsButton.IsEnabled = true; ;
         }
@@ -76,12 +85,12 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 }
                 counter++;
             });
-            var listOfImages = new List<ImageBrush>{Image1, Image2, Image3, Image4 };
+            var listOfImages = new List<Image>{Image1, Image2, Image3, Image4 };
 
             counter = 0;
             listOfImages.ForEach(e =>
             {
-                e.ImageSource = images.ContainsKey(counter)? images[counter] : null;
+                e.Source = images.ContainsKey(counter)? images[counter] : null;
                 counter++;
             });
             
