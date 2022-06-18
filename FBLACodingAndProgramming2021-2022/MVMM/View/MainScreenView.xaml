@@ -1,28 +1,30 @@
-﻿<UserControl x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.MainScreenView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
-             xmlns:viewmodel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
-             d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
-             mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
-    <Border BorderBrush="#0078d7"
-            BorderThickness="5"
-            CornerRadius="5">
-        <StackPanel CanVerticallyScroll="true"
-                    Loaded="StackPanel_Loaded">
+﻿<UserControl
+    d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.MainScreenView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border
+        BorderBrush="#0078d7"
+        BorderThickness="5"
+        CornerRadius="5">
+        <StackPanel CanVerticallyScroll="true" Loaded="StackPanel_Loaded">
 
 
 
-            <TextBlock Text="Recommendations"
-                       HorizontalAlignment="Center"
-                       FontFamily="Bebas"
-                       Margin="30"
-                       FontSize="30"
-                       Foreground="Black" />
+            <TextBlock
+                FontFamily="Bebas"
+                FontSize="30"
+                Foreground="Black"
+                HorizontalAlignment="Center"
+                Margin="30"
+                Text="Recommendations" />
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -35,112 +37,113 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Border CornerRadius="5"
-                        Grid.Row="0"
-                        Height="100" Width="100"
-                        Grid.Column="1">
-                    <Border.Background>
-                    <ImageBrush
-                    x:Name="Image1" 
-                     
-                    Stretch="UniformToFill"
-                    >
-                </ImageBrush>
-                    </Border.Background>
-                </Border>
-                <Border CornerRadius="5"
-                        Grid.Row="0"
-                        Height="100" Width="100"
-                        Grid.Column="3">
-                    <Border.Background>
-                    <ImageBrush
-                    x:Name="Image2"
-                   
+                <Border
+                    CornerRadius="5"
+                    Grid.Column="1"
                     Grid.Row="0"
-                    Stretch="UniformToFill"
-                    Grid.Column="3">
-                    </ImageBrush>
-                    </Border.Background>
-                </Border>
-                <Border CornerRadius="5"
-                        Grid.Row="1"
-                        Height="100" Width="100"
-                        Grid.Column="1">
+                    Height="100"
+                    Width="100">
                     <Border.Background>
-                    <ImageBrush
-                    x:Name="Image3"
-                    Grid.Row="1"
-
-                    Stretch="UniformToFill"
-                    Grid.Column="1">
-                </ImageBrush>
+                        <ImageBrush Stretch="UniformToFill" x:Name="Image1" />
                     </Border.Background>
                 </Border>
-                <Border CornerRadius="5"
-                        Grid.Row="1"
-                        Height="100" Width="100"
-                        Grid.Column="3">
+                <Border
+                    CornerRadius="5"
+                    Grid.Column="3"
+                    Grid.Row="0"
+                    Height="100"
+                    Width="100">
                     <Border.Background>
-                    <ImageBrush
-                    x:Name="Image4"
-                    Grid.Row="1"
-                   
-                    Stretch="UniformToFill"
-                    Grid.Column="3">
-                        
-                    </ImageBrush>
+                        <ImageBrush
+                            Grid.Column="3"
+                            Grid.Row="0"
+                            Stretch="UniformToFill"
+                            x:Name="Image2" />
                     </Border.Background>
                 </Border>
-                <TextBlock x:Name="TopLeftTextBox"
-                           FontFamily="bebas"
-                           FontSize="14"
-                           HorizontalAlignment="Center"
-                           Grid.Row="0"
-                           Padding="50"
+                <Border
+                    CornerRadius="5"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Height="100"
+                    Width="100">
+                    <Border.Background>
+                        <ImageBrush
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Stretch="UniformToFill"
+                            x:Name="Image3" />
+                    </Border.Background>
+                </Border>
+                <Border
+                    CornerRadius="5"
+                    Grid.Column="3"
+                    Grid.Row="1"
+                    Height="100"
+                    Width="100">
+                    <Border.Background>
+                        <ImageBrush
+                            Grid.Column="3"
+                            Grid.Row="1"
+                            Stretch="UniformToFill"
+                            x:Name="Image4" />
+                    </Border.Background>
+                </Border>
+                <TextBlock
+                    FontFamily="bebas"
+                    FontSize="14"
+                    Foreground="Black"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    Padding="50"
                     TextWrapping="Wrap"
-                           Grid.Column="0"
-                           Foreground="Black" />
-                <TextBlock x:Name="TopRightTextBox"
-                           FontFamily="bebas"
-                           FontSize="14"
-                           Padding="50"
-                           HorizontalAlignment="Center"
-                           Grid.Row="0"
+                    x:Name="TopLeftTextBox" />
+                <TextBlock
+                    FontFamily="bebas"
+                    FontSize="14"
+                    Foreground="Black"
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    HorizontalAlignment="Center"
+                    Padding="50"
                     TextWrapping="Wrap"
-                           Grid.Column="2"
-                           Foreground="Black" />
-                <TextBlock x:Name="BottomRightTextBox"
-                           FontFamily="bebas"
-                           FontSize="14"
-                           Padding="50"
-                           HorizontalAlignment="Center"
-                           Grid.Row="1"
+                    x:Name="TopRightTextBox" />
+                <TextBlock
+                    FontFamily="bebas"
+                    FontSize="14"
+                    Foreground="Black"
+                    Grid.Column="2"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    Padding="50"
                     TextWrapping="Wrap"
-                           Grid.Column="2"
-                           Foreground="Black" />
-                <TextBlock x:Name="BottomLeftTextBox"
-                           FontFamily="bebas"
-                           FontSize="14"
-                           TextWrapping="Wrap"
-                           HorizontalAlignment="Center"
-                           Padding="50"
-                           Grid.Row="1"
-                           Grid.Column="0"
-                           Foreground="Black" />
+                    x:Name="BottomRightTextBox" />
+                <TextBlock
+                    FontFamily="bebas"
+                    FontSize="14"
+                    Foreground="Black"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    Padding="50"
+                    TextWrapping="Wrap"
+                    x:Name="BottomLeftTextBox" />
             </Grid>
 
-            <Button Content="Find Attractions!"
-                    FontFamily="Bebas"
-                    FontSize="20"
-                    Margin="50"
-                    x:Name="FindAttractionsButton"
-                    VerticalAlignment="Bottom"
-                    HorizontalAlignment="Center"
-                    Click="Button_Click"
-                    Background="#0078d7"
-                    Foreground="White"
-                    Padding="7"
-                    Style="{StaticResource BetterButton}" />
+            <Button
+                Background="#0078d7"
+                Click="Button_Click"
+                Content="Find Attractions!"
+                FontFamily="Bebas"
+                FontSize="20"
+                Foreground="White"
+                HorizontalAlignment="Center"
+                Margin="50"
+                Padding="7"
+                Style="{StaticResource BetterButton}"
+                VerticalAlignment="Bottom"
+                x:Name="FindAttractionsButton" />
         </StackPanel>
     </Border>
 
