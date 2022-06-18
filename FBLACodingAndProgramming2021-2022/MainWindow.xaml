@@ -1,84 +1,86 @@
-﻿<Window x:Class="FBLACodingAndProgramming2021_2022.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:fa="http://schemas.fontawesome.io/icons/"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022"
-        xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
-        xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
-        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:b="clr-namespace:FBLACodingAndProgramming2021_2022.Behaviors"
-        mc:Ignorable="d"
-        Height="600"
-        Width="920"
-        WindowState="Maximized"
-        WindowStyle="ThreeDBorderWindow"
-        ResizeMode="CanResize"
-        UseLayoutRounding="True"
-        Background="White">
+﻿<Window
+    Background="White"
+    Height="600"
+    ResizeMode="CanResize"
+    UseLayoutRounding="True"
+    Width="920"
+    WindowState="Maximized"
+    WindowStyle="ThreeDBorderWindow"
+    mc:Ignorable="d"
+    x:Class="FBLACodingAndProgramming2021_2022.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:b="clr-namespace:FBLACodingAndProgramming2021_2022.Behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="http://schemas.fontawesome.io/icons/"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+    xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
 
-    <Grid x:Name="TopGrid"
-          Background="White">
-        <DockPanel Background="White" Grid.Column="1" HorizontalAlignment="Left">
-            <Menu DockPanel.Dock="Top"
-                  
-                  Background="White">
+    <Grid Background="White" x:Name="TopGrid">
+        <DockPanel
+            Background="White"
+            Grid.Column="1"
+            HorizontalAlignment="Left">
+            <Menu Background="White" DockPanel.Dock="Top">
 
-                <MenuItem Header="_Info"
-                          HorizontalAlignment="Left"
-                          FontFamily="Bebas"
-                          FontSize="12"
-                          Padding="5">
-                    <MenuItem Header="_Faq"
-                              
-                              Command="{Binding FAQViewCommand}" />
-                    <MenuItem Header="_Resources" Command="{Binding CopyrightViewCommand}" />
+                <MenuItem
+                    FontFamily="Bebas"
+                    FontSize="12"
+                    Header="_Info"
+                    HorizontalAlignment="Left"
+                    Padding="5">
+                    <MenuItem Command="{Binding FAQViewCommand}" Header="_Faq" />
+                    <MenuItem Command="{Binding CopyrightViewCommand}" Header="_Resources" />
 
                 </MenuItem>
             </Menu>
         </DockPanel>
 
 
-        <Rectangle Fill="Gray"
-                   HorizontalAlignment="Stretch"
-                   VerticalAlignment="Stretch"
-                   x:Name="ErrorRectangle"
-                   Opacity="0"
-                   Visibility="Hidden" />
-        <TextBlock Text="No Internet Connection"
-                   FontFamily="bebas"
-                   FontSize="20"
-                   Foreground="White"
-                   Background="Black"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   Margin="100,0,0,100"
-                   x:Name="ErrorText"
-                   Visibility="Hidden" />
-        <fa:ImageAwesome Icon="Refresh"
-                         Spin="True"
-                         Height="48"
-                         Width="48"
-                         Margin="200,0,0,50"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"
-                         x:Name="LoadingAnimation"
-                         Visibility="Hidden" />
+        <Rectangle
+            Fill="Gray"
+            HorizontalAlignment="Stretch"
+            Opacity="0"
+            VerticalAlignment="Stretch"
+            Visibility="Hidden"
+            x:Name="ErrorRectangle" />
+        <TextBlock
+            Background="Black"
+            FontFamily="bebas"
+            FontSize="20"
+            Foreground="White"
+            HorizontalAlignment="Center"
+            Margin="100,0,0,100"
+            Text="No Internet Connection"
+            VerticalAlignment="Center"
+            Visibility="Hidden"
+            x:Name="ErrorText" />
+        <fa:ImageAwesome
+            Height="48"
+            HorizontalAlignment="Center"
+            Icon="Refresh"
+            Margin="200,0,0,50"
+            Spin="True"
+            VerticalAlignment="Center"
+            Visibility="Hidden"
+            Width="48"
+            x:Name="LoadingAnimation" />
 
 
-        <Border CornerRadius="10"
-                x:Name="MainBorder">
+        <Border CornerRadius="10" x:Name="MainBorder">
 
             <Grid>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="200" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -86,204 +88,229 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding MainScreenViewCommand}"
-                        x:Name="MainScreenActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding MainScreenViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="MainScreenActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding HaveFunSubViewCommand}"
-                        x:Name="HaveFunActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding HaveFunSubViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="HaveFunActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding EatSubViewCommand}"
-                        x:Name="EatActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding EatSubViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="EatActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding ShopSubViewCommand}"
-                        x:Name="ShopActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding ShopSubViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="ShopActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding ExploreSubViewCommand}"
-                        x:Name="ExploreActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding ExploreSubViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="ExploreActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding StaySubViewCommand}"
-                        x:Name="StayActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding StaySubViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="StayActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding AmenitiesViewCommand}"
-                        x:Name="AmenitiesActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding AmenitiesViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="AmenitiesActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding LocationViewCommand}"
-                        x:Name="LocationActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding LocationViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="LocationActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding HomeViewCommand}"
-                        x:Name="CategoryActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding HomeViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="CategoryActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding DistanceViewCommand}"
-                        x:Name="DistanceActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding DistanceViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="DistanceActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding ResultsViewCommand}"
-                        x:Name="ResultsActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding ResultsViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="ResultsActivator" />
 
-                <Button Height="0"
-                        Width="0"
-                        Command="{Binding TermsViewCommand}"
-                        x:Name="TermsActivator"
-                        x:FieldModifier="public" />
+                <Button
+                    Command="{Binding TermsViewCommand}"
+                    Height="0"
+                    Width="0"
+                    x:FieldModifier="public"
+                    x:Name="TermsActivator" />
 
 
 
 
-                <TextBlock Grid.Row="0" Text="LodeStar"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Foreground="Black"
-                           FontSize="30"
-                           Margin="20,20,0,0"
-                           FontFamily="Bebas" />
-                <Ellipse Grid.Column="0"
-                         Grid.RowSpan="2"
-                         
-                         Height="60"
-                         Width="60"
-                         Margin="0,15,0,0"
-                         StrokeThickness="0"
-                         HorizontalAlignment="Right"
-                         VerticalAlignment="Top"
-                       Grid.Row="0">
+                <TextBlock
+                    FontFamily="Bebas"
+                    FontSize="30"
+                    Foreground="Black"
+                    Grid.Row="0"
+                    HorizontalAlignment="Left"
+                    Margin="20,20,0,0"
+                    Text="LodeStar"
+                    VerticalAlignment="Center" />
+                <Ellipse
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Height="60"
+                    HorizontalAlignment="Right"
+                    Margin="0,15,0,0"
+                    StrokeThickness="0"
+                    VerticalAlignment="Top"
+                    Width="60">
                     <Ellipse.Clip>
-                        <EllipseGeometry RadiusX="25" RadiusY="25" Center="30,30"/>
+                        <EllipseGeometry
+                            Center="30,30"
+                            RadiusX="25"
+                            RadiusY="25" />
                     </Ellipse.Clip>
                     <Ellipse.Fill>
-                        <ImageBrush x:Name="LogoImage"
-                       
-                      />
+                        <ImageBrush x:Name="LogoImage" />
                     </Ellipse.Fill>
                 </Ellipse>
-                
+
 
                 <StackPanel Grid.Row="1">
 
-                    <RadioButton Content="Home"
-                                 Height="50"
-                                 Foreground="Black"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 IsChecked="False"
-                                 Command="{Binding MainScreenViewCommand}"
-                                 x:Name="main_screen_button"
-                                 IsEnabled="true" />
+                    <RadioButton
+                        Command="{Binding MainScreenViewCommand}"
+                        Content="Home"
+                        FontSize="14"
+                        Foreground="Black"
+                        Height="50"
+                        IsChecked="False"
+                        IsEnabled="true"
+                        Style="{StaticResource MenuButtonTheme}"
+                        x:Name="main_screen_button" />
 
-                    <RadioButton Content="Category"
-                                 Height="50"
-                                 Foreground="Black"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 IsChecked="False"
-                                 Command="{Binding HomeViewCommand}"
-                                 x:Name="category_button"
-                                 Checked="category_button_Checked"
-                                 IsEnabled="True" />
-                    <RadioButton Content="Sub-Category"
-                                 Height="50"
-                                 Foreground="Black"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 x:Name="sub_category_button"
-                                 Checked="sub_category_button_Checked"
-                                 IsEnabled="True" />
-                    <RadioButton Content="Amenities"
-                                 Height="50"
-                                 Foreground="Black"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 x:Name="amenities_button"
-                                 Command="{Binding AmenitiesViewCommand}"
-                                 Checked="amenities_button_Checked"
-                                 IsEnabled="True" />
-                    <RadioButton Content="Location"
-                                 Height="50"
-                                 Foreground="Black"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 x:Name="location_button"
-                                 Command="{Binding LocationViewCommand}"
-                                 Checked="location_button_Checked"
-                                 IsEnabled="True" />
-                    <RadioButton Content="Distance"
-                                 Height="50"
-                                 Foreground="Black"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme }"
-                                 x:Name="distance_button"
-                                 Checked="distance_button_Checked"
-                                 IsEnabled="True" />
-                    <RadioButton Content="Results"
-                                 Height="50"
-                                 Foreground="Black"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 x:Name="results_button"
-                                 Checked="results_button_Checked"
-                                 IsEnabled="False" />
+                    <RadioButton
+                        Checked="category_button_Checked"
+                        Command="{Binding HomeViewCommand}"
+                        Content="Category"
+                        FontSize="14"
+                        Foreground="Black"
+                        Height="50"
+                        IsChecked="False"
+                        IsEnabled="True"
+                        Style="{StaticResource MenuButtonTheme}"
+                        x:Name="category_button" />
+                    <RadioButton
+                        Checked="sub_category_button_Checked"
+                        Content="Sub-Category"
+                        FontSize="14"
+                        Foreground="Black"
+                        Height="50"
+                        IsEnabled="True"
+                        Style="{StaticResource MenuButtonTheme}"
+                        x:Name="sub_category_button" />
+                    <RadioButton
+                        Checked="amenities_button_Checked"
+                        Command="{Binding AmenitiesViewCommand}"
+                        Content="Amenities"
+                        FontSize="14"
+                        Foreground="Black"
+                        Height="50"
+                        IsEnabled="True"
+                        Style="{StaticResource MenuButtonTheme}"
+                        x:Name="amenities_button" />
+                    <RadioButton
+                        Checked="location_button_Checked"
+                        Command="{Binding LocationViewCommand}"
+                        Content="Location"
+                        FontSize="14"
+                        Foreground="Black"
+                        Height="50"
+                        IsEnabled="True"
+                        Style="{StaticResource MenuButtonTheme}"
+                        x:Name="location_button" />
+                    <RadioButton
+                        Checked="distance_button_Checked"
+                        Content="Distance"
+                        FontSize="14"
+                        Foreground="Black"
+                        Height="50"
+                        IsEnabled="True"
+                        Style="{StaticResource MenuButtonTheme}"
+                        x:Name="distance_button" />
+                    <RadioButton
+                        Checked="results_button_Checked"
+                        Content="Results"
+                        FontSize="14"
+                        Foreground="Black"
+                        Height="50"
+                        IsEnabled="False"
+                        Style="{StaticResource MenuButtonTheme}"
+                        x:Name="results_button" />
 
-                    <Button Content="Restart"
-                            FontFamily="bebas"
-                            FontSize="14"
-                            Background="#0078d7"
-                            Style="{StaticResource BetterButton}"
-                            HorizontalAlignment="Left"
-                            Foreground="White"
-                            Padding="20,10,20,10"
-                            Margin="20,230,0,0"
-                            Command="{Binding HomeViewCommand}"
-                            Click="Button_Click_3" />
-                   
+                    <Button
+                        Background="#0078d7"
+                        Click="Button_Click_3"
+                        Command="{Binding HomeViewCommand}"
+                        Content="Restart"
+                        FontFamily="bebas"
+                        FontSize="14"
+                        Foreground="White"
+                        HorizontalAlignment="Left"
+                        Margin="20,230,0,0"
+                        Padding="20,10,20,10"
+                        Style="{StaticResource BetterButton}" />
+
                 </StackPanel>
 
 
-                <ContentControl Grid.Row="1"
-                                Grid.Column="1"
-                                Margin="10"
-                                Content="{Binding CurrentView}" />
+                <ContentControl
+                    Content="{Binding CurrentView}"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="10" />
 
-                <ProgressBar Grid.Column="1"
-                             Foreground="#0078d7"
-                             Background="Transparent"
-                             BorderBrush="Black"
-                             VerticalAlignment="Center"
-                             Width="600"
-                             BorderThickness="0"
-                             Height="25"
-                             Style="{StaticResource ProgressBarTheme}"
-                             x:Name="MainProgressBar">
+                <ProgressBar
+                    Background="Transparent"
+                    BorderBrush="Black"
+                    BorderThickness="0"
+                    Foreground="#0078d7"
+                    Grid.Column="1"
+                    Height="25"
+                    Style="{StaticResource ProgressBarTheme}"
+                    VerticalAlignment="Center"
+                    Width="600"
+                    x:Name="MainProgressBar">
                     <i:Interaction.Behaviors>
                         <b:ProgresBarAnimateBehavior />
                     </i:Interaction.Behaviors>
@@ -291,23 +318,23 @@
 
 
 
-                <TextBox Text=""
-                         Background="Red"
-                         Foreground="White"
-                         FontFamily="Bebas"
-                         Opacity="0"
-                         FontSize="20"
-                         Padding="20,10,20,10"
-                         VerticalAlignment="Center"
-                         Grid.Row="1"
-                         IsReadOnly="True"
-                         Grid.Column="1"
-                         x:Name="ErrorTextBox"
-                         HorizontalAlignment="Center">
+                <TextBox
+                    Background="Red"
+                    FontFamily="Bebas"
+                    FontSize="20"
+                    Foreground="White"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    IsReadOnly="True"
+                    Opacity="0"
+                    Padding="20,10,20,10"
+                    Text=""
+                    VerticalAlignment="Center"
+                    x:Name="ErrorTextBox">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius"
-                                    Value="5" />
+                            <Setter Property="CornerRadius" Value="5" />
                         </Style>
                     </TextBox.Resources>
                 </TextBox>

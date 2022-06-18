@@ -1,134 +1,110 @@
-﻿<UserControl x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.CopyrightView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
-             mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
-    <Border BorderBrush="#0078d7"
-            CornerRadius="5"
-            BorderThickness="5">
+﻿<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.CopyrightView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border
+        BorderBrush="#0078d7"
+        BorderThickness="5"
+        CornerRadius="5">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="4*" />
             </Grid.RowDefinitions>
-            <StackPanel
-                Margin="20, 0"
-                Grid.Row="0">
+            <StackPanel Grid.Row="0" Margin="20,0">
                 <TextBlock
+                    FontFamily="Bebas"
                     FontSize="35"
-                    FontFamily="Bebas"
-                    Margin="0, 10">Resources Used</TextBlock>
+                    Margin="0,10">
+                    Resources Used
+                </TextBlock>
+                <TextBlock FontFamily="Bebas" FontSize="24">Server</TextBlock>
                 <TextBlock
-                    FontSize="24"
-                    FontFamily="Bebas">Server</TextBlock>
-                <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                <Hyperlink
-                        NavigateUri="https://nodejs.dev/"
-                        RequestNavigate="Hyperlink_RequestNavigate">Node JS</Hyperlink>
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://nodejs.dev/" RequestNavigate="Hyperlink_RequestNavigate">Node JS</Hyperlink>
                 </TextBlock>
                 <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                <Hyperlink
-                        NavigateUri="https://expressjs.com/"
-                        RequestNavigate="Hyperlink_RequestNavigate">Express</Hyperlink>
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://expressjs.com/" RequestNavigate="Hyperlink_RequestNavigate">Express</Hyperlink>
                 </TextBlock>
                 <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                <Hyperlink
-                        NavigateUri="https://www.npmjs.com/package/request"
-                        RequestNavigate="Hyperlink_RequestNavigate">Request</Hyperlink>
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://www.npmjs.com/package/request" RequestNavigate="Hyperlink_RequestNavigate">Request</Hyperlink>
                 </TextBlock>
                 <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                <Hyperlink
-                        NavigateUri="https://www.npmjs.com/package/firebase-admin"
-                        RequestNavigate="Hyperlink_RequestNavigate">Firebase-Admin</Hyperlink>
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://www.npmjs.com/package/firebase-admin" RequestNavigate="Hyperlink_RequestNavigate">Firebase-Admin</Hyperlink>
                 </TextBlock>
                 <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                    <Hyperlink
-                        NavigateUri="https://www.npmjs.com/package/body-parser"
-                        RequestNavigate="Hyperlink_RequestNavigate">Body-Parser</Hyperlink>
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://www.npmjs.com/package/body-parser" RequestNavigate="Hyperlink_RequestNavigate">Body-Parser</Hyperlink>
                 </TextBlock>
                 <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                    <Hyperlink
-                        NavigateUri="https://firebase.google.com/products/realtime-database"
-                        RequestNavigate="Hyperlink_RequestNavigate">Firebase Realtime Database</Hyperlink>
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://firebase.google.com/products/realtime-database" RequestNavigate="Hyperlink_RequestNavigate">Firebase Realtime Database</Hyperlink>
+                </TextBlock>
+                <TextBlock FontFamily="Bebas" FontSize="24">User Interface</TextBlock>
+                <TextBlock
+                    FontFamily="Bebas"
+                    FontSize="15"
+                    Margin="20,0,0,0"
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/overview/?view=netdesktop-6.0" RequestNavigate="Hyperlink_RequestNavigate">Windows Presentation Foundation</Hyperlink>
                 </TextBlock>
                 <TextBlock
-                    FontSize="24"
-                    FontFamily="Bebas">User Interface</TextBlock>
-                <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                    <Hyperlink
-                        NavigateUri="https://docs.microsoft.com/en-us/dotnet/desktop/wpf/overview/?view=netdesktop-6.0"
-                        RequestNavigate="Hyperlink_RequestNavigate">Windows Presentation Foundation</Hyperlink>
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://www.newtonsoft.com/json" RequestNavigate="Hyperlink_RequestNavigate">Newtonsoft</Hyperlink>
                 </TextBlock>
                 <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                    <Hyperlink
-                        NavigateUri="https://www.newtonsoft.com/json"
-                        RequestNavigate="Hyperlink_RequestNavigate">Newtonsoft</Hyperlink>
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://github.com/microsoft/BingMapsRESTToolkit" RequestNavigate="Hyperlink_RequestNavigate">BingMaps</Hyperlink>
                 </TextBlock>
                 <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                    <Hyperlink
-                        NavigateUri="https://github.com/microsoft/BingMapsRESTToolkit"
-                        RequestNavigate="Hyperlink_RequestNavigate">BingMaps</Hyperlink>
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://products.aspose.com/cells/net/" RequestNavigate="Hyperlink_RequestNavigate">Aspose-Cells</Hyperlink>
                 </TextBlock>
                 <TextBlock
-                    TextWrapping="Wrap"
                     FontFamily="Bebas"
+                    FontSize="15"
                     Margin="20,0,0,0"
-                    FontSize="15">
-                    <Hyperlink
-                        NavigateUri="https://products.aspose.com/cells/net/"
-                        RequestNavigate="Hyperlink_RequestNavigate">Aspose-Cells</Hyperlink>
-                </TextBlock>
-                <TextBlock
-                    TextWrapping="Wrap"
-                    FontFamily="Bebas"
-                    Margin="20,0,0,0"
-                    FontSize="15">
-                    <Hyperlink
-                        NavigateUri="https://github.com/Microsoft/BingMapsRESTToolkit"
-                        RequestNavigate="Hyperlink_RequestNavigate">BingMapsRESTToolkit
-                        
+                    TextWrapping="Wrap">
+                    <Hyperlink NavigateUri="https://github.com/Microsoft/BingMapsRESTToolkit" RequestNavigate="Hyperlink_RequestNavigate">
+                        BingMapsRESTToolkit
                     </Hyperlink>
-                    
+
                 </TextBlock>
             </StackPanel>
         </Grid>

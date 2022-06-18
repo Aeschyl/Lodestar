@@ -1,21 +1,22 @@
-﻿<UserControl x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.AmenitiesView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
-             mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
-    <Border BorderBrush="#0078d7"
-            BorderThickness="5">
+﻿<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.AmenitiesView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Border BorderBrush="#0078d7" BorderThickness="5">
         <StackPanel>
-            <TextBlock FontFamily="Bebas"
-                       Foreground="Black"
-                       Text="Select any number of amenities"
-                       HorizontalAlignment="Center"
-                       FontSize="40"
-                       Margin="20" />
+            <TextBlock
+                FontFamily="Bebas"
+                FontSize="40"
+                Foreground="Black"
+                HorizontalAlignment="Center"
+                Margin="20"
+                Text="Select any number of amenities" />
             <Grid>
 
                 <Grid.ColumnDefinitions>
@@ -24,59 +25,61 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0"
-                            x:Name="StackPanelOne">
-                    <CheckBox Content="Wheelchair"
-                              FontFamily="Bebas"
-                              FontSize="25"
-                              Foreground="Black"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              VerticalContentAlignment="Center"
-                              Checked="CheckBox_Checked_1" />
+                <StackPanel Grid.Column="0" x:Name="StackPanelOne">
+                    <CheckBox
+                        Checked="CheckBox_Checked_1"
+                        Content="Wheelchair"
+                        FontFamily="Bebas"
+                        FontSize="25"
+                        Foreground="Black"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
                 </StackPanel>
 
-                <StackPanel Grid.Column="1"
-                            x:Name="StackPanelTwo">
-                    <CheckBox Content="Internet Access"
-                              FontFamily="Bebas"
-                              FontSize="25"
-                              Foreground="Black"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              VerticalContentAlignment="Center"
-                              Checked="CheckBox_Checked_2" />
-                    <CheckBox Content="Dog Friendly"
-                              FontFamily="Bebas"
-                              FontSize="25"
-                              Foreground="Black"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              VerticalContentAlignment="Center"
-                              Margin="20"
-                              Checked="CheckBox_Checked" />
+                <StackPanel Grid.Column="1" x:Name="StackPanelTwo">
+                    <CheckBox
+                        Checked="CheckBox_Checked_2"
+                        Content="Internet Access"
+                        FontFamily="Bebas"
+                        FontSize="25"
+                        Foreground="Black"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
+                    <CheckBox
+                        Checked="CheckBox_Checked"
+                        Content="Dog Friendly"
+                        FontFamily="Bebas"
+                        FontSize="25"
+                        Foreground="Black"
+                        HorizontalAlignment="Center"
+                        Margin="20"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
                 </StackPanel>
 
-                <StackPanel Grid.Column="2"
-                            x:Name="StackPanelThree">
-                    <CheckBox Content="No Fee"
-                              FontFamily="Bebas"
-                              FontSize="25"
-                              Foreground="Black"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              VerticalContentAlignment="Center"
-                              Checked="CheckBox_Checked_3" />
+                <StackPanel Grid.Column="2" x:Name="StackPanelThree">
+                    <CheckBox
+                        Checked="CheckBox_Checked_3"
+                        Content="No Fee"
+                        FontFamily="Bebas"
+                        FontSize="25"
+                        Foreground="Black"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center" />
                 </StackPanel>
             </Grid>
 
-            <Button Content="Onward!"
-                    FontFamily="bebas"
-                    FontSize="20"
-                    Foreground="Black"
-                    Margin="0,200,0,0"
-                    Style="{StaticResource BetterButton}"
-                    Click="Button_Click" />
+            <Button
+                Click="Button_Click"
+                Content="Onward!"
+                FontFamily="bebas"
+                FontSize="20"
+                Foreground="Black"
+                Margin="0,200,0,0"
+                Style="{StaticResource BetterButton}" />
         </StackPanel>
 
     </Border>

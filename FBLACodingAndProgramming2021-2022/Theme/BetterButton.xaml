@@ -1,60 +1,45 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="{x:Type Button}" x:Key="BetterButton">
-        <Setter Property="SnapsToDevicePixels"
-                Value="true" />
-        <Setter Property="OverridesDefaultStyle"
-                Value="true" />
-        <Setter Property="MinHeight"
-                Value="23" />
-        <Setter Property="MinWidth"
-                Value="75" />
-        
-                
-        
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="MinHeight" Value="23" />
+        <Setter Property="MinWidth" Value="75" />
+
+
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    
-                    <Border Name="Border"
-                            CornerRadius="5"
-                            BorderThickness="0"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="#404040">
-                        <ContentPresenter Margin="{TemplateBinding Padding}"
-                                          HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"
-                                          RecognizesAccessKey="True" 
-                                          Height="auto"
-                                          Width="auto"/>
+
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="#404040"
+                        BorderThickness="0"
+                        CornerRadius="5"
+                        Name="Border">
+                        <ContentPresenter
+                            Height="auto"
+                            HorizontalAlignment="Center"
+                            Margin="{TemplateBinding Padding}"
+                            RecognizesAccessKey="True"
+                            VerticalAlignment="Center"
+                            Width="auto" />
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsKeyboardFocused"
-                                 Value="true">
-                            <Setter TargetName="Border"
-                                    Property="BorderBrush"
-                                    Value="#202020" />
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter Property="BorderBrush" TargetName="Border" Value="#202020" />
                         </Trigger>
-                        <Trigger Property="IsDefaulted"
-                                 Value="true">
-                            <Setter TargetName="Border"
-                                    Property="BorderBrush"
-                                    Value="#202020" />
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="BorderBrush" TargetName="Border" Value="#202020" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver"
-                                 Value="true">
-                            <Setter TargetName="Border"
-                                    Property="Background"
-                                    Value="#d1d1d1" />
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="Border" Value="#d1d1d1" />
                         </Trigger>
-                        <Trigger Property="IsPressed"
-                                 Value="true">
-                            
-                            <Setter TargetName="Border"
-                                    Property="BorderBrush"
-                                    Value="#0078D7" />
+                        <Trigger Property="IsPressed" Value="true">
+
+                            <Setter Property="BorderBrush" TargetName="Border" Value="#0078D7" />
                         </Trigger>
-                       
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
