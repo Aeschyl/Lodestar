@@ -1,101 +1,106 @@
-﻿<Application x:Class="FBLACodingAndProgramming2021_2022.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022"
-             xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
-             xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
-             StartupUri="MainWindow.xaml">
+﻿<Application
+    StartupUri="MainWindow.xaml"
+    x:Class="FBLACodingAndProgramming2021_2022.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022"
+    xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+    xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Application.Resources>
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary
-                    Source="Theme/MenuButtonTheme.xaml" />
-                <ResourceDictionary
-                    Source="Theme/ProgressBarTheme.xaml" />
-                <ResourceDictionary
-                    Source="Theme/TextBoxTheme.xaml" />
-                <ResourceDictionary
-                    Source="Theme/CategoryMenuButtonTheme.xaml" />
-                <ResourceDictionary
-                    Source="Theme/BetterButton.xaml" />
-                <ResourceDictionary
-                    Source="Theme/RoundCheckBox.xaml" />
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml" />
+                <ResourceDictionary Source="Theme/ProgressBarTheme.xaml" />
+                <ResourceDictionary Source="Theme/TextBoxTheme.xaml" />
+                <ResourceDictionary Source="Theme/CategoryMenuButtonTheme.xaml" />
+                <ResourceDictionary Source="Theme/BetterButton.xaml" />
+                <ResourceDictionary Source="Theme/RoundCheckBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:HomeViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
                 <view:HomeView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:HaveFunSubViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:HaveFunSubViewModel}">
                 <view:HaveFunSubView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:EatSubViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:EatSubViewModel}">
                 <view:EatSubView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:ShopSubViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:ShopSubViewModel}">
                 <view:ShopSubView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:ExploreSubViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:ExploreSubViewModel}">
                 <view:ExploreSubView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:StaySubViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:StaySubViewModel}">
                 <view:StaySubView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:AmenitiesViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:AmenitiesViewModel}">
                 <view:AmenitiesView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:LocationViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:LocationViewModel}">
                 <view:LocationView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:DistanceViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:DistanceViewModel}">
                 <view:DistanceView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:ResultsViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:ResultsViewModel}">
                 <view:ResultsView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:FAQViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:FAQViewModel}">
                 <view:FAQView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:MainScreenViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:MainScreenViewModel}">
                 <view:MainScreenView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:CopyrightViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:CopyrightViewModel}">
                 <view:CopyrightView />
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:TermsViewModel}">
-                <view:TermsView/>
+                <view:TermsView />
             </DataTemplate>
 
 
             <FontFamily x:Key="FontAwesome">/Fonts/FontAwesome.ttf#FontAwesome</FontFamily>
-            
+            <!--  This storyboard will make the image grow to double its size in 0.2 seconds  -->
+            <Storyboard x:Key="ExpandStoryboard">
+                <DoubleAnimation
+                    Duration="0:0:0.1"
+                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                    To="1.06" />
+                <DoubleAnimation
+                    Duration="0:0:0.1"
+                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                    To="1.06" />
+            </Storyboard>
+            <!--  This storyboard will make the image revert to its original size  -->
+            <Storyboard x:Key="ShrinkStoryboard">
+                <DoubleAnimation
+                    Duration="0:0:0.1"
+                    Storyboard.TargetProperty="RenderTransform.ScaleX"
+                    To="1" />
+                <DoubleAnimation
+                    Duration="0:0:0.1"
+                    Storyboard.TargetProperty="RenderTransform.ScaleY"
+                    To="1" />
+            </Storyboard>
+
+
 
 
 

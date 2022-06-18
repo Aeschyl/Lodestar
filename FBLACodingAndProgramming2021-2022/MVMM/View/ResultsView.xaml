@@ -1,167 +1,227 @@
-﻿<UserControl x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.ResultsView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
-             
-             xmlns:model="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.Model"
-             mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
-    
-    <Border Grid.Column="1"
-            BorderBrush="#0078d7"
-            BorderThickness="5"
-            CornerRadius="5">
+﻿<UserControl
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    x:Class="FBLACodingAndProgramming2021_2022.MVMM.View.ResultsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
+    xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.Model"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Border
+        BorderBrush="#0078d7"
+        BorderThickness="5"
+        CornerRadius="5"
+        Grid.Column="1">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Border CornerRadius="5"
-                    Margin="25,20,20,20"
-                    BorderThickness="5"
-                    BorderBrush="#0078d7">
-                <m:Map x:Name="Map" CredentialsProvider="qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG" Mode="Aerial"  Visibility="Hidden">
-
-                </m:Map>
+            <Border
+                BorderBrush="#0078d7"
+                BorderThickness="5"
+                CornerRadius="5"
+                Margin="25,20,20,20">
+                <m:Map
+                    CredentialsProvider="qc9Y7SHHRgYbev4fUy0q~ZgF6eo0fD9ieP3VnKoDX_Q~AnM4TYqGE82d-jah6trRCttSyWK53fdPmYnyOjGbcYfmD61QQYzwoRH2oNJN9AZG"
+                    Mode="Aerial"
+                    Visibility="Hidden"
+                    x:Name="Map" />
             </Border>
 
 
 
 
-            
 
 
-                <Grid Grid.Row="0"
-                            Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height=".5*"></RowDefinition>
-                        <RowDefinition Height="3*"></RowDefinition>
-                        <RowDefinition Height=".5*"></RowDefinition>
-                    </Grid.RowDefinitions>
 
-                    <Grid VerticalAlignment="Center" Grid.Row="0" Margin="20">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button Content="Alphabetical Order"
-                                Style="{StaticResource BetterButton}"
-                                FontFamily="Bebas"
-                                Background="#0078d7"
-                                Foreground="White"
-                                Padding="10,0,10,0"
-                                HorizontalAlignment="Center"
-                                Click="AlphabeticalOrder_Click"
-                                FontSize="14"/>
-                        <Button Content="Distance From Home"
-                                Grid.Column="1"
-                                VerticalAlignment="Center"
-                                Padding="10,0,10,0"
-                                Foreground="White"
-                                Style="{StaticResource BetterButton}"
-                                FontFamily="Bebas"
-                                Click="DistanceFromHome_Click"
-                                Background="#0078d7"
-                                HorizontalAlignment="Center"
-                                FontSize="14"/>
-                    </Grid>
+            <Grid Grid.Column="1" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".5*" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height=".5*" />
+                </Grid.RowDefinitions>
 
-                    <ListBox Foreground="Black"
-                         Grid.Row="1"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         Height="450"
-                         Background="#d1d1d1"
-                         Margin="20,0,20,20"
-                         x:Name="MainListBox"
-                         MouseDoubleClick="MainListBox_MouseDoubleClick">
-                        <ListBox.Resources>
-                            <Style TargetType="{x:Type Border}">
-                                <Setter Property="CornerRadius"
-                                    Value="5" />
-                            </Style>
-                        </ListBox.Resources>
-
-                        <ListBox.ItemTemplate>
-                            <DataTemplate DataType="model:ListViewFeature">
-                                <Border CornerRadius="5" Margin="5" BorderThickness="1">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*"></ColumnDefinition>
-                                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Border CornerRadius="20" BorderBrush="Black" BorderThickness="2" Height="100" Width="100">
-                                            <Border.Background>
-                                                
-                                                <ImageBrush Grid.Column="0"  ImageSource="{Binding Image}" Stretch="UniformToFill"></ImageBrush>
-                                                
-                                            </Border.Background>
-                                        </Border>
-                                        <StackPanel Grid.Column="1">
-                                            <Label Content="{Binding Title}" FontSize="15" Margin="10,5,0,0"></Label>
-                                            
-                                            <TextBox IsHitTestVisible="False" IsReadOnly="True" BorderThickness="0" Background="Transparent" TextWrapping="Wrap" Text="{Binding Address}"  FontSize="10" Margin="10,5,0,0"></TextBox>
-                                            <Label Content="{Binding DistanceFromHome}" FontSize="10" Margin="10,5,0,0"></Label>
-                                            <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
-                                                <Label Content="{Binding Temperature}"></Label>
-                                                <Image Source="{Binding Icon}" Height="30" Width="30" Stretch="Uniform" ToolTip="{Binding WeatherDescription}"></Image>
-                                                <Button Click="AddToRoute_Click" ToolTip="{Binding FeatureName}"  Content="Add To Route" Margin="20,0,0,5" Padding="5,0,5,0">
-                                                    <Button.Background>
-                                                        <SolidColorBrush Color="SpringGreen" Opacity=".6"></SolidColorBrush>
-                                                    </Button.Background>
-                                                </Button>
-                                                <Button Click="RemoveFromRoute_Click" Height="23" Width="23" ToolTip="{Binding FeatureName}"  Margin="5,0,0,5">
-                                                    <Button.Content>
-                                                        <Image Source="/Images/CancelIcon.png"></Image>
-                                                    </Button.Content>
-                                                    
-                                                    
-                                                </Button>
-                                            </StackPanel>
-                                    </StackPanel>
-
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListBoxItem}">
-                                <Style.Resources>
-                                    
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="5"></Setter>
-                                    </Style>
-                                </Style.Resources>
-                                <Style.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Background" Value="#0078d7"></Setter>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                    </ListBox>
-                    
-                    <Button  Content="Download Results To Excel Spreadsheet"
+                <Grid
+                    Grid.Row="0"
+                    Margin="20"
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Background="#0078d7"
+                        Click="AlphabeticalOrder_Click"
+                        Content="Alphabetical Order"
                         FontFamily="Bebas"
                         FontSize="14"
-                        Background="#0078d7"
                         Foreground="White"
-                        Margin="20,0,20,10"
                         HorizontalAlignment="Center"
                         Padding="10,0,10,0"
-                        x:Name="DownloadResultsButton"
+                        Style="{StaticResource BetterButton}" />
+                    <Button
+                        Background="#0078d7"
+                        Click="DistanceFromHome_Click"
+                        Content="Distance From Home"
+                        FontFamily="Bebas"
+                        FontSize="14"
+                        Foreground="White"
+                        Grid.Column="1"
+                        HorizontalAlignment="Center"
+                        Padding="10,0,10,0"
                         Style="{StaticResource BetterButton}"
-                        VerticalAlignment="Center"
-                        Click="DownloadResultsButton_Click"
-                        Grid.Row="2" />
+                        VerticalAlignment="Center" />
                 </Grid>
+
+                <ListBox
+                    Background="#d1d1d1"
+                    Foreground="Black"
+                    Grid.Row="1"
+                    Height="450"
+                    Margin="20,0,20,20"
+                    MouseDoubleClick="MainListBox_MouseDoubleClick"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    x:Name="MainListBox">
+                    <ListBox.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="5" />
+                        </Style>
+                    </ListBox.Resources>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="model:ListViewFeature">
+                            <Border
+                                BorderThickness="1"
+                                CornerRadius="5"
+                                Margin="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border
+                                        BorderBrush="Black"
+                                        BorderThickness="0"
+                                        Height="100"
+                                        Width="100">
+
+
+                                        <Image
+                                            HorizontalAlignment="Center"
+                                            Margin="0,0,10,0"
+                                            Source="{Binding Image}"
+                                            Stretch="UniformToFill"
+                                            VerticalAlignment="Center">
+                                            <Image.Triggers>
+                                                <EventTrigger RoutedEvent="Image.MouseEnter">
+                                                    <BeginStoryboard Storyboard="{StaticResource ExpandStoryboard}" />
+                                                </EventTrigger>
+                                                <EventTrigger RoutedEvent="Image.MouseLeave">
+                                                    <BeginStoryboard Storyboard="{StaticResource ShrinkStoryboard}" />
+                                                </EventTrigger>
+                                            </Image.Triggers>
+                                            <Image.RenderTransform>
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </Image.RenderTransform>
+                                        </Image>
+                                    </Border>
+                                    <StackPanel Grid.Column="1">
+                                        <Label
+                                            Content="{Binding Title}"
+                                            FontSize="15"
+                                            Margin="10,5,0,0" />
+
+                                        <TextBox
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            FontSize="10"
+                                            IsHitTestVisible="False"
+                                            IsReadOnly="True"
+                                            Margin="10,5,0,0"
+                                            Text="{Binding Address}"
+                                            TextWrapping="Wrap" />
+                                        <Label
+                                            Content="{Binding DistanceFromHome}"
+                                            FontSize="10"
+                                            Margin="10,5,0,0" />
+                                        <StackPanel Margin="10,5,0,0" Orientation="Horizontal">
+                                            <Label Content="{Binding Temperature}" />
+                                            <Image
+                                                Height="30"
+                                                Source="{Binding Icon}"
+                                                Stretch="Uniform"
+                                                ToolTip="{Binding WeatherDescription}"
+                                                Width="30" />
+                                            <Button
+                                                Click="AddToRoute_Click"
+                                                Content="Add To Route"
+                                                Margin="20,0,0,5"
+                                                Padding="5,0,5,0"
+                                                ToolTip="{Binding FeatureName}">
+                                                <Button.Background>
+                                                    <SolidColorBrush Color="SpringGreen" Opacity=".6" />
+                                                </Button.Background>
+                                            </Button>
+                                            <Button
+                                                Click="RemoveFromRoute_Click"
+                                                Height="23"
+                                                Margin="5,0,0,5"
+                                                ToolTip="{Binding FeatureName}"
+                                                Width="23">
+                                                <Button.Content>
+                                                    <Image Source="/Images/CancelIcon.png" />
+                                                </Button.Content>
+
+
+                                            </Button>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Style.Resources>
+
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5" />
+                                </Style>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#0078d7" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+
+                <Button
+                    Background="#0078d7"
+                    Click="DownloadResultsButton_Click"
+                    Content="Download Results To Excel Spreadsheet"
+                    FontFamily="Bebas"
+                    FontSize="14"
+                    Foreground="White"
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    Margin="20,0,20,10"
+                    Padding="10,0,10,0"
+                    Style="{StaticResource BetterButton}"
+                    VerticalAlignment="Center"
+                    x:Name="DownloadResultsButton" />
             </Grid>
+        </Grid>
 
 
 
-        
+
     </Border>
 </UserControl>
