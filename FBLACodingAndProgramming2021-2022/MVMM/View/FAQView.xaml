@@ -98,6 +98,104 @@
                         No, you do not, but it is recommended for more refined results.
                     </TextBlock>
                 </Expander>
+                <Expander
+                    x:Name="dropdown6"
+                    Margin="0, 0, 0, 10"
+                    Header="How many locations does this app have?"
+                    FontFamily="Bebas"
+                    FontSize="20">
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        FontFamily="Bebas"
+                        Margin="20,10,0,0"
+                        FontSize="15">
+                You can search through thousands of locations within 50 miles to a location.
+                    </TextBlock>
+                </Expander>
+                <Expander
+                    x:Name="dropdown7"
+                    Margin="0, 0, 0, 10"
+                    Header="How was this app made?"
+                    FontFamily="Bebas"
+                    FontSize="20">
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        FontFamily="Bebas"
+                        Margin="20,10,0,0"
+                        FontSize="15">
+                This app was made using C# WPF framework for the frontend, and NodeJS for the backend, we also use Firebase to store your data.
+                    </TextBlock>
+                </Expander>
+                <Expander
+                    x:Name="dropdown8"
+                    Margin="0, 0, 0, 10"
+                    Header="Who created Lodestar?"
+                    FontFamily="Bebas"
+                    FontSize="20">
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        FontFamily="Bebas"
+                        Margin="20,10,0,0"
+                        FontSize="15">
+                This application was made by Sami Ahmed, Aryamann Sheoran, and Abhiram Kasu.
+                    </TextBlock>
+                </Expander>
+                <Expander
+                    x:Name="dropdown9"
+                    Margin="0, 0, 0, 10"
+                    Header="How can I be sure that I have control of my data?"
+                    FontFamily="Bebas"
+                    FontSize="20">
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        FontFamily="Bebas"
+                        Margin="20,10,0,0"
+                        FontSize="15">
+                The only data we collect is your cpu serial id which is a unique identifier for you, and the category you most frequently select.
+                    </TextBlock>
+                </Expander>
+                <Expander
+                    x:Name="dropdown10"
+                    Margin="0, 0, 0, 10"
+                    Header="How can I plan a trip?"
+                    FontFamily="Bebas"
+                    FontSize="20">
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        FontFamily="Bebas"
+                        Margin="20,10,0,0"
+                        FontSize="15">
+                You can plan a trip with this application by using the routes feature, it will create a map of roads you can take to get around the locations the app provides
+                    </TextBlock>
+                </Expander>
+                <Expander
+                    x:Name="dropdown11"
+                    Margin="0, 0, 0, 10"
+                    Header="How can I contact you?"
+                    FontFamily="Bebas"
+                    FontSize="20">
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        FontFamily="Bebas"
+                        Margin="20,10,0,0"
+                        FontSize="15">
+                You can contact us using the email button on the bottom right
+                    </TextBlock>
+                </Expander>
+                <Expander
+                    x:Name="dropdown12"
+                    Margin="0, 0, 0, 10"
+                    Header="Do locations pay to be listed on here?"
+                    FontFamily="Bebas"
+                    FontSize="20">
+                    <TextBlock
+                        TextWrapping="Wrap"
+                        FontFamily="Bebas"
+                        Margin="20,10,0,0"
+                        FontSize="15">
+                No, locations do not pay to be listed on here as we aim to provide the most fair environment for tourists
+                    </TextBlock>
+                </Expander>
             </StackPanel>
             <Button
                 Background="#0078d7"
