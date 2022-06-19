@@ -76,12 +76,12 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 }
                 counter++;
             });
-            var listOfImages = new List<ImageBrush>{Image1, Image2, Image3, Image4 };
+            var listOfImages = new List<Image>{Image1, Image2, Image3, Image4 };
 
             counter = 0;
             listOfImages.ForEach(e =>
             {
-                e.ImageSource = images.ContainsKey(counter)? images[counter] : null;
+                e.Source = images.ContainsKey(counter)? images[counter] : null;
                 counter++;
             });
             
