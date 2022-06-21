@@ -1,7 +1,6 @@
-# Lodestar
-## An app to help users find tourist attractions in Colorado
+# Lodestar <img src="https://user-images.githubusercontent.com/72280649/151738750-266236f3-d125-4c55-a18b-3a5e23e5a29f.png" alt="Logo" width="40"/>
 
-<img src="https://user-images.githubusercontent.com/72280649/151738750-266236f3-d125-4c55-a18b-3a5e23e5a29f.png" alt="Logo" width="200"/>
+## An app to help users find tourist attractions in Colorado
 
 ### Download
 
@@ -35,6 +34,28 @@ Visit [Lodestar Server](https://replit.com/@Sami200/TouristServer)
 ### BingMaps
 - Provide the full url as a "url" parameter
 - Simply the coordinates will be returned to you
+### Get Favorites
+- https://touristserver.sami200.repl.co/getFavorites?cpuserialid=BFEBFBFF000806E9
+- Returns object like:
+  - Favorites
+    - 0
+      - address
+      - imgLink
+      - lat
+      - lon
+      - name
+### Add Favorite
+- https://touristserver.sami200.repl.co/addFavorite?name=Truffnies&placeID=5126e1421ec1385ac059460c516628ce4340f00103f901c8ede63b0100000092030954727566666e696573&imgLink=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcT8KPVTqPtZY5zjdlU5ed6o8AjZH9B_GLYi-nQ37GQ1aLpD-CUGGnLQ6E5t%26s&address=8765%20East%20Orchard%20Road,%20Greenwood%20Village,%20CO%2080111,%20United%20States%20of%20America&lat=39.6106079&lon=-104.886787&cpuserialid=BFEBFBFF000806E9
+- Returns nothing, just put in the parameters
+- Params
+  - Each of these can be gotten from geoapify endpoint
+  - imgLink
+  - name
+  - placeID
+  - cpuserialid
+  - lat
+  - lon
+  - address
 
 ## Lodestar Client Documentation
 ### Main Screen
@@ -62,7 +83,6 @@ Visit [Lodestar Server](https://replit.com/@Sami200/TouristServer)
 - This page has a map
   - You can click an orange marker on this map to get details on it
 - This page also has a list of locations
-  - You can also click on these to get details on it
 - The details include of the attraction, distance, and weather conditions
 ### Extra Pages
 - These pages don't pertain to finding attractions
@@ -73,4 +93,14 @@ Visit [Lodestar Server](https://replit.com/@Sami200/TouristServer)
 #### Copyright Page
 - This page contains resources used to create the app
 - Press the blue contact us button in the bottom right to send us an email
+### Advanced Features
+#### Recommendations
+- Recommendations are provided after the privacy policy page
+- They are given in a format with an image, name, and address
+- These recommendations are computed using your previous selections inside the app to determine what places you would be most interested in
+- You do not need to have used the app to get recommendations
+#### Favorites
+- Next to an event on the results page you can press the small heart to favorite it
+- You will be able to later find all the info on what you favorited
+- All your favorites are stored in the tab favorites below the info section
 
