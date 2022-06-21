@@ -54,7 +54,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             BottomRightBorder.Visibility = Visibility.Visible;
             form.LoadingAnimation.Visibility = Visibility.Hidden;
             FindAttractionsButton.Visibility = Visibility.Visible;
-            FindAttractionsButton.IsEnabled = true; ;
+            FindAttractionsButton.IsEnabled = true;
         }
 
 
