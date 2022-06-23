@@ -45,17 +45,22 @@ Visit [Lodestar Server](https://replit.com/@Sami200/TouristServer)
       - lon
       - name
 ### Add Favorite
-- https://touristserver.sami200.repl.co/addFavorite?name=Truffnies&placeID=5126e1421ec1385ac059460c516628ce4340f00103f901c8ede63b0100000092030954727566666e696573&imgLink=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcT8KPVTqPtZY5zjdlU5ed6o8AjZH9B_GLYi-nQ37GQ1aLpD-CUGGnLQ6E5t%26s&address=8765%20East%20Orchard%20Road,%20Greenwood%20Village,%20CO%2080111,%20United%20States%20of%20America&lat=39.6106079&lon=-104.886787&cpuserialid=BFEBFBFF000806E9
+- https://touristserver.sami200.repl.co/addFavorite?cpuserialid=BFEBFBFF000806E9
+- With post object that us URL encoded like
+  - {
+    "name": "Truffnies",
+    
+    "placeID": "5126e1421ec1385ac059460c516628ce4340f00103f901c8ede63b0100000092030954727566666e696573",
+    
+    "imgLink": "https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcT8KPVTqPtZY5zjdlU5ed6o8AjZH9B_GLYi-nQ37GQ1aLpD-CUGGnLQ6E5t%26s",
+    
+    "address":"8765%20East%20Orchard%20Road,%20Greenwood%20Village,%20CO%2080111,%20United%20States%20of%20America",
+    
+    "lon":-104.886787,
+    
+    "lat":39.610607
+}
 - Returns nothing, just put in the parameters
-- Params
-  - Each of these can be gotten from geoapify endpoint
-  - imgLink
-  - name
-  - placeID
-  - cpuserialid
-  - lat
-  - lon
-  - address
 
 ## Lodestar Client Documentation
 ### Main Screen
