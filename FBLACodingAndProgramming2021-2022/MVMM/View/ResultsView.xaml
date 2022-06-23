@@ -82,10 +82,10 @@
                     Background="White"
                     Foreground="Black"
                     Grid.Row="1"
-                    Height="450"
                     Margin="20,0,20,20"
                     MouseDoubleClick="MainListBox_MouseDoubleClick"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    VerticalAlignment="Stretch"
                     x:Name="MainListBox">
                     <ListBox.Resources>
                         <Style TargetType="{x:Type Border}">

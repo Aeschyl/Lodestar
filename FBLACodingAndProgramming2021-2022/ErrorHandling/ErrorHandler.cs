@@ -20,7 +20,7 @@ namespace FBLACodingAndProgramming2021_2022.ErrorHandling
     
     class ErrorHandler
     {
-        private bool isBusy;
+        private static bool isBusy;
         private Brush _defaultColor = new SolidColorBrush(Colors.Red);
         
         

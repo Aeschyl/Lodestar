@@ -22,6 +22,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FBLACodingAndProgramming2021_2022.ErrorHandling;
 
 namespace FBLACodingAndProgramming2021_2022.MVMM.View
 {
@@ -200,6 +201,31 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             ClickButton(form.CategoryActivator);
             form.category_button.IsChecked = true;
             form.main_screen_button.IsChecked = false;
+        }
+
+        private void TopLeftBorder_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Clipboard.SetText(TopLeftTextBox.Text);
+            new ErrorHandler().ShowError(err : "copied", color : new SolidColorBrush(Colors.SpringGreen));
+        }
+
+        private void TopRightBorder_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Clipboard.SetText(TopRightTextBox.Text);
+            new ErrorHandler().ShowError(err : "copied", color : new SolidColorBrush(Colors.SpringGreen));
+        }
+
+
+        private void BottomLeftBorder_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Clipboard.SetText(BottomLeftTextBox.Text);
+            new ErrorHandler().ShowError(err : "copied", color : new SolidColorBrush(Colors.SpringGreen));
+        }
+
+        private void BottomRightBorder_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Clipboard.SetText(BottomRightTextBox.Text);
+            new ErrorHandler().ShowError(err : "copied", color : new SolidColorBrush(Colors.SpringGreen));
         }
     }
 }

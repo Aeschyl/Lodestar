@@ -14,19 +14,17 @@
         BorderBrush="#0078d7"
         BorderThickness="5"
         CornerRadius="5">
-        <StackPanel
-            CanVerticallyScroll="true"
-            Loaded="StackPanel_Loaded">
+        <StackPanel CanVerticallyScroll="true" Loaded="StackPanel_Loaded">
 
 
 
             <TextBlock
-                Text="Recommendations"
-                HorizontalAlignment="Center"
                 FontFamily="Bebas"
-                Margin="30"
                 FontSize="30"
-                Foreground="Black" />
+                Foreground="Black"
+                HorizontalAlignment="Center"
+                Margin="30,20,30,0"
+                Text="Recommendations" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -37,151 +35,151 @@
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Border
-                    x:Name="TopLeftBorder"
+                    BorderBrush="#6ec0ff"
+                    BorderThickness="3.5"
                     CornerRadius="5"
+                    Grid.Column="0"
                     Grid.Row="0"
                     Margin="20"
-                    Grid.Column="0"
-                    BorderBrush="#6ec0ff"
-                    BorderThickness="3.5">
+                    MouseDown="TopLeftBorder_OnMouseDown"
+                    x:Name="TopLeftBorder">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Image
-                            x:Name="Image1"
-                            Stretch="Uniform"
-                            HorizontalAlignment="Right"
                             Height="100"
+                            HorizontalAlignment="Right"
+                            Margin="30"
+                            Stretch="Uniform"
                             Width="200"
-                            Margin="30">
-                        </Image>
+                            x:Name="Image1" />
                         <TextBlock
-                            x:Name="TopLeftTextBox"
                             FontFamily="bebas"
                             FontSize="17"
-                            HorizontalAlignment="Left"
+                            Foreground="Black"
+                            Grid.Column="0"
                             Grid.Row="0"
+                            HorizontalAlignment="Left"
                             Padding="50"
                             TextWrapping="Wrap"
-                            Grid.Column="0"
-                            Foreground="Black" />
+                            x:Name="TopLeftTextBox" />
                     </Grid>
                 </Border>
                 <Border
-                    x:Name="TopRightBorder"
+                    BorderBrush="#6ec0ff"
+                    BorderThickness="3.5"
                     CornerRadius="5"
+                    Grid.Column="1"
                     Grid.Row="0"
                     Margin="20"
-                    Grid.Column="1"
-                    BorderBrush="#6ec0ff"
-                    BorderThickness="3.5">
+                    MouseDown="TopRightBorder_OnMouseDown"
+                    x:Name="TopRightBorder">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Image
-                            x:Name="Image2"
-                            Stretch="Uniform"
-                            HorizontalAlignment="Right"
                             Height="100"
+                            HorizontalAlignment="Right"
+                            Margin="30"
+                            Stretch="Uniform"
                             Width="200"
-                            Margin="30">
-                        </Image>
+                            x:Name="Image2" />
                         <TextBlock
-                            x:Name="TopRightTextBox"
                             FontFamily="bebas"
                             FontSize="17"
-                            HorizontalAlignment="Left"
+                            Foreground="Black"
+                            Grid.Column="0"
                             Grid.Row="0"
+                            HorizontalAlignment="Left"
                             Padding="50"
                             TextWrapping="Wrap"
-                            Grid.Column="0"
-                            Foreground="Black" />
+                            x:Name="TopRightTextBox" />
                     </Grid>
                 </Border>
                 <Border
-                    x:Name="BottomLeftBorder"
+                    BorderBrush="#6ec0ff"
+                    BorderThickness="3.5"
                     CornerRadius="5"
-                    Grid.Row="1"
-                    Margin="20"
                     Grid.Column="0"
-                    BorderBrush="#6ec0ff"
-                    BorderThickness="3.5">
+                    Grid.Row="1"
+                    Margin="20"
+                    MouseDown="BottomLeftBorder_OnMouseDown"
+                    x:Name="BottomLeftBorder">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Image
-                            x:Name="Image3"
-                            Stretch="Uniform"
-                            HorizontalAlignment="Right"
                             Height="100"
+                            HorizontalAlignment="Right"
+                            Margin="30"
+                            Stretch="Uniform"
                             Width="200"
-                            Margin="30">
-                        </Image>
+                            x:Name="Image3" />
                         <TextBlock
-                            x:Name="BottomLeftTextBox"
                             FontFamily="bebas"
                             FontSize="17"
-                            HorizontalAlignment="Left"
+                            Foreground="Black"
+                            Grid.Column="0"
                             Grid.Row="0"
+                            HorizontalAlignment="Left"
                             Padding="50"
                             TextWrapping="Wrap"
-                            Grid.Column="0"
-                            Foreground="Black" />
+                            x:Name="BottomLeftTextBox" />
                     </Grid>
                 </Border>
                 <Border
-                    x:Name="BottomRightBorder"
+                    BorderBrush="#6ec0ff"
+                    BorderThickness="3.5"
                     CornerRadius="5"
+                    Grid.Column="1"
                     Grid.Row="1"
                     Margin="20"
-                    Grid.Column="1"
-                    BorderBrush="#6ec0ff"
-                    BorderThickness="3.5">
+                    MouseDown="BottomRightBorder_OnMouseDown"
+                    x:Name="BottomRightBorder">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Image
-                            x:Name="Image4"
-                            Stretch="Uniform"
-                            HorizontalAlignment="Right"
                             Height="100"
+                            HorizontalAlignment="Right"
+                            Margin="30"
+                            Stretch="Uniform"
                             Width="200"
-                            Margin="30">
-                        </Image>
+                            x:Name="Image4" />
                         <TextBlock
-                            x:Name="BottomRightTextBox"
                             FontFamily="bebas"
                             FontSize="17"
-                            HorizontalAlignment="Left"
+                            Foreground="Black"
+                            Grid.Column="0"
                             Grid.Row="0"
+                            HorizontalAlignment="Left"
                             Padding="50"
                             TextWrapping="Wrap"
-                            Grid.Column="0"
-                            Foreground="Black" />
+                            x:Name="BottomRightTextBox" />
                     </Grid>
                 </Border>
             </Grid>
             <Button
+                Background="#0078d7"
+                Click="Button_Click"
                 Content="Find Attractions!"
                 FontFamily="Bebas"
                 FontSize="20"
-                Margin="50"
-                x:Name="FindAttractionsButton"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Center"
-                Click="Button_Click"
-                Background="#0078d7"
                 Foreground="White"
+                HorizontalAlignment="Center"
+                Margin="50"
                 Padding="7"
-                Style="{StaticResource BetterButton}" />
+                Style="{StaticResource BetterButton}"
+                VerticalAlignment="Bottom"
+                x:Name="FindAttractionsButton" />
         </StackPanel>
     </Border>
 
