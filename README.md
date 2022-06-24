@@ -61,7 +61,11 @@ Visit [Lodestar Server](https://replit.com/@Sami200/TouristServer)
     "lat":39.610607
 }
 - Returns nothing, just put in the parameters
-
+### Remove Favorite
+- POST request
+- https://touristserver.sami200.repl.co/removeFavorite?cpuserialid=TESTSAM
+- With POST object parameter placeID
+- Removes an entry from the database, needs to be post for security
 ## Lodestar Client Documentation
 ### Main Screen
 - Shown when you open the application
