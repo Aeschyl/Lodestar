@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management;
@@ -525,19 +526,39 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             var b = sender as Button;
+            var feature = GetFeatureByName(b.ToolTip.ToString());
+            var client = new HttpClient();
+            var requestUri = @$"https://touristserver.sami200.repl.co/addFavorite?cpuserialid={GetCPUSerialNumber()}";
 
             if ((b.Content as Image).Source.Equals(new Image()
                     { Source = new BitmapImage(new Uri("/Images/FilledHeart.png")) }))
             {
-                
+                var values = new FormUrlEncodedContent(new Dictionary<string, string>()
+                {
+                    { "placeID", feature.properties.place_id }
+                });
+
+                var response = client.DeleteAsync(requestUri);
             }
             else
             {
-                var feature = GetFeatureByName(b.ToolTip.ToString());
-                var client = new HttpClient();
-                var responseMessage = await client.PostAsJsonAsync(value: JsonConvert.SerializeObject(feature),
-                    requestUri:
-                    @$"https://touristserver.sami200.repl.co/addFavorite?cpuserialid={GetCPUSerialNumber()}");
+                
+
+                var values = new Dictionary<string, string>()
+                {
+                    { "address", feature.properties.formatted },
+                    { "imgLink", feature.properties.imgLink },
+                    { "lat", feature.properties.lat.ToString(CultureInfo.CurrentCulture) },
+                    { "lon", feature.properties.lon.ToString(CultureInfo.CurrentCulture) },
+                    { "name", feature.properties.name },
+                    { "placeID", feature.properties.place_id }
+                };
+                
+
+                var content = new FormUrlEncodedContent(values);
+                
+                var responseMessage = await client.PostAsync(
+                    requestUri, content);
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     _handler.ShowError("Added to favorites", color: new SolidColorBrush(Colors.SpringGreen));
