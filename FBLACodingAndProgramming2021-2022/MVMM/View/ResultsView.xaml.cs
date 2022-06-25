@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,22 +33,22 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     /// </summary>
     public partial class ResultsView : UserControl
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        readonly List<Feature> routeWaypoints = new List<Feature>();
-        MainWindow _form = Application.Current.Windows[0] as MainWindow;
-        Root values;
-        Feature selectedFeature;
-        string jsonText;
-        readonly ErrorHandler handler;
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        readonly List<Feature> _routeWaypoints = new List<Feature>();
+        readonly MainWindow _form = Application.Current.Windows[0] as MainWindow;
+        Root _values;
+        Feature _selectedFeature;
+        private string _jsonText;
+        readonly ErrorHandler _handler;
         List<ListViewFeature> list = new List<ListViewFeature>();
-        readonly Dictionary<Feature, (DateTime, string)> weatherCache = new Dictionary<Feature, (DateTime, string)>();
-        MapPolyline previousRoute;
+        readonly Dictionary<Feature, (DateTime, string)> _weatherCache = new Dictionary<Feature, (DateTime, string)>();
+        MapPolyline _previousRoute;
         public ResultsView()
         {
             _form.LoadingAnimation.Visibility = Visibility.Visible;
             _form.LoadingAnimation.IsEnabled = true;
             InitializeComponent();
-            handler = new ErrorHandler();
+            _handler = new ErrorHandler();
             
             InitializeListBox();
             _form.LoadingAnimation.Visibility = Visibility.Hidden;
@@ -56,7 +57,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
         public Feature GetFeatureByName(string name)
         {
-            foreach (Feature temp in values.features)
+            foreach (Feature temp in _values.features)
             {
                 if (temp.properties.name.Equals(name))
                 {
@@ -76,49 +77,49 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             catch (Exception)
             {
-                log.Error("Error with getting json from api");
-                handler.ShowError("Something went wrong. Click the Restart button and try again");
+                Log.Error("Error with getting json from api");
+                _handler.ShowError("Something went wrong. Click the Restart button and try again");
             }
-            jsonText = Root.jsonString;
+            _jsonText = Root.jsonString;
             try
             {
                 //Make object from json string
-                values = Root.FromJson(Root.jsonString);
+                _values = Root.FromJson(Root.jsonString);
             }
             catch (Exception)
             {
-                log.Error("Error is parsing json string to object...server probably returned error");
-                handler.ShowError("Something went wrong. Click the Restart button and try again");
+                Log.Error("Error is parsing json string to object...server probably returned error");
+                _handler.ShowError("Something went wrong. Click the Restart button and try again");
                 return;
             }
 
 
 
-            if (values.features == null)
+            if (_values.features == null)
             {
-                log.Error("No results");
-                handler.ShowError("No Results, Click Restart");
+                Log.Error("No results");
+                _handler.ShowError("No Results, Click Restart");
                 return;
             }
 
             int unknownCounter = 1;
             int repeatCounter = 1;
-            for (int i = 0; i < values.features.Count; i++)
+            for (int i = 0; i < _values.features.Count; i++)
             {
 
 
-                if (values.features[i].properties.name == null)
+                if (_values.features[i].properties.name == null)
                 {
-                    values.features[i].properties.name = "Unamed " + values.features[i].properties.categories[0] + " Location " + unknownCounter;
+                    _values.features[i].properties.name = "Unamed " + _values.features[i].properties.categories[0] + " Location " + unknownCounter;
                     unknownCounter++;
                 }
 
             }
 
             //Makes it so that program can differentiate by different names
-            foreach (Feature f in values.features)
+            foreach (Feature f in _values.features)
             {
-                var duplicates = values.features.FindAll(e => e.properties.name.Equals(f.properties.name));
+                var duplicates = _values.features.FindAll(e => e.properties.name.Equals(f.properties.name));
                 if (duplicates.Count > 1)
                 {
                     duplicates.ForEach(e =>
@@ -132,7 +133,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             //Gets all the Weather Data asynchrounously
             List<Task<WeatherInfo.Root>> weatherInformationTasks = new List<Task<WeatherInfo.Root>>();
-            values.features.ForEach(e =>
+            _values.features.ForEach(e =>
             {
                 weatherInformationTasks.Add(GetWeather(e));
             });
@@ -140,9 +141,29 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             var weatherInformation = weatherInformationTasks.Select(e => e.Result).ToList();
 
-            var res = weatherInformation.Zip(values.features,
-                ((root, feature) => new { Feature = feature, Weather = root })).ToList();
+            BitmapImage GetFavoriteImage(bool favorite)
+            {
+                if (favorite)
+                {
+                    return new BitmapImage(new Uri("Images/FilledHeart.png"));
+                }
 
+                return new BitmapImage(new Uri("Images/HollowHeart.png"));
+            }
+
+            var response = Root.FromJson(await
+                    new HttpClient().GetStringAsync(
+                        @$"https://touristserver.sami200.repl.co/getFavorites?cpuserialid={GetCPUSerialNumber()}"))
+                .features;
+            response ??= new();
+            var res = weatherInformation.Zip(_values.features,
+                (root, feature) => new
+                {
+                    Feature = feature, Weather = root,
+                    Favorite = GetFavoriteImage(response.Contains(feature))
+                }).ToList();
+
+            
             // Cycles through the objects to place them on the map
             res.ForEach(e =>
             {
@@ -161,7 +182,9 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                         : null,
                     FeatureRef = e.Feature,
                     WeatherDescription = e.Weather.weather[0].description,
-                    FeatureName = e.Feature.properties.name
+                    FeatureName = e.Feature.properties.name,
+                    
+                    FavoriteHeart = new Image(){Source = e.Favorite} 
                     
 
                 });
@@ -172,14 +195,14 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             AddPushPinsToMap();
 
 
-
+            LoadingAnimation.Visibility = Visibility.Hidden;
         }
 
         private async Task AddRouteToMap(List<Feature> points)
         {
             //Take out any previous routes on the map
-            if (previousRoute != null)
-                Map.Children.Remove(previousRoute);
+            if (_previousRoute != null)
+                Map.Children.Remove(_previousRoute);
 
             //Convert features to SimpleWaypoints
             var waypointList = points.Select(e => new SimpleWaypoint() { Coordinate = new Coordinate(e.properties.lat, e.properties.lon) }).ToList();
@@ -227,7 +250,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 };
 
                 Map.Children.Add(routeLine);
-                previousRoute = routeLine;
+                _previousRoute = routeLine;
             }
         }
 
@@ -257,7 +280,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             };
             Map.Children.Add(currentLocation);
             Map.SetView(new Location(double.Parse(Parameters.Latitude), double.Parse(Parameters.Longitude)), 15);
-            foreach (Feature f in values.features)
+            foreach (Feature f in _values.features)
             {
 
                 Pushpin pin = new Pushpin();
@@ -270,7 +293,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 pin.MouseLeftButtonDown += (object sender, MouseButtonEventArgs e) =>
                 {
                     Map.SetView(new Location(((Pushpin)sender).Location.Latitude, ((Pushpin)sender).Location.Longitude), 15);
-                    selectedFeature = GetFeatureByName(((Pushpin)sender).ToolTip.ToString());
+                    _selectedFeature = GetFeatureByName(((Pushpin)sender).ToolTip.ToString());
                     var p = sender as Pushpin;
                     for (int i = 0; i < MainListBox.Items.Count; i++)
                     {
@@ -293,7 +316,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             if (MainListBox.Items.Count < 1)
             {
-                log.Debug("Got No Results From Api");
+                Log.Debug("Got No Results From Api");
                 return;
             }
 
@@ -364,7 +387,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             };
 
             // import JSON data to CSV
-            var task = Task.Run(() => JsonUtility.ImportData(jsonText, worksheet.Cells, 0, 0, layoutOptions));
+            var task = Task.Run(() => JsonUtility.ImportData(_jsonText, worksheet.Cells, 0, 0, layoutOptions));
 
 
             string filePath = (System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "LodestarResults", "Results[" + DateTime.Now.ToLongTimeString().Replace(":", "-").Replace(" ", "") + "].csv"));
@@ -450,15 +473,15 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             var feature = GetFeatureByName(button.ToolTip.ToString());
             
 
-            if (routeWaypoints.Contains(feature))
+            if (_routeWaypoints.Contains(feature))
             {
-                handler.ShowError("Already added to route");
+                _handler.ShowError("Already added to route");
                 e.Handled = true;
                 return;
             }
 
-            routeWaypoints.Add(feature);
-            await AddRouteToMap(routeWaypoints);
+            _routeWaypoints.Add(feature);
+            await AddRouteToMap(_routeWaypoints);
 
         }
 
@@ -469,23 +492,61 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             var feature = GetFeatureByName(button.ToolTip.ToString());
             //Check if there is an selected feature
             
-            if (!routeWaypoints.Contains(feature))
+            if (!_routeWaypoints.Contains(feature))
             {
-                handler.ShowError("Already taken out");
+                _handler.ShowError("Already taken out");
                 e.Handled = true;
                 return;
             }
-            routeWaypoints.Remove(feature);
-            if (routeWaypoints.Count != 0)
-                await AddRouteToMap(routeWaypoints);
+            _routeWaypoints.Remove(feature);
+            if (_routeWaypoints.Count != 0)
+                await AddRouteToMap(_routeWaypoints);
             else
             {
              Map.Children.RemoveAt(Map.Children.Count-1);
             }
 
         }
+        private static string GetCPUSerialNumber()
+        {
+            string cpuInfo = string.Empty;
+            ManagementClass mc = new ManagementClass("win32_processor");
+            ManagementObjectCollection moc = mc.GetInstances();
 
+            foreach (ManagementObject mo in moc)
+            {
+                cpuInfo = mo.Properties["processorID"].Value.ToString();
+                break;
+            }
+            return cpuInfo;
+        }
 
-        
+        //Add Favorite
+        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            var b = sender as Button;
+
+            if ((b.Content as Image).Source.Equals(new Image()
+                    { Source = new BitmapImage(new Uri("/Images/FilledHeart.png")) }))
+            {
+                
+            }
+            else
+            {
+                var feature = GetFeatureByName(b.ToolTip.ToString());
+                var client = new HttpClient();
+                var responseMessage = await client.PostAsJsonAsync(value: JsonConvert.SerializeObject(feature),
+                    requestUri:
+                    @$"https://touristserver.sami200.repl.co/addFavorite?cpuserialid={GetCPUSerialNumber()}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    _handler.ShowError("Added to favorites", color: new SolidColorBrush(Colors.SpringGreen));
+                }
+                else
+                {
+                    _handler.ShowError("Error with adding to favorites");
+                }
+            }
+        }
     }
 }

@@ -349,6 +349,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\LodeStarIconSVG.svg" />
+    <Content Include="Images\FilledHeart.png" />
+    <Content Include="Images\HollowHeart.png" />
     <Resource Include="Images\CancelIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
