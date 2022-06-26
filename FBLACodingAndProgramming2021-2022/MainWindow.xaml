@@ -41,6 +41,13 @@
                     <MenuItem Command="{Binding CopyrightViewCommand}" Header="_Resources" />
 
                 </MenuItem>
+                <MenuItem
+                    FontFamily="Bebas"
+                    FontSize="12"
+                    Header="_Favorites"
+                    HorizontalAlignment="Left"
+                    Padding="5"
+                    Command="{Binding FavoritesViewCommand}" />
             </Menu>
         </DockPanel>
 

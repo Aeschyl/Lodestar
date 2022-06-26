@@ -26,7 +26,6 @@
                 Height="48"
                 HorizontalAlignment="Center"
                 Icon="Refresh"
-                Margin="200,0,0,50"
                 Spin="True"
                 VerticalAlignment="Center"
                 Visibility="Visible"
@@ -194,6 +193,8 @@
                                             <Button
                                                 Click="ButtonBase_OnClick"
                                                 Height="23"
+                                                Background="White"
+                                                BorderThickness="0"
                                                 Margin="5,0,0,5"
                                                 ToolTip="{Binding FeatureName}"
                                                 Width="23">

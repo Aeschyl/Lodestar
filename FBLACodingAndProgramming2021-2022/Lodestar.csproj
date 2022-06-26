@@ -154,6 +154,7 @@
     <Compile Include="Geocoding\Geocoder.cs" />
     <Compile Include="MVMM\Model\Favorites.cs" />
     <Compile Include="MVMM\Model\ListViewFeature.cs" />
+    <Compile Include="MVMM\ViewModel\FavoritesViewModel.cs" />
     <Compile Include="MVMM\ViewModel\CopyrightViewModel.cs" />
     <Compile Include="MVMM\ViewModel\DistanceViewModel.cs" />
     <Compile Include="MVMM\ViewModel\FAQViewModel.cs" />
@@ -163,6 +164,9 @@
     <Compile Include="MVMM\ViewModel\TermsViewModel.cs" />
     <Compile Include="MVMM\View\CopyrightView.xaml.cs">
       <DependentUpon>CopyrightView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVMM\View\FavoritesView.xaml.cs">
+      <DependentUpon>FavoritesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="MVMM\View\DistanceView.xaml.cs">
       <DependentUpon>DistanceView.xaml</DependentUpon>
@@ -206,6 +210,10 @@
     <Page Include="MVMM\View\CopyrightView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVMM\View\FavoritesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MVMM\View\DistanceView.xaml">
       <SubType>Designer</SubType>
