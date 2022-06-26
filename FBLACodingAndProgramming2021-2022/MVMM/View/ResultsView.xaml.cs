@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,6 +26,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Aspose.Cells.Drawing;
+using Button = System.Windows.Controls.Button;
 using Location = Microsoft.Maps.MapControl.WPF.Location;
 
 namespace FBLACodingAndProgramming2021_2022.MVMM.View
@@ -38,12 +41,16 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         readonly List<Feature> _routeWaypoints = new List<Feature>();
         readonly MainWindow _form = Application.Current.Windows[0] as MainWindow;
         Root _values;
+        private HashSet<string> _favorites;
         Feature _selectedFeature;
         private string _jsonText;
         readonly ErrorHandler _handler;
         List<ListViewFeature> list = new List<ListViewFeature>();
         readonly Dictionary<Feature, (DateTime, string)> _weatherCache = new Dictionary<Feature, (DateTime, string)>();
         MapPolyline _previousRoute;
+        private static readonly Uri FilledHeart = new($@"/{Assembly.GetExecutingAssembly().GetName().Name};component\Images\FilledHeart.png", UriKind.RelativeOrAbsolute);
+        private static readonly Uri HollowHeart = new Uri($@"/{Assembly.GetExecutingAssembly().GetName().Name};component\Images\HollowHeart.png", UriKind.RelativeOrAbsolute);
+
         public ResultsView()
         {
             _form.LoadingAnimation.Visibility = Visibility.Visible;
@@ -142,26 +149,20 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             var weatherInformation = weatherInformationTasks.Select(e => e.Result).ToList();
 
-            BitmapImage GetFavoriteImage(bool favorite)
-            {
-                if (favorite)
-                {
-                    return new BitmapImage(new Uri("Images/FilledHeart.png"));
-                }
 
-                return new BitmapImage(new Uri("Images/HollowHeart.png"));
-            }
+            var webResponse = await
+                new HttpClient().GetStringAsync(
+                    @$"https://touristserver.sami200.repl.co/getFavorites?cpuserialid={GetCPUSerialNumber()}");
 
-            var response = Root.FromJson(await
-                    new HttpClient().GetStringAsync(
-                        @$"https://touristserver.sami200.repl.co/getFavorites?cpuserialid={GetCPUSerialNumber()}"))
-                .features;
+            var response = JsonConvert.DeserializeObject<Favorites>(webResponse);
+
             response ??= new();
+            _favorites = response.favorites.Select(e => e.placeID).ToHashSet();
             var res = weatherInformation.Zip(_values.features,
                 (root, feature) => new
                 {
                     Feature = feature, Weather = root,
-                    Favorite = GetFavoriteImage(response.Contains(feature))
+                    Favorite = _favorites.Contains(feature.properties.place_id)? FilledHeart : HollowHeart
                 }).ToList();
 
             
@@ -176,7 +177,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     Title = e.Feature.properties.name,
                     DistanceFromHome = Math.Round(e.Feature.properties.distance / 1609.34, 2) + " mi",
                     Image = Uri.TryCreate(e.Feature.properties.imgLink, UriKind.Absolute, out outUri) ? new BitmapImage(outUri) : null,
-                    Temperature = e.Weather.main.temp.ToString() + "F",
+                    Temperature = e.Weather.main.temp.ToString(CultureInfo.CurrentCulture) + "F",
                     Icon = Uri.TryCreate(@"http://openweathermap.org/img/w/" + e.Weather.weather[0].icon + @".png",
                         UriKind.Absolute, out iconUri)
                         ? new BitmapImage(iconUri)
@@ -185,7 +186,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     WeatherDescription = e.Weather.weather[0].description,
                     FeatureName = e.Feature.properties.name,
                     
-                    FavoriteHeart = new Image(){Source = e.Favorite} 
+                    FavoriteHeart = e.Favorite 
                     
 
                 });
@@ -521,6 +522,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             return cpuInfo;
         }
+        
 
         //Add Favorite
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
@@ -528,17 +530,29 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             var b = sender as Button;
             var feature = GetFeatureByName(b.ToolTip.ToString());
             var client = new HttpClient();
-            var requestUri = @$"https://touristserver.sami200.repl.co/addFavorite?cpuserialid={GetCPUSerialNumber()}";
-
-            if ((b.Content as Image).Source.Equals(new Image()
-                    { Source = new BitmapImage(new Uri("/Images/FilledHeart.png")) }))
+            var addUrl = @$"https://touristserver.sami200.repl.co/addFavorite?cpuserialid={GetCPUSerialNumber()}";
+            var removeUrl = @$"https://touristserver.sami200.repl.co/removeFavorite?cpuserialid={GetCPUSerialNumber()}";
+            var isFavorite = false;
+            await Task.Run(() => isFavorite = _favorites.Contains(feature.properties.place_id));
+            if (isFavorite)
             {
                 var values = new FormUrlEncodedContent(new Dictionary<string, string>()
                 {
                     { "placeID", feature.properties.place_id }
                 });
-
-                var response = client.DeleteAsync(requestUri);
+                
+                var response = await client.PostAsync(removeUrl, values);
+                if (response.IsSuccessStatusCode)
+                {
+                    _handler.ShowError("Removed from favorites", color:new SolidColorBrush(Colors.SpringGreen));
+                    b.Content = new Image() { Source = new BitmapImage(HollowHeart) };
+                    _favorites.Remove(feature.properties.place_id);
+                    
+                }
+                else
+                {
+                    _handler.ShowError("Error with removing from favorites");
+                }
             }
             else
             {
@@ -558,10 +572,17 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 var content = new FormUrlEncodedContent(values);
                 
                 var responseMessage = await client.PostAsync(
-                    requestUri, content);
+                    addUrl, content);
                 if (responseMessage.IsSuccessStatusCode)
                 {
+                    
+                    b.Content = new Image()
+                    {
+                        Source = new BitmapImage(FilledHeart)
+                        
+                    };
                     _handler.ShowError("Added to favorites", color: new SolidColorBrush(Colors.SpringGreen));
+                    _favorites.Add(feature.properties.place_id);
                 }
                 else
                 {

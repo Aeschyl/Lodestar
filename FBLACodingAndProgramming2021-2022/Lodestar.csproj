@@ -152,6 +152,7 @@
     </ApplicationDefinition>
     <Compile Include="ErrorHandling\ErrorHandler.cs" />
     <Compile Include="Geocoding\Geocoder.cs" />
+    <Compile Include="MVMM\Model\Favorites.cs" />
     <Compile Include="MVMM\Model\ListViewFeature.cs" />
     <Compile Include="MVMM\ViewModel\CopyrightViewModel.cs" />
     <Compile Include="MVMM\ViewModel\DistanceViewModel.cs" />
@@ -349,8 +350,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\LodeStarIconSVG.svg" />
-    <Content Include="Images\FilledHeart.png" />
-    <Content Include="Images\HollowHeart.png" />
+    <Content Include="Images\FilledHeart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\HollowHeart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\CancelIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

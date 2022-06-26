@@ -170,8 +170,8 @@ namespace Json
             ErrorHandler handler = new ErrorHandler();
             try
             {
-                var obj = JsonConvert.DeserializeObject<Root>(json);
-                return obj;
+                return JsonConvert.DeserializeObject<Root>(json);
+                
             }
             catch (Exception)
             {

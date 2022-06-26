@@ -21,7 +21,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.Model
         public Json.Feature FeatureRef { get; set; }
         public string WeatherDescription { get; set; }
         public string FeatureName { get; set; }
-        public Image FavoriteHeart { get; set; }
+        public Uri FavoriteHeart { get; set; }
 
     }
 }
