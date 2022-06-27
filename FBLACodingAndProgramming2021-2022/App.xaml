@@ -5,7 +5,8 @@
     xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022"
     xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
     xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:fa="http://schemas.fontawesome.io/icons/">
 
     <Application.Resources>
 
@@ -105,7 +106,8 @@
                     To="1" />
             </Storyboard>
 
-
+            <fa:ImageAwesome x:Key="FilledHeartIcon" Foreground="Red"  Icon="Heart" Height="23" Width="23" Stretch="UniformToFill" ></fa:ImageAwesome>
+            <fa:ImageAwesome x:Key="HollowHeartIcon" Foreground="Black"  Icon="HeartOutline" Height="23" Width="23" Stretch="UniformToFill" ></fa:ImageAwesome>
 
 
 

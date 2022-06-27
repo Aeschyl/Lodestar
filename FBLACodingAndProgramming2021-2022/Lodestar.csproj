@@ -152,6 +152,7 @@
     </ApplicationDefinition>
     <Compile Include="ErrorHandling\ErrorHandler.cs" />
     <Compile Include="Geocoding\Geocoder.cs" />
+    <Compile Include="MVMM\Model\Favorite.cs" />
     <Compile Include="MVMM\Model\Favorites.cs" />
     <Compile Include="MVMM\Model\ListViewFeature.cs" />
     <Compile Include="MVMM\ViewModel\FavoritesViewModel.cs" />

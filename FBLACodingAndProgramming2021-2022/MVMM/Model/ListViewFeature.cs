@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using FBLACodingAndProgramming2021_2022.MVMM.View;
+using FontAwesome.WPF;
 
 namespace FBLACodingAndProgramming2021_2022.MVMM.Model
 {
@@ -21,7 +22,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.Model
         public Json.Feature FeatureRef { get; set; }
         public string WeatherDescription { get; set; }
         public string FeatureName { get; set; }
-        public Uri FavoriteHeart { get; set; }
+        public ImageAwesome FavoriteHeart { get; set; }
 
     }
 }

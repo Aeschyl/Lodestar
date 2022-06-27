@@ -193,14 +193,14 @@
                                             <Button
                                                 Click="ButtonBase_OnClick"
                                                 Height="23"
-                                                Background="White"
+                                                Background="Transparent"
+                                                
                                                 BorderThickness="0"
                                                 Margin="5,0,0,5"
                                                 ToolTip="{Binding FeatureName}"
-                                                Width="23">
-                                                <Button.Content>
-                                                    <Image Source="{Binding FavoriteHeart}" />
-                                                </Button.Content>
+                                                Width="23"
+                                                Content="{StaticResource HollowHeartIcon}">
+                                              
                                             </Button>
                                         </StackPanel>
                                     </StackPanel>
