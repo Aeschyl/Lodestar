@@ -52,13 +52,12 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         MapPolyline _previousRoute;
         private static readonly Uri FilledHeart = new($@"/{Assembly.GetExecutingAssembly().GetName().Name};component\Images\FilledHeart.png", UriKind.RelativeOrAbsolute);
         private static readonly Uri HollowHeart = new Uri($@"/{Assembly.GetExecutingAssembly().GetName().Name};component\Images\HollowHeart.png", UriKind.RelativeOrAbsolute);
-        private static object _filledHeartIcon; 
-        private static object _hollowHeartIcon; 
+        private static object _filledHeartIcon => GetFilledHeartIcon();
+        private static object _hollowHeartIcon => GetHollowHeartIcon();
 
         public ResultsView()
         {
-            _filledHeartIcon = Application.Current.Resources["FilledHeartIcon"];
-            _hollowHeartIcon = Application.Current.Resources["HollowHeartIcon"];
+            
             _form.LoadingAnimation.Visibility = Visibility.Visible;
             _form.LoadingAnimation.IsEnabled = true;
             InitializeComponent();
@@ -67,6 +66,32 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             InitializeListBox();
             _form.LoadingAnimation.Visibility = Visibility.Hidden;
             _form.LoadingAnimation.IsEnabled = false;
+        }
+
+        private static ImageAwesome GetFilledHeartIcon()
+        {
+            var icon = new ImageAwesome()
+            {
+                Icon = FontAwesomeIcon.Heart,
+                Foreground = new SolidColorBrush(Colors.Red),
+                Height = 23,
+                Width = 23
+
+            };
+            
+            return icon;
+        }
+
+        private static ImageAwesome GetHollowHeartIcon()
+        {
+            var icon = new ImageAwesome()
+            {
+                Icon = FontAwesomeIcon.HeartOutline,
+                Foreground = new SolidColorBrush(Colors.Black),
+                Height = 23,
+                Width = 23
+            };
+            return icon;
         }
 
         public Feature GetFeatureByName(string name)
@@ -192,7 +217,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                     WeatherDescription = e.Weather.weather[0].description,
                     FeatureName = e.Feature.properties.name,
                     
-                    FavoriteHeart = (ImageAwesome)e.Favorite 
+                    FavoriteHeart = e.Favorite 
                     
 
                 });

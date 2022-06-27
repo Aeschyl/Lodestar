@@ -143,7 +143,7 @@ namespace Json
             builder.Append("," + Parameters.Latitude);
 
             builder.Append("&");
-            builder.Append("limit=5");
+            builder.Append("limit=10");
             //Taken out due to api key being stored on requests server
             /*builder.Append("&");
             builder.Append("apiKey=");

@@ -18,110 +18,121 @@
         CornerRadius="5">
         <Grid>
             <ListBox
-                    Loaded="MainListBox_OnLoaded"
-                    Background="White"
-                    Foreground="Black"
-                    Margin="20,20,20,20"
-                    MouseDoubleClick="MainListBox_MouseDoubleClick"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                    VerticalAlignment="Stretch"
-                    x:Name="MainListBox">
-                    <ListBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="5" />
-                        </Style>
-                    </ListBox.Resources>
+                Background="White"
+                Foreground="Black"
+                Loaded="MainListBox_OnLoaded"
+                Margin="20,20,20,20"
+                MouseDoubleClick="MainListBox_MouseDoubleClick"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                VerticalAlignment="Stretch"
+                x:Name="MainListBox">
+                <ListBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="5" />
+                    </Style>
+                </ListBox.Resources>
 
-                    <ListBox.ItemTemplate>
-                        <DataTemplate DataType="model:Favorite">
-                            <Border
-                                BorderThickness="1"
-                                CornerRadius="5"
-                                Margin="5">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*" />
-                                        <ColumnDefinition Width="2*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Border
-                                        BorderBrush="Black"
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="model:Favorite">
+                        <Border
+                            BorderThickness="1"
+                            CornerRadius="5"
+                            Margin="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Border
+                                    BorderBrush="Black"
+                                    BorderThickness="0"
+                                    Height="100"
+                                    Width="100">
+
+
+                                    <Image
+                                        HorizontalAlignment="Center"
+                                        Margin="0,0,10,0"
+                                        Source="{Binding ImgLink}"
+                                        Stretch="Uniform"
+                                        VerticalAlignment="Center">
+                                        <Image.Triggers>
+                                            <EventTrigger RoutedEvent="Image.MouseEnter">
+                                                <BeginStoryboard Storyboard="{StaticResource ExpandStoryboard}" />
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="Image.MouseLeave">
+                                                <BeginStoryboard Storyboard="{StaticResource ShrinkStoryboard}" />
+                                            </EventTrigger>
+                                        </Image.Triggers>
+                                        <Image.RenderTransform>
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </Image.RenderTransform>
+                                    </Image>
+                                </Border>
+                                <StackPanel Grid.Column="1">
+                                    <Label
+                                        Content="{Binding Name}"
+                                        FontSize="15"
+                                        Margin="10,5,0,0" />
+
+                                    <TextBox
+                                        Background="Transparent"
                                         BorderThickness="0"
-                                        Height="100"
-                                        Width="100">
+                                        FontSize="10"
+                                        IsHitTestVisible="False"
+                                        IsReadOnly="True"
+                                        Margin="10,5,0,0"
+                                        Text="{Binding Address}"
+                                        TextWrapping="Wrap" />
 
 
-                                        <Image
-                                            HorizontalAlignment="Center"
-                                            Margin="0,0,10,0"
-                                            Source="{Binding ImgLink}"
-                                            Stretch="Uniform"
-                                            VerticalAlignment="Center">
-                                            <Image.Triggers>
-                                                <EventTrigger RoutedEvent="Image.MouseEnter">
-                                                    <BeginStoryboard Storyboard="{StaticResource ExpandStoryboard}" />
-                                                </EventTrigger>
-                                                <EventTrigger RoutedEvent="Image.MouseLeave">
-                                                    <BeginStoryboard Storyboard="{StaticResource ShrinkStoryboard}" />
-                                                </EventTrigger>
-                                            </Image.Triggers>
-                                            <Image.RenderTransform>
-                                                <ScaleTransform ScaleX="1" ScaleY="1" />
-                                            </Image.RenderTransform>
-                                        </Image>
-                                    </Border>
-                                    <StackPanel Grid.Column="1">
-                                        <Label
-                                            Content="{Binding Name}"
-                                            FontSize="15"
-                                            Margin="10,5,0,0" />
 
-                                        <TextBox
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button
                                             Background="Transparent"
                                             BorderThickness="0"
-                                            FontSize="10"
-                                            IsHitTestVisible="False"
-                                            IsReadOnly="True"
+                                            Click="ButtonBase_OnClick"
                                             Margin="10,5,0,0"
-                                            Text="{Binding Address}"
-                                            TextWrapping="Wrap" />
-                                        
-                                        
-                                           
-                                           
-                                            <Button
-                                                Click="ButtonBase_OnClick"
-                                                Height="23"
-                                                Background="Transparent"
-                                                
-                                                BorderThickness="0"
-                                                Margin="10,5,0,0"
-                                                ToolTip="{Binding PlaceId}"
-                                                Width="23"
-                                                Content="{DynamicResource FilledHeartIcon}">
-                                            </Button>
-                                        </StackPanel>
-                                    
+                                            ToolTip="{Binding PlaceId}">
+                                            <Button.Content>
+                                                <fa:ImageAwesome
+                                                    Foreground="Red"
+                                                    Height="23"
+                                                    HorizontalAlignment="Left"
+                                                    Icon="Heart"
+                                                    Margin="2"
+                                                    Width="23" />
+                                            </Button.Content>
+                                            <Button.Resources>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="CornerRadius" Value="5" />
+                                                </Style>
+                                            </Button.Resources>
+                                        </Button>
+                                    </StackPanel>
+                                </StackPanel>
 
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="{x:Type ListBoxItem}">
-                            <Style.Resources>
 
-                                <Style TargetType="Border">
-                                    <Setter Property="CornerRadius" Value="5" />
-                                </Style>
-                            </Style.Resources>
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="#0078d7" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ListBox.ItemContainerStyle>
-                </ListBox>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Style.Resources>
+
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5" />
+                            </Style>
+                        </Style.Resources>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#0078d7" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
         </Grid>
     </Border>
 </UserControl>

@@ -191,16 +191,23 @@
 
                                             </Button>
                                             <Button
-                                                Click="ButtonBase_OnClick"
-                                                Height="23"
                                                 Background="Transparent"
-                                                
                                                 BorderThickness="0"
+                                                Click="ButtonBase_OnClick"
                                                 Margin="5,0,0,5"
-                                                ToolTip="{Binding FeatureName}"
-                                                Width="23"
-                                                Content="{StaticResource HollowHeartIcon}">
-                                              
+                                                ToolTip="{Binding FeatureName}">
+                                                <Button.Content>
+                                                    <fa:ImageAwesome
+                                                        Foreground="Black"
+                                                        Height="23"
+                                                        Icon="HeartOutline"
+                                                        Width="23" />
+                                                </Button.Content>
+                                                <Button.Resources>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="CornerRadius" Value="5" />
+                                                    </Style>
+                                                </Button.Resources>
                                             </Button>
                                         </StackPanel>
                                     </StackPanel>

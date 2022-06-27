@@ -2,11 +2,11 @@
     StartupUri="MainWindow.xaml"
     x:Class="FBLACodingAndProgramming2021_2022.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:fa="http://schemas.fontawesome.io/icons/"
     xmlns:local="clr-namespace:FBLACodingAndProgramming2021_2022"
     xmlns:view="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.View"
     xmlns:viewModel="clr-namespace:FBLACodingAndProgramming2021_2022.MVMM.ViewModel"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:fa="http://schemas.fontawesome.io/icons/">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Application.Resources>
 
@@ -32,11 +32,10 @@
                 <view:EatSubView />
             </DataTemplate>
 
-            <DataTemplate
-                DataType="{x:Type viewModel:FavoritesViewModel}">
+            <DataTemplate DataType="{x:Type viewModel:FavoritesViewModel}">
                 <view:FavoritesView />
             </DataTemplate>
-            
+
             <DataTemplate DataType="{x:Type viewModel:ShopSubViewModel}">
                 <view:ShopSubView />
             </DataTemplate>
@@ -106,8 +105,18 @@
                     To="1" />
             </Storyboard>
 
-            <fa:ImageAwesome x:Key="FilledHeartIcon" Foreground="Red"  Icon="Heart" Height="23" Width="23" Stretch="UniformToFill" ></fa:ImageAwesome>
-            <fa:ImageAwesome x:Key="HollowHeartIcon" Foreground="Black"  Icon="HeartOutline" Height="23" Width="23" Stretch="UniformToFill" ></fa:ImageAwesome>
+            <fa:ImageAwesome
+                Foreground="Red"
+                Height="23"
+                Icon="Heart"
+                Width="23"
+                x:Key="FilledHeartIcon" />
+            <fa:ImageAwesome
+                Foreground="Black"
+                Height="23"
+                Icon="HeartOutline"
+                Width="23"
+                x:Key="HollowHeartIcon" />
 
 
 
