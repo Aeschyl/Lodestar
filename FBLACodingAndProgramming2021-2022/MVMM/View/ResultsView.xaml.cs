@@ -558,18 +558,21 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         //Add Favorite
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-            var serialNumberTask = Task.Run(GetCPUSerialNumber);
+            
             var b = sender as Button;
             Feature feature =  GetFeatureByName(b.ToolTip.ToString());
             var client = new HttpClient();
             var isFavorite = false;
             
             await Task.Run(() => isFavorite = _favorites.Contains(feature.properties.place_id));
+            b.Content = isFavorite ? _hollowHeartIcon : _filledHeartIcon;
+            var serialNumberTask = Task.Run(GetCPUSerialNumber);
             var serialNumber = await serialNumberTask;
             var addUrl = @$"https://touristserver.sami200.repl.co/addFavorite?cpuserialid={serialNumber}";
             var removeUrl = @$"https://touristserver.sami200.repl.co/removeFavorite?cpuserialid={serialNumber}";
             if (isFavorite)
             {
+                
                 var values = new FormUrlEncodedContent(new Dictionary<string, string>()
                 {
                     { "placeID", feature.properties.place_id }
@@ -579,7 +582,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 if (response.IsSuccessStatusCode)
                 {
                     _handler.ShowError("Removed from favorites", color:new SolidColorBrush(Colors.SpringGreen));
-                    b.Content = _hollowHeartIcon;
+                    
                     _favorites.Remove(feature.properties.place_id);
                     
                 }
@@ -591,7 +594,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             else
             {
                 
-
+                
                 var values = new Dictionary<string, string>()
                 {
                     { "address", feature.properties.formatted },
@@ -610,7 +613,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
                 if (responseMessage.IsSuccessStatusCode)
                 {
 
-                    b.Content = _filledHeartIcon;
+                    
                     _handler.ShowError("Added to favorites", color: new SolidColorBrush(Colors.SpringGreen));
                     _favorites.Add(feature.properties.place_id);
                 }
