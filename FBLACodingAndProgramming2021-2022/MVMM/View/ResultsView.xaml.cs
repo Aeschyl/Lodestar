@@ -42,6 +42,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         readonly List<Feature> _routeWaypoints = new List<Feature>();
         readonly MainWindow _form = Application.Current.Windows[0] as MainWindow;
+
+        private readonly string _serverUrl = "https://touristserver.sami200.repl.co/";
         Root _values;
         private HashSet<string> _favorites;
         Feature _selectedFeature;
@@ -183,7 +185,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
             var webResponse = await
                 new HttpClient().GetStringAsync(
-                    @$"https://touristserver.sami200.repl.co/getFavorites?cpuserialid={GetCPUSerialNumber()}");
+                    _serverUrl + @$"getFavorites?cpuserialid={GetCPUSerialNumber()}");
 
             var response = JsonConvert.DeserializeObject<Favorites>(webResponse);
 
@@ -380,7 +382,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
 
 
-            var url = new StringBuilder(@"https://touristserver.sami200.repl.co/weather?");
+            var url = new StringBuilder(_serverUrl + "weather?");
             url.Append("long=");
             url.Append(feature.properties.lon);
             url.Append("&lat=");
@@ -568,8 +570,8 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             b.Content = isFavorite ? _hollowHeartIcon : _filledHeartIcon;
             var serialNumberTask = Task.Run(GetCPUSerialNumber);
             var serialNumber = await serialNumberTask;
-            var addUrl = @$"https://touristserver.sami200.repl.co/addFavorite?cpuserialid={serialNumber}";
-            var removeUrl = @$"https://touristserver.sami200.repl.co/removeFavorite?cpuserialid={serialNumber}";
+            var addUrl = _serverUrl + @$"addFavorite?cpuserialid={serialNumber}";
+            var removeUrl = _serverUrl + @$"removeFavorite?cpuserialid={serialNumber}";
             if (isFavorite)
             {
                 

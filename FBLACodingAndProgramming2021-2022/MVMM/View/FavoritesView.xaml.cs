@@ -36,6 +36,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     public partial class FavoritesView : UserControl
     {
         private readonly object _filledHeartIcon; 
+        private readonly string _serverUrl = "https://touristserver.sami200.repl.co/";
         private readonly object _hollowHeartIcon;
         private readonly HttpClient _client;
         private readonly ErrorHandler _handler;
@@ -57,7 +58,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             
             var favorites = JsonConvert
                 .DeserializeObject<Favorites>(await _client.GetStringAsync(
-                    @$"https://touristserver.sami200.repl.co/getFavorites?cpuserialid={_cpuSerialId}")) ?? new Favorites();
+                    _serverUrl + $@"getFavorites?cpuserialid={_cpuSerialId}")) ?? new Favorites();
             _favorites = favorites.favorites.ToHashSet();
             MainListBox.ItemsSource = _favorites;
             _favoritesId = _favorites.Select(x => x.PlaceId)
