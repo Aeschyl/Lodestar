@@ -35,6 +35,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
     /// </summary>
     public partial class FavoritesView : UserControl
     {
+        //Constants for the code
         private readonly object _filledHeartIcon; 
         private readonly string _serverUrl = "https://touristserver.sami200.repl.co/";
         private readonly object _hollowHeartIcon;
@@ -52,15 +53,18 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             
             InitializeComponent();
         }
-
+        
         private async void MainListBox_OnLoaded(object sender, RoutedEventArgs e)
         {
-            
+            //Converst json from api req to json object    
             var favorites = JsonConvert
                 .DeserializeObject<Favorites>(await _client.GetStringAsync(
                     _serverUrl + $@"getFavorites?cpuserialid={_cpuSerialId}")) ?? new Favorites();
+            //Sets aplication contstant to the favorites from the object
             _favorites = favorites.favorites.ToHashSet();
+            //Sets the item source of the MainListBox to the list
             MainListBox.ItemsSource = _favorites;
+            //Sets a different list to be comprised of only the ids
             _favoritesId = _favorites.Select(x => x.PlaceId)
                 .ToHashSet();
         }
@@ -69,12 +73,13 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
         {
             
 
-            
+            //Castes the sender to a feature
             var listViewFeature = (MainListBox.SelectedItem as ListViewFeature);
-            //31
             
             
+            //Copies the address of the selected feature
             Clipboard.SetText(listViewFeature.FeatureRef.properties.formatted);
+            //Displays to the user indicator that address is copied
             new ErrorHandler().ShowError("Copied Address", color: new SolidColorBrush(Colors.SpringGreen));
             
 
@@ -85,7 +90,7 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
 
 
         }
-
+        //Gets CPU Srial nunber for identification in the database and the http requests
         private static string GetCpuSerialNumber()
         {
             string cpuInfo = string.Empty;
@@ -99,9 +104,10 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             }
             return cpuInfo;
         }
-
+        //Heart Button
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
+            //Gets Serial Number
             var serialNumberTask = Task.Run(GetCpuSerialNumber);
             var b = sender as Button;
             
@@ -110,14 +116,14 @@ namespace FBLACodingAndProgramming2021_2022.MVMM.View
             
             
             var serialNumber = await serialNumberTask;
-            
+            //Request URL
             var removeUrl = @$"https://touristserver.sami200.repl.co/removeFavorite?cpuserialid={serialNumber}";
             
                 var values = new FormUrlEncodedContent(new Dictionary<string, string>()
                 {
                     { "placeID", b.ToolTip.ToString() }
                 });
-                
+                //Sends Request
                 var response = await client.PostAsync(removeUrl, values);
                 if (response.IsSuccessStatusCode)
                 {
