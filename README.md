@@ -1,5 +1,8 @@
 # Lodestar <img src="https://user-images.githubusercontent.com/72280649/151738750-266236f3-d125-4c55-a18b-3a5e23e5a29f.png" alt="Logo" width="40"/>
 
+| :exclamation:  ALL API KEYS IN THE CODE HAVE BEEN DISABLED DUE TO THE REPO BEING MADE PUBLIC  |
+|-----------------------------------------------------------------------------------------------|
+
 ## An app to help users find tourist attractions in Colorado
 
 ### Download
